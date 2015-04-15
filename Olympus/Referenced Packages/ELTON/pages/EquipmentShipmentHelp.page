@@ -1,0 +1,23 @@
+<apex:page sidebar="false" showHeader="false">
+    <apex:pageBlock title="Equipment Shipment"> 
+    <apex:outputLink value="{! $Page.About_Us}"> <p> <b> Click here for the Links to Full Documentation Downloads</b> </p></apex:outputLink>
+          <apex:pageblockSection title="Overview" columns="1">
+                        <p> Equipment Shipment records are used to record shipment of consumable equipment.  </P>
+                </apex:pageblockSection>
+                <apex:pageblockSection title="Fields" columns="1">
+                 <p> <b> Equipment Shipment Name </b>  This is a system generated unique record number.</P>
+                 <p> <b> Equipment </b> This is the Equipment record linked to the Shipment.</P>
+                 <p> <b> Shipment Date </b>  This is the date the shipment occurred. </P>
+                 <p> <b> Account </b> This is the Account associated with this shipment. </P>
+                 <p> <b> Contact </b> This is the Contact associated with this shipment. </P>
+                 <p> <b> Opportunity </b> This is the Opportunity associated with this shipment. </P>
+                 <p> <b> User </b> This is the User associated with this shipment. </P>
+                 <p> <b> Name </b> This is the Name of the User/Contact/Account/Opportunity associated with this shipment. </P>
+                 <p> Only one of Account, Contact, Opportunity or User may be associated with an equipment shipment. </p>
+                 <p> <b> Shipment Notes </b> Enter a note associated with this shipment. </P>
+                 <p> <b> Committed Quantity </b> This is used to record the quantity that is committed. </P>
+                 <p> <b> Shipment Quantity </b> This is the Quantity of the consumable equipment that was shipped. </P>
+                 <p> <b> Tracking Number </b> This can be used to record a waybill/tracking number for the shipment. </P>
+                </apex:pageblockSection>
+    </apex:pageBlock>
+ </apex:page>

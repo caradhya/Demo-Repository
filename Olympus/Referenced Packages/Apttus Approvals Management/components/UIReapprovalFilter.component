@@ -1,0 +1,224 @@
+<!-- 
+    Apttus Approvals Management
+    UIReapprovalFilter
+     
+    @2013-2014 Apttus Inc. All rights reserved.
+
+ -->
+<apex:component controller="Apttus_Approval.UIReapprovalFilterController" >	
+    <!--  sobject name - the context sobject for the filter -->
+    <apex:attribute name="sObjectName" 
+    				description="SObject Name" 
+    				type="String" 
+    				required="true" 
+    				assignTo="{!sObjectNameProp}" />
+												
+	<!--  page controller - specify page controller associated with the component. The page controller is
+	used to locate the search controller to delegate the search action to. 
+	-->	
+	<apex:attribute name="pageController" 
+					description="Page Controller" 
+					type="Apttus_Approval.UIPageControllerBase" 
+					required="true" 
+					assignTo="{!pageControllerProp}" />
+	
+	<!--  mode - specify mode. The mode indicates whether the component operates in standard or wizard mode. 
+	-->	
+	<apex:attribute name="mode" 
+					description="Mode" 
+					type="String" 
+					required="false" 
+					assignTo="{!modeProp}" />
+					
+	<apex:includeScript value="{!$Resource.Apttus_Approval__ApprovalsJSLib}" />				
+ 	<apex:stylesheet value="{!$Resource.Apttus_Approval__ApprovalsStyles}" />
+	
+	<apex:pageBlock id="idSearchFilterBlock" rendered="{!isEnabled}" title="{!title}"> 
+		
+	    <apex:pageBlockSection id="idPredicatesSection" 
+	    					   columns="2" 
+	    					   title="{!$Label.apttus_approval__AutoReapprovalCriteria}"
+	    					   collapsible="false" >
+	    					   
+	        <apex:pageBlockTable value="{!filter.predicates}" 
+	        					 var="predicate" 
+	        					 columns="11" 
+	        					 rowClasses="oddRow,evenRow" >
+	        	
+	        	<apex:column width="5%" rendered="{!filter.isAdvancedOptionsMode}" >
+	        		<apex:outputText id="idRowNum" value="{!predicate.RowNum}. " />
+				</apex:column>
+				
+				<apex:column headerValue="{!$Label.apttus_approval__ChildFilter}" width="15%" >
+			    	<apex:selectList id="idChildFilter" size="1" value="{!predicate.LHSChildFilterName}" >
+			      		<apex:selectOptions value="{!childFilterItems}"></apex:selectOptions>
+			      		<apex:actionSupport event="onchange" 
+					      					action="{!filter.doUpdateState}" 
+					      					reRender="idPredicatesSection" 
+					      					status="idPleaseWaitChildFilter" />
+			      	</apex:selectList>
+			      	<apex:actionStatus id="idPleaseWaitChildFilter">
+                       <apex:facet name="start">
+                           {!$Label.StatusPleaseWait}...
+                           <img src="/apexpages/devmode/img/saveStatus.gif" />
+                       </apex:facet>
+                       <apex:facet name="stop" />
+                    </apex:actionStatus>
+			   	</apex:column>
+			   	
+	        	<apex:column headerValue="{!$Label.apttus_approval__Field}" width="20%" >
+	        		<apex:outputPanel styleClass="{!IF(predicate.FieldInError, 'errorRow', '')}" layout="block" >
+	        			<apex:selectList id="idField" 
+	        							 size="1" 
+	        							 value="{!predicate.FieldName}" 
+	        							 rendered="{!ISBLANK(predicate.LHSChildFilterName)}" >
+				      		<apex:selectOptions value="{!filter.FieldItems}"></apex:selectOptions>
+				      		<apex:actionSupport event="onchange" 
+					      						action="{!filter.doUpdateFieldInfo}" 
+					      						reRender="idPredicatesSection" 
+					      						status="idPleaseWaitField" />
+				      	</apex:selectList>
+				      	<apex:selectList id="idField2" 
+				      					 size="1" 
+				      					 value="{!predicate.FieldName}" 
+				      					 rendered="{!NOT(ISBLANK(predicate.LHSChildFilterName))}">
+				      		<apex:selectOptions value="{!predicate.ChildFieldItems}"></apex:selectOptions>
+				      		<apex:actionSupport event="onchange" 
+					      						action="{!filter.doUpdateFieldInfo}" 
+					      						reRender="idPredicatesSection" 
+					      						status="idPleaseWaitField" />
+				      	</apex:selectList>
+				      	<apex:actionStatus id="idPleaseWaitField">
+                            <apex:facet name="start">
+                                {!$Label.StatusPleaseWait}...
+                                <img src="/apexpages/devmode/img/saveStatus.gif" />
+                            </apex:facet>
+                            <apex:facet name="stop" />
+                        </apex:actionStatus>
+					</apex:outputPanel>
+				</apex:column>
+				
+				<apex:column headerValue="{!$Label.apttus_approval__LHSValueType}" width="5%" >
+			    	<apex:selectList id="idLHSValueType" size="1" value="{!predicate.LHSFieldValueType}" >
+			      		<apex:selectOptions value="{!LHSFieldValueTypeItems}"></apex:selectOptions>
+			      	</apex:selectList>
+			   	</apex:column>
+			   	
+				<apex:column headerValue="{!$Label.apttus_approval__Operator}" width="10%" >
+			    	<apex:outputPanel styleClass="{!IF(predicate.CompOperInError, 'errorRow', '')}" layout="block" >
+				    	<apex:selectList id="idCompOper" size="1" value="{!predicate.CompOper}" >
+				      		<apex:selectOptions value="{!compOperItems}"></apex:selectOptions>
+				      		<apex:actionSupport event="onchange" 
+					      						action="{!filter.doUpdateState}"  
+					      						reRender="idPredicatesSection" 
+					      						status="idPleaseWaitCompOper" />
+				      	</apex:selectList>
+				      	<apex:actionStatus id="idPleaseWaitCompOper">
+                            <apex:facet name="start">
+                                {!$Label.StatusPleaseWait}...
+                                <img src="/apexpages/devmode/img/saveStatus.gif" />
+                            </apex:facet>
+                            <apex:facet name="stop" />
+                        </apex:actionStatus>
+			      	</apex:outputPanel>
+			   	</apex:column>
+			   	
+			   	<apex:column headerValue="{!$Label.apttus_approval__RHSValueType}" width="5%" >
+			    	<apex:selectList id="idRHSValueType" size="1" value="{!predicate.RHSFieldValueType}" >
+			      		<apex:selectOptions value="{!RHSFieldValueTypeItems}"></apex:selectOptions>
+			      	</apex:selectList>
+			   	</apex:column>
+			   	
+		   		<apex:column headerValue="{!$Label.apttus_approval__Value}" width="20%" >
+			    	<apex:outputPanel styleClass="{!IF(predicate.FieldValueInError, 'errorRow', '')}" layout="block" >
+			    		<apex:inputText id="idFieldValue" 
+			    						size="25" 
+			    						value="{!predicate.FieldValue}" 
+			    						onkeypress="return aptIgnoreEnterKey(event);"
+			    						rendered="{!NOT(predicate.IsPicklist)}" />
+			    		<apex:selectList id="idFieldValue2" 
+			    						 size="1" 
+			    						 multiselect="false"
+			    						 value="{!predicate.FieldValue}" 
+			    						 rendered="{!predicate.IsPicklist && NOT(predicate.IsMultiPicklist)}" >
+				      		<apex:selectOptions value="{!predicate.fieldValueItems}"></apex:selectOptions>
+				      	</apex:selectList>
+				      	<apex:selectList id="idFieldValue3" 
+			    						 size="5" 
+			    						 multiselect="true"
+			    						 value="{!predicate.FieldValues}" 
+			    						 rendered="{!predicate.IsPicklist && predicate.IsMultiPicklist}" >
+				      		<apex:selectOptions value="{!predicate.fieldValueItems}"></apex:selectOptions>
+				      	</apex:selectList>
+			   		</apex:outputPanel>
+			   	</apex:column>
+			   	<apex:column width="5%" >
+			    	<apex:outputText id="idBoolOper" 
+			    					 value="{!predicate.BoolOper}" 
+			    					 rendered="{!NOT(filter.isAdvancedOptionsMode) && NOT(ISBLANK(predicate.BoolOper))}" />
+			    	<apex:commandLink action="{!filter.doAddRow}" 
+							  	  	  reRender="idPredicatesSection, idAdvancedOptionsSection" 
+							  	  	  rendered="{!NOT(filter.isAdvancedOptionsMode) && ISBLANK(predicate.BoolOper)}" >
+						<apex:image url="{!$Resource.Apttus_Approval__Image_Plus2}" 
+			                       	title="{!$Label.apttus_approval__Add}" 
+			                       	alt="{!$Label.apttus_approval__Add}" />   		  	  	  
+					</apex:commandLink>
+			   	</apex:column>
+			   	<apex:column width="5%" >
+			   	<apex:commandLink action="{!filter.doDeleteRow}" 
+							  	  reRender="idPredicatesSection, idAdvancedOptionsSection" 
+							  	  rendered="{!predicate.RowNum > 1}" >
+					<apex:param name="rowNum" value="{!predicate.RowNum}" />		  
+					<apex:image url="{!$Resource.Apttus_Approval__Image_Minus2}" 
+			                    title="{!$Label.apttus_approval__Remove}" 
+			                    alt="{!$Label.apttus_approval__Remove}" />
+				</apex:commandLink>
+				</apex:column>
+			   	<apex:column width="10%" >
+			   		<apex:outputText value="{!predicate.ErrorMsg}" style="color:red;" />
+			   	</apex:column>
+			   
+	        </apex:pageBlockTable>
+	        
+	    </apex:pageBlockSection>
+			    
+		<apex:pageBlockSection id="idAdvancedOptionsSection" columns="1" collapsible="false" >
+		
+			<apex:commandLink action="{!filter.doShowAdvancedOptions}" 
+							  value="{!$Label.apttus_approval__AdvancedOptions}" 
+							  reRender="idAdvancedOptionsSection, idPredicatesSection" 
+							  rendered="{!NOT(filter.isAdvancedOptionsMode)}" />
+	        
+	        <apex:outputPanel rendered="{!filter.isAdvancedOptionsMode}">
+				<apex:commandLink action="{!filter.doAddRow}" 
+								  value="{!$Label.apttus_approval__AddRow}" 
+								  reRender="idAdvancedOptionsSection, idPredicatesSection" />
+				<span>  </span>
+				<apex:commandLink action="{!filter.doRemoveRow}" 
+								  value="{!$Label.apttus_approval__RemoveRow}" 
+								  reRender="idAdvancedOptionsSection, idPredicatesSection" 
+								  rendered="{!filter.OkToRemoveRow}" />
+				<apex:outputPanel id="idRemoveRow2" styleClass="greyedLink" rendered="{!NOT(filter.OkToRemoveRow)}" >{!$Label.apttus_approval__RemoveRow}</apex:outputPanel>
+				<p/>	
+	        	<apex:commandLink action="{!filter.doHideAdvancedOptions}" 
+	        					  value="{!$Label.apttus_approval__ClearAdvancedOptions}" 
+	        					  reRender="idAdvancedOptionsSection, idPredicatesSection" />
+	        	<br/>
+	        	<apex:outputText value="{!$Label.apttus_approval__AdvancedFilterCondition}" />
+	        	<br/>
+	        	<apex:inputText id="idAdvancedOptions" 
+	        					size="80" 
+	        					value="{!filter.advancedOptions}" 
+	        					onkeypress="return aptIgnoreEnterKey(event);" />
+	        </apex:outputPanel>
+	        
+		</apex:pageBlockSection>
+		
+		<apex:panelGrid columns="2" rendered="{!NOT(IsWizardMode)}">
+	    	<apex:commandButton action="{!doOk}" value="{!$Label.apttus_approval__OK}" />
+	    	<apex:commandButton action="{!doCancel}" value="{!$Label.apttus_approval__Cancel}" />
+		</apex:panelGrid>
+			
+	</apex:pageBlock>
+	   
+</apex:component>

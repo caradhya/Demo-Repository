@@ -1,0 +1,17 @@
+<apex:page sidebar="false" showHeader="false">
+    <apex:pageBlock title="Equipment Counts"> 
+        <apex:outputLink value="{! $Page.About_Us}"> <p> <b> Click here for the Links to Full Documentation Downloads</b> </p></apex:outputLink>
+          <apex:pageblockSection title="Overview" columns="1">
+                        <p> Equipment Count records are loaded into the system after a physical audit has been conducted using a portable computer.  These audits require the installation of a software module onto a portable Pocket PC device.  Pleae contact us at info@accountabilitycorp.com for more information on this process.</P>
+                </apex:pageblockSection>
+                <apex:pageblockSection title="Fields" columns="1">
+                 <p> <b> Record Date </b> The date that the generation of count records was done. </P>
+                 <p> <b> Count DateTime </b> The date and time are automatically recorded during an equipment count. </P>
+                 <p> <b> User/Device </b>  Depending on the type of device used for counts either the users name or unqiue device ID is recorded.</P>
+                 <p> <b> Input Source </b>  This will indicate if the user entered the equipment tag or scanned the equipment tag.</P>
+                 <p> <b> GPS Lat </b>  If the portable device has GPS capabilities these are the GPS co-ordinates recorded during the equipment count.</P>
+                 <p> <b> GPS Long </b>  If the portable device has GPS capabilities these are the GPS co-ordinates recorded during the equipment count.</P>
+                 <p> <b> Note </b>  The user during an equipment count can enter a note about the equipment. </p>
+                 </apex:pageblockSection>
+    </apex:pageBlock>
+  </apex:page>

@@ -1,0 +1,882 @@
+<!-- 
+    Apttus Approvals Management
+    UIAssigneeComponent
+
+    @2010-2014 Apttus Inc. All rights reserved.
+
+ -->
+<apex:component controller="Apttus_Approval.UIAssigneeController" 
+                allowDML="true" >  
+
+    <!-- pageController - the controller associated with the component that select and cancel actions are delegated to --> 
+    <apex:attribute name="pageControllerAttr" 
+                    description="Page Controller" 
+                    type="Apttus_Approval.UIPageControllerBase"
+                    required="true" 
+                    assignTo="{!pageController}" />
+
+    <!-- contextSO - the context sobject associated with this component -->
+    <apex:attribute name="contextSOAttr" 
+                    description="Context SObject" 
+                    type="sObject" 
+                    required="true" 
+                    assignTo="{!contextSO}" />
+    
+    <!-- contextSOLabel - the context sobject label associated with this component -->
+    <apex:attribute name="contextSOLabelAttr" 
+                    description="Context SObject Label" 
+                    type="String" 
+                    required="true" 
+                    assignTo="{!contextSOLabel}" />
+
+    <!-- isReadOnly - indicates if the component is in read only mode -->
+    <apex:attribute name="isReadOnlyAttr" 
+                    description="Is Read Only" 
+                    type="Boolean" 
+                    required="false" 
+                    assignTo="{!isReadOnly}" />
+
+    <!-- businessObjType - the business object type associated with this component -->
+    <apex:attribute name="businessObjTypeAttr" 
+                    description="Business Object Type" 
+                    type="String" 
+                    required="true" 
+                    assignTo="{!businessObjType}" />
+
+    <!-- assigneeTypeField -->
+    <apex:attribute name="assigneeTypeFieldAttr" 
+                    description="Assignee Type Field Name" 
+                    type="String" 
+                    required="true" 
+                    assignTo="{!assigneeTypeField}" />
+
+    <!-- assigneeValueField -->
+    <apex:attribute name="assigneeValueFieldAttr" 
+                    description="Assignee Value Field Name" 
+                    type="String" 
+                    required="true" 
+                    assignTo="{!assigneeValueField}" />
+
+    <!-- assigneeIdField -->
+    <apex:attribute name="assigneeIdFieldAttr" 
+                    description="Assignee Id Field Name" 
+                    type="String" 
+                    required="true" 
+                    assignTo="{!assigneeIdField}" />
+
+    <!-- assigneeSendEmailField -->
+    <apex:attribute name="assigneeSendEmailFieldAttr" 
+                    description="Assignee SendEmail Field Name" 
+                    type="String" 
+                    required="false" 
+                    assignTo="{!assigneeSendEmailField}" />
+
+    <!-- assigneeNotifyOnlyField -->
+    <apex:attribute name="assigneeNotifyOnlyFieldAttr" 
+                    description="Assignee NotifyOnly Field Name" 
+                    type="String" 
+                    required="false" 
+                    assignTo="{!assigneeNotifyOnlyField}" />
+
+    <!-- assigneeActiveField -->
+    <apex:attribute name="assigneeActiveFieldAttr" 
+                    description="Assignee Active Field Name" 
+                    type="String" 
+                    required="false" 
+                    assignTo="{!assigneeActiveField}" />
+
+    <!-- assigneeDescField -->
+    <apex:attribute name="assigneeDescFieldAttr" 
+                    description="Assignee Description Field Name" 
+                    type="String" 
+                    required="false" 
+                    assignTo="{!assigneeDescField}" />
+
+    <!-- assignee -->
+    <apex:attribute name="assigneeAttr" 
+                    description="Assignee" 
+                    type="Apttus_Approval.Assignee" 
+                    required="false" 
+                    assignTo="{!assignee}" />
+
+    <!-- supportedAssigneeTypes - available assignee types to use -->
+    <apex:attribute name="supportedAssigneeTypesAttr" 
+                    description="Supported Assignee Types" 
+                    type="String[]" 
+                    required="true"
+                    assignTo="{!supportedAssigneeTypes}" />
+
+    <!-- parentReRenderId - the id of the parent object that gets rerendered -->
+    <apex:attribute name="parentReRenderIdAttr" 
+                    description="Parent ReRender Id" 
+                    type="String" 
+                    required="true" 
+                    assignTo="{!parentReRenderId}" />
+
+    <apex:pageBlockSection id="idAssigneeTitle" 
+                           columns="1" 
+                           collapsible="false"
+                           title="{!$Label.apttus_approval__AssignedApprover}" 
+                           showHeader="true"
+                           rendered="{!isEnabled && NOT(isReadOnly)}" />
+
+    <apex:pageBlockSection id="idAssignee" 
+                           columns="1" 
+                           collapsible="false"
+                           showHeader="true"
+                           rendered="{!isEnabled}">
+        
+        <!-- assignee type -->
+        <apex:pageBlockSectionItem id="idAssigneeType"
+                                   helpText="{!$Label.apttus_approval__AssigneeTypeHelp}">
+            <apex:outputLabel for="idAssigneeType" value="{!$Label.apttus_approval__AssigneeType}" />
+            <apex:outputPanel styleClass="requiredInput" layout="block" >
+                <apex:outputPanel styleClass="requiredBlock" layout="block" />
+                <apex:selectList id="idAssigneeType" 
+                                 value="{!assigneeType}" 
+                                 multiselect="false" 
+                                 required="false" 
+                                 size="1" 
+                                 disabled="{!isReadOnly}">
+                    <apex:selectOptions value="{!assigneeTypes}"></apex:selectOptions>
+                    <apex:actionSupport event="onchange"
+                                        action="{!doAssigneeTypeChanged}"
+                                        reRender="idAssignee"
+                                        status="idStatusWaitAssigneeType" />
+                </apex:selectList>
+                <apex:actionStatus id="idStatusWaitAssigneeType" startText="{!$Label.apttus_approval__StatusPleaseWait}..." />
+            </apex:outputPanel>
+        </apex:pageBlockSectionItem>
+
+        <!-- assignee type = approval matrix -->        
+	    <apex:pageBlockSection id="idAssigneeTypeApprovalMatrixTitle" 
+	                           columns="1" 
+	                           collapsible="false"
+	                           title="{!$Label.apttus_approval__ApprovalMatrixAssigneeInfo}" 
+	                           showHeader="true"
+	                           rendered="{!isAssigneeTypeApprovalMatrix && NOT(isReadOnly)}" />
+	                           
+        <apex:pageBlockSection id="idAssigneeTypeApprovalMatrix" 
+                               columns="1" 
+                               collapsible="false"
+                               showHeader="true"
+                               rendered="{!isAssigneeTypeApprovalMatrix}" >
+                               
+            <apex:pageBlockSectionItem id="idAssigneeTypeApprovalMatrixItem"
+                                       helpText="{!$Label.apttus_approval__AssigneeTypeApprovalMatrixHelp}">
+                <apex:outputLabel value="{!$ObjectType.Apttus_Approval__Term_Exception_Approval__c.Fields.Apttus_Approval__Assignee_Value__c.Label}" />
+                <apex:outputPanel id="idTypeApprovalMatrixPanel"
+                                  styleClass="requiredInput" layout="block" >
+                    <apex:outputPanel styleClass="requiredBlock" layout="block" />
+                    
+                    <!-- approval matrix type (approver, level, or max approval level based) -->
+                    <apex:selectList id="idAssigneeTypeApprovalMatrixType" 
+                                     value="{!AssigneeApprovalMatrixType}" 
+                                     multiselect="false" 
+                                     required="false" 
+                                     size="1" 
+                                     disabled="{!isReadOnly}">
+                        <apex:selectOptions value="{!approvalMatrixTypes}"></apex:selectOptions>
+                        <apex:actionSupport event="onchange"
+                                            action="{!doApprovalMatrixTypeChanged}"
+                                            reRender="idAssignee"
+                                            status="idStatusWaitApprovalMatrix" />
+                    </apex:selectList>
+                    
+                    <!-- approval matrix value (options depend on approval matrix type) -->
+                    <apex:selectList id="idAssigneeTypeApprovalMatrixValue" 
+                                     value="{!assigneeValue}" 
+                                     multiselect="false" 
+                                     required="false" 
+                                     size="1" 
+                                     disabled="{!isReadOnly}">
+                        <apex:selectOptions value="{!approvalMatrixValues}"></apex:selectOptions>
+                    </apex:selectList>
+                    <apex:actionStatus id="idStatusWaitApprovalMatrix" startText="{!$Label.apttus_approval__StatusPleaseWait}..." />
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+        
+        <!-- assignee type = queue -->        
+        <apex:pageBlockSection id="idAssigneeTypeQueueTitle" 
+                               columns="1" 
+                               collapsible="false"
+                               title="{!$Label.apttus_approval__QueueAssigneeInfo}" 
+                               showHeader="true"
+                               rendered="{!isAssigneeTypeQueue && NOT(isReadOnly)}" />
+
+        <apex:pageBlockSection id="idAssigneeTypeQueue" 
+                               columns="1" 
+                               collapsible="false"
+                               showHeader="true"
+                               rendered="{!isAssigneeTypeQueue}" >
+
+            <apex:pageBlockSectionItem id="idAssigneeTypeQueueItem"
+                                       helpText="{!$Label.apttus_approval__AssigneeTypeQueueHelp}">
+                <apex:outputLabel value="{!$ObjectType.Apttus_Approval__Term_Exception_Approval__c.Fields.Apttus_Approval__Assignee_Value__c.Label}" />
+                <apex:outputPanel styleClass="requiredInput" layout="block">                 
+                    <apex:actionRegion >
+	                    <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+	                    <apex:inputText value="{!assigneeValue}" size="30"
+	                                    disabled="{!isReadOnly}"/>  
+	                    <apex:commandLink action="{!doSelectQueue}"
+	                                      rendered="{!NOT(isReadOnly)}"
+                                          type="image/gif"
+                                          reRender="{!parentReRenderId}"
+                                          status="idPleaseWaitStatusQueue">
+                            <apex:image value="/img/s.gif" styleClass="lookupIcon"/>
+	                    </apex:commandLink>
+                        <apex:actionStatus id="idPleaseWaitStatusQueue">
+                            <apex:facet name="start">
+                                {!$Label.apttus_approval__StatusPleaseWait}...
+                                <img src="/apexpages/devmode/img/saveStatus.gif" />
+                            </apex:facet>
+                            <apex:facet name="stop" />
+                        </apex:actionStatus>
+	                    <apex:inputText value="{!assigneeId}" style="visibility:hidden;" />  
+                    </apex:actionRegion>
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+
+        <!-- assignee type = role -->        
+        <apex:pageBlockSection id="idAssigneeTypeRoleTitle" 
+                               columns="1" 
+                               collapsible="false"
+                               title="{!$Label.apttus_approval__RoleAssigneeInfo}" 
+                               showHeader="true"
+                               rendered="{!isAssigneeTypeRole && NOT(isReadOnly)}" />
+
+        <apex:pageBlockSection id="idAssigneeTypeRole" 
+                               columns="1" 
+                               collapsible="false"
+                               showHeader="true"
+                               rendered="{!isAssigneeTypeRole}" >
+
+            <apex:pageBlockSectionItem id="idAssigneeTypeRoleItem"
+                                       helpText="{!$Label.apttus_approval__AssigneeTypeRoleHelp}">
+                <apex:outputLabel value="{!$ObjectType.Apttus_Approval__Term_Exception_Approval__c.Fields.Apttus_Approval__Assignee_Value__c.Label}" />
+                <apex:outputPanel styleClass="requiredInput" layout="block">                 
+                    <apex:actionRegion >
+                        <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                        <apex:inputText value="{!assigneeValue}" size="30"
+                                        disabled="{!isReadOnly}"/>  
+                        <apex:commandLink action="{!doSelectRole}"
+                                          rendered="{!NOT(isReadOnly)}"
+                                          type="image/gif"
+                                          reRender="{!parentReRenderId}"
+                                          status="idPleaseWaitStatusRole">
+                            <apex:image value="/img/s.gif" styleClass="lookupIcon"/>
+                        </apex:commandLink>
+                        <apex:actionStatus id="idPleaseWaitStatusRole">
+                            <apex:facet name="start">
+                                {!$Label.apttus_approval__StatusPleaseWait}...
+                                <img src="/apexpages/devmode/img/saveStatus.gif" />
+                            </apex:facet>
+                            <apex:facet name="stop" />
+                        </apex:actionStatus>
+                        <apex:inputText value="{!assigneeId}" style="visibility:hidden;" />  
+                    </apex:actionRegion>
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+
+        <!-- assignee type = rule -->        
+        <apex:pageBlockSection id="idAssigneeTypeRuleTitle" 
+                               columns="1" 
+                               collapsible="false"
+                               title="{!$Label.apttus_approval__RuleAssigneeInfo}" 
+                               showHeader="true"
+                               rendered="{!isAssigneeTypeRule && NOT(isReadOnly)}" />
+
+        <apex:pageBlockSection id="idAssigneeTypeRule" 
+                               columns="1" 
+                               collapsible="false"
+                               showHeader="true"
+                               rendered="{!isAssigneeTypeRule}" >
+
+            <apex:pageBlockSectionItem id="idAssigneeTypeRuleItem"
+                                       helpText="{!$Label.apttus_approval__AssigneeTypeRuleHelp}">
+                <apex:outputLabel value="{!$ObjectType.Apttus_Approval__Term_Exception_Approval__c.Fields.Apttus_Approval__Assignee_Value__c.Label}" />
+                <apex:outputPanel styleClass="requiredInput" layout="block">                 
+                    <apex:actionRegion >
+                        <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                        <apex:inputText value="{!assigneeValue}" size="30"
+                                        disabled="{!isReadOnly}"/>  
+                        <apex:commandLink action="{!doSelectRule}"
+                                          rendered="{!NOT(isReadOnly)}"
+                                          type="image/gif"
+                                          reRender="{!parentReRenderId}"
+                                          status="idPleaseWaitStatusRule">
+                            <apex:image value="/img/s.gif" styleClass="lookupIcon"/>
+                        </apex:commandLink>
+                        <apex:actionStatus id="idPleaseWaitStatusRule">
+                            <apex:facet name="start">
+                                {!$Label.apttus_approval__StatusPleaseWait}...
+                                <img src="/apexpages/devmode/img/saveStatus.gif" />
+                            </apex:facet>
+                            <apex:facet name="stop" />
+                        </apex:actionStatus>
+                        <apex:inputText value="{!assigneeId}" style="visibility:hidden;" />  
+                    </apex:actionRegion>
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+
+        <!-- assignee type = user -->        
+        <apex:pageBlockSection id="idAssigneeTypeUserTitle" 
+                               columns="1" 
+                               collapsible="false"
+                               title="{!$Label.apttus_approval__UserAssigneeInfo}" 
+                               showHeader="true"
+                               rendered="{!isAssigneeTypeUser && NOT(isReadOnly)}" />
+
+        <apex:pageBlockSection id="idAssigneeTypeUser" 
+                               columns="1" 
+                               collapsible="false"
+                               showHeader="true"
+                               rendered="{!isAssigneeTypeUser}" >
+
+            <apex:pageBlockSectionItem id="idAssigneeTypeUserItem"
+                                       helpText="{!$Label.apttus_approval__AssigneeTypeUserHelp}">
+                <apex:outputLabel value="{!$ObjectType.Apttus_Approval__Term_Exception_Approval__c.Fields.Apttus_Approval__Assignee_Value__c.Label}" />
+                <apex:outputPanel styleClass="requiredInput" layout="block">                 
+                    <apex:actionRegion >
+                        <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                        <apex:inputText value="{!assigneeValue}" size="30"
+                                        disabled="{!isReadOnly}"/>  
+                        <apex:commandLink action="{!doSelectUser}"
+                                          rendered="{!NOT(isReadOnly)}"
+                                          type="image/gif"
+                                          reRender="{!parentReRenderId}"
+                                          status="idPleaseWaitStatusUser">
+                            <apex:image value="/img/s.gif" styleClass="lookupIcon"/>
+                        </apex:commandLink>
+                        <apex:actionStatus id="idPleaseWaitStatusUser">
+                            <apex:facet name="start">
+                                {!$Label.apttus_approval__StatusPleaseWait}...
+                                <img src="/apexpages/devmode/img/saveStatus.gif" />
+                            </apex:facet>
+                            <apex:facet name="stop" />
+                        </apex:actionStatus>
+                        <apex:inputText value="{!assigneeId}" style="visibility:hidden;" />  
+                    </apex:actionRegion>
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+            
+        </apex:pageBlockSection>
+
+        <!-- assignee type = custom queue -->
+        <apex:pageBlockSection id="idAssigneeTypeCustomQueueTitle" 
+                               columns="1" 
+                               collapsible="false"
+                               title="{!$Label.apttus_approval__CustomQueueAssigneeInfo}" 
+                               showHeader="true"
+                               rendered="{!isAssigneeTypeCustomQueue && NOT(isReadOnly)}" />
+
+        <apex:pageBlockSection id="idAssigneeTypeCustomQueue" 
+                               columns="1" 
+                               collapsible="false"
+                               showHeader="true"
+                               rendered="{!isAssigneeTypeCustomQueue}" >
+
+            <!-- use free form expression? -->
+            <apex:pageBlockSectionItem id="idAssigneeTypeCustomQueueUseFreeFormExpr"
+                                       helpText="{!$Label.apttus_approval__CustomValueExpressionUseFreeFormHelp}">
+                <apex:outputLabel value="{!$Label.apttus_approval__CustomValueExpressionUseFreeForm}"
+                                  for="idCustomAssigneeQueueUseFreeFormExpr" />
+                <apex:outputPanel >
+                    <apex:inputCheckbox id="idCustomAssigneeQueueUseFreeFormExpr"
+                                        value="{!selectedCustomAssigneeUseFreeFormExpr}"
+                                        disabled="{!isReadOnly}">      
+                        <apex:actionSupport event="onchange"
+                                            action="{!doCustomAssigneeUseFreeFormTextChanged}"
+                                            reRender="idAssignee"
+                                            status="idStatusWaitCustomQueueUseFreeForm" />
+                    </apex:inputCheckbox>
+                    <apex:actionStatus id="idStatusWaitCustomQueueUseFreeForm" startText="{!$Label.apttus_approval__StatusPleaseWait}..." />
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+
+            <!-- free form expression -->
+            <apex:pageBlockSectionItem id="idAssigneeTypeCustomQueueFreeFormExpr"
+                                       helpText="{!$Label.apttus_approval__CustomValueExpressionHelp}"
+                                       rendered="{!selectedCustomAssigneeUseFreeFormExpr}">
+                <apex:outputLabel value="{!$Label.apttus_approval__CustomAssigneeExpression}"
+                                  for="idCustomAssigneeQueueExpr" />
+                <apex:outputPanel id="idAssigneeTypeCustomQueueFreeFormExprBlockPanel" styleClass="requiredInput" layout="block">
+                    <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+						<apex:inputText id="idCustomAssigneeQueueExpr" size="110"
+						                value="{!selectedCustomAssigneeExpr}"
+						                disabled="{!isReadOnly}" />
+                 </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+
+            <!-- custom object -->
+            <apex:pageBlockSectionItem id="idAssigneeTypeCustomQueueCustomObject"
+                                       helpText="{!$Label.apttus_approval__AssigneeTypeCustomQueueCustomObjectHelp}"
+                                       rendered="{!NOT(selectedCustomAssigneeUseFreeFormExpr)}">
+                <apex:outputLabel value="{!$Label.apttus_approval__CustomObject}" for="idCustomQueueBusinessObject" />
+                <apex:outputPanel id="idAssigneeTypeCustomQueueBlockPanel" styleClass="requiredInput" layout="block">
+                    <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                    <apex:selectList id="idCustomQueueBusinessObject" 
+                                     value="{!selectedCustomAssigneeObject}" 
+                                     multiselect="false" 
+                                     required="false" 
+                                     size="1" 
+                                     disabled="{!isReadOnly}">
+                        <apex:selectOptions value="{!customObjectItems}"></apex:selectOptions>
+                        <apex:actionSupport event="onchange"
+                                            action="{!doCustomAssigneeObjectChanged}"
+                                            reRender="idAssignee"
+                                            status="idStatusWaitCustomQueue" />
+                    </apex:selectList>
+                    <apex:actionStatus id="idStatusWaitCustomQueue" startText="{!$Label.apttus_approval__StatusPleaseWait}..." />
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+            
+            <!-- custom field -->
+            <apex:pageBlockSectionItem id="idAssigneeTypeCustomQueueCustomField"
+                                       helpText="{!$Label.apttus_approval__AssigneeTypeCustomQueueCustomFieldHelp}"
+                                       rendered="{!NOT(selectedCustomAssigneeUseFreeFormExpr)}">
+                <apex:outputLabel value="{!$Label.apttus_approval__CustomField}" for="idCustomQueueDatasource" />
+                <apex:outputPanel styleClass="requiredInput" layout="block" >
+                    <apex:outputPanel styleClass="requiredBlock" layout="block" />
+                    <apex:selectList id="idCustomQueueDatasource" 
+                                     value="{!selectedCustomAssigneeField}" 
+                                     multiselect="false" 
+                                     required="false" 
+                                     size="1"
+                                     disabled="{!isReadOnly}">
+                        <apex:selectOptions value="{!customObjectFieldItems}"></apex:selectOptions>
+                    </apex:selectList>
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+
+            <!-- custom filter -->
+            <apex:pageBlockSectionItem id="idAssigneeTypeCustomQueueCustomFilter"
+                                       helpText="{!$Label.apttus_approval__AssigneeTypeCustomQueueCustomFilterHelp}"
+                                       rendered="{!NOT(selectedCustomAssigneeUseFreeFormExpr)}">
+                <apex:outputLabel value="{!$Label.apttus_approval__CustomFilterExpression}" for="idCustomQueueFilterExpr" />
+                <apex:outputPanel >                            
+                    <apex:selectList id="idCustomQueueFilterExprField" size="1"
+                                     value="{!selectedCustomAssigneeFilterFieldName}"
+                                     disabled="{!isReadOnly}" >
+                        <apex:selectOptions value="{!customObjectFieldItems}"></apex:selectOptions>
+                    </apex:selectList>
+    
+                    <apex:selectList id="idCustomQueueFilterExprCompOper" size="1"
+                                     value="{!selectedCustomAssigneeFilterFieldOper}" 
+                                     disabled="{!isReadOnly}">
+                        <apex:selectOptions value="{!customObjectCompOperItems}"></apex:selectOptions>
+                    </apex:selectList>
+    
+                    <apex:selectList id="idCustomQueueFilterExprBindField" size="1"                       
+                                     value="{!selectedCustomAssigneeFilterFieldValueBindField}" 
+                                     rendered="{!selectedCustomAssigneeFilterFieldValueUseBindField}"
+                                     disabled="{!isReadOnly}">
+                        <apex:selectOptions value="{!customObjectBindFieldItems}"></apex:selectOptions>
+                    </apex:selectList>
+                    
+                    <apex:inputText id="idCustomQueueFilterExprFieldValue" size="25"
+                                    value="{!selectedCustomAssigneeFilterFieldValue}" 
+                                    rendered="{!NOT(selectedCustomAssigneeFilterFieldValueUseBindField)}" 
+                                    disabled="{!isReadOnly}"/>
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+
+            <!-- custom value bind field -->
+            <apex:pageBlockSectionItem id="idAssigneeTypeCustomQueueCustomBindField"
+                                       helpText="{!$Label.apttus_approval__AssigneeTypeCustomQueueCustomBindFieldHelp}"
+                                       rendered="{!NOT(selectedCustomAssigneeUseFreeFormExpr)}">
+                <apex:outputLabel for="idCustomQueueFilterFieldValueUseBindField" value="{!$Label.apttus_approval__BindValue}" />
+                <apex:outputPanel >
+                    <apex:inputCheckbox id="idCustomQueueFilterFieldValueUseBindField"
+                                        value="{!selectedCustomAssigneeFilterFieldValueUseBindField}"
+                                        disabled="{!isReadOnly}">      
+                        <apex:actionSupport event="onchange"
+                                            reRender="idAssigneeTypeCustomQueue"
+                                            status="idStatusWaitCustomQueue" />
+                    </apex:inputCheckbox>
+                    <apex:actionStatus id="idStatusWaitCustomQueue" startText="{!$Label.apttus_approval__StatusPleaseWait}..." />
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+
+        <!-- assignee type = custom role -->
+        <apex:pageBlockSection id="idAssigneeTypeCustomRoleTitle" 
+                               columns="1" 
+                               collapsible="false"
+                               title="{!$Label.apttus_approval__CustomRoleAssigneeInfo}" 
+                               showHeader="true"
+                               rendered="{!isAssigneeTypeCustomRole && NOT(isReadOnly)}" />
+
+        <apex:pageBlockSection id="idAssigneeTypeCustomRole" 
+                               columns="1" 
+                               collapsible="false"
+                               showHeader="true"
+                               rendered="{!isAssigneeTypeCustomRole}" >
+                               
+            <!-- use free form expression? -->
+            <apex:pageBlockSectionItem id="idAssigneeTypeCustomRoleUseFreeFormExpr"
+                                       helpText="{!$Label.apttus_approval__CustomValueExpressionUseFreeFormHelp}">
+                <apex:outputLabel value="{!$Label.apttus_approval__CustomValueExpressionUseFreeForm}"
+                                  for="idCustomAssigneeRoleUseFreeFormExpr" />
+                <apex:outputPanel >
+                    <apex:inputCheckbox id="idCustomAssigneeRoleUseFreeFormExpr"
+                                        value="{!selectedCustomAssigneeUseFreeFormExpr}"
+                                        disabled="{!isReadOnly}">      
+                        <apex:actionSupport event="onchange"
+                                            action="{!doCustomAssigneeUseFreeFormTextChanged}"
+                                            reRender="idAssignee"
+                                            status="idStatusWaitCustomRoleUseFreeForm" />
+                    </apex:inputCheckbox>
+                    <apex:actionStatus id="idStatusWaitCustomRoleUseFreeForm" startText="{!$Label.apttus_approval__StatusPleaseWait}..." />
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+
+            <!-- free form expression -->
+            <apex:pageBlockSectionItem id="idAssigneeTypeCustomRoleFreeFormExpr"
+                                       helpText="{!$Label.apttus_approval__CustomValueExpressionHelp}"
+                                       rendered="{!selectedCustomAssigneeUseFreeFormExpr}">
+                <apex:outputLabel value="{!$Label.apttus_approval__CustomAssigneeExpression}"
+                                  for="idCustomAssigneeRoleExpr" />
+                <apex:outputPanel id="idAssigneeTypeCustomRoleFreeFormExprBlockPanel" styleClass="requiredInput" layout="block">
+                    <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                        <apex:inputText id="idCustomAssigneeRoleExpr" size="110"
+                                        value="{!selectedCustomAssigneeExpr}"
+                                        disabled="{!isReadOnly}" />
+                 </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+
+            <!-- custom object -->
+            <apex:pageBlockSectionItem id="idAssigneeTypeCustomRoleCustomObject"
+                                       helpText="{!$Label.apttus_approval__AssigneeTypeCustomRoleCustomObjectHelp}"
+                                       rendered="{!NOT(selectedCustomAssigneeUseFreeFormExpr)}">
+                <apex:outputLabel value="{!$Label.apttus_approval__CustomObject}" for="idCustomRoleBusinessObject" />
+                <apex:outputPanel id="idAssigneeTypeCustomRoleSectionItemPanel" styleClass="requiredInput" layout="block">
+                    <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                    <apex:selectList id="idCustomRoleBusinessObject" 
+                                     value="{!selectedCustomAssigneeObject}" 
+                                     multiselect="false" 
+                                     required="false" 
+                                     size="1" 
+                                     disabled="{!isReadOnly}">
+                        <apex:selectOptions value="{!customObjectItems}"></apex:selectOptions>
+                        <apex:actionSupport event="onchange"
+                                            action="{!doCustomAssigneeObjectChanged}"
+                                            reRender="idAssignee"
+                                            status="idStatusWaitCustomRole" />
+                    </apex:selectList>
+                    <apex:actionStatus id="idStatusWaitCustomRole" startText="{!$Label.apttus_approval__StatusPleaseWait}..." />
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+            
+            <!-- custom field -->
+            <apex:pageBlockSectionItem id="idAssigneeTypeCustomRoleCustomField"
+                                       helpText="{!$Label.apttus_approval__AssigneeTypeCustomRoleCustomFieldHelp}"
+                                       rendered="{!NOT(selectedCustomAssigneeUseFreeFormExpr)}">
+                <apex:outputLabel value="{!$Label.apttus_approval__CustomField}" for="idCustomRoleDatasource" />
+                <apex:outputPanel styleClass="requiredInput" layout="block" >
+                    <apex:outputPanel styleClass="requiredBlock" layout="block" />
+                    <apex:selectList id="idCustomRoleDatasource" 
+                                     value="{!selectedCustomAssigneeField}" 
+                                     multiselect="false" 
+                                     required="false" 
+                                     size="1" 
+                                     disabled="{!isReadOnly}">
+                        <apex:selectOptions value="{!customObjectFieldItems}"></apex:selectOptions>
+                    </apex:selectList>
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+    
+            <!-- custom filter -->
+            <apex:pageBlockSectionItem id="idAssigneeTypeCustomRoleCustomFilter"
+                                       helpText="{!$Label.apttus_approval__AssigneeTypeCustomRoleCustomFilterHelp}"
+                                       rendered="{!NOT(selectedCustomAssigneeUseFreeFormExpr)}">
+                <apex:outputLabel value="{!$Label.apttus_approval__CustomFilterExpression}" for="idCustomRoleFilterExpr" />
+                <apex:outputPanel >                            
+                    <apex:selectList id="idCustomRoleFilterExprField" size="1"
+                                     value="{!selectedCustomAssigneeFilterFieldName}"
+                                     disabled="{!isReadOnly}" >
+                        <apex:selectOptions value="{!customObjectFieldItems}"></apex:selectOptions>
+                    </apex:selectList>
+    
+                    <apex:selectList id="idCustomRoleFilterExprCompOper" size="1"
+                                     value="{!selectedCustomAssigneeFilterFieldOper}" 
+                                     disabled="{!isReadOnly}">
+                        <apex:selectOptions value="{!customObjectCompOperItems}"></apex:selectOptions>
+                    </apex:selectList>
+    
+                    <apex:selectList id="idCustomRoleFilterExprBindField" size="1"                       
+                                     value="{!selectedCustomAssigneeFilterFieldValueBindField}" 
+                                     rendered="{!selectedCustomAssigneeFilterFieldValueUseBindField}"
+                                     disabled="{!isReadOnly}">
+                        <apex:selectOptions value="{!customObjectBindFieldItems}"></apex:selectOptions>
+                    </apex:selectList>
+                    
+                    <apex:inputText id="idCustomRoleFilterExprFieldValue" size="25"
+                                    value="{!selectedCustomAssigneeFilterFieldValue}" 
+                                    rendered="{!NOT(selectedCustomAssigneeFilterFieldValueUseBindField)}" 
+                                    disabled="{!isReadOnly}"/>
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+    
+            <!-- custom value bind field -->
+            <apex:pageBlockSectionItem id="idAssigneeTypeCustomRoleCustomBindField"
+                                       helpText="{!$Label.apttus_approval__AssigneeTypeCustomRoleCustomBindFieldHelp}"
+                                       rendered="{!NOT(selectedCustomAssigneeUseFreeFormExpr)}">
+                <apex:outputLabel for="idCustomRoleFilterFieldValueUseBindField" value="{!$Label.apttus_approval__BindValue}" />
+                <apex:outputPanel >
+                    <apex:inputCheckbox id="idCustomRoleFilterFieldValueUseBindField"
+                                        value="{!selectedCustomAssigneeFilterFieldValueUseBindField}"
+                                        disabled="{!isReadOnly}">      
+                        <apex:actionSupport event="onchange"
+                                            reRender="idAssigneeTypeCustomRole"
+                                            status="idStatusWaitCustomRole" />
+                    </apex:inputCheckbox>
+                    <apex:actionStatus id="idStatusWaitCustomRole" startText="{!$Label.apttus_approval__StatusPleaseWait}..." />
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+
+        <!-- assignee type = custom user -->
+        <apex:pageBlockSection id="idAssigneeTypeCustomUserTitle" 
+                               columns="1" 
+                               collapsible="false"
+                               title="{!$Label.apttus_approval__CustomUserAssigneeInfo}" 
+                               showHeader="true"
+                               rendered="{!isAssigneeTypeCustomUser && NOT(isReadOnly)}" />
+
+        <apex:pageBlockSection id="idAssigneeTypeCustomUser" 
+                               columns="1" 
+                               collapsible="false"
+                               showHeader="true"
+                               rendered="{!isAssigneeTypeCustomUser}" >
+
+            <!-- use free form expression? -->
+            <apex:pageBlockSectionItem id="idAssigneeTypeCustomUserUseFreeFormExpr"
+                                       helpText="{!$Label.apttus_approval__CustomValueExpressionUseFreeFormHelp}">
+                <apex:outputLabel value="{!$Label.apttus_approval__CustomValueExpressionUseFreeForm}"
+                                  for="idCustomAssigneeUserUseFreeFormExpr" />
+                <apex:outputPanel >
+                    <apex:inputCheckbox id="idCustomAssigneeUserUseFreeFormExpr"
+                                        value="{!selectedCustomAssigneeUseFreeFormExpr}"
+                                        disabled="{!isReadOnly}">
+                        <apex:actionSupport event="onchange"
+                                            action="{!doCustomAssigneeUseFreeFormTextChanged}"
+                                            reRender="idAssignee"
+                                            status="idStatusWaitCustomUserUseFreeForm" />
+                    </apex:inputCheckbox>
+                    <apex:actionStatus id="idStatusWaitCustomUserUseFreeForm" startText="{!$Label.apttus_approval__StatusPleaseWait}..." />
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+
+            <!-- free form expression -->
+            <apex:pageBlockSectionItem id="idAssigneeTypeCustomUserFreeFormExpr"
+                                       helpText="{!$Label.apttus_approval__CustomValueExpressionHelp}"
+                                       rendered="{!selectedCustomAssigneeUseFreeFormExpr}">
+                <apex:outputLabel value="{!$Label.apttus_approval__CustomAssigneeExpression}"
+                                  for="idCustomAssigneeUserExpr" />
+                <apex:outputPanel id="idAssigneeTypeCustomUserFreeFormExprBlockPanel" styleClass="requiredInput" layout="block">
+                    <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                        <apex:inputText id="idCustomAssigneeUserExpr" size="110"
+                                        value="{!selectedCustomAssigneeExpr}"
+                                        disabled="{!isReadOnly}" />
+                 </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+
+            <!-- custom object -->
+            <apex:pageBlockSectionItem id="idAssigneeTypeCustomUserCustomObject"
+                                       helpText="{!$Label.apttus_approval__AssigneeTypeCustomUserCustomObjectHelp}"
+                                       rendered="{!NOT(selectedCustomAssigneeUseFreeFormExpr)}">
+                <apex:outputLabel value="{!$Label.apttus_approval__CustomObject}" for="idCustomUserBusinessObject" />
+                <apex:outputPanel id="idAssigneeTypeCustomUserSectionItemPanel" styleClass="requiredInput" layout="block">
+                    <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                    <apex:selectList id="idCustomUserBusinessObject" 
+                                     value="{!selectedCustomAssigneeObject}" 
+                                     multiselect="false" 
+                                     required="false" 
+                                     size="1"
+                                     disabled="{!isReadOnly}">
+                        <apex:selectOptions value="{!customObjectItems}"></apex:selectOptions>
+                        <apex:actionSupport event="onchange"
+                                            action="{!doCustomAssigneeObjectChanged}"
+                                            reRender="idAssignee"
+                                            status="idStatusWaitCustomUser" />
+                    </apex:selectList>
+                    <apex:actionStatus id="idStatusWaitCustomUser" startText="{!$Label.apttus_approval__StatusPleaseWait}..." />
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+            
+            <!-- custom field -->
+            <apex:pageBlockSectionItem id="idAssigneeTypeCustomUserCustomField"
+                                       helpText="{!$Label.apttus_approval__AssigneeTypeCustomUserCustomFieldHelp}"
+                                       rendered="{!NOT(selectedCustomAssigneeUseFreeFormExpr)}">
+                <apex:outputLabel value="{!$Label.apttus_approval__CustomField}" for="idCustomUserDatasource" />
+                <apex:outputPanel styleClass="requiredInput" layout="block" >
+                    <apex:outputPanel styleClass="requiredBlock" layout="block" />
+                    <apex:selectList id="idCustomUserDatasource" 
+                                     value="{!selectedCustomAssigneeField}" 
+                                     multiselect="false" 
+                                     required="false" 
+                                     size="1"
+                                     disabled="{!isReadOnly}">
+                        <apex:selectOptions value="{!customObjectFieldItems}"></apex:selectOptions>
+                    </apex:selectList>
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+    
+            <!-- custom filter -->
+            <apex:pageBlockSectionItem id="idAssigneeTypeCustomUserCustomFilter"
+                                       helpText="{!$Label.apttus_approval__AssigneeTypeCustomUserCustomFilterHelp}"
+                                       rendered="{!NOT(selectedCustomAssigneeUseFreeFormExpr)}">
+                <apex:outputLabel value="{!$Label.apttus_approval__CustomFilterExpression}" for="idCustomUserFilterExpr" />
+                <apex:outputPanel >                            
+                    <apex:selectList id="idCustomUserFilterExprField" size="1"
+                                     value="{!selectedCustomAssigneeFilterFieldName}"
+                                     disabled="{!isReadOnly}">
+                        <apex:selectOptions value="{!customObjectFieldItems}"></apex:selectOptions>
+                    </apex:selectList>
+    
+                    <apex:selectList id="idCustomUserFilterExprCompOper" size="1"
+                                     value="{!selectedCustomAssigneeFilterFieldOper}"
+                                     disabled="{!isReadOnly}">
+                        <apex:selectOptions value="{!customObjectCompOperItems}"></apex:selectOptions>
+                    </apex:selectList>
+    
+                    <apex:selectList id="idCustomUserFilterExprBindField" size="1"                       
+                                     value="{!selectedCustomAssigneeFilterFieldValueBindField}" 
+                                     rendered="{!selectedCustomAssigneeFilterFieldValueUseBindField}"
+                                     disabled="{!isReadOnly}">
+                        <apex:selectOptions value="{!customObjectBindFieldItems}"></apex:selectOptions>
+                    </apex:selectList>
+                    
+                    <apex:inputText id="idCustomUserFilterExprFieldValue" size="25"
+                                    value="{!selectedCustomAssigneeFilterFieldValue}" 
+                                    rendered="{!NOT(selectedCustomAssigneeFilterFieldValueUseBindField)}"
+                                    disabled="{!isReadOnly}"/>
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+    
+            <!-- custom value bind field -->
+            <apex:pageBlockSectionItem id="idAssigneeTypeCustomUserCustomBindField"
+                                       helpText="{!$Label.apttus_approval__AssigneeTypeCustomUserCustomBindFieldHelp}"
+                                       rendered="{!NOT(selectedCustomAssigneeUseFreeFormExpr)}">
+                <apex:outputLabel for="idCustomUserFilterFieldValueUseBindField" value="{!$Label.apttus_approval__BindValue}" />
+                <apex:outputPanel >
+                    <apex:inputCheckbox id="idCustomUserFilterFieldValueUseBindField"
+                                        value="{!selectedCustomAssigneeFilterFieldValueUseBindField}"
+                                        disabled="{!isReadOnly}">      
+                        <apex:actionSupport event="onchange"
+                                            reRender="idAssigneeTypeCustomUser"
+                                            status="idStatusWaitCustomUser" />
+                    </apex:inputCheckbox>
+                    <apex:actionStatus id="idStatusWaitCustomUser" startText="{!$Label.apttus_approval__StatusPleaseWait}..." />
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+ 
+        </apex:pageBlockSection>
+
+        <!-- assignee type = related user -->
+        <apex:pageBlockSection id="idAssigneeTypeRelatedUserTitle" 
+                               columns="1" 
+                               collapsible="false"
+                               title="{!$Label.apttus_approval__RelatedUserAssigneeInfo}" 
+                               showHeader="true"
+                               rendered="{!isAssigneeTypeRelatedUser && NOT(isReadOnly)}" />
+
+        <apex:pageBlockSection id="idAssigneeTypeRelatedUser" 
+                               columns="1" 
+                               collapsible="false"
+                               showHeader="true"
+                               rendered="{!isAssigneeTypeRelatedUser}" >
+
+            <apex:pageBlockSectionItem id="idAssigneeTypeRelatedUserItem"
+                                       helpText="{!$Label.apttus_approval__AssigneeTypeRelatedUserHelp}">
+                <apex:outputLabel for="idAssigneeAssigneeRelatedUser"
+                                  value="{!$ObjectType.Apttus_Approval__Term_Exception_Approval__c.Fields.Apttus_Approval__Assignee_Value__c.Label}" />
+                <apex:outputPanel styleClass="requiredInput" layout="block" >
+                    <apex:outputPanel styleClass="requiredBlock" layout="block" />
+                    <apex:selectList id="idAssigneeAssigneeRelatedUser" 
+                                     value="{!assigneeValue}" 
+                                     multiselect="false" 
+                                     required="false" 
+                                     size="1"
+                                     disabled="{!isReadOnly}">
+                        <apex:selectOptions value="{!relatedUsers}"></apex:selectOptions>
+                    </apex:selectList>
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+
+        <!-- assignee type = subprocess -->
+        <!--<apex:pageBlockSection id="idAssigneeTypeSubprocessTitle" 
+                               columns="1" 
+                               collapsible="false"
+                               title="{!$Label.SubprocessAssigneeInfo}" 
+                               showHeader="true"
+                               rendered="{!isAssigneeTypeSubprocess && NOT(isReadOnly)}" />
+
+        <apex:pageBlockSection id="idAssigneeTypeSubprocess" 
+                               columns="1" 
+                               collapsible="false"
+                               showHeader="true"
+                               rendered="{!isAssigneeTypeSubprocess}" >
+                               
+            <apex:pageBlockSectionItem id="idAssigneeTypeSubprocessItem"
+                                       helpText="{!$Label.AssigneeTypeSubprocessHelp}">
+                <apex:outputLabel value="{!$ObjectType.Apttus_Approval__Term_Exception_Approval__c.Fields.Apttus_Approval__Assignee_Value__c.Label}" />
+                <apex:outputPanel styleClass="requiredInput" layout="block">                 
+                    <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                    <apex:inputText value="{!assigneeValue}" size="30"
+                                    disabled="{!isReadOnly}"/>  
+                    <apex:commandLink action="{!doSelectRule}" rendered="{!NOT(isReadOnly)}">
+                        <apex:outputPanel >
+                            <img src="/img/s.gif" class="lookupIcon"/>
+                        </apex:outputPanel>
+                    </apex:commandLink>
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>-->
+
+        <!-- assignee description -->
+        <apex:pageBlockSectionItem id="idAssigneeDescription"
+                                   helpText="{!$Label.apttus_approval__AssigneeDescriptionHelp}"
+                                   rendered="{!hasParameterAssigneeDescField}">
+            <apex:outputLabel value="{!$ObjectType.Apttus_Approval__Term_Exception_Approval__c.Fields.Apttus_Approval__Assignee_Description__c.Label}" />
+            <apex:inputTextArea value="{!assigneeDesc}"
+                                style="width:300px;height:80px"
+                                disabled="{!isReadOnly}" />
+        </apex:pageBlockSectionItem>
+        
+        <!-- assignee send email -->
+        <apex:pageBlockSectionItem id="idAssigneeSendEmail"
+                                   helpText="{!$Label.apttus_approval__AssigneeSendEmailHelp}"
+                                   rendered="{!hasParameterAssigneeSendEmailField}">
+            <apex:outputLabel value="{!$ObjectType.Apttus_Approval__Term_Exception_Approval__c.Fields.Apttus_Approval__Send_Email__c.Label}" />
+            <apex:inputCheckbox value="{!assigneeSendEmail}"
+                                disabled="{!isReadOnly}" />
+        </apex:pageBlockSectionItem>
+        
+        <!-- assignee notify only -->
+        <apex:pageBlockSectionItem id="idAssigneeNotifyOnly"
+                                   helpText="{!$Label.apttus_approval__AssigneeNotifyOnlyHelp}"
+                                   rendered="{!hasParameterAssigneeNotifyOnlyField}">
+            <apex:outputLabel value="{!$ObjectType.Apttus_Approval__Term_Exception_Approval__c.Fields.Apttus_Approval__Notify_Only__c.Label}" />
+            <apex:inputCheckbox value="{!assigneeNotifyOnly}" 
+                                disabled="{!isReadOnly}"/>
+        </apex:pageBlockSectionItem>
+        
+        <!-- assignee active -->
+        <apex:pageBlockSectionItem id="idAssigneeActive"
+                                   helpText="{!$Label.apttus_approval__AssigneeActiveHelp}"
+                                   rendered="{!hasParameterAssigneeActiveField}">
+            <apex:outputLabel value="{!$ObjectType.Apttus_Approval__Term_Exception_Approval__c.Fields.Apttus_Approval__Active__c.Label}" />
+            <apex:inputCheckbox value="{!assigneeActive}"
+                                disabled="{!isReadOnly}" />
+        </apex:pageBlockSectionItem>
+
+    </apex:pageBlockSection>
+
+</apex:component>

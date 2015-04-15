@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<HomePageComponent xmlns="http://soap.sforce.com/2006/04/metadata">
+    <body>&lt;pre style=&quot;font-size: 14px; text-align: justify;&quot;&gt;
+&amp;lt;div id=&amp;quot;swj_SiteWideJavascript&amp;quot;&amp;gt;
+&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt; 
+  if (document.getElementById(&amp;quot;swj_SiteWideJavascript&amp;quot;) != null) {  
+    if (document.getElementById(&amp;quot;swj_SiteWideJavascript&amp;quot;).parentNode.parentNode.className.indexOf(&amp;quot;htmlAreaComponentModule&amp;quot;) != -1)   
+      document.getElementById(&amp;quot;swj_SiteWideJavascript&amp;quot;).parentNode.parentNode.style.display = &amp;#39;none&amp;#39;;   
+  }
+&amp;lt;/script&amp;gt;
+
+&amp;lt;script&amp;gt;
+  window.onload = function(){    
+    //This ensures that your javascript loads after your form elements are rendered
+    setFocusOnLoad();    
+    if (typeof(startSessionTimer)!=&amp;#39;undefined&amp;#39;) { startSessionTimer(); };    
+    if (typeof(ActivityReminder)!=&amp;#39;undefined&amp;#39;) { ActivityReminder.initialize([], false, false);};    
+    if ((window.sfdcPage) &amp;amp;&amp;amp; (sfdcPage.executeOnloadQueue)){sfdcPage.executeOnloadQueue();}; 
+    Cookies.prototype.DeleteCookie(&amp;#39;setupopen&amp;#39;);    
+    
+    //Replace this section with whatever you need to hide/replace/modify on the standard Salesforce screen
+    var x=document.getElementsByName(&amp;quot;save_new&amp;quot;); //Here&amp;#39;s where you hide your button
+    for(var i=0; i&amp;lt;x.length; i++) { 
+      x[i].style.visibility=&amp;quot;hidden&amp;quot;;    
+      x[i].style.display=&amp;quot;none&amp;quot;;
+    }
+  }
+&amp;lt;/script&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/pre&gt;</body>
+    <pageComponentType>htmlArea</pageComponentType>
+    <width>narrow</width>
+</HomePageComponent>

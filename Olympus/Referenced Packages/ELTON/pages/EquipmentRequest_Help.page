@@ -1,0 +1,26 @@
+<apex:page sidebar="false" showHeader="false">
+    <apex:pageBlock title="Equipment Request"> 
+    <apex:outputLink value="{! $Page.About_Us}"> <p> <b> Click here for the Links to Full Documentation Downloads</b> </p></apex:outputLink>
+          <apex:pageblockSection title="Overview" columns="1">
+                        <p> Equipment Request records are used to record requests for equipment loans.  Requests are made for a specific Equipment Type not a specific equipment record. Requests are made for one of the following; Account, Contact, Opportunity or User. During the fulfill process the equipment record is selected and a request is turned into a reservation. </P>
+                </apex:pageblockSection>
+                <apex:pageblockSection title="Fields" columns="1">
+                 <p> <b> Equipment Request Name </b>  This is a system generated unique record number.</P>
+                 <p> <b> Equipment Type</b> This is the Equipment type that the user is requesting.</P>
+                 <p> <b> Request Start Date </b>  Enter the start date for this request. </P>
+                 <p> <b> Request End Date </b> Enter the end date for this request. </P>
+                 <p> <b> Account </b> Enter the Account associated with this request. </P>
+                 <p> <b> Contact </b> Enter the Contact associated with this request. </P>
+                 <p> <b> Opportunity </b> Enter the Opportunity associated with this request. </P>
+                 <p> <b> User </b> Enter the User associated with this request. </P>
+                 <p> Only one of Account, Contact, Opportunity or User may be associated with an equipment request. </p>
+                 <p> <b> Request Note </b> Enter a note associated with this request.  This note will be copied to the resulting reservation. </P>
+                 <p> <b> Active </b> Use this flag to make the request Active. </P>
+                 <p> <b> Converted to Reservation </b> This field is set by the system when a request has been converted to a reservation. </P>
+                 <p> <b> Equipment Reservation </b> This field is set when the request is converted to a reservation.  It is a clickable link to the reservation record. </P>
+                </apex:pageblockSection>
+                <apex:pageblockSection title="Buttons" columns="1">
+                 <p> <b> Fulfill </b> Use this button to fulfill this request.  A list of equipment that is Active, Assigned and available during the dates will be displayed. </P>
+                </apex:pageblockSection>
+    </apex:pageBlock>
+ </apex:page>

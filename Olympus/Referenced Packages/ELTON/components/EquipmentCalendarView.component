@@ -1,0 +1,269 @@
+<apex:component id="cv">
+    <apex:attribute name="ctrl" type="ELTON.CalendarView" required="true"
+        description="An object of CalendarView class or some extension of it. Contains initialised StandardSetController and all controls needed to paginate through the records."
+    />
+    
+    <apex:includeScript value="{!URLFOR($Resource.ELTON__jQueryGantt, 'original/js/jquery.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.ELTON__jQueryGantt, 'original/js/jquery.cookie.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.ELTON__jQueryGantt, 'patches/js/jquery.fn.gantt.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.ELTON__jQueryGantt, 'patches/js/main.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.ELTON__jQueryUI, 'jquery-ui.min.js')}"/>
+    
+    <apex:stylesheet value="{!URLFOR($Resource.ELTON__jQueryGantt, 'original/css/style.css')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.ELTON__jQueryGantt, 'patches/css/style.css')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.ELTON__jQueryUI, 'jquery-ui.min.css')}"/>
+    <style>
+/* Chart bar backgrounds. */
+.Reservation-Account, .fn-gantt .Reservation-Account {
+    background-color: {!BLANKVALUE($Setup.Equipment_Calendar__c.Reservation_Account_background_color__c, '#36C')};
+}
+.Reservation-Contact, .fn-gantt .Reservation-Contact {
+    background-color: {!BLANKVALUE($Setup.Equipment_Calendar__c.Reservation_Contact_background_color__c, '#B82E2E')};
+}
+.Reservation-Opportunity, .fn-gantt .Reservation-Opportunity {
+    background-color: {!BLANKVALUE($Setup.Equipment_Calendar__c.Reservation_Opportunity_background_color__c, '#F90')};
+}
+.Reservation-User, .fn-gantt .Reservation-User {
+    background-color: {!BLANKVALUE($Setup.Equipment_Calendar__c.Reservation_User_background_color__c, '#109618')};
+}
+.Loan-Account, .fn-gantt .Loan-Account {
+    background-color: {!BLANKVALUE($Setup.Equipment_Calendar__c.Loan_Account_background_color__c, '#0099C6')};
+}
+.Loan-Contact, .fn-gantt .Loan-Contact {
+    background-color: {!BLANKVALUE($Setup.Equipment_Calendar__c.Loan_Contact_background_color__c, '#DC3912')};
+}
+.Loan-Opportunity, .fn-gantt .Loan-Opportunity {
+    background-color: {!BLANKVALUE($Setup.Equipment_Calendar__c.Loan_Opportunity_background_color__c, '#D47')};
+}
+.Loan-User, .fn-gantt .Loan-User {
+    background-color: {!BLANKVALUE($Setup.Equipment_Calendar__c.Loan_User_background_color__c, '#6A0')};
+}
+.Loan-Entered, .fn-gantt .Loan-Entered, .fn-gantt .Loan-Other {
+    background-color: {!BLANKVALUE($Setup.Equipment_Calendar__c.Loan_Entered_background_color__c, 'black')};
+}
+.BlankType, .fn-gantt .BlankType {
+    background-color: {!BLANKVALUE($Setup.Equipment_Calendar__c.Blank_background_color__c, 'black')};
+}
+.ui-dialog-titlebar, .ui-widget-header {
+    background-color: #9e9959;
+    background-image: none;
+    border: 1px solid #9e9959;
+}
+.ui-widget-content, .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+    border: 1px solid #9e9959;
+    background-image: none;
+}
+    </style>
+    <apex:form id="form">
+    <apex:pageBlock id="controls">
+        <apex:pageBlockButtons location="top">
+            <apex:actionRegion >
+            <apex:outputLabel for="listView" value="List View: " />
+            <apex:selectList id="listView" value="{!ctrl.ssc.filterId}" size="1">
+                <apex:selectOptions value="{!ctrl.ssc.listViewOptions}" />
+            </apex:selectList>
+            <apex:commandButton value="Go!" action="{!ctrl.listViewChanged}" rerender="chart" status="status"/>
+            <apex:outputLabel for="viewMode" value="Show: " />
+                <apex:selectList value="{!ctrl.settings.ELTON__View_mode__c}" size="1">
+                <apex:selectOption itemValue="All"          itemLabel="{!$ObjectType.ELTON__Equipment_Loan__c.LabelPlural} & {!$ObjectType.ELTON__Equipment_Reservation__c.LabelPlural}"/>
+                <apex:selectOption itemValue="Loans"        itemLabel="{!$ObjectType.ELTON__Equipment_Loan__c.LabelPlural}"/>
+                <apex:selectOption itemValue="Reservations" itemLabel="{!$ObjectType.ELTON__Equipment_Reservation__c.LabelPlural}"/>
+            </apex:selectList>
+            <apex:commandButton action="{!ctrl.refresh}" value="Refresh" rerender="chart" status="status"/>
+            </apex:actionRegion>
+            <apex:commandButton action="/home/home.jsp" value="Exit" immediate="true" title="Leave fullscreen mode" rendered="{!!$Setup.Equipment_Calendar__c.Show_header__c}" />
+            <apex:actionStatus id="status" stopText="">
+                <apex:facet name="start"><img src="/img/loading.gif" alt="Loading..." title="Loading..."/></apex:facet>
+            </apex:actionStatus>
+        </apex:pageBlockButtons>
+        <apex:pageBlockSection id="filters" title="Options">
+            <apex:inputField value="{!ctrl.eq.ELTON__Loan_Start_Date__c}" label="From" />
+            <apex:inputField value="{!ctrl.eq.ELTON__Loan_Estimated_Return_Date__c}" label="To"/>
+            <apex:inputField value="{!ctrl.settings.ELTON__Show_empty_rows__c}" />
+            <apex:inputField value="{!ctrl.settings.ELTON__Show_collection_components__c}" />
+            <apex:selectCheckboxes value="{!ctrl.reservationTypes}" label="{!$ObjectType.ELTON__Equipment_Reservation__c.fields.ELTON__Reservation_Type__c.Label}" id="reservationTypes">
+                <apex:selectOptions value="{!ctrl.reservationTypeOptions}" />
+            </apex:selectCheckboxes>
+            <apex:selectCheckboxes value="{!ctrl.loanTypes}" label="{!$ObjectType.ELTON__Equipment_Loan__c.fields.ELTON__Loan_Type__c.Label}" id="loanTypes">
+                <apex:selectOptions value="{!ctrl.loanTypeOptions}" />
+            </apex:selectCheckboxes>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+    <script>
+    twistSection(document.getElementById('{!$Component.cv.form.controls.filters}').getElementsByTagName('img')[0]);
+    
+    // Reservations
+    jQuery(jQuery('label:contains(User)')[0]).parent().addClass('Reservation-User');
+    jQuery(jQuery('label:contains(Contact)')[0]).parent().addClass('Reservation-Contact');
+    jQuery(jQuery('label:contains(Account)')[0]).parent().addClass('Reservation-Account');
+    jQuery(jQuery('label:contains(Opportunity)')[0]).parent().addClass('Reservation-Opportunity');
+    
+    // Loans
+    jQuery(jQuery('label:contains(User)')[1]).parent().addClass('Loan-User');
+    jQuery(jQuery('label:contains(Contact)')[1]).parent().addClass('Loan-Contact');
+    jQuery(jQuery('label:contains(Account)')[1]).parent().addClass('Loan-Account');
+    jQuery(jQuery('label:contains(Opportunity)')[1]).parent().addClass('Loan-Opportunity');
+    jQuery(jQuery('label:contains(Entered)')[0]).parent().addClass('Loan-Entered');
+    
+    var returnUrl = '{!JSENCODE($CurrentPage.url)}';
+    function onBarClick(data){
+        var buttons = [
+            {text:'View {!$ObjectType.ELTON__Equipment__c.label}', click: function(){
+                window.open('/' + data.eqId, '_blank');
+                jQuery('#dialog').dialog('close');
+            }}
+        ];
+        if(data.type == 'r'){
+            buttons.push({text:'Edit {!$ObjectType.ELTON__Equipment_Reservation__c.label}', click: function(){
+                window.location.href = '/' + data.id + '/e?retURL=' + returnUrl + '&saveURL=' + returnUrl;
+                jQuery('#dialog').dialog('close');
+            }});
+            buttons.push({text:'Convert to Loan', click: function(){
+                window.location.href = '{!$Page.ELTON__Convert_Reservation_To_Loan}?id=' + data.id + '&retURL=' + returnUrl + '&saveURL=' + returnUrl;
+                jQuery('#dialog').dialog('close');
+            }});
+        }
+        else if(data.type == 'l'){
+            buttons.push({text:'Edit {!$ObjectType.ELTON__Equipment_Loan__c.label}', click: function(){
+                window.location.href = '/' + data.id + '/e?retURL=' + returnUrl + '&saveURL=' + returnUrl;
+                jQuery('#dialog').dialog('close');
+            }});
+        }
+        
+        jQuery('#dialog').dialog({
+            resizable: false,
+            buttons: buttons
+        });
+    }
+    </script>
+    <apex:pageBlock id="chart" title="Chart">
+        <apex:pageMessage severity="info" strength="1" summary="No data found" rendered="{!!ctrl.hasResults}" />
+
+        <apex:outputPanel layout="none" rendered="{!ctrl.hasResults}">
+            <div style="display:none" title="Hover balloons.">
+                <apex:repeat value="{!ctrl.records}" var="e">
+                    <table id="hover_{!e.Id}">
+                        <caption>{!$ObjectType.ELTON__Equipment__c.Label}</caption>
+                        <apex:repeat value="{!$ObjectType.ELTON__Equipment__c.FieldSets.ELTON__CalendarView}" var="field">
+                        <tr><th>{!field.label}</th><td><apex:outputField value="{!e[field.fieldPath]}" /></td></tr>
+                        </apex:repeat>
+                    </table>
+                    
+                    <apex:repeat value="{!e.Equipment_Reservations__r}" var="r" rendered="{!ctrl.settings.ELTON__View_mode__c != 'Loans'}">
+                        <table id="hover_{!r.Id}">
+                            <caption>{!$ObjectType.ELTON__Equipment_Reservation__c.Label}</caption>
+                            <apex:repeat value="{!$ObjectType.ELTON__Equipment_Reservation__c.FieldSets.ELTON__CalendarView}" var="field">
+                            <tr><th>{!field.label}</th><td><apex:outputField value="{!r[field.fieldPath]}" /></td></tr>
+                            </apex:repeat>
+                        </table>
+                    </apex:repeat>
+                    
+                    <apex:repeat value="{!e.Equipment_Loans__r}" var="l" rendered="{!ctrl.settings.ELTON__View_mode__c != 'Reservations'}">
+                        <table id="hover_{!l.Id}">
+                            <caption>{!$ObjectType.ELTON__Equipment_Loan__c.Label}</caption>
+                            <apex:repeat value="{!$ObjectType.ELTON__Equipment_Loan__c.FieldSets.ELTON__CalendarView}" var="field">
+                            <tr><th>{!field.label}</th><td><apex:outputField value="{!l[field.fieldPath]}" /></td></tr>
+                            </apex:repeat>
+                        </table>
+                    </apex:repeat>
+                </apex:repeat>
+            </div>
+            
+            <div class="gantt" style="width:{!BLANKVALUE($Setup.Equipment_Calendar__c.Chart_width__c, 'auto')}" >No data (if this message stays visible after few seconds, please inspect JavaScript console for errors and contact us).</div>
+            
+            <script>
+            var sourceData = [];
+            var item;
+            <apex:repeat value="{!ctrl.records}" var="e">
+                <apex:outputPanel rendered="{!ctrl.settings.ELTON__View_mode__c != 'Loans'}" layout="none">
+                    item = {
+                        name: '{!JSENCODE(e.Name)} (R)',
+                        desc: '{!JSENCODE(e.ELTON__Description__c)}',
+                        values: [],
+                        id: '{!e.Id}_r'
+                    };
+                    <apex:repeat value="{!e.Equipment_Reservations__r}" var="r">
+                        item.values.push({
+                            from: Date.parse('{!r.ELTON__Reservation_Start_Date__c}'.replace('GMT ', '')),
+                            to: Date.parse('{!r.ELTON__Estimated_Return_Date__c}'.replace('GMT ', '')),
+                            desc: jQuery('table#hover_{!r.Id}').html(),
+                            label: '{!JSENCODE(r.ELTON__Reservation_Name__c)}',
+                            customClass: '{!IF(ISBLANK(r.ELTON__Reservation_Type__c), 'BlankType', 'Reservation-' + JSENCODE(r.ELTON__Reservation_Type__c))}',
+                            dataObj: {id: '{!r.Id}', eqId: '{!e.Id}', type: 'r'}
+                        });
+                    </apex:repeat>
+                    sourceData.push(item);
+                </apex:outputPanel>
+                <apex:outputPanel rendered="{!ctrl.settings.ELTON__View_mode__c != 'Reservations'}" layout="none">
+                    item = {
+                        name: '{!JSENCODE(e.Name)} (L)',
+                        desc: '{!JSENCODE(e.ELTON__Description__c)}',
+                        values: [],
+                        id: '{!e.Id}_l'
+                    };
+                    <apex:repeat value="{!e.Equipment_Loans__r}" var="l">
+                        item.values.push({
+                            from: Date.parse('{!l.ELTON__Loan_Start_Date__c}'.replace('GMT ', '')),
+                            to: Date.parse('{!BLANKVALUE(l.ELTON__Actual_Return_Date__c, l.ELTON__Estimated_Return_Date__c)}'.replace('GMT ', '')),
+                            desc: jQuery('table#hover_{!l.Id}').html(),
+                            label: '{!JSENCODE(l.ELTON__Name__c)}',
+                            customClass: '{!IF(ISBLANK(l.ELTON__Loan_Type__c), 'BlankType', 'Loan-' + JSENCODE(l.ELTON__Loan_Type__c))}',
+                            dataObj: {id: '{!l.Id}', eqId: '{!e.Id}', type: 'l'}
+                        });
+                    </apex:repeat>sourceData.push(item);
+                </apex:outputPanel>
+            </apex:repeat>
+            // Attempt to deal with overly long chart when sidebar is present and scale = days for example.
+            // The aim is to make sure the window doesn't get scrollbars
+            var windowWidth = jQuery(window).width(), sidebarWidth = jQuery('div#sidebarDiv').width();
+            var availableWidth = (windowWidth - (sidebarWidth == null ? 0 : sidebarWidth) - 50).toFixed();
+            jQuery('div.gantt').css('max-width', availableWidth + 'px');
+            
+            jQuery('.gantt').gantt({
+                itemsPerPage: 400,
+                minScale: 'days',
+                maxScale: 'months',
+                
+                navigate: 'scroll',
+                useCookie: true,
+                
+                source: sourceData,
+                scale: 'weeks',
+                
+                onAddClick: emptySpaceClicked,
+                onItemClick: onBarClick,
+                onRender: addEquipmentHovers
+            });
+            </script>
+        </apex:outputPanel>
+        
+        <apex:facet name="footer">
+            <apex:outputPanel layout="block" styleClass="footer">
+                <span class="left">
+                    {!(ctrl.ssc.pageNumber - 1) * ctrl.ssc.pageSize + IF(ctrl.hasResults, 1, 0)} - {!MIN(ctrl.ssc.pageNumber * ctrl.ssc.pageSize, ctrl.ssc.resultSize)} of {!ctrl.ssc.resultSize}
+                </span>
+                <span class="center">
+                    <apex:commandButton action="{!ctrl.first}"      value="<<"          title="first"       rerender="chart" status="status" disabled="{!NOT(ctrl.ssc.hasPrevious)}"/>
+                    <apex:commandButton action="{!ctrl.previous}"   value="< Previous"  title="previous"    rerender="chart" status="status" disabled="{!NOT(ctrl.ssc.hasPrevious)}"/>
+                    <apex:commandButton action="{!ctrl.next}"       value="Next >"      title="next"        rerender="chart" status="status" disabled="{!NOT(ctrl.ssc.hasNext)}" />
+                    <apex:commandButton action="{!ctrl.last}"       value=">>"          title="last"        rerender="chart" status="status" disabled="{!NOT(ctrl.ssc.hasNext)}"/>
+                </span>
+                <span class="right">
+                    {!$ObjectType.Equipment__c.labelPlural} / page:&nbsp;
+                    <apex:selectList value="{!ctrl.pageSize}" size="1">
+                        <apex:selectOptions value="{!ctrl.pageSizeOptions}" />
+                        <apex:actionSupport event="onchange" rerender="chart" status="status"/>
+                    </apex:selectList>
+                    Page {!ctrl.ssc.pageNumber} / {!IF(!ctrl.hasResults, 1, CEILING(ctrl.ssc.resultSize / ctrl.pageSize))}
+                </span>
+            </apex:outputPanel>
+        </apex:facet>
+        <apex:pageBlockSection title="Debug" columns="1" rendered="{!ctrl.debugMode}">
+            <pre>{!ctrl.query}</pre>
+            <hr/>
+            <pre>{!ctrl.filteredIds}</pre>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+    </apex:form>
+    <div id="dialog" title="What would you like to do?"/>
+</apex:component>

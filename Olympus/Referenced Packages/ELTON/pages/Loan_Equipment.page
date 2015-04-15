@@ -1,0 +1,93 @@
+<apex:page standardController="ELTON__Equipment__c" extensions="ELTON.Loan_Equipment">
+    <apex:sectionHeader title="Loan Equipment" subtitle="{!ELTON__Equipment__c.Name}"/>
+    <apex:pageMessage summary="You cannot Loan Inactive Equipment. Please change the Equipment to Active."
+        severity="warning" strength="2" rendered="{!NOT(isActive)}"/>
+    <apex:pageMessage summary="You cannot Loan Equipment until it is assigned. Please use the 'Assign Equipment' button first."
+        severity="warning" strength="2" rendered="{!NOT(isAssigned)}"/>
+    <apex:relatedList subject="{!ELTON__Equipment__c}" list="Collection_Components__r" title="Components for this Collection" rendered="{!IsMaster}" />    
+    <apex:form >
+        <apex:pageMessages id="messages"/>
+        <apex:pageBlock title="{!$ObjectType.ELTON__Equipment__c.Label}">
+            <apex:pageBlockSection columns="2">
+                <apex:outputField value="{!ELTON__Equipment__c.Name}"/>
+                <apex:outputField value="{!ELTON__Equipment__c.ELTON__Active__c}"/>
+                <apex:outputField value="{!ELTON__Equipment__c.ELTON__Equipment_Tag__c}"/>
+                <apex:outputField value="{!ELTON__Equipment__c.ELTON__Loan_Name__c}"/>
+                <apex:outputField value="{!ELTON__Equipment__c.ELTON__Assigned_Name__c}"/>
+                <apex:outputField value="{!ELTON__Equipment__c.ELTON__Collection_Status__c}" rendered="{!IsMaster}" />                               
+                <apex:outputField value="{!ELTON__Equipment__c.ELTON__Use_Quantity_on_Hand__c}"/> 
+                <apex:pageBlockSectionItem />
+                <apex:outputField value="{!ELTON__Equipment__c.ELTON__Quantity_on_Hand__c}"/>   
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons location="top">
+                <apex:commandButton value="Loan" action="{!makeLoan}" rendered="{!canBeLoaned}"/>
+                <apex:commandButton value="Cancel" action="{!cancel}" immediate="true" />
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+
+        <apex:pageBlock title="{!$ObjectType.ELTON__Equipment_Loan__c.Label}" rendered="{!canBeLoaned}" id="loanBlock">
+            <apex:pageBlockSection title="Loan Dates" columns="1">
+                <apex:inputField value="{!loan.ELTON__Loan_Start_Date__c}" required="true"/>
+                <apex:inputField value="{!loan.ELTON__Estimated_Return_Date__c}" required="true"/>
+                <apex:inputField value="{!loan.ELTON__Loan_Extra_Date_1__c}" rendered="{!ELTON__Equipment__c.ELTON__Equipment_Type__r.ELTON__Use_Loan_Date_1__c}"/>
+                <apex:inputField value="{!loan.ELTON__Loan_Extra_Date_2__c}" rendered="{!ELTON__Equipment__c.ELTON__Equipment_Type__r.ELTON__Use_Loan_Date_2__c}"/>
+            </apex:pageBlockSection>
+
+            <apex:pageBlockSection title="Loan Quantity" columns="1" rendered="{!ELTON__Equipment__c.ELTON__Use_Quantity_on_Hand__c}" id="qtyblock" >
+                <apex:inputField value="{!loan.ELTON__Loan_Quantity__c}" />
+            </apex:pageBlockSection>
+
+            <apex:actionRegion >
+                <apex:pageBlockSection title="Select Loan Type" columns="2" id="typeSection">
+                    <apex:inputField value="{!loan.ELTON__Loan_Type__c}" required="true">
+                        <apex:actionSupport event="onchange" rerender="typeSection,manualSection,messages"/>
+                    </apex:inputField>
+                    <apex:inputField value="{!loan[lookupFieldName]}" rendered="{!NOT(renderEntered) && NOT(ISBLANK(lookupFieldName))}"/>
+                </apex:pageBlockSection>
+            </apex:actionRegion>
+            
+            <apex:outputPanel layout="none" id="manualSection">
+                <apex:pageBlockSection title="Manually Entered Loan" columns="1" rendered="{!renderEntered}">
+                    <apex:inputField value="{!loan.ELTON__Name__c}" required="true" />
+                    <apex:inputField value="{!loan.ELTON__Address__c}" />
+                    <apex:inputField value="{!loan.ELTON__City__c}" />
+                    <apex:inputField value="{!loan.ELTON__State_Province__c}" />
+                    <apex:inputField value="{!loan.ELTON__Country__c}" />
+                    <apex:inputField value="{!loan.ELTON__Zip_Postal_Code__c}" />
+                    <apex:inputField value="{!loan.ELTON__Email__c}" />
+                    <apex:inputField value="{!loan.ELTON__Phone__c}" />
+                    <apex:inputField value="{!loan.ELTON__Other_Phone__c}" />
+                    <apex:inputField value="{!loan.ELTON__Mobile__c}" />
+                </apex:pageBlockSection>
+            </apex:outputPanel>
+            <apex:pageBlockSection columns="1">
+                <!-- <apex:inputField value="{!loan.Tracking_Number__c}" />            
+                <apex:inputField value="{!loan.Loan_Note__c}" />
+                -->
+                <apex:repeat value="{!$ObjectType.ELTON__Equipment_Loan__c.FieldSets.ELTON__Fields_to_Update_on_Loan}" var="f">
+                	<apex:inputField value="{!loan[f]}" required="{!f.required || f.dbRequired}"/>
+                </apex:repeat>
+            </apex:pageBlockSection>
+            
+            <apex:actionRegion >
+	            <apex:pageBlockSection columns="2" id="reassignEquipmentOnLoanStart" rendered="{!$Setup.Equipment_AssignLoan_Settings__c.Re_assign_on_Loan_Start__c}">
+	            	<apex:inputField label="{!$Label.elton__Assign_on_Loan_Start_Type}" value="{!Loan.ELTON__Assign_on_Loan_Start_Type__c}">
+	            		<apex:actionSupport event="onchange" rerender="reassignEquipmentOnLoanStart" />
+	            	</apex:inputField>
+	                <apex:inputField label="{!$Label.elton__Assign_on_Loan_Start_Name}" value="{!dummyOnLoanStart['ELTON__' + Loan.ELTON__Assign_on_Loan_Start_Type__c + '__c']}" rendered="{!!ISBLANK(Loan.ELTON__Assign_on_Loan_Start_Type__c)}" />
+	            </apex:pageBlockSection>
+	            <apex:pageBlockSection columns="2" id="reassignEquipmentOnLoanReturn" rendered="{!$Setup.Equipment_AssignLoan_Settings__c.Re_assign_on_Loan_Return__c}">
+	            	<apex:inputField label="{!$Label.elton__Assign_on_Loan_Return_Type}" value="{!Loan.ELTON__Assign_on_Loan_Return_Type__c}">
+	            		<apex:actionSupport event="onchange" rerender="reassignEquipmentOnLoanReturn" />
+	            	</apex:inputField>
+	                <apex:inputField label="{!$Label.elton__Assign_on_Loan_Return_Name}" value="{!dummyOnLoanReturn['ELTON__' + Loan.ELTON__Assign_on_Loan_Return_Type__c + '__c']}" rendered="{!!ISBLANK(Loan.ELTON__Assign_on_Loan_Return_Type__c)}" />
+	            </apex:pageBlockSection>
+            </apex:actionRegion>
+            
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton value="Loan" action="{!makeLoan}" rendered="{!canBeLoaned}"/>
+                <apex:commandButton value="Cancel" action="{!cancel}" immediate="true" />
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,53 @@
+<apex:page standardController="ELTON__Equipment__c" extensions="ELTON.Assign_Equipment">
+    <apex:sectionHeader title="Assign Equipment" subtitle="{!ELTON__Equipment__c.Name}"/>
+    <apex:pageMessage summary="You cannot Assign Inactive Equipment. Please change the Equipment to Active."
+        severity="warning" strength="2" rendered="{!NOT(isActive)}"/>
+    <apex:relatedList subject="{!ELTON__Equipment__c}" list="Collection_Components__r" title="Components for this Collection" rendered="{!IsMaster}" />                     
+    <apex:form >
+        <apex:pageMessages />
+        <apex:pageBlock title="{!$ObjectType.ELTON__Equipment__c.Label}">
+            <apex:pageBlockSection columns="2">
+                <apex:outputField value="{!ELTON__Equipment__c.Name}"/>
+                <apex:outputField value="{!ELTON__Equipment__c.ELTON__Active__c}"/>
+                <apex:outputField value="{!ELTON__Equipment__c.ELTON__Equipment_Tag__c}"/>
+                <apex:outputField value="{!ELTON__Equipment__c.ELTON__Assigned_Type__c}"/>
+                <apex:outputField value="{!ELTON__Equipment__c.ELTON__Assigned_Name__c}"/>
+                <apex:outputField value="{!ELTON__Equipment__c.ELTON__Collection_Status__c}" rendered="{!IsMaster}" />
+                <apex:pageBlockSectionItem />
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons location="top">
+                <apex:commandButton value="Assign" action="{!makeAssignment}" rendered="{!canBeAssigned}"/>
+                <apex:commandButton value="Cancel" action="/{!ELTON__Equipment__c.Id}" immediate="true" />
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+           
+        <apex:pageBlock title="{!$ObjectType.ELTON__Equipment_Assignment__c.Label}" rendered="{!canBeAssigned}" id="AssignBlock">
+            <apex:pageBlockSection title="Assignment Date" columns="1">
+                <apex:inputField value="{!Assignment.ELTON__Assigned_Date__c}" required="true"/>
+            </apex:pageBlockSection>
+
+            <apex:actionRegion >
+                <apex:pageBlockSection title="Select Assignment Type" columns="2" id="typeSection">
+                    <apex:inputField value="{!assignment.ELTON__Assigned_Type__c}" required="true">
+                        <apex:actionSupport event="onchange" rerender="typeSection"/>
+                    </apex:inputField>
+                    <apex:inputField value="{!assignment[lookupFieldName]}" rendered="{!NOT(ISBLANK(lookupFieldName))}"/>
+                </apex:pageBlockSection>
+            </apex:actionRegion>
+            
+            <apex:pageBlockSection columns="1">
+                <!-- 
+                	<apex:inputField value="{!Assignment.Tracking_Number__c}" />
+                	<apex:inputField value="{!Assignment.Note__c}" />
+                -->
+                <apex:repeat value="{!$ObjectType.ELTON__Equipment_Assignment__c.FieldSets.ELTON__Fields_to_Update_on_Assign}" var="f">
+                	<apex:inputField value="{!assignment[f]}" required="{!f.required || f.dbRequired}"/>
+                </apex:repeat>
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton value="Assign" action="{!makeAssignment}" rendered="{!canBeAssigned}"/>
+                <apex:commandButton value="Cancel" action="{!cancel}" immediate="true" />
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

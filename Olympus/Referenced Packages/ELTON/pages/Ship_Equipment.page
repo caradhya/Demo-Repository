@@ -1,0 +1,63 @@
+<apex:page standardController="ELTON__Equipment__c" extensions="ELTON.Ship_Equipment">
+    <apex:sectionHeader title="Ship Equipment" subtitle="{!ELTON__Equipment__c.Name}"/>
+    <apex:pageMessage summary="You cannot Ship Inactive Equipment. Please change the Equipment to Active."
+        severity="warning" strength="2" rendered="{!NOT(isActive)}"/>
+    <apex:pageMessage summary="You cannot Ship Equipment until it is assigned. Please use the 'Assign Equipment' button first."
+        severity="warning" strength="2" rendered="{!NOT(isAssigned)}"/>
+    <apex:pageMessage summary="You cannot Ship Equipment that is not Consumable."
+        severity="warning" strength="2" rendered="{!NOT(isConsumable)}"/>
+    <apex:pageMessage summary="Your Organization is not Configured for Consumable Products. Please contact ELTON Support."
+        severity="warning" strength="2" rendered="{!NOT(isValidForConsumables)}"/>
+    <apex:form >
+        <apex:pageMessages id="messages"/>
+        <apex:pageBlock title="{!$ObjectType.ELTON__Equipment__c.Label}">
+            <apex:pageBlockSection columns="2">
+                <apex:outputField value="{!ELTON__Equipment__c.Name}"/>
+                <apex:outputField value="{!ELTON__Equipment__c.ELTON__Active__c}"/>
+                <apex:outputField value="{!ELTON__Equipment__c.ELTON__Equipment_Tag__c}"/>
+                <apex:outputField value="{!ELTON__Equipment__c.ELTON__Assigned_Name__c}"/>
+                <apex:outputField value="{!ELTON__Equipment__c.ELTON__Consumable__c}"/> 
+                <apex:pageBlockSectionItem />
+                <apex:outputField value="{!ELTON__Equipment__c.ELTON__Quantity_on_Hand__c}"/>   
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons location="top">
+                <apex:commandButton value="Ship" action="{!makeShipment}" rendered="{!canBeShipped}"/>
+                <apex:commandButton value="Cancel" action="{!cancel}" immediate="true" />
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+
+        <apex:pageBlock title="{!$ObjectType.ELTON__Equipment_Shipment__c.Label}" rendered="{!canBeShipped}" id="shipBlock">
+            <apex:pageBlockSection title="Shipment Dates" columns="1">
+                <apex:inputField value="{!shipment.ELTON__Shipment_Date__c}" required="true"/>
+            </apex:pageBlockSection>
+
+            <apex:pageBlockSection title="Shipment Quantity" columns="1" rendered="{!ELTON__Equipment__c.ELTON__Consumable__c}" id="qtyblock" >
+                <apex:inputField value="{!shipment.ELTON__Shipment_Quantity__c}" />
+            </apex:pageBlockSection>
+
+            <apex:actionRegion >
+                <apex:pageBlockSection title="Select Shipment Type" columns="2" id="typeSection">
+                    <apex:inputField value="{!shipment.ELTON__Shipment_Type__c}" required="true">
+                        <apex:actionSupport event="onchange" rerender="typeSection,manualSection,messages"/>
+                    </apex:inputField>
+                    <apex:inputField value="{!shipment[lookupFieldName]}" rendered="{!NOT(renderEntered) && NOT(ISBLANK(lookupFieldName))}"/>
+                </apex:pageBlockSection>
+            </apex:actionRegion>
+            
+            <apex:outputPanel layout="none" id="manualSection">
+                <apex:pageBlockSection title="Manually Entered Shipment" columns="1" rendered="{!renderEntered}">
+                    <apex:inputField value="{!shipment.ELTON__Name__c}" required="true" />
+                </apex:pageBlockSection>
+            </apex:outputPanel>
+            <apex:pageBlockSection columns="1">
+                <apex:inputField value="{!shipment.ELTON__Tracking_Number__c}" />            
+                <apex:inputField value="{!shipment.ELTON__Shipment_Notes__c}" />
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton value="Ship" action="{!makeshipment}" rendered="{!canBeShipped}"/>
+                <apex:commandButton value="Cancel" action="{!cancel}" immediate="true" />
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

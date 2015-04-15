@@ -1,0 +1,235 @@
+<apex:page standardController="ELTON__Equipment__c" extensions="ELTON.EquipmentMobileService" 
+	applyHtmlTag="false" standardStylesheets="false" showHeader="false" sidebar="false"
+	doctype="html-5.0">
+	<apex:outputPanel style="display:none" id="vf_workaround">
+	{!ELTON__Equipment__c.Name} {!ELTON__Equipment__c.ELTON__Active__c} {!ELTON__Equipment__c.Id} {!ELTON__Equipment__c.ELTON__Collection_Status__c} {!ELTON__Equipment__c.ELTON__Equipment_Tag__c}
+	{!ELTON__Equipment__c.ELTON__Assigned_Type__c} {!ELTON__Equipment__c.ELTON__Assigned_Name__c}
+	</apex:outputPanel>
+		<head>
+		<title>Assign {!$ObjectType.Equipment__c.label}</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+		
+		<script type='text/javascript' src='/canvas/sdk/js/publisher.js'></script>
+		
+		<apex:includeScript value="{!URLFOR($Resource.ELTON__jquery)}"/><!-- 1.9.0 -->
+		<apex:includeScript value="{!URLFOR($Resource.ELTON__mobile, 'jquery-mobile/jquery.mobile-1.4.2.min.js')}"/>
+		<apex:stylesheet value="{!URLFOR($Resource.ELTON__mobile, 'jquery-mobile/jquery.mobile-1.4.2.min.css')}"/>
+		
+		<apex:includeScript value="{!URLFOR($Resource.ELTON__mobile, 'datepicker/external/jquery-ui/datepicker.js')}"/>
+		<apex:includeScript value="{!URLFOR($Resource.ELTON__mobile, 'datepicker/jquery.mobile.datepicker.js')}"/>
+		<apex:stylesheet value="{!URLFOR($Resource.ELTON__mobile, 'datepicker/jquery.mobile.datepicker.css')}"/>
+		<apex:stylesheet value="{!URLFOR($Resource.ELTON__mobile, 'datepicker/jquery.mobile.datepicker.theme.css')}"/>
+		
+		<apex:includeScript value="{!URLFOR($Resource.ELTON__mobile, 'main.js')}"/>
+		<apex:stylesheet value="{!URLFOR($Resource.ELTON__mobile, 'main.css')}"/>
+	</head>
+	<body>
+	
+	<div data-role="page" id="main">
+		<form class="ui-filterable" id="mainForm" action="">
+		<div data-role="header" id="header">
+			<a href="/{!Equipment__c.Id}" id="cancel" rel="external" target="_parent" class="ui-btn ui-corner-all ui-icon-arrow-l ui-btn-icon-left ui-btn-left">Cancel</a>
+			<h1>Assign {!Equipment__c.Name}</h1>
+			<button id="submit" type="submit" class="ui-btn ui-corner-all ui-icon-check ui-btn-icon-left ui-btn-inline ui-state-disabled">Submit</button>
+		</div>
+
+		<div role="main" class="ui-content">
+			<div class="error">
+				<apex:outputPanel layout="block" rendered="{!!ELTON__Equipment__c.ELTON__Active__c}">You cannot Assign Inactive Equipment. Please change the Equipment to Active.</apex:outputPanel>
+			</div>
+			<div id="info">
+				<apex:outputText value="This is a collection 'master' - all related Equipments will be assigned.
+					{!$ObjectType.Equipment__c.fields.Collection_Status__c.Label}: {!Equipment__c.Collection_Status__c}" 
+					rendered="{!ELTON__Equipment__c.ELTON__Collection_Status__c = 'Master'}"/>
+			</div>
+	
+			<div data-role="collapsible" data-collapsed="{!deviceType = 'Desktop'}" data-mini="true">
+				<h4 class="ui-bar ui-bar-a ui-corner-all">1. Equipment summary</h4>
+				<div class="ui-body ui-grid-a ui-responsive">
+					<div class="ui-block-a">
+						<label for="name" >{!$ObjectType.Equipment__c.fields.Name.Label}</label>
+						<p id="name">{!Equipment__c.Name}</p>
+					</div>
+					<div class="ui-block-b">
+						<label for="tag" >{!$ObjectType.Equipment__c.fields.Equipment_Tag__c.Label}</label>
+						<p id="tag">{!Equipment__c.Equipment_Tag__c}</p>
+					</div>
+					<div class="ui-block-a">
+						<label for="currentAssignedType" >Current {!$ObjectType.Equipment__c.fields.Assigned_Type__c.Label}</label>
+						<p id="currentAssignedType">{!Equipment__c.Assigned_Type__c}</p>
+					</div>
+					<div class="ui-block-b">
+						<label for="currentAssignedName" >Current {!$ObjectType.Equipment__c.fields.Assigned_Name__c.Label}</label>
+						<p id="currentAssignedName">{!Equipment__c.Assigned_Name__c}</p>
+					</div>
+				</div>
+			</div>
+
+			<div data-role="collapsible" data-collapsed="false" data-mini="true">
+				<h4 class="ui-bar ui-bar-a ui-corner-all">2. Assign to</h4>
+				<div class="ui-body" data-mini="true" data-role="controlgroup">
+					<div class="ui-field-contain">
+						<label>{!$ObjectType.Equipment_Assignment__c.fields.Assigned_Type__c.label}</label>
+						<select id="assignToType" required="required">
+							<option>Account</option>
+							<option>Contact</option>
+							<option>Opportunity</option>
+							<option>User</option>
+						</select>
+					</div>
+
+					<div class="ui-field-contain">
+						<label for="assignToName">Name</label>
+						<input type="search" id="assignToName" placeholder="Pick from recent items..." required="required"/>
+						<input type="hidden" id="assignToId" />
+					</div>
+					<div class="ui-field-contain">
+						<label></label>
+						<ul id="recentList" data-role="listview" data-filter="true" data-input="#assignToName" data-inset="true"></ul>
+					</div>
+				</div>
+				<a id="search" href="#popup" class="ui-btn ui-btn-b ui-corner-all">Can't find it? Search!</a>
+			</div>
+
+			<div data-role="collapsible" data-collapsed="false" data-mini="true">
+				<h4 class="ui-bar ui-bar-a ui-corner-all">3. Add Assignment data</h4>
+				<div class="ui-body" data-mini="true" data-role="controlgroup">
+
+					<div class="ui-field-contain">
+						<label for="startDate">{!$ObjectType.Equipment__c.fields.Assigned_Date__c.Label}</label>
+						<input type="text" data-role="date" id="startDate" required="required"/>
+					</div>
+					
+					<div class="ui-field-contain">
+						<label for="trackingNumber">{!$ObjectType.Equipment_Assignment__c.fields.Tracking_Number__c.Label}</label>
+						<input type="text" id="trackingNumber" name="trackingNumber"/>
+					</div>
+					
+					<div class="ui-field-contain">
+						<label for="note">{!$ObjectType.Equipment_Assignment__c.fields.Note__c.Label}</label>
+						<textarea name="note" id="note"></textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="errors" class="error"></div>
+		<div id="success"></div>
+		</form>
+	</div><!-- /page main -->
+	
+	<div data-role="page" id="popup">
+		<div data-role="header" data-theme="b">
+			<a href="#main" data-direction="reverse" class="ui-btn ui-corner-all ui-btn-inline ui-icon-back ui-btn-icon-left">Back</a>
+			<h1>Reserve to...</h1>
+		</div>
+
+		<div role="main" class="ui-content">
+			<div id="popupError" class="error"/>
+			
+			<div class="ui-body" data-mini="true" data-role="controlgroup">
+				<form id="searchForm" class="ui-filterable" action="">
+					<select id="popupType">
+						<option value="All">All</option>
+						<option>Account</option>
+						<option>Contact</option>
+						<option>Opportunity</option>
+						<option>User</option>
+					</select>
+					<input type="search" id="popupName" />
+					<ul id="resultList" data-role="listview" data-filter="true" data-input="#popupName" data-inset="true"></ul>
+					
+					<button type="submit" class="ui-btn ui-btn-b ui-corner-all">Search again</button>
+				</form>
+			</div>
+		</div>
+	</div><!-- /page popup -->
+
+	</body>
+	<script>
+	getGps();
+	
+	$.datepicker.setDefaults({'dateFormat' : 'yy/mm/dd'});
+	
+	createList(JSON.parse('{!JSENCODE(recent)}'), '#recentList', null, selectAssignTo);
+
+	$(window).hashchange(function(){
+		if(location.hash == '#popup'){
+			$('#popupType').val($('#assignToType').val()).selectmenu().selectmenu('refresh');
+			$('#popupName').val($('#assignToName').val());
+			runSearch();
+		}
+	});
+	
+	function searchResultHandler(result, event){
+		if(event.status){
+			createList(result, '#resultList', null, selectAssignTo);
+		} else if (event.type === 'exception'){
+			$('#popupError').text(event.message);
+		}
+	}
+	
+	// I think this function can't be put into the "main.js" library and truly reused because it requires parsing by VF engine.
+	function runSearch(){
+		var type = $('#popupType').val();
+		var term = $('#popupName').val();
+		
+		if(type == 'All'){
+			Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.EquipmentMobileService.search}', term, 10,searchResultHandler);
+		} else {
+			Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.EquipmentMobileService.query}', type, term, 10, searchResultHandler);
+		}
+		return false;
+	}
+	
+	$('#searchForm').submit(runSearch);
+
+	// Enable / disable submit buttons when all fields are filled in
+	
+	var requiredFields = $(requiredFieldsSelector);
+	requiredFields.change(function(){
+		checkRequiredFields({!IF(Equipment__c.Active__c, 'true', 'false')}, '#submit');
+	});
+	
+	function onSubmitClick(){
+		$('div.error').empty();
+		var id = $('#assignToId').val();
+		if(id == ''){
+			id = null;
+		}
+		var parameters = {
+			'apexType':'c.EquipmentMobileService.Assignment',
+			'equipmentId': '{!Equipment__c.Id}',
+			
+			'startDate': getDate('#startDate'),
+			
+			'assignToType': $('#assignToType').val(),
+			'assignToName': $('#assignToName').val(),
+			'assignToId': id,
+
+			'trackingNumber': $('#trackingNumber').val(),
+			'note': $('#note').val(),
+			
+			'latitude': lat,
+			'longitude': long
+		};
+	
+		Visualforce.remoting.Manager.invokeAction(
+			'{!$RemoteAction.EquipmentMobileService.assign}',
+			parameters, 
+			submitResultHandler
+		);
+		return false;
+	}
+	
+	$(function(){
+		if(s1){
+			$('div#header').hide();
+			Sfdc.canvas.publisher.subscribe({ name: "publisher.post", onData: onSubmitClick});
+		} else {
+			$('#mainForm').submit(onSubmitClick);
+		}
+		// On Android disable the onscreen keyboard for date inputs forcing the user to use the calendar widget.
+		$("input[type='text'][data-role='date']").attr('readonly', 'readonly');
+	});
+	</script>
+</apex:page>

@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <customSettingsVisibility>Public</customSettingsVisibility>
+    <description>Used to control how dynamic displaying of lookup fields works on Assignment, Loan and Reservation of Equipment. Also allows to decide which fields should be used as data sources.</description>
+    <enableEnhancedLookup>false</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Equipment_lookup_field__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>API name of the field on Equipment object that should be set / cleared when &quot;this&quot; type of Loan/Assignment/Reservation is selected. For Loans an example would be ELTON__Loan_Account__c, ELTON__Loan_Opportunity__c etc.</inlineHelpText>
+        <label>Equipment: lookup field</label>
+        <length>40</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Equipment_owner_field__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>If you&apos;re using the Owner reassignment settings, put here the API name of the field which value will be used as the new owner of the Equipment. For example Loan to User might have here &quot;Id&quot; but Loan to Contact will likely have &quot;OwnerId&quot;.</inlineHelpText>
+        <label>Equipment: owner field</label>
+        <length>20</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Source_object_Type_picklist_value__c</fullName>
+        <deprecated>false</deprecated>
+        <description>If your organisation uses Translation Workbench - these should really be picklist values, not translatable labels.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Value on &quot;Loan Type&quot;, &quot;Assigned Type&quot; or &quot;Reservation_Type&quot; that drives the selection of this particular record. For example if this value is &quot;Account&quot; and Account was selected on the new Loan&apos;s page, the field mappings etc from this record will apply.</inlineHelpText>
+        <label>Source object: Type picklist value</label>
+        <length>40</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Source_object__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>API name of the object that has the lookup field. Value should be either &quot;ELTON__Equipment_Loan__c&quot;, &quot;ELTON__Equipment_Assignment__c&quot; or &quot;ELTON__Equipment_Reservation__c&quot;.</inlineHelpText>
+        <label>Source object</label>
+        <length>60</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Source_object_lookup_field__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>API Name of the lookup field on ELTON Loan/Assignment etc object, for example &quot;ELTON__Account__c&quot;</inlineHelpText>
+        <label>Source object: lookup field</label>
+        <length>60</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Target_object_City__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>API name of the field from which data will be eventually copied to Equipment: ELTON__Loan_City__c</inlineHelpText>
+        <label>Target object: City</label>
+        <length>40</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Target_object_Country__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>API name of the field from which data will be eventually copied to Equipment: ELTON__Loan_Country__c</inlineHelpText>
+        <label>Target object: Country</label>
+        <length>40</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Target_object_Email__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>API name of the field from which data will be eventually copied to Equipment: ELTON__Loan_Email__c</inlineHelpText>
+        <label>Target object: Email</label>
+        <length>40</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Target_object_Mobile__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>API name of the field from which data will be eventually copied to Equipment: ELTON__Loan_Mobile__c</inlineHelpText>
+        <label>Target object: Mobile</label>
+        <length>40</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Target_object_Name__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>API name of the field from which data will be eventually copied to Equipment: ELTON__Loan_Name__c</inlineHelpText>
+        <label>Target object: Name</label>
+        <length>40</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Target_object_Other_Phone__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>API name of the field from which data will be eventually copied to Equipment: ELTON__Loan_Other_Phone__c</inlineHelpText>
+        <label>Target object: Other Phone</label>
+        <length>40</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Target_object_Phone__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>API name of the field from which data will be eventually copied to Equipment: ELTON__Loan_Phone__c</inlineHelpText>
+        <label>Target object: Phone</label>
+        <length>40</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Target_object_PostalCode__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>API name of the field from which data will be eventually copied to Equipment: ELTON__Loan_Zip_Postal_Code__c</inlineHelpText>
+        <label>Target object: PostalCode</label>
+        <length>40</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Target_object_State__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>API name of the field from which data will be eventually copied to Equipment: ELTON__Loan_State_Province__c</inlineHelpText>
+        <label>Target object: State</label>
+        <length>40</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Target_object_Street__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>API name of the field from which data will be eventually copied to Equipment: ELTON__Loan_Address__c</inlineHelpText>
+        <label>Target object: Street</label>
+        <length>40</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Target_object__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>API name of the object to which the lookup field points to. For example &quot;Account&quot;.</inlineHelpText>
+        <label>Target object</label>
+        <length>60</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Equipment Field Mapping</label>
+</CustomObject>

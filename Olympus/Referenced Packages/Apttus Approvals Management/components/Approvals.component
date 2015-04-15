@@ -1,0 +1,109 @@
+<!-- 
+    Apttus Approvals Management
+    Approvals
+
+    @2012-2013 Apttus Inc. All rights reserved.
+
+ -->
+<apex:component controller="Apttus_Approval.ApprovalsController"  
+				allowDML="false" 
+				access="global" >  
+ 
+    <apex:attribute name="ctxObjectId" 
+                    description="Context Object Identifier" 
+                    type="ID"
+                    required="true" 
+                    access="global"
+                    assignTo="{!ctxObjectId}" />
+
+	<apex:pageBlock >
+   		
+		<apex:pageBlockButtons location="top" >
+			<apex:commandLink value="{!$Label.apttus_approval__Preview}" action="{!doPreview}" 
+					target="_top" styleClass="btn"  style="text-decoration: none;"/>
+			<apex:commandLink value="{!$Label.apttus_approval__Submit}" action="{!doSubmit}" 
+					target="_top" styleClass="btn"  style="text-decoration: none;"/>
+			<apex:commandLink value="{!$Label.apttus_approval__SubmitWithAttachments}" action="{!doSubmitWithAttachment}" 
+					target="_top" styleClass="btn"  style="text-decoration: none;"/>
+			<apex:commandLink value="{!$Label.apttus_approval__Cancel}" action="{!doCancel}" rendered="{!approvals.size > 0}" 
+					target="_top" styleClass="btn" style="text-decoration: none;"/>
+		</apex:pageBlockButtons>
+		
+		<apex:pageBlockTable value="{!approvals}" var="request" rendered="{!approvals.size > 0}" >
+		
+			<apex:column headerValue="{!$Label.apttus_approval__Name}" >
+				<apex:outputLink target="_top" value="/{!request.ar.Id}">
+						{!request.ar.Name}
+				</apex:outputLink>
+			</apex:column>
+			
+			<apex:column headerValue="{!$Label.apttus_approval__StepName}" >
+				<apex:outputField value="{!request.ar.Apttus_Approval__Step_Name__c}" />
+			</apex:column>
+			
+			<apex:column headerValue="{!$Label.apttus_approval__Sequence}" >
+				<apex:outputField value="{!request.ar.Apttus_Approval__StepSequenceString__c}" />
+			</apex:column>
+			
+			<apex:column headerValue="{!$Label.apttus_approval__SubSequence}" >
+				<apex:outputField value="{!request.ar.Apttus_Approval__Sequence__c}" />
+			</apex:column>
+					
+			<apex:column headerValue="{!$Label.apttus_approval__Action}" > 			
+				<apex:outputLink rendered="{!request.enableReassign == true}" target="_top"
+								value="{!request.reassignLink}">{!$Label.apttus_approval__Reassign}<br/></apex:outputLink>					
+				<apex:outputLink rendered="{!request.enableApproveReject == true}"  target="_top"
+								value="{!request.approveRejectLink}">{!$Label.apttus_approval__ApproveReject}<br/></apex:outputLink>							
+				<apex:outputLink rendered="{!request.enableAddComment == true}" target="_top"
+								value="{!request.addCommentLink}">{!$Label.apttus_approval__AddComment}</apex:outputLink>		
+                <apex:outputLink rendered="{!request.enableEscalate == true}" target="_top"
+                                value="{!request.escalateLink}"><br/>{!$Label.apttus_approval__Escalate}</apex:outputLink>        
+			</apex:column>
+			
+			<apex:column headerValue="{!$Label.apttus_approval__Status}" >
+				<apex:outputField value="{!request.ar.Apttus_Approval__Approval_Status__c}" />
+			</apex:column>
+
+			<apex:column headerValue="{!$Label.apttus_approval__Date}" >
+				<apex:outputField value="{!request.ar.Apttus_Approval__Date__c}" />
+			</apex:column>
+			
+			<apex:column headerValue="{!$Label.apttus_approval__AssignedTo}">
+			
+				<apex:outputLink rendered="{!request.ar.Apttus_Approval__Assigned_To_Type__c='Queue'}"  target="_top"
+					value="{!queueURL}">{!request.ar.Apttus_Approval__Assigned_To_Name__c}
+					<apex:param name="id" value="{!request.ar.Apttus_Approval__Assigned_To_Id__c}"/>
+					<apex:param name="setupid" value="Queues"/>
+				</apex:outputLink>
+				
+				<apex:outputLink rendered="{!request.ar.Apttus_Approval__Assigned_To_Type__c != 'Queue'}"  target="_top"
+					value="/{!request.ar.Apttus_Approval__Assigned_To_Id__c}">
+						{!request.ar.Apttus_Approval__Assigned_To_Name__c}
+				</apex:outputLink>
+
+			</apex:column>
+			
+			<apex:column headerValue="{!$Label.apttus_approval__DependsOn}" >
+				<apex:outputField value="{!request.ar.Apttus_Approval__DependsOn__c}" />
+			</apex:column>
+			
+			<apex:column headerValue="{!$Label.apttus_approval__ApprovalDetails}" >
+				<apex:outputField value="{!request.ar.Apttus_Approval__Request_Comments__c}" />
+			</apex:column>	
+			
+			<apex:column headerValue="{!$Label.apttus_approval__ActualApprover}" >
+				<apex:outputField value="{!request.ar.Apttus_Approval__ActualApproverName__c}" />
+			</apex:column> 
+			
+			<apex:column headerValue="{!$Label.apttus_approval__Approver & ' ' & $Label.apttus_approval__Comments}" >
+				<apex:outputField value="{!request.ar.Apttus_Approval__Approver_Comments__c}" />
+			</apex:column>
+			 
+		</apex:pageBlockTable>
+		
+		<apex:outputText value="{!$Label.apttus_approval__NoRecordsToDisplay}" 
+		        rendered="{!approvals.size == 0}" />
+
+	</apex:pageBlock>
+
+</apex:component>

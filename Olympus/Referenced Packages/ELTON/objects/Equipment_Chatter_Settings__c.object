@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <customSettingsVisibility>Public</customSettingsVisibility>
+    <description>Chatter configuration settings for ELTON Equipment</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Assignment_Body__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The body of the chatter produced when equipment is assigned. Please ensure that you leave the ~1~, ~2~, ~3~ parameters in the message if you change it otherwise the chatter feed posting will fail</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The body of the chatter produced when equipment is assigned. Please ensure that you leave the ~1~, ~2~, ~3~ parameters in the message if you change it otherwise the chatter feed posting will fail</inlineHelpText>
+        <label>Assignment Body</label>
+        <length>200</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Assignment_Chatter__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Enable/Disable Chatter when Equipment is Assigned</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enable/Disable Chatter when Equipment is Assigned</inlineHelpText>
+        <label>Assignment Chatter</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Assignment_Return_Body__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The body of the chatter produced when an equipment assignment ends (because the equipment is assigned to another entity. Please ensure that you leave the ~1~, ~2~, ~3~ parameters in the message if you change it otherwise the chatter feed posting will fail</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The body of the chatter produced when an equipment assignment ends (because the equipment is assigned to another entity. Please ensure that you leave the ~1~, ~2~, ~3~ parameters in the message if you change it otherwise the chatter feed posting will fail</inlineHelpText>
+        <label>Assignment Return Body</label>
+        <length>200</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Loan_Body__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The body of the chatter produced when equipment is loaned. Please ensure that you leave the ~1~, ~2~, ~3~ parameters in the message if you change it otherwise the chatter feed posting will fail</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The body of the chatter produced when equipment is loaned. Please ensure that you leave the ~1~, ~2~, ~3~ parameters in the message if you change it otherwise the chatter feed posting will fail</inlineHelpText>
+        <label>Loan Body</label>
+        <length>200</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Loan_Return_Body__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The body of the chatter produced when loaned equipment is returned. Please ensure that you leave the ~1~, ~2~, ~3~ parameters in the message if you change it otherwise the chatter feed posting will fail</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The body of the chatter produced when loaned equipment is returned. Please ensure that you leave the ~1~, ~2~, ~3~ parameters in the message if you change it otherwise the chatter feed posting will fail</inlineHelpText>
+        <label>Loan Return Body</label>
+        <length>200</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Loan_Return_Chatter__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Enable/Disable Chatter when Equipment is Loaned or Returned</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enable/Disable Chatter when Equipment is Loaned or Returned</inlineHelpText>
+        <label>Loan and Return Chatter</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>Equipment Chatter Setting</label>
+</CustomObject>

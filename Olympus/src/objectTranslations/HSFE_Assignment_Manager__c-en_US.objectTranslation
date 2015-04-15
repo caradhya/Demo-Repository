@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>HSFE Lead Territory Management</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>HSFE Lead Territory Management</value>
+    </caseValues>
+    <fields>
+        <label><!-- Area --></label>
+        <name>HSFE_Area__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Rep --></label>
+        <name>HSFE_Sales_Rep__c</name>
+    </fields>
+    <fields>
+        <label><!-- Territory --></label>
+        <name>HSFE_Territory__c</name>
+    </fields>
+    <fields>
+        <label><!-- Zip/Postal Code --></label>
+        <name>HSFE_Zip_Postal_Code__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

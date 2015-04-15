@@ -1,0 +1,17 @@
+<apex:page sidebar="false" showHeader="false">
+    <apex:pageBlock title="Insurance"> 
+    <apex:outputLink value="{! $Page.About_Us}"> <p> <b> Click here for the Links to Full Documentation Downloads</b> </p></apex:outputLink>
+          <apex:pageblockSection title="Overview" columns="1">
+                        <p> Insurance policies allow you to track which equipment is covered by which specific policy.  Setup insurance policies and then assign equipment to each policy. </p>
+                </apex:pageblockSection>
+                <apex:pageblockSection title="Fields" columns="1">
+                 <p> <b> Insurance Name </b>  This field is a common name you assign to the policy.</P>
+                 <p> <b> Policy </b>  This is the policy number or identifier. </P>
+                 <p> <b> Expiry Date </b> This is the date that the policy expiries. </P>
+                 <p> <b> Provider </b> This is the contact information for the insurance company or broker. </P>
+                 <p> <b> Policy Value </b> This is the maximum insurance coverage provided by the policy. </P>
+                 <p> <b> Annual Premium </b> This is the premium paid for the policy annually. </p>
+                 <p> <b> Total Equipment Cost </b> This is the total cost of all equipment currently assigned to this policy. </p>
+                </apex:pageblockSection>
+            </apex:pageBlock>
+ </apex:page>

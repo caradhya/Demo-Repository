@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Zip To Territory</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Zip To Territory</value>
+    </caseValues>
+    <fields>
+        <label><!-- Combination Key --></label>
+        <name>HSFE_Combination_Key__c</name>
+    </fields>
+    <fields>
+        <label><!-- Rep Type --></label>
+        <name>HSFE_Rep_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Specialty --></label>
+        <name>HSFE_Specialty__c</name>
+        <picklistValues>
+            <masterLabel>Medical</masterLabel>
+            <translation><!-- Medical --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Surgical</masterLabel>
+            <translation><!-- Surgical --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Sub Specialty --></label>
+        <name>HSFE_Sub_Specialty__c</name>
+        <picklistValues>
+            <masterLabel>ENT</masterLabel>
+            <translation><!-- ENT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EndoCapsule</masterLabel>
+            <translation><!-- EndoCapsule --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Endoscopy</masterLabel>
+            <translation><!-- Endoscopy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Energy</masterLabel>
+            <translation><!-- Energy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Medical IT</masterLabel>
+            <translation><!-- Medical IT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Surgical AVI</masterLabel>
+            <translation><!-- Surgical AVI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Surgical Endoscopy</masterLabel>
+            <translation><!-- Surgical Endoscopy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Urology/Gynecology</masterLabel>
+            <translation><!-- Urology/Gynecology --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Territory --></label>
+        <name>HSFE_Territory__c</name>
+        <relationshipLabel><!-- Zip To Territory --></relationshipLabel>
+    </fields>
+    <layouts>
+        <layout>Zip To Territory Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

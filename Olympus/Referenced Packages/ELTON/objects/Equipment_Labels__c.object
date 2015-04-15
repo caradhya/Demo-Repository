@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <customSettingsVisibility>Public</customSettingsVisibility>
+    <description>List of Fields/Values to be printed on Equipment Labels</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Caption_Field_1__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter a caption for this row on the label, if you want to have a colon between the caption and the value enter the colon into the caption.  E.G. Serial-no:  If you do not need a caption on this row leave the field blank.</inlineHelpText>
+        <label>Caption Field 1</label>
+        <length>12</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Caption_Field_2__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter a caption for this row on the label, if you want to have a colon between the caption and the value enter the colon into the caption.  E.G. Serial-no:  If you do not need a caption on this row leave the field blank.</inlineHelpText>
+        <label>Caption Field 2</label>
+        <length>12</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Caption_Field_3__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter a caption for this row on the label, if you want to have a colon between the caption and the value enter the colon into the caption.  E.G. Serial-no:  If you do not need a caption on this row leave the field blank.</inlineHelpText>
+        <label>Caption Field 3</label>
+        <length>12</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Caption_Field_4__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter a caption for this row on the label, if you want to have a colon between the caption and the value enter the colon into the caption.  E.G. Serial-no:  If you do not need a caption on this row leave the field blank.</inlineHelpText>
+        <label>Caption Field 4</label>
+        <length>12</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Caption_Field_5__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter a caption for this row on the label, if you want to have a colon between the caption and the value enter the colon into the caption.  E.G. Serial-no:  If you do not need a caption on this row leave the field blank.</inlineHelpText>
+        <label>Caption Field 5</label>
+        <length>12</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Caption_Field_6__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter a caption for this row on the label, if you want to have a colon between the caption and the value enter the colon into the caption.  E.G. Serial-no:  If you do not need a caption on this row leave the field blank.</inlineHelpText>
+        <label>Caption Field 6</label>
+        <length>12</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Field_1__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Appears on the first row of the equipment label.  This row is always bolded.  Enter either the API name of an equiment field or a string of text to be displayed.</inlineHelpText>
+        <label>Field 1</label>
+        <length>80</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Field_2__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Appears on the second row of the equipment label.  Enter either the API name of an equiment field or a string of text to be displayed.</inlineHelpText>
+        <label>Field 2</label>
+        <length>80</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Field_3__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Appears on the third row of the equipment label.  Enter either the API name of an equiment field or a string of text to be displayed.</inlineHelpText>
+        <label>Field 3</label>
+        <length>80</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Field_4__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Appears on the forth row of the equipment label.  Enter either the API name of an equiment field or a string of text to be displayed.</inlineHelpText>
+        <label>Field 4</label>
+        <length>80</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Field_5__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Appears on the fifth row of the equipment label.  Enter either the API name of an equiment field or a string of text to be displayed.</inlineHelpText>
+        <label>Field 5</label>
+        <length>80</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Field_6__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Appears on the sixth row of the equipment label.  Enter either the API name of an equiment field or a string of text to be displayed.</inlineHelpText>
+        <label>Field 6</label>
+        <length>80</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Equipment Labels</label>
+</CustomObject>

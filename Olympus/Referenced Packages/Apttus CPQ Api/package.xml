@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Apttus CPQ Api</fullName>
+    <apiAccessLevel>Unrestricted</apiAccessLevel>
+    <description>Apttus CPQ Api provides api access to the Apttus Configuration &amp; Pricing package.</description>
+    <namespacePrefix>Apttus_CPQApi</namespacePrefix>
+    <types>
+        <members>AbstractCPQWebServiceTest</members>
+        <members>BatchJob</members>
+        <members>BatchJobFactory</members>
+        <members>BatchUpdateService</members>
+        <members>BatchUpdateServiceTest</members>
+        <members>CPQ</members>
+        <members>CPQCategoryHierarchy</members>
+        <members>CPQCategorySupport</members>
+        <members>CPQConstraintWebServiceTest</members>
+        <members>CPQLineItemSupport</members>
+        <members>CPQSOQLConstants</members>
+        <members>CPQSObjectConstants</members>
+        <members>CPQSObjectSupport</members>
+        <members>CPQSObjectTest</members>
+        <members>CPQWebService</members>
+        <members>CPQWebServiceSupport</members>
+        <members>CPQWebServiceTest</members>
+        <members>Criteria</members>
+        <members>FeatureSupport</members>
+        <members>FeatureSupportTest</members>
+        <members>PriceBreakupSupport</members>
+        <members>SystemUtil</members>
+        <members>SystemUtilTest</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>InsufficientPrivileges</members>
+        <name>CustomLabel</name>
+    </types>
+    <types>
+        <members>CustomLabels</members>
+        <name>CustomLabels</name>
+    </types>
+    <version>31.0</version>
+</Package>

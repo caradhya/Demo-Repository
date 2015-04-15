@@ -1,0 +1,361 @@
+<apex:page standardController="ELTON__Equipment__c" extensions="ELTON.EquipmentMobileService" 
+    applyHtmlTag="false" standardStylesheets="false" showHeader="false" sidebar="false"
+    doctype="html-5.0">
+    <apex:outputPanel style="display:none" id="vf_workaround">
+    {!ELTON__Equipment__c.Name} {!ELTON__Equipment__c.ELTON__Active__c} {!ELTON__Equipment__c.Id} {!ELTON__Equipment__c.ELTON__Collection_Status__c} {!ELTON__Equipment__c.ELTON__Equipment_Tag__c}
+    {!ELTON__Equipment__c.ELTON__Assigned_Type__c} {!ELTON__Equipment__c.ELTON__Assigned_Name__c} {!ELTON__Equipment__c.ELTON__Use_Quantity_on_Hand__c}
+    {!ELTON__Equipment__c.ELTON__Equipment_Type__r.ELTON__Use_Loan_Date_1__c} {!ELTON__Equipment__c.ELTON__Equipment_Type__r.ELTON__Use_Loan_Date_2__c}
+    {!ELTON__Equipment__c.ELTON__Quantity_on_Hand__c} {!ELTON__Equipment__c.ELTON__Loan_Type__c} {!ELTON__Equipment__c.ELTON__Loan_Name__c}
+    </apex:outputPanel>
+    
+    <!-- 
+    
+    TODO:   At the moment this page does not support:
+
+    - reassign on loan start / return functionality (multiple popup windows? same popup with different "action" on return?)
+    - lookups to client-defined sObjects
+
+    Once Gordon is fine with overall functionality: 
+    
+    - add security around fields (isReadable, isAccessible) etc
+    - run Checkmarx analysis
+    - close nicely the feed on success, refresh the parent window (at the moment the iframe makes it look bit stupid)
+    -->
+    <head>
+        <title>Loan {!$ObjectType.Equipment__c.label}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+        <script type='text/javascript' src='/canvas/sdk/js/publisher.js'></script>
+        
+        <apex:includeScript value="{!URLFOR($Resource.ELTON__jquery)}"/><!-- 1.9.0 -->
+        <apex:includeScript value="{!URLFOR($Resource.ELTON__mobile, 'jquery-mobile/jquery.mobile-1.4.2.min.js')}"/>
+        <apex:stylesheet value="{!URLFOR($Resource.ELTON__mobile, 'jquery-mobile/jquery.mobile-1.4.2.min.css')}"/>
+        
+        <apex:includeScript value="{!URLFOR($Resource.ELTON__mobile, 'datepicker/external/jquery-ui/datepicker.js')}"/>
+        <apex:includeScript value="{!URLFOR($Resource.ELTON__mobile, 'datepicker/jquery.mobile.datepicker.js')}"/>
+        <apex:stylesheet value="{!URLFOR($Resource.ELTON__mobile, 'datepicker/jquery.mobile.datepicker.css')}"/>
+        <apex:stylesheet value="{!URLFOR($Resource.ELTON__mobile, 'datepicker/jquery.mobile.datepicker.theme.css')}"/>
+        
+        <apex:includeScript value="{!URLFOR($Resource.ELTON__mobile, 'main.js')}"/>
+        <apex:stylesheet value="{!URLFOR($Resource.ELTON__mobile, 'main.css')}"/>
+    </head>
+    <body>
+    
+    <div data-role="page" id="main">
+        <form class="ui-filterable" id="mainForm" action="">
+        <div data-role="header" id="header">
+            <a href="/{!Equipment__c.Id}" id="cancel" rel="external" target="_parent" class="ui-btn ui-corner-all ui-icon-arrow-l ui-btn-icon-left ui-btn-left">Cancel</a>
+            <h1>Loan {!Equipment__c.Name}</h1>
+            <button id="submit" type="submit" class="ui-btn ui-corner-all ui-icon-check ui-btn-icon-left ui-btn-inline ui-state-disabled">Submit</button>
+        </div>
+
+        <div role="main" class="ui-content">
+            <div class="error">
+                <apex:outputPanel layout="block" rendered="{!!ELTON__Equipment__c.ELTON__Active__c}">You cannot Loan Inactive Equipment. Please change the Equipment to Active.</apex:outputPanel>
+                <apex:outputPanel layout="block" rendered="{!!ELTON__Equipment__c.ELTON__Active__c}">You cannot Loan Equipment until it is assigned. Please use the 'Assign Equipment' action first.</apex:outputPanel>
+            </div>
+            <div id="info">
+                <apex:outputText value="This is a collection 'master' - all related Equipments will be loaned.
+                    {!$ObjectType.Equipment__c.fields.Collection_Status__c.Label}: {!Equipment__c.Collection_Status__c}" 
+                    rendered="{!ELTON__Equipment__c.ELTON__Collection_Status__c = 'Master'}"/>
+            </div>
+
+            <div data-role="collapsible" data-collapsed="{!deviceType = 'Desktop'}" data-mini="true">
+                <h4 class="ui-bar ui-bar-a ui-corner-all">1. Equipment summary</h4>
+                <div class="ui-body ui-grid-a ui-responsive">
+                    <div class="ui-block-a">
+                        <label for="name" >{!$ObjectType.Equipment__c.fields.Name.Label}</label>
+                        <p id="name">{!Equipment__c.Name}</p>
+                    </div>
+                    <div class="ui-block-b">
+                        <label for="tag" >{!$ObjectType.Equipment__c.fields.Equipment_Tag__c.Label}</label>
+                        <p id="tag">{!Equipment__c.Equipment_Tag__c}</p>
+                    </div>
+                    <div class="ui-block-a">
+                        <label for="assignedName" >{!$ObjectType.Equipment__c.fields.Assigned_Name__c.Label}</label>
+                        <p id="assignedName">{!Equipment__c.Assigned_Name__c}</p>
+                    </div>
+                    <div class="ui-block-b">
+                        <label for="currentLoanee" >Current {!$ObjectType.Equipment__c.fields.Loan_Name__c.Label}</label>
+                        <p id="currentLoanee">{!Equipment__c.Loan_Name__c}</p>
+                    </div>
+                    <apex:outputPanel layout="block" styleClass="ui-block-a" rendered="{!ELTON__Equipment__c.ELTON__Use_Quantity_on_Hand__c}">
+                        <label for="useQuantity" >{!$ObjectType.Equipment__c.fields.Use_Quantity_on_Hand__c.Label}</label>
+                        <p id="useQuantity"><img src="/img/checkbox_checked.gif" alt="Checked" title="Checked"/></p>
+                    </apex:outputPanel>
+                    <apex:outputPanel layout="block" styleClass="ui-block-b" rendered="{!ELTON__Equipment__c.ELTON__Use_Quantity_on_Hand__c}">
+                        <label for="quantityOnHand" >{!$ObjectType.Equipment__c.fields.Quantity_on_Hand__c.Label}</label>
+                        <p id="quantityOnHand"><apex:outputText value="{0,number,0}"><apex:param value="{!ELTON__Equipment__c.ELTON__Quantity_on_Hand__c}" /></apex:outputText></p>
+                    </apex:outputPanel>
+                </div>
+            </div>
+            
+            <div data-role="collapsible" data-collapsed="false" data-mini="true">
+                <h4 class="ui-bar ui-bar-a ui-corner-all">2. Select new loanee</h4>
+                <div class="ui-body" data-mini="true" data-role="controlgroup">
+                    <div class="ui-field-contain">
+                        <label>{!$ObjectType.Equipment_Loan__c.fields.Loan_Type__c.label}</label>
+                        <select id="loanToType" required="required">
+                            <option>Account</option>
+                            <option>Contact</option>
+                            <option>Opportunity</option>
+                            <option>User</option>
+                            <option>Entered</option>
+                        </select>
+                    </div>
+
+                    <div class="ui-field-contain">
+                        <label for="loanToName">Name</label>
+                        <input type="search" id="loanToName" placeholder="Pick from recent items..." required="required"/>
+                        <input type="hidden" id="loanToId" />
+                    </div>
+                    <div class="ui-field-contain">
+                        <ul id="recentList" data-role="listview" data-filter="true" data-input="#loanToName" data-inset="true"></ul>
+                    </div>
+                </div>
+                <a id="search" href="#popup" class="ui-btn ui-btn-b ui-corner-all">Can't find it? Search!</a>
+            </div>
+            
+            <div data-role="collapsible" data-collapsed="false" data-mini="true">
+                <h4 class="ui-bar ui-bar-a ui-corner-all">3. Add Loan data</h4>
+                <div class="ui-body" data-mini="true" data-role="controlgroup">
+
+                    <div class="ui-field-contain">
+                        <label for="startDate">{!$ObjectType.Equipment_Loan__c.fields.Loan_Start_Date__c.Label}</label>
+                        <input type="text" data-role="date" id="startDate" required="required"/>
+                    </div>
+                    <div class="ui-field-contain">
+                        <label for="estimatedReturnDate">{!$ObjectType.Equipment_Loan__c.fields.Estimated_Return_Date__c.Label}</label>
+                        <input type="text" data-role="date" id="estimatedReturnDate" required="required"/>
+                    </div>
+                    
+                    <!-- Loan Extra Dates - rendered only if needed -->
+                    <apex:outputPanel layout="block" styleClass="ui-field-contain" rendered="{!ELTON__Equipment__c.ELTON__Equipment_Type__r.ELTON__Use_Loan_Date_1__c}">
+                        <label for="loanExtraDate1">{!$ObjectType.Equipment_Loan__c.fields.Loan_Extra_Date_1__c.Label}</label>
+                        <input type="text" data-role="date" id="loanExtraDate1"/>
+                    </apex:outputPanel>
+                    <apex:outputPanel layout="block" styleClass="ui-field-contain" rendered="{!ELTON__Equipment__c.ELTON__Equipment_Type__r.ELTON__Use_Loan_Date_2__c}">
+                        <label for="loanExtraDate2">{!$ObjectType.Equipment_Loan__c.fields.Loan_Extra_Date_2__c.Label}</label>
+                        <input type="text" data-role="date" id="loanExtraDate2"/>
+                    </apex:outputPanel>
+        
+                    <!-- Quantity - rendered only if needed -->
+                    <apex:outputPanel layout="block" styleClass="ui-field-contain" rendered="{!ELTON__Equipment__c.ELTON__Use_Quantity_on_Hand__c}">
+                        <label for="quantity">{!$ObjectType.Equipment_Loan__c.fields.Loan_Quantity__c.Label}</label>
+                        <input type="number" id="quantity" value="0" min="0" max="{!BLANKVALUE(Equipment__c.Quantity_on_Hand__c,1)}"/>
+                    </apex:outputPanel>
+
+                    <div class="ui-field-contain">
+                        <label for="trackingNumber">{!$ObjectType.Equipment_Loan__c.fields.Tracking_Number__c.Label}</label>
+                        <input type="text" id="trackingNumber" name="trackingNumber"/>
+                    </div>
+                    <div class="ui-field-contain">
+                        <label for="note">{!$ObjectType.Equipment_Loan__c.fields.Loan_Note__c.Label}</label>
+                        <textarea name="note" id="note"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="errors" class="error"></div>
+        <div id="success"></div>
+        </form>
+    </div><!-- /page main -->
+
+    <div data-role="page" id="manual">
+        <form id="manualForm" action="">
+            <div data-role="header" data-theme="b">
+                <a href="#main" data-direction="reverse" class="ui-btn ui-corner-all ui-btn-inline ui-icon-back ui-btn-icon-left">Back</a>
+                <h1>Enter loanee data manually</h1>
+                <button type="reset" class="ui-btn ui-corner-all ui-icon-refresh ui-btn-icon-left ui-btn-inline">Reset</button>
+            </div>
+
+            <div role="main" class="ui-content">
+                <div class="ui-body" data-mini="true" data-role="controlgroup">
+                    <div class="ui-field-contain">
+                        <label for="loanName">{!$ObjectType.Equipment_Loan__c.fields.Name__c.Label}</label>
+                        <input id="loanName" type="text" value="{!Equipment__c.Name} Loanee"/>
+                    </div>
+                    <div class="ui-field-contain">
+                        <label for="loanAddress">{!$ObjectType.Equipment_Loan__c.fields.Address__c.Label}</label>
+                        <textarea id="loanAddress"></textarea>
+                    </div>
+                    <div class="ui-field-contain">
+                        <label for="loanCity">{!$ObjectType.Equipment_Loan__c.fields.City__c.Label}</label>
+                        <input id="loanCity" type="text"/>
+                    </div>
+                    <div class="ui-field-contain">
+                        <label for="loanState">{!$ObjectType.Equipment_Loan__c.fields.State_Province__c.Label}</label>
+                        <input id="loanState" type="text"/>
+                    </div>
+                    <div class="ui-field-contain">
+                        <label for="loanCountry">{!$ObjectType.Equipment_Loan__c.fields.Country__c.Label}</label>
+                        <input id="loanCountry" type="text"/>
+                    </div>
+                    <div class="ui-field-contain">
+                        <label for="loanZip">{!$ObjectType.Equipment_Loan__c.fields.Zip_Postal_Code__c.Label}</label>
+                        <input id="loanZip" type="text"/>
+                    </div>
+                    <div class="ui-field-contain">
+                        <label for="loanEmail">{!$ObjectType.Equipment_Loan__c.fields.Email__c.Label}</label>
+                        <input id="loanEmail" type="email"/>
+                    </div>
+                    <div class="ui-field-contain">
+                        <label for="loanPhone">{!$ObjectType.Equipment_Loan__c.fields.Phone__c.Label}</label>
+                        <input id="loanPhone" type="tel"/>
+                    </div>
+                    <div class="ui-field-contain">
+                        <label for="loanOtherPhone">{!$ObjectType.Equipment_Loan__c.fields.Other_Phone__c.Label}</label>
+                        <input id="loanOtherPhone" type="tel"/>
+                    </div>
+                    <div class="ui-field-contain">
+                        <label for="loanMobile">{!$ObjectType.Equipment_Loan__c.fields.Mobile__c.Label}</label>
+                        <input id="loanMobile" type="tel"/>
+                    </div>
+                </div>
+                <a href="#main" data-direction="reverse" class="ui-btn ui-btn-b ui-corner-all" >Back</a>
+            </div>
+        </form>
+    </div><!-- /page manual -->
+
+    <div data-role="page" id="popup">
+        <div data-role="header" data-theme="b">
+            <a href="#main" data-direction="reverse" class="ui-btn ui-corner-all ui-btn-inline ui-icon-back ui-btn-icon-left">Back</a>
+            <h1>Search for loanee</h1>
+        </div>
+
+        <div role="main" class="ui-content">
+            <div id="popupError" class="error"/>
+            
+            <div class="ui-body" data-mini="true" data-role="controlgroup">
+                <form id="searchForm" class="ui-filterable" action="">
+                    <select id="popupType">
+                        <option value="All">All</option>
+                        <option>Account</option>
+                        <option>Contact</option>
+                        <option>Opportunity</option>
+                        <option>User</option>
+                    </select>
+                    <input type="search" id="popupName" />
+                    <ul id="resultList" data-role="listview" data-filter="true" data-input="#popupName" data-inset="true"></ul>
+                    
+                    <button type="submit" class="ui-btn ui-btn-b ui-corner-all">Search again</button>
+                </form>
+            </div>
+        </div>
+    </div><!-- /page popup -->
+
+    </body>
+    <script type='text/javascript'>
+
+    createList(JSON.parse('{!JSENCODE(recent)}'), '#recentList', null, selectLoanTo);
+
+    getGps();
+    
+    $.datepicker.setDefaults({'dateFormat' : 'yy/mm/dd'});
+    
+    // Detect clicking of the button that goes to the popup and pass the arguments to the form fields as needed
+    // It looks bit funny (why not just have an onclick event on the button itself?) but there were some issues with calling refresh of fields
+    // before jQuery Mobile enhances the page for the 1st time...
+    $(window).hashchange(function(){
+        if(location.hash == '#popup'){
+            $('#popupType').val($('#loanToType').val()).selectmenu('refresh');
+            $('#popupName').val($('#loanToName').val());
+            runSearch();
+        }
+    });
+    
+    // Check what was changed in the assigned type and if it's "Entered' -> go to the dedicated page.
+    $('#loanToType').change(function(){
+        if($(this).val() == 'Entered'){
+            $('body').pagecontainer('change', '#manual');
+        }
+    });
+    
+    function searchResultHandler(result, event){
+        if(event.status){
+            createList(result, '#resultList', null, selectLoanTo);
+            $('#popupError').text('');
+        } else if (event.type === 'exception'){
+            $('#popupError').text(event.message);
+        }
+    }
+    
+    // I think this function can't be put into the "main.js" library and truly reused because it requires parsing by VF engine.
+    function runSearch(){
+        var type = $('#popupType').val();
+        var term = $('#popupName').val();
+        
+        if(type == 'All'){
+            Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.EquipmentMobileService.search}', term, 10, searchResultHandler);
+        } else {
+            Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.EquipmentMobileService.query}', type, term, 10, searchResultHandler);
+        }
+        return false;
+    }
+    
+    $('#searchForm').submit(runSearch);
+
+    // Enable / disable submit buttons when all fields are filled in
+    
+    var requiredFields = $(requiredFieldsSelector);
+    requiredFields.change(function(){
+        checkRequiredFields({!IF(Equipment__c.Active__c, 'true', 'false')}, '#submit');
+    });
+
+    function onSubmitClick(){
+        $('div.error').empty();
+        var id = $('#loanToId').val();
+        if(id == ''){
+            id = null;
+        }
+        var parameters = {
+            'apexType':'c.EquipmentMobileService.Loan',
+            'equipmentId': '{!Equipment__c.Id}',
+            
+            'startDate': getDate('#startDate'),
+            'estimatedReturnDate': getDate('#estimatedReturnDate'),
+            'loanExtraDate1': getDate('#loanExtraDate1'),
+            'loanExtraDate1': getDate('#loanExtraDate1'),
+            
+            'loanToType': $('#loanToType').val(),
+            'loanToName': $('#loanToName').val(),
+            'loanToId': id,
+            
+            'quantity': $('#quantity').val(),
+            
+            'trackingNumber': $('#trackingNumber').val(),
+            'note': $('#note').val(),
+            
+            'latitude': lat,
+            'longitude': long,
+            
+            'loanName': $('#loanName').val(),
+            'loanAddress': $('#loanAddress').val(),
+            'loanCity': $('#loanCity').val(),
+            'loanCountry': $('#loanCountry').val(),
+            'loanState': $('#loanState').val(),
+            'loanZip': $('#loanZip').val(),
+            'loanEmail': $('#loanEmail').val(),
+            'loanPhone': $('#loanPhone').val(),
+            'loanOtherPhone': $('#loanOtherPhone').val(),
+            'loanMobile': $('#loanMobile').val()
+        };
+
+        Visualforce.remoting.Manager.invokeAction(
+            '{!$RemoteAction.EquipmentMobileService.loan}',
+            parameters, 
+            submitResultHandler
+        );
+        return false;
+    }
+    
+    $(function(){
+        if(s1){
+            $('div#header').hide();
+            Sfdc.canvas.publisher.subscribe({ name: "publisher.post", onData: onSubmitClick});
+        } else {
+            $('#mainForm').submit(onSubmitClick);
+        }
+        $("input[type='text'][data-role='date']").attr('readonly', 'readonly');
+    });
+    </script>
+</apex:page>

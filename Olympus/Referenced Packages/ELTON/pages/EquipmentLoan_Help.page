@@ -1,0 +1,17 @@
+<apex:page sidebar="false" showHeader="false">
+    <apex:pageBlock title="Equipment Loans"> 
+    <apex:outputLink value="{! $Page.About_Us}"> <p> <b> Click here for the Links to Full Documentation Downloads</b> </p></apex:outputLink>
+          <apex:pageblockSection title="Overview" columns="1">
+                        <p> Each time a piece of equipment is loaned a detailed record is created.  Loans can be made to Users, Contacts, Accounts, Oppourtunities or Others.  If the user selects Other they are responsible for entering the name and contact information into the field provided.  Otherwise the data is populated automatically from the source record.  Oppourtunties contain very little data so loans to oppourtunties do not record much information.</P>
+                </apex:pageblockSection>
+                <apex:pageblockSection title="Fields" columns="1">
+                 <p> <b> Equipment Loan Name </b>  This is a unique sequntial number created by the system.</P>
+                 <p> <b> Equipment</b>  This is a clickable link to the Equipment record. </P>
+                 <p> <b> Loan Type</b>  This indicates if the loan was to a; User, Contact, Account, Oppourtunity or Other. </P>
+                 <p> <b> Name, Address, City, State/Province, Zip/Postal Code and Country </b> These show the address information for this loan.</P>
+                 <p> <b> Email, Phone, Mobile and Other Phone </b> These show the contact information for this loan.</P>
+                 <p> <b> Loan Start Date, Estimated Return Date and Actual Return Date </b> These show the date information for this loan.</P>
+                 <p> <b> Loan Note and Return Note </b> During the creation and return of a loan the user may enter a note. </p>
+                </apex:pageblockSection>
+    </apex:pageBlock>
+  </apex:page>

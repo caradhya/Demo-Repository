@@ -1,0 +1,3 @@
+<apex:page >
+    <apex:enhancedList type="Apttus_Proposal__Proposal__c" height="600" rowsPerPage="50"/>
+</apex:page>

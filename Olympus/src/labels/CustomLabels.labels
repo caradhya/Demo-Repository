@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>Customer_Record_Type</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Customer Record Type</shortDescription>
+        <value>012110000004uKD</value>
+    </labels>
+    <labels>
+        <fullName>HSEF_BatchJob_Msg1</fullName>
+        <categories>Class Message</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BatchJob_Msg1</shortDescription>
+        <value>Your batch job HSFE_LeadTerritoryAssignment_BatchClass has finished.  It executed</value>
+    </labels>
+    <labels>
+        <fullName>HSFE_BatchJobSubject</fullName>
+        <categories>Class Message</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BatchJobSubject</shortDescription>
+        <value>Batch job completed</value>
+    </labels>
+    <labels>
+        <fullName>HSFE_BatchJob_Msg2</fullName>
+        <categories>Class Message</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BatchJob_Msg1</shortDescription>
+        <value>batches. Out of which,</value>
+    </labels>
+    <labels>
+        <fullName>HSFE_BatchJob_Msg3</fullName>
+        <categories>Class Message</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BatchJob_Msg3</shortDescription>
+        <value>processed without any exception and</value>
+    </labels>
+    <labels>
+        <fullName>HSFE_BatchJob_Msg4</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BatchJob_Msg4</shortDescription>
+        <value>batch(es) threw unhandled exceptions.</value>
+    </labels>
+    <labels>
+        <fullName>HSFE_BatchJob_SenderDisplay</fullName>
+        <categories>Class Message</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>BatchJob_SenderDisplay</shortDescription>
+        <value>Batch Job Summary</value>
+    </labels>
+    <labels>
+        <fullName>HSFE_Sales_Stage</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Sales Stage</shortDescription>
+        <value>00N11000001BF86</value>
+    </labels>
+    <labels>
+        <fullName>HSFE_Specialty</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Specialty</shortDescription>
+        <value>00N110000016d7M</value>
+    </labels>
+    <labels>
+        <fullName>HSFE_Sub_Specialty</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Sub Speciality</shortDescription>
+        <value>00N110000016d7R</value>
+    </labels>
+</CustomLabels>

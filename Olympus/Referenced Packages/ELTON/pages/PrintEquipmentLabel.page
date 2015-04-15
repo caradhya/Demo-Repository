@@ -1,0 +1,128 @@
+<apex:page standardController="ELTON__Equipment__c" recordSetVar="equipments" extensions="ELTON.PrintEquipmentLabelExtension" readonly="true" title="Print Equipment Labels">
+	<apex:includeScript value="{!$Resource.ELTON__jquery}" />
+	<apex:includeScript value="{!$Resource.ELTON__jsqr}"/>
+	<apex:includeScript value="{!$Resource.ELTON__jspdf}"/>
+	
+	<!--	Sometimes referencing the original "recordsetvar" helps for the "no rows selected" error.
+			So we loop through that variable but display only 1st row, that should be enough.
+	-->
+	<span style="display:none">
+		<apex:repeat value="{!equipments}" var="e" rows="1">
+			{!e.Id}
+		</apex:repeat>
+	</span>
+
+	<apex:pageMessage severity="error" strength="1" escape="false" summary="You have not selected records to print Equipment Labels. 
+		Please, click &quot;Cancel&quot;, pick records and then click on &quot;Print Equipment Labels&quot;."
+		rendered="{!selectedSize = 0}"/>
+	<apex:pageMessage severity="error" strength="1" escape="false" summary="Your Custom Setting &quot;Equipment Labels&quot; has not been created.
+        Please setup the Custom Setting prior to using the &quot;Print Equipment Labels&quot; function.
+        Refer to the documentation in the ELTON Configuration Guide, available on the AccountAbility About Us tab."
+        rendered="{!setting = null}"/>
+
+	<apex:form >
+	<apex:pageBlock title="Print Equipment Labels" >
+		<apex:pageBlockButtons location="bottom">
+			<apex:commandButton value="Proceed" onclick="generatePdf(); return false;" disabled="{!selectedSize = 0 || setting = null}"/>
+			<apex:commandButton action="{!cancel}" value="Cancel" immediate="true"/>
+		</apex:pageBlockButtons>
+		<apex:pageBlockSection columns="1">
+			<apex:outputText >
+				You have selected <b>{!selectedSize}</b> records to print Equipment Labels.This process will create
+				a PDF file that will be formatted for Avery 1 1/3" X 4" mailing labels,
+				two across (Avery 5162 or equivalent). Please download the PDF file and print it locally
+				onto label stock. <br/>
+				You may change the data displayed on the labels by changing the Custom Setting,
+				Equipment Labels, or have your System Administrator make the changes.
+			</apex:outputText>
+			<apex:image url="{!URLFOR($Resource.ELTON__StartPositionLabel)}" width="240" height="290"/>
+			<apex:outputText >
+				In order to allow partial sheets of labels to be used, you may select the starting position on the first sheet of labels.
+				All subsequent sheets will use all required labels starting at position 1.<br/>
+				If your first sheet is a complete sheet, select position 1. 
+				Select the starting position for the first page of the print job:
+				<select id="shift">
+					<option value="1" selected="selected">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+					<option value="10">10</option>
+					<option value="11">11</option>
+					<option value="12">12</option>
+					<option value="13">13</option>
+					<option value="14">14</option>
+				</select>
+			</apex:outputText>
+		</apex:pageBlockSection>
+	</apex:pageBlock>
+	</apex:form>
+	<script>
+	function generateQr(payload){
+		var qr = document.createElement('div');
+		$(qr).qrcode({width: 132,height: 132,text: payload});
+		return qr.firstElementChild.toDataURL("image/png");
+	};
+	
+	function addRectangle(pdf, number, data){
+	
+		// label width and height
+		var w = 4.1230769230769230769230769230769, h = 1.333333;
+		var x_left_margin = 0.15;
+		var y_top_margin = 0.8;
+		var total_labels_per_x = 2;
+		var total_labels_per_y = 7;
+		var total_labels = total_labels_per_x * total_labels_per_y;
+		var x_middle_margin = 0.2;
+		var line_width = 0.010416666666666; // one pixel width
+		var font_size = 11; // in points, 120/13.333 = 9 pitches
+		var x_field_display_shift = 1.3;
+	
+		var x = x_left_margin + (x_middle_margin + w)*((number % total_labels) % total_labels_per_x);//top left x coord for single label
+		var y = y_top_margin + h*(((number % total_labels) / total_labels_per_x) >> 0);// top left y coord for single label
+		
+		pdf.setLineWidth(line_width);
+		pdf.setFontSize(font_size);
+		var y_label_field_position = y;
+		for (var counter = 0; counter < 6; counter++){
+			if (counter == 0){
+				pdf.setFontStyle("bold");//set bold font for first label
+			}
+			y_label_field_position = y_label_field_position + 0.2;
+			pdf.text(data.text[counter], x + x_field_display_shift, y_label_field_position);
+	
+			if (counter == 0){
+				pdf.setFontStyle("normal");//set normal fonts for all next labels
+			}
+		}
+		if (data.qrCode != null){
+			pdf.addImage(generateQr(data.qrCode), 'JPEG', x + 0.1, y + 0.1, 1.1, 1.1);
+		}
+	}
+	
+	function generatePdf(){
+		try{
+			var d = new Date().toISOString().slice(0, 19).replace(/-/g, ""),
+			filename = 'equipment_labels_to_print_' + d + '.pdf', pdf = new jsPDF('p', 'in', 'letter');
+			var labels_data = JSON.parse('{!JSENCODE(labelsJson)}');
+			var shift = jQuery("select#shift option:selected").text() - 1;
+			
+			for(var i = 0; i < labels_data.length; i++){
+				var current_position = i + shift;
+				if (current_position !=0 && current_position % 14 == 0){
+					pdf.addPage();
+				}
+				addRectangle(pdf,current_position,labels_data[i]);//add label one by one
+			}
+			pdf.save(filename);
+		} catch(e){
+			alert('An error occured: ' + e);
+		}
+		return false;
+	}
+	</script>
+</apex:page>

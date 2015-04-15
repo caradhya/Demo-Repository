@@ -1,0 +1,17 @@
+<apex:page sidebar="false" showHeader="false">
+    <apex:pageBlock title="Equipment Assignment"> 
+    <apex:outputLink value="{! $Page.About_Us}"> <p> <b> Click here for the Links to Full Documentation Downloads</b> </p></apex:outputLink>
+          <apex:pageblockSection title="Overview" columns="1">
+                        <p> Each time a piece of equipment is assigned a detailed record is created.  Assignments can be made to Users, Contacts, Accounts, or Oppourtunities. Oppourtunties contain very little data so assignments to oppourtunties do not record much information.</P>
+                </apex:pageblockSection>
+                <apex:pageblockSection title="Fields" columns="1">
+                 <p> <b> Equipment Assignment Name </b>  This is a unique sequntial number created by the system.</P>
+                 <p> <b> Equipment</b>  This is a clickable link to the Equipment record. </P>
+                 <p> <b> Assigned Type</b>  This indicates if the assignment was to a; User, Contact, Account, or Oppourtunity. </P>
+                 <p> <b> Name, Address, City, State/Province, Zip/Postal Code and Country </b> These show the address information for this assignment.</P>
+                 <p> <b> Email, Phone, Mobile and Other Phone </b> These show the contact information for this assignment.</P>
+                 <p> <b> Assigned Date and Return Date </b> These show the date information for this assignment.</P>
+                 <p> <b> Note </b> At the time of assignment the user can enter a note.</P>
+                </apex:pageblockSection>
+    </apex:pageBlock>
+  </apex:page>

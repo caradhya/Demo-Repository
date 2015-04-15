@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AccountAbility_M4e_Scanner_oauth</fullName>
+    <apiAccessLevel>Unrestricted</apiAccessLevel>
+    <modules>
+        <module>
+            <label>AccountAbility_M4e_Scanner_oauth</label>
+            <moduleType>connected</moduleType>
+            <name>AccountAbility_M4e_Scanner_oauth</name>
+            <types>
+                <members>AccountAbility_M4e_Scanner_oauth_devConfig</members>
+                <name>ConnectivityDevConfigMetadata</name>
+            </types>
+            <types>
+                <members>ELTON__AccountAbility_M4e_Scanner_oauth</members>
+                <name>Module</name>
+            </types>
+            <version>24.0</version>
+        </module>
+    </modules>
+    <namespacePrefix>ELTON</namespacePrefix>
+    <version>31.0</version>
+</Package>

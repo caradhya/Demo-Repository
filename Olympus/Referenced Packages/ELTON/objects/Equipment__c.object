@@ -1,0 +1,1583 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>S1_Layout</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>S1_Layout</fullName>
+        <fields>Name</fields>
+        <fields>Short_Description__c</fields>
+        <fields>Equipment_Type__c</fields>
+        <fields>Equipment_Tag__c</fields>
+        <fields>Model__c</fields>
+        <fields>Serial_Number__c</fields>
+        <label>S1 Layout</label>
+    </compactLayouts>
+    <customHelpPage>Equipment_Help</customHelpPage>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>true</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fieldSets>
+        <fullName>CalendarView</fullName>
+        <availableFields>
+            <field>Assigned_Type__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Description__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Equipment_Type__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Manufacturer__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Model__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Pull_from_Service__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Serial_Number__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Short_Description__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <description>Calendar View (Gantt chart) of Equipments and Loans. Modify this fieldset to control which fields &amp; in what order are being displayed in the balloon shown when you hover over Equipment&apos;s description.</description>
+        <displayedFields>
+            <field>Name</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Assigned_Name__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Status__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Equipment_Tag__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>CalendarView</label>
+    </fieldSets>
+    <fieldSets>
+        <fullName>FulfillEquipmentRequest</fullName>
+        <availableFields>
+            <field>Active__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Assigned_Name__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Assigned_Type__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Collection_Status__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Equipment_Cost__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Id</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Loan_Name__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Loan_Type__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Pull_from_Service__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Serial_Number__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Warranty_Expiry_Date__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <description>Used in the &quot;Fulfill Equipment Request&quot; page to determine which columns should be shown in the table of results. Not whole content can be controlled: checkboxes column will always be first and 2 last columns will contain the calculation results.</description>
+        <displayedFields>
+            <field>Name</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Equipment_Tag__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Description__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Manufacturer__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Model__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Status__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>FulfillEquipmentRequest</label>
+    </fieldSets>
+    <fields>
+        <fullName>Active__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Active</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Assigned_Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>If the equipment is currently assigned to an Account this is the lookup relationship to that Account</description>
+        <externalId>false</externalId>
+        <inlineHelpText>If the equipment is currently assigned to an Account this is the lookup relationship to that Account</inlineHelpText>
+        <label>Assigned Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Current Equipment Assignments</relationshipLabel>
+        <relationshipName>Equipment</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Assigned_Address__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The address of the User, Account, Contact or Opportunity that the equipment is currently assigned to.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The address of the User, Account, Contact or Opportunity that the equipment is currently assigned to.</inlineHelpText>
+        <label>Assigned Address</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Assigned_City__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The city of the User, Account, Contact or Opportunity that the equipment is currently assigned to.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The city of the User, Account, Contact or Opportunity that the equipment is currently assigned to.</inlineHelpText>
+        <label>Assigned City</label>
+        <length>80</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Assigned_Contact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>If the equipment is currently assigned to a contact then this is the relationship to that contact.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>If the equipment is currently assigned to a contact then this is the relationship to that contact.</inlineHelpText>
+        <label>Assigned Contact</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Current Equipment Assignments</relationshipLabel>
+        <relationshipName>Equipment</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Assigned_Country__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The country of the User, Account, Contact or Opportunity that the equipment is assigned to.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The country of the User, Account, Contact or Opportunity that the equipment is assigned to.</inlineHelpText>
+        <label>Assigned Country</label>
+        <length>32</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Assigned_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The date that the asset was last assigned to a User, Account, Contact or Opportunity</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The date that the asset was last assigned to a User, Account, Contact or Opportunity</inlineHelpText>
+        <label>Assigned Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Assigned_Email__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The email address of the User, Account, Contact or Opportunity that the equipment is assigned to.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The email address of the User, Account, Contact or Opportunity that the equipment is assigned to.</inlineHelpText>
+        <label>Assigned Email</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Assigned_GPS_Lat__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The GPS Latitude of the current assignment</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The GPS Latitude of the current assignment</inlineHelpText>
+        <label>Assigned GPS Lat</label>
+        <precision>14</precision>
+        <required>false</required>
+        <scale>10</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Assigned_GPS_Long__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The GPS Longitude of the current assignment</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The GPS Longitude of the current assignment</inlineHelpText>
+        <label>Assigned GPS Long</label>
+        <precision>14</precision>
+        <required>false</required>
+        <scale>10</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Assigned_Mobile__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The mobile number of the User, Account, Contact or Opportunity that the equipment is currently assigned to.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The mobile number of the User, Account, Contact or Opportunity that the equipment is currently assigned to.</inlineHelpText>
+        <label>Assigned Mobile</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Assigned_Name__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The name of the User, Account, Contact or Opportunity that the equipment is currently assigned to.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The name of the User, Account, Contact or Opportunity that the equipment is currently assigned to.</inlineHelpText>
+        <label>Assigned Name</label>
+        <length>120</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Assigned_Note__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The Notes for the current assignment</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Notes for the current assignment</inlineHelpText>
+        <label>Assigned Note</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Assigned_Opportunity__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>If the equipment is currently assigned to an opportunity then this is the lookup to that opportunity.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>If the equipment is currently assigned to an opportunity then this is the lookup to that opportunity.</inlineHelpText>
+        <label>Assigned Opportunity</label>
+        <referenceTo>Opportunity</referenceTo>
+        <relationshipLabel>Current Equipment Assignments</relationshipLabel>
+        <relationshipName>Equipment</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Assigned_Other_Phone__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The Other phone number of the User, Account, Contact or Opportunity that the equipment is currently assigned to.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Other phone number of the User, Account, Contact or Opportunity that the equipment is currently assigned to.</inlineHelpText>
+        <label>Assigned Other Phone</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Assigned_Other__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>If the equipment is currently assigned to an ELTON Other then this is the relationship to that Other record</description>
+        <externalId>false</externalId>
+        <label>Assigned Other</label>
+        <referenceTo>Other__c</referenceTo>
+        <relationshipLabel>Current Equipment Assignments</relationshipLabel>
+        <relationshipName>Equipment</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Assigned_Phone__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The phone number of the User, Account, Contact or Opportunity that the equipment is currently assigned to.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The phone number of the User, Account, Contact or Opportunity that the equipment is currently assigned to.</inlineHelpText>
+        <label>Assigned Phone</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Assigned_State_Province__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The State/Province of the User, Account, Contact or Opportunity that the equipment is currently assigned to.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The State/Province of the User, Account, Contact or Opportunity that the equipment is currently assigned to.</inlineHelpText>
+        <label>Assigned State/Province</label>
+        <length>40</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Assigned_Tracking_Number__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The Carrier Tracking Number of the current assignment.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Carrier Tracking Number of the current assignment.</inlineHelpText>
+        <label>Assigned Tracking Number</label>
+        <length>32</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Assigned_Type__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Indicates whether equipment is currently assigned to a User, Account, Contact or Opportunity</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Indicates whether equipment is currently assigned to a User, Account, Contact or Opportunity</inlineHelpText>
+        <label>Assigned Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>User</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Account</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Contact</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Opportunity</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Assigned_User_Device__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The User/Date of the current assignment</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The User/Date of the current assignment</inlineHelpText>
+        <label>Assigned User/Date</label>
+        <length>80</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Assigned_User__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>If the equipment is assigned to a User then this is the lookup to that User.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>If the equipment is assigned to a User then this is the lookup to that User.</inlineHelpText>
+        <label>Assigned User</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Equipment</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Assigned_Zip_Postal_Code__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The Zip/Postal Code of the User, Account, Contact or Opportunity that the equipment is currently assigned to.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Zip/Postal Code of the User, Account, Contact or Opportunity that the equipment is currently assigned to.</inlineHelpText>
+        <label>Assigned Zip/Postal Code</label>
+        <length>20</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Bypass_New_Trigger__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Used for loading if you are dealing with assignment or loan data loading. Set this field to anything but blank/null to bypass create trigger that blanks out all loan and assign fields</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Used for loading if you are dealing with assignment or loan data loading. Set this field to anything but blank/null to bypass create trigger that blanks out all loan and assign fields</inlineHelpText>
+        <label>Bypass New Trigger</label>
+        <length>10</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Collection_Master__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>For collections (groups) of equipment that move together this field is a pointer to the master equipment for that collection.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>For collections (groups) of equipment that move together this field is a pointer to the master equipment for that collection.</inlineHelpText>
+        <label>Collection Master Equipment</label>
+        <referenceTo>Equipment__c</referenceTo>
+        <relationshipLabel>Component Equipment Records</relationshipLabel>
+        <relationshipName>Collection_Components</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Collection_Status__c</fullName>
+        <deprecated>false</deprecated>
+        <description>For collections of equipment this defines whether a product is a Master or component of a collection or &apos;none&apos; for products that are not part of a collection. This field is maintained by ELTON and cannot be modified.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>For collections of equipment this defines whether a product is a Master or component of a collection or &apos;none&apos; for products that are not part of a collection. This field is maintained by ELTON and cannot be modified.</inlineHelpText>
+        <label>Collection Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Not in Collection</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Master</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Component</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Committed_Quantity__c</fullName>
+        <deprecated>false</deprecated>
+        <description>This is a rolll-up of all committed quantities on Equipment Shipment records</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This is the total committed quantity for Consumable Equipment</inlineHelpText>
+        <label>Committed Quantity</label>
+        <summarizedField>Equipment_Shipment__c.Committed_Quantity__c</summarizedField>
+        <summaryForeignKey>Equipment_Shipment__c.Equipment__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Consumable__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>If checked this record will be consumable equipment.  These records cannot be loaned, they only create Equipment Shipment records.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Equipment records that are marked as consumable can only be Shipped, not loaned. Use of   consumable records is a separately licensed feature.</inlineHelpText>
+        <label>Consumable</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Description__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Description</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Equipment_Cost__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Equipment Cost</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Equipment_Tag__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Equipment Tag</label>
+        <length>32</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Equipment_Type__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Equipment Type</label>
+        <referenceTo>Equipment_Type__c</referenceTo>
+        <relationshipLabel>Equipment</relationshipLabel>
+        <relationshipName>Equipment</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Insurance__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Insurance</label>
+        <referenceTo>Insurance__c</referenceTo>
+        <relationshipLabel>Equipment</relationshipLabel>
+        <relationshipName>Equipment</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Loan_Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>If equipment is on loan to an account this is the lookup relationship to that account.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>If equipment is on loan to an account this is the lookup relationship to that account.</inlineHelpText>
+        <label>Loan Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Current Equipment Loans</relationshipLabel>
+        <relationshipName>EquipmentLoan</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Loan_Actual_Return_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <description>INTERNAL ONLY - used just to allow the VF page for returning assets to use during the return process.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>INTERNAL ONLY - used just to allow the VF page for returning assets to use during the return process.</inlineHelpText>
+        <label>Loan Actual Return Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Loan_Address__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The address of the User, Account, Contact, Opportunity or Other that the equipment is currently loaned to.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The address of the User, Account, Contact, Opportunity or Other that the equipment is currently loaned to.</inlineHelpText>
+        <label>Loan Address</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Loan_City__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The city of the User, Account, Contact, Opportunity or Other that the equipment is currently loaned to.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The city of the User, Account, Contact, Opportunity or Other that the equipment is currently loaned to.</inlineHelpText>
+        <label>Loan City</label>
+        <length>80</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Loan_Contact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>If equipment is on loan to a contact this is the lookup relationship to that contact.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>If equipment is on loan to a contact this is the lookup relationship to that contact.</inlineHelpText>
+        <label>Loan Contact</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Current Equipment Loans</relationshipLabel>
+        <relationshipName>EquipmentLoan</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Loan_Country__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The country to which this equipment is currently loaned.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The country to which this equipment is currently loaned.</inlineHelpText>
+        <label>Loan Country</label>
+        <length>32</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Loan_Email__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The email address of the User, Account, Contact, Opportunity or Other that the equipment is currently loaned to.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The email address of the User, Account, Contact, Opportunity or Other that the equipment is currently loaned to.</inlineHelpText>
+        <label>Loan Email</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Loan_Estimated_Return_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The Estimated Return date of the current loan if the equipment is on loan.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Estimated Return date of the current loan if the equipment is on loan.</inlineHelpText>
+        <label>Loan Estimated Return Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Loan_Extra_Date_1__c</fullName>
+        <deprecated>false</deprecated>
+        <description>An Additional Date that optionally can be set/maintained related to a given loan. See &apos;Equipment Types&apos; for controlling whether the date is used during the loan process</description>
+        <externalId>false</externalId>
+        <inlineHelpText>An Additional Date that optionally can be set/maintained related to a given loan. See &apos;Equipment Types&apos; for controlling whether the date is used during the loan process</inlineHelpText>
+        <label>Loan Extra Date 1</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Loan_Extra_Date_2__c</fullName>
+        <deprecated>false</deprecated>
+        <description>An Additional Date that optionally can be set/maintained related to a given loan. See &apos;Equipment Types&apos; for controlling whether the date is used during the loan process</description>
+        <externalId>false</externalId>
+        <inlineHelpText>An Additional Date that optionally can be set/maintained related to a given loan. See &apos;Equipment Types&apos; for controlling whether the date is used during the loan process</inlineHelpText>
+        <label>Loan Extra Date 2</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Loan_GPS_Lat__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The GPS Latitude of the current loan</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The GPS Latitude of the current loan</inlineHelpText>
+        <label>Loan GPS Lat</label>
+        <precision>14</precision>
+        <required>false</required>
+        <scale>10</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Loan_GPS_Long__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The GPS Longitude of the current loan</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The GPS Longitude of the current loan</inlineHelpText>
+        <label>Loan GPS Long</label>
+        <precision>14</precision>
+        <required>false</required>
+        <scale>10</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Loan_Mobile__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The mobile phone number of the current loanee.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The mobile phone number of the current loanee.</inlineHelpText>
+        <label>Loan Mobile</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Loan_Name__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The name of the User, Account, Contact, Opportunity or Other that the equipment is currently loaned to.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The name of the User, Account, Contact, Opportunity or Other that the equipment is currently loaned to.</inlineHelpText>
+        <label>Loan Name</label>
+        <length>120</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Loan_Note__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The Notes for the current loan</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Notes for the current loan</inlineHelpText>
+        <label>Loan Note</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Loan_Opportunity__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>If equipment is on loan to an Opportunity this is the lookup relationship to that Opportunity.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>If equipment is on loan to an Opportunity this is the lookup relationship to that Opportunity.</inlineHelpText>
+        <label>Loan Opportunity</label>
+        <referenceTo>Opportunity</referenceTo>
+        <relationshipLabel>Current Equipment Loans</relationshipLabel>
+        <relationshipName>EquipmentLoan</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Loan_Other2__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>If the equipment is currently Loaned to an ELTON Other then this is the relationship to that Other record</description>
+        <externalId>false</externalId>
+        <label>Loan Other</label>
+        <referenceTo>Other__c</referenceTo>
+        <relationshipLabel>Current Equipment Loans</relationshipLabel>
+        <relationshipName>Equipment1</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Loan_Other_Phone__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The other phone number of the User, Account, Contact, Opportunity or Other that the equipment is currently loaned to.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The other phone number of the User, Account, Contact, Opportunity or Other that the equipment is currently loaned to.</inlineHelpText>
+        <label>Loan Other Phone</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Loan_Phone__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The phone number of the User, Account, Contact, Opportunity or Other that the equipment is currently loaned to.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The phone number of the User, Account, Contact, Opportunity or Other that the equipment is currently loaned to.</inlineHelpText>
+        <label>Loan Phone</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Loan_Quantity__c</fullName>
+        <deprecated>false</deprecated>
+        <description>For Equipment that uses Quantity On Hand this is the quantity of the current loan.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>For Equipment that uses Quantity On Hand this is the quantity of the current loan.</inlineHelpText>
+        <label>Loan Quantity</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Loan_Return_Note__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The note on the return of the current loan.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The note on the return of the current loan.</inlineHelpText>
+        <label>Loan Return Note</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Loan_Start_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The date that the current loan of this equipment started (if the equipment is on loan)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The date that the current loan of this equipment started (if the equipment is on loan)</inlineHelpText>
+        <label>Loan Start Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Loan_State_Province__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The state/province of the User, Account, Contact, Opportunity or Other that the equipment is currently loaned to.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The state/province of the User, Account, Contact, Opportunity or Other that the equipment is currently loaned to.</inlineHelpText>
+        <label>Loan State/Province</label>
+        <length>40</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Loan_Tracking_Number__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The Carrier Tracking Number for the current loan.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Carrier Tracking Number for the current loan.</inlineHelpText>
+        <label>Loan Tracking Number</label>
+        <length>32</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Loan_Type__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The type of loan in effect</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The type of loan in effect</inlineHelpText>
+        <label>Loan Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>User</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Account</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Contact</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Opportunity</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Entered</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Loan_User_Device__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The User/Date of the current loan</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The User/Datee of the current loan</inlineHelpText>
+        <label>Loan User/Date</label>
+        <length>80</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Loan_User__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>If equipment is on loan to a User this is the lookup relationship to that User.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>If equipment is on loan to a User this is the lookup relationship to that User.</inlineHelpText>
+        <label>Loan User</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>EquipmentLoan</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Loan_Zip_Postal_Code__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The Zip/Postal Code of the User, Account, Contact, Opportunity or Other that the equipment is currently loaned to.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Zip/Postal Code of the User, Account, Contact, Opportunity or Other that the equipment is currently loaned to.</inlineHelpText>
+        <label>Loan Zip/Postal Code</label>
+        <length>20</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Manufacturer__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Manufacturer</label>
+        <length>25</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Model__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Model</label>
+        <length>25</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Pull_from_Service__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The last date that this equipment should be used.</description>
+        <externalId>false</externalId>
+        <label>Pull from Service</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>QR_Code_Equipment_ID__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The QR Code for this Equipment</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The QR Code for this Equipment</inlineHelpText>
+        <label>QR Code Equipment ID</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>QR_Code_Text__c</fullName>
+        <deprecated>false</deprecated>
+        <description>A text equivalent of the QR Code Equipment ID, used to allow for searching by QR Code.  Ste by a trigger.</description>
+        <externalId>true</externalId>
+        <label>QR Code</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>QR_Code__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The URL to view the QR Code for this piece of Equipment</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Click this link to view the QR Code for this piece of Equipment</inlineHelpText>
+        <label>QR Code Link</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>Quantity_on_Hand__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Quantity on Hand</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Quantity_on_Loan__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Quantity on Loan</label>
+        <summarizedField>Equipment_Loan__c.Loan_Quantity__c</summarizedField>
+        <summaryFilterItems>
+            <field>Equipment_Loan__c.Actual_Return_Date__c</field>
+            <operation>equals</operation>
+            <value></value>
+        </summaryFilterItems>
+        <summaryForeignKey>Equipment_Loan__c.Equipment__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Serial_Number__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Serial Number</label>
+        <length>32</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Short_Description__c</fullName>
+        <deprecated>false</deprecated>
+        <description>First 50 Char of Description, good for reports and Compact Layouts</description>
+        <externalId>false</externalId>
+        <label>Short Description</label>
+        <length>50</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The current status of the Equipment (optional)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The current status of the Equipment (optional)</inlineHelpText>
+        <label>Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Ready</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Needs Inspection</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Total_Labor_Cost__c</fullName>
+        <deprecated>false</deprecated>
+        <description>A summary of all Equipment Maintenance records&apos; Labor cost</description>
+        <externalId>false</externalId>
+        <inlineHelpText>A summary of all Equipment Maintenance records&apos; Labor cost</inlineHelpText>
+        <label>Total Labor Cost</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Total_Maintenance_Cost__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>Total_Labor_Cost__c +  Total_Parts_Cost__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Total Maintenance Cost</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Total_Parts_Cost__c</fullName>
+        <deprecated>false</deprecated>
+        <description>A summary of all Equipment Maintenance records&apos; Parts cost</description>
+        <externalId>false</externalId>
+        <inlineHelpText>A summary of all Equipment Maintenance records&apos; Parts cost</inlineHelpText>
+        <label>Total Parts Cost</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Use_Quantity_on_Hand__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Check this to use Quantity on Hand for this record.  This is used for non-serialized equipment for which there are multiple copies available. Equipment Pool items can be loaned but track quantities. IE: Power cords, etc.</inlineHelpText>
+        <label>Equipment Pool</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Warranty_Expiry_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Warranty Expiry Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <label>Equipment</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Description__c</columns>
+        <columns>Equipment_Type__c</columns>
+        <columns>Equipment_Tag__c</columns>
+        <columns>Serial_Number__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>My_Equipment</fullName>
+        <columns>NAME</columns>
+        <columns>Equipment_Type__c</columns>
+        <columns>Description__c</columns>
+        <columns>Equipment_Tag__c</columns>
+        <columns>Serial_Number__c</columns>
+        <filterScope>Mine</filterScope>
+        <label>My Equipment</label>
+    </listViews>
+    <nameField>
+        <displayFormat>EQ-{000000}</displayFormat>
+        <label>Equipment Name</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Equipment</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Description__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Equipment_Type__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Equipment_Tag__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Serial_Number__c</customTabListAdditionalFields>
+        <listViewButtons>Print_Equipment_Labels</listViewButtons>
+        <lookupDialogsAdditionalFields>Description__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Equipment_Type__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Equipment_Tag__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Serial_Number__c</lookupDialogsAdditionalFields>
+        <searchResultsAdditionalFields>Description__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Equipment_Type__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Equipment_Tag__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Serial_Number__c</searchResultsAdditionalFields>
+        <searchResultsCustomButtons>Print_Equipment_Labels</searchResultsCustomButtons>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <webLinks>
+        <fullName>Assign_Equipment</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Assign Equipment</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <url>/apex/ELTON__Assign_Equipment?Id={!BLANKVALUE(Equipment__c.Collection_MasterId__c, Equipment__c.Id)}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Last_Scanned_Assignment_Location</fullName>
+        <availability>online</availability>
+        <description>Google Map link</description>
+        <displayType>link</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Last Scanned Assignment Location</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>https://maps.google.com?
+q={!Equipment__c.Name}, 
+{!BLANKVALUE(
+    Equipment__c.Assigned_User_Device__c,
+    /* ELTON__Equipment__c.LastModifiedById + &apos;, &apos; + */ LEFT(TEXT(Equipment__c.LastModifiedDate), LEN(TEXT(Equipment__c.LastModifiedDate)) - 4))}@
+{!Equipment__c.Assigned_GPS_Lat__c},{!Equipment__c.Assigned_GPS_Long__c}
+&amp;iwloc=A&amp;t=m&amp;test={!Equipment__c.LastModifiedBy}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Last_Scanned_Loan_Location</fullName>
+        <availability>online</availability>
+        <description>Google Map</description>
+        <displayType>link</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Last Scanned Loan Location</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>https://maps.google.com?
+q={!Equipment__c.Name}, 
+{!BLANKVALUE(
+    Equipment__c.Loan_User_Device__c,
+    /* ELTON__Equipment__c.LastModifiedBy + &apos;, &apos; + */ LEFT(TEXT(Equipment__c.LastModifiedDate), LEN(TEXT(Equipment__c.LastModifiedDate)) - 4))}@
+{!Equipment__c.Loan_GPS_Lat__c},{!Equipment__c.Loan_GPS_Long__c}
+&amp;iwloc=A&amp;t=m</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Loan_Equipment</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Loan Equipment</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <url>/apex/ELTON__Loan_Equipment?id={!BLANKVALUE(Equipment__c.Collection_MasterId__c, Equipment__c.Id)}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Print_Equipment_Labels</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Print Equipment Labels</masterLabel>
+        <openType>sidebar</openType>
+        <page>PrintEquipmentLabel</page>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+    </webLinks>
+    <webLinks>
+        <fullName>Quantity_Adjustment</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Quantity Adjustment</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <url>/apex/ELTON__Adjust_Equipment?id={!Equipment__c.Id}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Reserve_Equipment</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Reserve Equipment</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <url>/apex/ELTON__Reserve_Equipment?id={!BLANKVALUE(Equipment__c.Collection_MasterId__c, Equipment__c.Id)}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Return_Equipment</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Return Loaned Equipment</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <url>/apex/ELTON__Return_Equipment?id={!BLANKVALUE(Equipment__c.Collection_MasterId__c, Equipment__c.Id)}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Return_Loan_Shipment</fullName>
+        <availability>online</availability>
+        <description>This button is used for someone on the loan side to record a loan_extra_date_2 and tracking number to indicate the loan has been sent back. Loan will not be returned until goods are received on the other end</description>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Return Loan Shipment</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <url>/apex/ELTON__Return_Loan_Shipment?id={!BLANKVALUE(Equipment__c.Collection_MasterId__c, Equipment__c.Id)}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Ship_Equipment</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Ship Equipment</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <url>/apex/ELTON__Ship_Equipment?id={!BLANKVALUE(Equipment__c.Collection_MasterId__c, Equipment__c.Id)}</url>
+    </webLinks>
+</CustomObject>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StaticResource xmlns="http://soap.sforce.com/2006/04/metadata">
+    <cacheControl>Public</cacheControl>
+    <contentType>application/x-zip-compressed</contentType>
+    <description>Package with resources used in mobile-friendly Visualforce pages. Download, force open as zip file and see readme.txt for details.</description>
+</StaticResource>

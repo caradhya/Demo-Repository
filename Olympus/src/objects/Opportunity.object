@@ -1,0 +1,3349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>AddInfluence</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <content>HSFE_Opportunity_NewButton_Override</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <businessProcesses>
+        <fullName>Master</fullName>
+        <isActive>true</isActive>
+        <values>
+            <fullName>Omitted</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pipeline</fullName>
+            <default>false</default>
+        </values>
+    </businessProcesses>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <enableFeeds>true</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <fields>
+        <fullName>AccountId</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Amount</fullName>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+    </fields>
+    <fields>
+        <fullName>Apttus_Approval__Approval_Status__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Approval Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>None</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Not Submitted</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Approval Required</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Pending Approval</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Rejected</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Apttus_Config2__CurrentGenerators__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Current Generator(s)</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Apttus_Config2__DeliveryInstallationStatus__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Delivery/Installation Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>In progress</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Yet to begin</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Apttus_Config2__MainCompetitors__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Main Competitor(s)</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Apttus_Config2__OrderNumber__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Order Number</label>
+        <length>8</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Apttus_Config2__TrackingNumber__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Tracking Number</label>
+        <length>12</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Apttus_Proposal__Discount_Percent__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Discount Percent</label>
+        <precision>7</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>CampaignId</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CloseDate</fullName>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+    </fields>
+    <fields>
+        <fullName>ContractId</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Description</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+    </fields>
+    <fields>
+        <fullName>ExpectedRevenue</fullName>
+        <trackTrending>false</trackTrending>
+    </fields>
+    <fields>
+        <fullName>Forecast_Amount__c</fullName>
+        <externalId>false</externalId>
+        <label>Forecast Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>HAFE_Competitor__c</fullName>
+        <externalId>false</externalId>
+        <label>Competitor</label>
+        <picklist>
+            <controllingField>HSFE_Specialty__c</controllingField>
+            <picklistValues>
+                <fullName>Pentax</fullName>
+                <controllingFieldValues>Medical</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Fuji</fullName>
+                <controllingFieldValues>Medical</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Boston Scientific</fullName>
+                <controllingFieldValues>Medical</controllingFieldValues>
+                <controllingFieldValues>Surgical</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Cook</fullName>
+                <controllingFieldValues>Medical</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>US Endoscopy</fullName>
+                <controllingFieldValues>Medical</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Given</fullName>
+                <controllingFieldValues>Medical</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Super Dimension</fullName>
+                <controllingFieldValues>Medical</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Medivators</fullName>
+                <controllingFieldValues>Medical</controllingFieldValues>
+                <controllingFieldValues>Surgical</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>IMS (3rd party scopes)</fullName>
+                <controllingFieldValues>Medical</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>ERBE</fullName>
+                <controllingFieldValues>Medical</controllingFieldValues>
+                <controllingFieldValues>Surgical</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>EndochoiceFusion</fullName>
+                <controllingFieldValues>Surgical</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Stryker</fullName>
+                <controllingFieldValues>Surgical</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Storz</fullName>
+                <controllingFieldValues>Surgical</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Wolf</fullName>
+                <controllingFieldValues>Surgical</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>J&amp;J</fullName>
+                <controllingFieldValues>Surgical</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Intuitive</fullName>
+                <controllingFieldValues>Surgical</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Covidien</fullName>
+                <controllingFieldValues>Surgical</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other</fullName>
+                <controllingFieldValues>Medical</controllingFieldValues>
+                <controllingFieldValues>Surgical</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>HSFE_Capital_Amount__c</fullName>
+        <externalId>false</externalId>
+        <label>Capital Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>HSFE_Combination_Key__c</fullName>
+        <externalId>false</externalId>
+        <formula>AccountId +  TEXT(HSFE_Specialty__c) + TEXT(HSFE_Sub_Specialty__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Combination Key</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>HSFE_Competitive_Probability__c</fullName>
+        <externalId>false</externalId>
+        <label>Competitive Probability</label>
+        <picklist>
+            <controllingField>HSFE_Product_Category__c</controllingField>
+            <picklistValues>
+                <fullName>Prefer Competition, No discussion</fullName>
+                <controllingFieldValues>Capital</controllingFieldValues>
+                <controllingFieldValues>Disposable</controllingFieldValues>
+                <controllingFieldValues>Service</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Prefer Competition, Will discuss</fullName>
+                <controllingFieldValues>Capital</controllingFieldValues>
+                <controllingFieldValues>Disposable</controllingFieldValues>
+                <controllingFieldValues>Service</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>No Preference</fullName>
+                <controllingFieldValues>Capital</controllingFieldValues>
+                <controllingFieldValues>Disposable</controllingFieldValues>
+                <controllingFieldValues>Service</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Prefers Olympus, competitive situation</fullName>
+                <controllingFieldValues>Capital</controllingFieldValues>
+                <controllingFieldValues>Disposable</controllingFieldValues>
+                <controllingFieldValues>Service</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Fully Prefers Olympus, no competition</fullName>
+                <controllingFieldValues>Capital</controllingFieldValues>
+                <controllingFieldValues>Disposable</controllingFieldValues>
+                <controllingFieldValues>Service</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>HSFE_Contract_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Contract</label>
+        <picklist>
+            <controllingField>HSFE_Product_Category__c</controllingField>
+            <picklistValues>
+                <fullName>On Contract with Competitor</fullName>
+                <controllingFieldValues>Disposable</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Not on Contract</fullName>
+                <controllingFieldValues>Disposable</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>On Contract with Olympus and Competitor</fullName>
+                <controllingFieldValues>Disposable</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Exclusive Contract with Olympus</fullName>
+                <controllingFieldValues>Disposable</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>HSFE_Disposable_Amount__c</fullName>
+        <externalId>false</externalId>
+        <label>Disposable Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>HSFE_Funding_Probability__c</fullName>
+        <externalId>false</externalId>
+        <label>Funding Probability</label>
+        <picklist>
+            <controllingField>HSFE_Product_Category__c</controllingField>
+            <picklistValues>
+                <fullName>No Budget</fullName>
+                <controllingFieldValues>Capital</controllingFieldValues>
+                <controllingFieldValues>Service</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Applied for funds Internal</fullName>
+                <controllingFieldValues>Capital</controllingFieldValues>
+                <controllingFieldValues>Service</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Applied for funds External</fullName>
+                <controllingFieldValues>Capital</controllingFieldValues>
+                <controllingFieldValues>Service</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Applied for funds External-Olympus</fullName>
+                <controllingFieldValues>Capital</controllingFieldValues>
+                <controllingFieldValues>Service</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Funds Approved/Awaiting release</fullName>
+                <controllingFieldValues>Capital</controllingFieldValues>
+                <controllingFieldValues>Service</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Fully Funded</fullName>
+                <controllingFieldValues>Capital</controllingFieldValues>
+                <controllingFieldValues>Service</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>HSFE_Lead_Origin__c</fullName>
+        <externalId>false</externalId>
+        <label>Lead Origin</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Marketing Campaign</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Trade Show</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Field Service</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Inside Sales</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MSG Portal(Website)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Service Contracts</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>FIS Contracts</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Self-Generated</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Target</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>HSFE_Lead_Sub_Origin__c</fullName>
+        <externalId>false</externalId>
+        <label>Lead Sub-Origin</label>
+        <picklist>
+            <picklistValues>
+                <fullName>AAO</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>ASCRS</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>ASA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>ARS</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>AORN</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>ASHA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>ACG</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>OR Manager</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>AAGL</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>ACS</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>ATS</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>AUA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>DDW</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>PGA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>SAGES</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>SGNA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>SGO</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>SLS</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>COSM</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Bulk Filter Promo</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>ESS</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>FSE</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>HSFE_Locked__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Used in the validation rule, Whenever the opportunity is closed won or lost it cannot be edited.</description>
+        <externalId>false</externalId>
+        <label>Locked</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>HSFE_Lost_Reason_Description__c</fullName>
+        <externalId>false</externalId>
+        <label>Lost Reason Description</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>HSFE_Lost_Reason__c</fullName>
+        <externalId>false</externalId>
+        <label>Lost Reason</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Price not competitive</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>No business need</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Product specifications unacceptable</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>HSFE_Opportunity_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>New Business</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Conversion</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Renewal</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Add On</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Upgrade</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>FIT</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>HSFE_Probability__c</fullName>
+        <externalId>false</externalId>
+        <formula>if(ISPICKVAL(HSFE_Sales_Stage__c,&apos;Closed Won&apos;),100*0.01 ,
+if(ISPICKVAL(HSFE_Sales_Stage__c,&apos;Closed Lost&apos;),00,
+if( (ISPICKVAL(HSFE_Product_Category__c,&apos;Capital&apos;) || (ISPICKVAL(HSFE_Product_Category__c,&apos;Service&apos;))),
+(((
+if(ISPICKVAL(HSFE_Sales_Stage__c,&apos;Universe&apos;),10, 
+if(ISPICKVAL(HSFE_Sales_Stage__c,&apos;Above Funnel&apos;),25,
+if(ISPICKVAL(HSFE_Sales_Stage__c,&apos;In Funnel&apos;),60,
+if(ISPICKVAL(HSFE_Sales_Stage__c,&apos;Best Few&apos;),85, 
+if(ISPICKVAL(HSFE_Sales_Stage__c,&apos;Verbally Accepted&apos;), 99 ,00))))) 
++
+if(ISPICKVAL(HSFE_Funding_Probability__c,&apos;No Budget&apos;),0, 
+if(ISPICKVAL(HSFE_Funding_Probability__c,&apos;Applied for funds Internal&apos;),25,
+if(ISPICKVAL(HSFE_Funding_Probability__c,&apos;Applied for funds External&apos;),25,
+if(ISPICKVAL(HSFE_Funding_Probability__c,&apos;Applied for funds External-Olympus&apos;),50, 
+if(ISPICKVAL(HSFE_Funding_Probability__c,&apos;Funds Approved/Awaiting release&apos;),85, 
+if(ISPICKVAL(HSFE_Funding_Probability__c,&apos;Fully Funded&apos;), 99 ,00))))))
++ 
+(if(ISPICKVAL(HSFE_Competitive_Probability__c,&apos;Prefer Competition, No discussion&apos;),0, 
+if(ISPICKVAL(HSFE_Competitive_Probability__c,&apos;Prefer Competition, Will discuss&apos;),25,
+if(ISPICKVAL(HSFE_Competitive_Probability__c,&apos;No Preference&apos;),50, 
+if(ISPICKVAL(HSFE_Competitive_Probability__c,&apos;Prefers Olympus, competitive situation&apos;),75, 
+if(ISPICKVAL(HSFE_Competitive_Probability__c,&apos;Fully Prefers Olympus, no competition&apos;),95,0))))))
+)
+/3)*0.01),
+if(ISPICKVAL(HSFE_Product_Category__c,&apos;Disposable&apos;),
+(((
+(if(ISPICKVAL(HSFE_Sales_Stage__c,&apos;Universe&apos;),10,
+if(ISPICKVAL(HSFE_Sales_Stage__c,&apos;Above Funnel&apos;),25,
+if(ISPICKVAL(HSFE_Sales_Stage__c,&apos;In Funnel&apos;),60,
+if(ISPICKVAL(HSFE_Sales_Stage__c,&apos;Best Few&apos;),85, 
+if(ISPICKVAL(HSFE_Sales_Stage__c,&apos;Verbally Accepted&apos;),99,00))))))
++
+(if(ISPICKVAL(HSFE_Contract_Type__c,&apos;On Contract with Competitor&apos;),0, 
+if(ISPICKVAL(HSFE_Contract_Type__c,&apos;Not on Contract&apos;),50, 
+if(ISPICKVAL(HSFE_Contract_Type__c,&apos;On Contract with Olympus and Competitor&apos;),85, 
+if(ISPICKVAL(HSFE_Contract_Type__c,&apos;Exclusive Contract with Olympus&apos;), 99 ,00)))))
++
+(if(ISPICKVAL(HSFE_Competitive_Probability__c,&apos;Prefer Competition, No discussion&apos;),0, 
+if(ISPICKVAL(HSFE_Competitive_Probability__c,&apos;Prefer Competition, Will discuss&apos;),25,
+if(ISPICKVAL(HSFE_Competitive_Probability__c,&apos;No Preference&apos;),50, 
+if(ISPICKVAL(HSFE_Competitive_Probability__c,&apos;Prefers Olympus, competitive situation&apos;),75, 
+if(ISPICKVAL(HSFE_Competitive_Probability__c,&apos;Fully Prefers Olympus, no competition&apos;),95,0))))))
+)/3)*0.01),0)
+)
+)
+)</formula>
+        <label>Probability (%)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>HSFE_Product_Category__c</fullName>
+        <externalId>false</externalId>
+        <label>Product Category</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Capital</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Disposable</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Service</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>HSFE_Purchase_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Purchase Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Bulk</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Run Rate</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>HSFE_Quote_Accepted__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Quote Accepted</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>HSFE_Run_Rate_Term_Months__c</fullName>
+        <externalId>false</externalId>
+        <label>Run Rate Term (Months)</label>
+        <precision>16</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>HSFE_Sales_Stage__c</fullName>
+        <externalId>false</externalId>
+        <label>Sales Stage</label>
+        <picklist>
+            <controllingField>HSFE_Product_Category__c</controllingField>
+            <picklistValues>
+                <fullName>Universe</fullName>
+                <controllingFieldValues>Capital</controllingFieldValues>
+                <controllingFieldValues>Disposable</controllingFieldValues>
+                <controllingFieldValues>Service</controllingFieldValues>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Above Funnel</fullName>
+                <controllingFieldValues>Capital</controllingFieldValues>
+                <controllingFieldValues>Disposable</controllingFieldValues>
+                <controllingFieldValues>Service</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>In Funnel</fullName>
+                <controllingFieldValues>Capital</controllingFieldValues>
+                <controllingFieldValues>Disposable</controllingFieldValues>
+                <controllingFieldValues>Service</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Best Few</fullName>
+                <controllingFieldValues>Capital</controllingFieldValues>
+                <controllingFieldValues>Disposable</controllingFieldValues>
+                <controllingFieldValues>Service</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Verbally Accepted</fullName>
+                <controllingFieldValues>Capital</controllingFieldValues>
+                <controllingFieldValues>Disposable</controllingFieldValues>
+                <controllingFieldValues>Service</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Closed Won</fullName>
+                <controllingFieldValues>Capital</controllingFieldValues>
+                <controllingFieldValues>Disposable</controllingFieldValues>
+                <controllingFieldValues>Service</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Closed Lost</fullName>
+                <controllingFieldValues>Capital</controllingFieldValues>
+                <controllingFieldValues>Disposable</controllingFieldValues>
+                <controllingFieldValues>Service</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>HSFE_Service_Amount__c</fullName>
+        <externalId>false</externalId>
+        <label>Service Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>HSFE_Solution_Category__c</fullName>
+        <externalId>false</externalId>
+        <label>Solution Category</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Standard</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Integration</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>HSFE_Specialty__c</fullName>
+        <externalId>false</externalId>
+        <label>Specialty</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Medical</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Surgical</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>HSFE_Strategy__c</fullName>
+        <externalId>false</externalId>
+        <label>Strategy</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>HSFE_Sub_Specialty__c</fullName>
+        <externalId>false</externalId>
+        <label>Sub Specialty</label>
+        <picklist>
+            <controllingField>HSFE_Specialty__c</controllingField>
+            <picklistValues>
+                <fullName>Endoscopy</fullName>
+                <controllingFieldValues>Medical</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Surgical Endoscopy</fullName>
+                <controllingFieldValues>Surgical</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>ENT</fullName>
+                <controllingFieldValues>Surgical</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Energy</fullName>
+                <controllingFieldValues>Surgical</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Urology/Gynecology</fullName>
+                <controllingFieldValues>Surgical</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>EndoCapsule</fullName>
+                <controllingFieldValues>Medical</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Medical IT</fullName>
+                <controllingFieldValues>Medical</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Surgical AVI</fullName>
+                <controllingFieldValues>Surgical</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>HSFE_Territory__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Territory</label>
+        <referenceTo>HSEF_Territory__c</referenceTo>
+        <relationshipLabel>Opportunities</relationshipLabel>
+        <relationshipName>Opportunities</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>IsPrivate</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+    </fields>
+    <fields>
+        <fullName>LeadSource</fullName>
+        <picklist>
+            <picklistValues>
+                <fullName>Marketing Campaign</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Trade Show</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Field Service</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Inside Sales</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MSG Portal(Website)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Service Contracts</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>FIS Contracts</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Self-Generated</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Name</fullName>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+    </fields>
+    <fields>
+        <fullName>NextStep</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+    </fields>
+    <fields>
+        <fullName>OwnerId</fullName>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Primary_Product_c__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Primary Product</label>
+        <referenceTo>Product2</referenceTo>
+        <relationshipLabel>Opportunities</relationshipLabel>
+        <relationshipName>Opportunities</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Probability</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+    </fields>
+    <fields>
+        <fullName>StageName</fullName>
+        <picklist>
+            <picklistValues>
+                <fullName>Omitted</fullName>
+                <closed>false</closed>
+                <default>false</default>
+                <forecastCategory>Omitted</forecastCategory>
+                <probability>0</probability>
+                <won>false</won>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Pipeline</fullName>
+                <closed>false</closed>
+                <default>false</default>
+                <forecastCategory>Pipeline</forecastCategory>
+                <probability>100</probability>
+                <won>false</won>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>SyncedQuoteId</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>TotalOpportunityQuantity</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+    </fields>
+    <fields>
+        <fullName>Type</fullName>
+        <picklist>
+            <picklistValues>
+                <fullName>Existing Business</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>New Business</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <listViews>
+        <fullName>All_Open_Opportunities</fullName>
+        <columns>OPPORTUNITY.NAME</columns>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>HSFE_Sub_Specialty__c</columns>
+        <columns>OPPORTUNITY.CLOSE_DATE</columns>
+        <columns>HSFE_Sales_Stage__c</columns>
+        <columns>HSFE_Funding_Probability__c</columns>
+        <columns>HSFE_Competitive_Probability__c</columns>
+        <columns>HSFE_Contract_Type__c</columns>
+        <columns>HSFE_Strategy__c</columns>
+        <columns>HSFE_Probability__c</columns>
+        <columns>OPPORTUNITY.AMOUNT</columns>
+        <columns>HSFE_Capital_Amount__c</columns>
+        <columns>HSFE_Disposable_Amount__c</columns>
+        <columns>HSFE_Service_Amount__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>HSFE_Sales_Stage__c</field>
+            <operation>notEqual</operation>
+            <value>Closed Won,Closed Lost</value>
+        </filters>
+        <filters>
+            <field>OPPORTUNITY.RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Opportunity.Customer</value>
+        </filters>
+        <label>All Open Opportunities</label>
+    </listViews>
+    <listViews>
+        <fullName>All_Opportunities</fullName>
+        <columns>OPPORTUNITY.NAME</columns>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>HSFE_Sub_Specialty__c</columns>
+        <columns>OPPORTUNITY.CLOSE_DATE</columns>
+        <columns>HSFE_Sales_Stage__c</columns>
+        <columns>HSFE_Funding_Probability__c</columns>
+        <columns>HSFE_Competitive_Probability__c</columns>
+        <columns>HSFE_Contract_Type__c</columns>
+        <columns>HSFE_Strategy__c</columns>
+        <columns>HSFE_Probability__c</columns>
+        <columns>OPPORTUNITY.AMOUNT</columns>
+        <columns>HSFE_Capital_Amount__c</columns>
+        <columns>HSFE_Disposable_Amount__c</columns>
+        <columns>HSFE_Service_Amount__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>OPPORTUNITY.RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Opportunity.Customer</value>
+        </filters>
+        <label>All Opportunities</label>
+    </listViews>
+    <listViews>
+        <fullName>My_ClosingNextMonth</fullName>
+        <columns>OPPORTUNITY.NAME</columns>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>HSFE_Sub_Specialty__c</columns>
+        <columns>OPPORTUNITY.CLOSE_DATE</columns>
+        <columns>HSFE_Sales_Stage__c</columns>
+        <columns>HSFE_Funding_Probability__c</columns>
+        <columns>HSFE_Competitive_Probability__c</columns>
+        <columns>HSFE_Contract_Type__c</columns>
+        <columns>HSFE_Strategy__c</columns>
+        <columns>HSFE_Probability__c</columns>
+        <columns>OPPORTUNITY.AMOUNT</columns>
+        <columns>HSFE_Capital_Amount__c</columns>
+        <columns>HSFE_Disposable_Amount__c</columns>
+        <columns>HSFE_Service_Amount__c</columns>
+        <filterScope>Team</filterScope>
+        <filters>
+            <field>OPPORTUNITY.CLOSED</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <filters>
+            <field>OPPORTUNITY.CLOSE_DATE</field>
+            <operation>equals</operation>
+            <value>NEXT_MONTH</value>
+        </filters>
+        <filters>
+            <field>OPPORTUNITY.RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Opportunity.Customer</value>
+        </filters>
+        <label>My Closing Next Month</label>
+    </listViews>
+    <listViews>
+        <fullName>My_ClosingThisMonth</fullName>
+        <columns>OPPORTUNITY.NAME</columns>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>HSFE_Sub_Specialty__c</columns>
+        <columns>OPPORTUNITY.CLOSE_DATE</columns>
+        <columns>HSFE_Sales_Stage__c</columns>
+        <columns>HSFE_Funding_Probability__c</columns>
+        <columns>HSFE_Competitive_Probability__c</columns>
+        <columns>HSFE_Contract_Type__c</columns>
+        <columns>HSFE_Strategy__c</columns>
+        <columns>HSFE_Probability__c</columns>
+        <columns>OPPORTUNITY.AMOUNT</columns>
+        <columns>HSFE_Capital_Amount__c</columns>
+        <columns>HSFE_Disposable_Amount__c</columns>
+        <columns>HSFE_Service_Amount__c</columns>
+        <filterScope>Team</filterScope>
+        <filters>
+            <field>OPPORTUNITY.CLOSED</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <filters>
+            <field>OPPORTUNITY.CLOSE_DATE</field>
+            <operation>equals</operation>
+            <value>THIS_MONTH</value>
+        </filters>
+        <filters>
+            <field>OPPORTUNITY.RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Opportunity.Customer</value>
+        </filters>
+        <label>My Closing This Month</label>
+    </listViews>
+    <listViews>
+        <fullName>My_NewThisWeek</fullName>
+        <columns>OPPORTUNITY.NAME</columns>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>HSFE_Sub_Specialty__c</columns>
+        <columns>OPPORTUNITY.CLOSE_DATE</columns>
+        <columns>HSFE_Sales_Stage__c</columns>
+        <columns>HSFE_Funding_Probability__c</columns>
+        <columns>HSFE_Competitive_Probability__c</columns>
+        <columns>HSFE_Contract_Type__c</columns>
+        <columns>HSFE_Strategy__c</columns>
+        <columns>HSFE_Probability__c</columns>
+        <columns>OPPORTUNITY.AMOUNT</columns>
+        <columns>HSFE_Capital_Amount__c</columns>
+        <columns>HSFE_Disposable_Amount__c</columns>
+        <columns>HSFE_Service_Amount__c</columns>
+        <filterScope>Team</filterScope>
+        <filters>
+            <field>OPPORTUNITY.CREATED_DATE</field>
+            <operation>equals</operation>
+            <value>THIS_WEEK</value>
+        </filters>
+        <filters>
+            <field>OPPORTUNITY.RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Opportunity.Customer</value>
+        </filters>
+        <label>My New This Week</label>
+    </listViews>
+    <listViews>
+        <fullName>My_Open_Opportunities</fullName>
+        <columns>OPPORTUNITY.NAME</columns>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>HSFE_Sub_Specialty__c</columns>
+        <columns>OPPORTUNITY.CLOSE_DATE</columns>
+        <columns>HSFE_Sales_Stage__c</columns>
+        <columns>HSFE_Funding_Probability__c</columns>
+        <columns>HSFE_Competitive_Probability__c</columns>
+        <columns>HSFE_Contract_Type__c</columns>
+        <columns>HSFE_Strategy__c</columns>
+        <columns>HSFE_Probability__c</columns>
+        <columns>OPPORTUNITY.AMOUNT</columns>
+        <columns>HSFE_Capital_Amount__c</columns>
+        <columns>HSFE_Disposable_Amount__c</columns>
+        <columns>HSFE_Service_Amount__c</columns>
+        <filterScope>Team</filterScope>
+        <filters>
+            <field>HSFE_Sales_Stage__c</field>
+            <operation>notEqual</operation>
+            <value>Closed Won,Closed Lost</value>
+        </filters>
+        <filters>
+            <field>OPPORTUNITY.RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Opportunity.Customer</value>
+        </filters>
+        <label>My Open Opportunities</label>
+    </listViews>
+    <listViews>
+        <fullName>My_Open_Opportunities_Capital</fullName>
+        <columns>OPPORTUNITY.NAME</columns>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>HSFE_Sub_Specialty__c</columns>
+        <columns>OPPORTUNITY.CLOSE_DATE</columns>
+        <columns>HSFE_Sales_Stage__c</columns>
+        <columns>HSFE_Funding_Probability__c</columns>
+        <columns>HSFE_Competitive_Probability__c</columns>
+        <columns>HSFE_Strategy__c</columns>
+        <columns>HSFE_Probability__c</columns>
+        <columns>OPPORTUNITY.AMOUNT</columns>
+        <columns>HSFE_Capital_Amount__c</columns>
+        <columns>HSFE_Disposable_Amount__c</columns>
+        <columns>HSFE_Service_Amount__c</columns>
+        <filterScope>Team</filterScope>
+        <filters>
+            <field>OPPORTUNITY.STAGE_NAME</field>
+            <operation>notEqual</operation>
+            <value>Closed Won,Closed Lost</value>
+        </filters>
+        <filters>
+            <field>HSFE_Product_Category__c</field>
+            <operation>equals</operation>
+            <value>Capital</value>
+        </filters>
+        <filters>
+            <field>OPPORTUNITY.RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Opportunity.Customer</value>
+        </filters>
+        <label>My Open Opportunities--Capital</label>
+    </listViews>
+    <listViews>
+        <fullName>My_Open_Opportunities_Disposable</fullName>
+        <columns>OPPORTUNITY.NAME</columns>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>HSFE_Sub_Specialty__c</columns>
+        <columns>OPPORTUNITY.CLOSE_DATE</columns>
+        <columns>HSFE_Sales_Stage__c</columns>
+        <columns>HSFE_Contract_Type__c</columns>
+        <columns>HSFE_Competitive_Probability__c</columns>
+        <columns>HSFE_Strategy__c</columns>
+        <columns>HSFE_Probability__c</columns>
+        <columns>OPPORTUNITY.AMOUNT</columns>
+        <columns>HSFE_Capital_Amount__c</columns>
+        <columns>HSFE_Disposable_Amount__c</columns>
+        <columns>HSFE_Service_Amount__c</columns>
+        <filterScope>Team</filterScope>
+        <filters>
+            <field>OPPORTUNITY.STAGE_NAME</field>
+            <operation>notEqual</operation>
+            <value>Closed Won,Closed Lost</value>
+        </filters>
+        <filters>
+            <field>HSFE_Product_Category__c</field>
+            <operation>equals</operation>
+            <value>Disposable</value>
+        </filters>
+        <filters>
+            <field>OPPORTUNITY.RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Opportunity.Customer</value>
+        </filters>
+        <label>My Open Opportunities--Disposable</label>
+    </listViews>
+    <listViews>
+        <fullName>My_Opportunities</fullName>
+        <columns>OPPORTUNITY.NAME</columns>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>HSFE_Sub_Specialty__c</columns>
+        <columns>OPPORTUNITY.CLOSE_DATE</columns>
+        <columns>HSFE_Sales_Stage__c</columns>
+        <columns>HSFE_Funding_Probability__c</columns>
+        <columns>HSFE_Competitive_Probability__c</columns>
+        <columns>HSFE_Contract_Type__c</columns>
+        <columns>HSFE_Strategy__c</columns>
+        <columns>HSFE_Probability__c</columns>
+        <columns>OPPORTUNITY.AMOUNT</columns>
+        <columns>HSFE_Capital_Amount__c</columns>
+        <columns>HSFE_Disposable_Amount__c</columns>
+        <columns>HSFE_Service_Amount__c</columns>
+        <filterScope>Team</filterScope>
+        <filters>
+            <field>OPPORTUNITY.RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Opportunity.Customer</value>
+        </filters>
+        <label>My Opportunities</label>
+    </listViews>
+    <listViews>
+        <fullName>My_Won</fullName>
+        <columns>OPPORTUNITY.NAME</columns>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>HSFE_Sub_Specialty__c</columns>
+        <columns>OPPORTUNITY.CLOSE_DATE</columns>
+        <columns>HSFE_Sales_Stage__c</columns>
+        <columns>HSFE_Funding_Probability__c</columns>
+        <columns>HSFE_Competitive_Probability__c</columns>
+        <columns>HSFE_Contract_Type__c</columns>
+        <columns>HSFE_Strategy__c</columns>
+        <columns>HSFE_Probability__c</columns>
+        <columns>OPPORTUNITY.AMOUNT</columns>
+        <columns>HSFE_Capital_Amount__c</columns>
+        <columns>HSFE_Disposable_Amount__c</columns>
+        <columns>HSFE_Service_Amount__c</columns>
+        <filterScope>Team</filterScope>
+        <filters>
+            <field>OPPORTUNITY.WON</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>OPPORTUNITY.CLOSED</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>OPPORTUNITY.RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Opportunity.Customer</value>
+        </filters>
+        <label>My Won</label>
+    </listViews>
+    <recordTypeTrackFeedHistory>false</recordTypeTrackFeedHistory>
+    <recordTypes>
+        <fullName>Customer</fullName>
+        <active>true</active>
+        <businessProcess>Master</businessProcess>
+        <label>Customer</label>
+        <picklistValues>
+            <picklist>Apttus_Approval__Approval_Status__c</picklist>
+            <values>
+                <fullName>Approval Required</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>None</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Not Submitted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending Approval</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rejected</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Apttus_Config2__DeliveryInstallationStatus__c</picklist>
+            <values>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In progress</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yet to begin</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>ForecastCategoryName</picklist>
+            <values>
+                <fullName>Best Case</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Closed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Commit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Omitted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pipeline</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HAFE_Competitor__c</picklist>
+            <values>
+                <fullName>Boston Scientific</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cook</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Covidien</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ERBE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EndochoiceFusion</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fuji</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Given</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IMS %283rd party scopes%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intuitive</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>J%26J</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Medivators</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pentax</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Storz</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Stryker</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Super Dimension</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>US Endoscopy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Wolf</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HSFE_Competitive_Probability__c</picklist>
+            <values>
+                <fullName>Fully Prefers Olympus%2C no competition</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No Preference</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prefer Competition%2C No discussion</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prefer Competition%2C Will discuss</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prefers Olympus%2C competitive situation</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HSFE_Contract_Type__c</picklist>
+            <values>
+                <fullName>Exclusive Contract with Olympus</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Not on Contract</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>On Contract with Competitor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>On Contract with Olympus and Competitor</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HSFE_Funding_Probability__c</picklist>
+            <values>
+                <fullName>Applied for funds External</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Applied for funds External-Olympus</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Applied for funds Internal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fully Funded</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Funds Approved%2FAwaiting release</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No Budget</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HSFE_Lead_Origin__c</picklist>
+            <values>
+                <fullName>FIS Contracts</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Field Service</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Inside Sales</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MSG Portal%28Website%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Marketing Campaign</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Self-Generated</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Service Contracts</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Target</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Trade Show</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HSFE_Lead_Sub_Origin__c</picklist>
+            <values>
+                <fullName>AAGL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AAO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ACG</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ACS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AORN</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ARS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASCRS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASHA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ATS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AUA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Bulk Filter Promo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>COSM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DDW</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ESS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FSE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OR Manager</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PGA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SAGES</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SGNA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SGO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SLS</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HSFE_Lost_Reason__c</picklist>
+            <values>
+                <fullName>No business need</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Price not competitive</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product specifications unacceptable</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HSFE_Opportunity_Type__c</picklist>
+            <values>
+                <fullName>Add On</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Conversion</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FIT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New Business</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Renewal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Upgrade</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HSFE_Product_Category__c</picklist>
+            <values>
+                <fullName>Capital</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Disposable</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HSFE_Purchase_Type__c</picklist>
+            <values>
+                <fullName>Bulk</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Run Rate</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HSFE_Sales_Stage__c</picklist>
+            <values>
+                <fullName>Above Funnel</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Best Few</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Closed Lost</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Closed Won</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In Funnel</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Universe</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Verbally Accepted</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HSFE_Solution_Category__c</picklist>
+            <values>
+                <fullName>Integration</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Standard</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HSFE_Specialty__c</picklist>
+            <values>
+                <fullName>Medical</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Surgical</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HSFE_Sub_Specialty__c</picklist>
+            <values>
+                <fullName>ENT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EndoCapsule</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Endoscopy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Energy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Medical IT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Surgical AVI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Surgical Endoscopy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Urology%2FGynecology</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>LeadSource</picklist>
+            <values>
+                <fullName>FIS Contracts</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Field Service</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Inside Sales</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MSG Portal%28Website%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Marketing Campaign</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Self-Generated</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service Contracts</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Trade Show</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type</picklist>
+            <values>
+                <fullName>Existing Business</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New Business</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Customer_Read_Only</fullName>
+        <active>true</active>
+        <businessProcess>Master</businessProcess>
+        <label>Customer Read Only</label>
+        <picklistValues>
+            <picklist>Apttus_Approval__Approval_Status__c</picklist>
+            <values>
+                <fullName>Approval Required</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>None</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Not Submitted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending Approval</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rejected</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Apttus_Config2__DeliveryInstallationStatus__c</picklist>
+            <values>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In progress</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yet to begin</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>ForecastCategoryName</picklist>
+            <values>
+                <fullName>Best Case</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Closed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Commit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Omitted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pipeline</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HAFE_Competitor__c</picklist>
+            <values>
+                <fullName>Boston Scientific</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cook</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Covidien</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ERBE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EndochoiceFusion</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fuji</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Given</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IMS %283rd party scopes%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intuitive</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>J%26J</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Medivators</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pentax</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Storz</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Stryker</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Super Dimension</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>US Endoscopy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Wolf</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HSFE_Competitive_Probability__c</picklist>
+            <values>
+                <fullName>Fully Prefers Olympus%2C no competition</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No Preference</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prefer Competition%2C No discussion</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prefer Competition%2C Will discuss</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prefers Olympus%2C competitive situation</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HSFE_Contract_Type__c</picklist>
+            <values>
+                <fullName>Exclusive Contract with Olympus</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Not on Contract</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>On Contract with Competitor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>On Contract with Olympus and Competitor</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HSFE_Funding_Probability__c</picklist>
+            <values>
+                <fullName>Applied for funds External</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Applied for funds External-Olympus</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Applied for funds Internal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fully Funded</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Funds Approved%2FAwaiting release</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No Budget</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HSFE_Lead_Origin__c</picklist>
+            <values>
+                <fullName>FIS Contracts</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Field Service</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Inside Sales</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MSG Portal%28Website%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Marketing Campaign</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Self-Generated</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Service Contracts</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Target</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Trade Show</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HSFE_Lead_Sub_Origin__c</picklist>
+            <values>
+                <fullName>AAGL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AAO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ACG</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ACS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AORN</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ARS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASCRS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASHA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ATS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AUA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Bulk Filter Promo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>COSM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DDW</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ESS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FSE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OR Manager</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PGA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SAGES</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SGNA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SGO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SLS</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HSFE_Lost_Reason__c</picklist>
+            <values>
+                <fullName>No business need</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Price not competitive</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product specifications unacceptable</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HSFE_Opportunity_Type__c</picklist>
+            <values>
+                <fullName>Add On</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Conversion</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FIT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New Business</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Renewal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Upgrade</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HSFE_Product_Category__c</picklist>
+            <values>
+                <fullName>Capital</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Disposable</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HSFE_Purchase_Type__c</picklist>
+            <values>
+                <fullName>Bulk</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Run Rate</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HSFE_Sales_Stage__c</picklist>
+            <values>
+                <fullName>Above Funnel</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Best Few</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Closed Lost</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Closed Won</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In Funnel</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Universe</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Verbally Accepted</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HSFE_Solution_Category__c</picklist>
+            <values>
+                <fullName>Integration</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Standard</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HSFE_Specialty__c</picklist>
+            <values>
+                <fullName>Medical</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Surgical</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HSFE_Sub_Specialty__c</picklist>
+            <values>
+                <fullName>ENT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EndoCapsule</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Endoscopy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Energy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Medical IT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Surgical AVI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Surgical Endoscopy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Urology%2FGynecology</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>LeadSource</picklist>
+            <values>
+                <fullName>FIS Contracts</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Field Service</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Inside Sales</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MSG Portal%28Website%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Marketing Campaign</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Self-Generated</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service Contracts</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Trade Show</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type</picklist>
+            <values>
+                <fullName>Existing Business</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New Business</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>FIT</fullName>
+        <active>true</active>
+        <businessProcess>Master</businessProcess>
+        <label>FIT</label>
+        <picklistValues>
+            <picklist>Apttus_Approval__Approval_Status__c</picklist>
+            <values>
+                <fullName>Approval Required</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>None</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Not Submitted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending Approval</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rejected</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Apttus_Config2__DeliveryInstallationStatus__c</picklist>
+            <values>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In progress</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yet to begin</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>ForecastCategoryName</picklist>
+            <values>
+                <fullName>Best Case</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Closed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Commit</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Omitted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pipeline</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HAFE_Competitor__c</picklist>
+            <values>
+                <fullName>Boston Scientific</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cook</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Covidien</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ERBE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EndochoiceFusion</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fuji</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Given</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IMS %283rd party scopes%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intuitive</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>J%26J</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Medivators</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pentax</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Storz</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Stryker</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Super Dimension</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>US Endoscopy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Wolf</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HSFE_Competitive_Probability__c</picklist>
+            <values>
+                <fullName>Fully Prefers Olympus%2C no competition</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No Preference</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prefer Competition%2C No discussion</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prefer Competition%2C Will discuss</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prefers Olympus%2C competitive situation</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HSFE_Contract_Type__c</picklist>
+            <values>
+                <fullName>Exclusive Contract with Olympus</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Not on Contract</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>On Contract with Competitor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>On Contract with Olympus and Competitor</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HSFE_Funding_Probability__c</picklist>
+            <values>
+                <fullName>Applied for funds External</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Applied for funds External-Olympus</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Applied for funds Internal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fully Funded</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Funds Approved%2FAwaiting release</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No Budget</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HSFE_Lead_Origin__c</picklist>
+            <values>
+                <fullName>FIS Contracts</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Field Service</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Inside Sales</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MSG Portal%28Website%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Marketing Campaign</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Self-Generated</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Service Contracts</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Target</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Trade Show</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HSFE_Lead_Sub_Origin__c</picklist>
+            <values>
+                <fullName>AAGL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AAO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ACG</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ACS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AORN</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ARS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASCRS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASHA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ATS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AUA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Bulk Filter Promo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>COSM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DDW</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ESS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FSE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OR Manager</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PGA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SAGES</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SGNA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SGO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SLS</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HSFE_Lost_Reason__c</picklist>
+            <values>
+                <fullName>No business need</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Price not competitive</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product specifications unacceptable</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HSFE_Opportunity_Type__c</picklist>
+            <values>
+                <fullName>Add On</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Conversion</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FIT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New Business</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Renewal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Upgrade</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HSFE_Product_Category__c</picklist>
+            <values>
+                <fullName>Capital</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Disposable</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HSFE_Purchase_Type__c</picklist>
+            <values>
+                <fullName>Bulk</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Run Rate</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HSFE_Sales_Stage__c</picklist>
+            <values>
+                <fullName>Above Funnel</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Best Few</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Closed Lost</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Closed Won</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In Funnel</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Universe</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Verbally Accepted</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HSFE_Solution_Category__c</picklist>
+            <values>
+                <fullName>Integration</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Standard</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HSFE_Specialty__c</picklist>
+            <values>
+                <fullName>Medical</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Surgical</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>HSFE_Sub_Specialty__c</picklist>
+            <values>
+                <fullName>ENT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EndoCapsule</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Endoscopy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Energy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Medical IT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Surgical AVI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Surgical Endoscopy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Urology%2FGynecology</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>LeadSource</picklist>
+            <values>
+                <fullName>FIS Contracts</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Field Service</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Inside Sales</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MSG Portal%28Website%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Marketing Campaign</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Self-Generated</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service Contracts</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Trade Show</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type</picklist>
+            <values>
+                <fullName>Existing Business</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New Business</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts>
+        <customTabListAdditionalFields>OPPORTUNITY.NAME</customTabListAdditionalFields>
+        <customTabListAdditionalFields>ACCOUNT.NAME</customTabListAdditionalFields>
+        <customTabListAdditionalFields>OPPORTUNITY.CLOSE_DATE</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>OPPORTUNITY.NAME</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>ACCOUNT.NAME</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>ACCOUNT.SITE</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>OPPORTUNITY.NAME</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>ACCOUNT.NAME</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>ACCOUNT.SITE</lookupPhoneDialogsAdditionalFields>
+        <searchResultsAdditionalFields>OPPORTUNITY.NAME</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>ACCOUNT.NAME</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>ACCOUNT.SITE</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>OPPORTUNITY.STAGE_NAME</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>OPPORTUNITY.CLOSE_DATE</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CORE.USERS.ALIAS</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>Private</sharingModel>
+    <validationRules>
+        <fullName>Enter_lost_reason</fullName>
+        <active>true</active>
+        <description>If the Lost Reason is other then Lost reason description need to be entered</description>
+        <errorConditionFormula>ISPICKVAL(HSFE_Sales_Stage__c,&apos;Closed Lost&apos;) &amp;&amp; ISBLANK(   Text(HSFE_Lost_Reason__c))</errorConditionFormula>
+        <errorMessage>Lost Reason is required if Opportunity is Closed Lost.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Enter_lost_reason_description</fullName>
+        <active>true</active>
+        <description>If the Lost Reason is other then Lost reason description is required</description>
+        <errorConditionFormula>ISPICKVAL(  HSFE_Lost_Reason__c ,&apos;Other&apos;) &amp;&amp; ISBLANK(    HSFE_Lost_Reason_Description__c )</errorConditionFormula>
+        <errorMessage>Please enter the Close Reason Description since you have selected “Other” as the Close Reason</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Lock_Opportunity_if_Closed</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(PRIORVALUE( HSFE_Locked__c ),NOT( $Profile.Name=&quot;System Administrator&quot;),NOT( $Profile.Name=&quot;Support Admin&quot;))</errorConditionFormula>
+        <errorMessage>Opportunity cannot be edited once it is Closed, please click Cancel</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Make_Run_Rate_Term_required</fullName>
+        <active>true</active>
+        <description>If purchase type is run rate, the Run Rate Term(Months) field should be mandatory.</description>
+        <errorConditionFormula>ISPICKVAL( HSFE_Purchase_Type__c ,&apos;Run Rate&apos;)&amp;&amp; ( ISNULL(HSFE_Run_Rate_Term_Months__c) || (HSFE_Run_Rate_Term_Months__c == 0) || (HSFE_Run_Rate_Term_Months__c &lt; 0))</errorConditionFormula>
+        <errorDisplayField>HSFE_Run_Rate_Term_Months__c</errorDisplayField>
+        <errorMessage>Run Rate Term(Months) is required when Purchase Type is Run Rate.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Opportunity_Cannot_moved_to_won_manually</fullName>
+        <active>true</active>
+        <description>Validation rule to restrict user from manually changing the opportunity stage to closed won.
+(HSFE_Quote_Accepted__c == False)&amp;&amp;</description>
+        <errorConditionFormula>ISPICKVAL( HSFE_Sales_Stage__c ,&apos;Closed Won&apos;) &amp;&amp;   HSFE_Quote_Accepted__c ==False</errorConditionFormula>
+        <errorMessage>Opportunity cannot be moved to Closed Won Stage manually.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Product_required_on_opportunity_Product</fullName>
+        <active>true</active>
+        <description>Product required on opportunity before moving it to next stage</description>
+        <errorConditionFormula>ISBLANK( Primary_Product_c__c ) &amp;&amp;( ISPICKVAL( HSFE_Sales_Stage__c,&apos;In Funnel&apos;) || ISPICKVAL( HSFE_Sales_Stage__c,&apos;Above Funnel&apos;) || ISPICKVAL( HSFE_Sales_Stage__c,&apos;Best Few&apos;) || ISPICKVAL( HSFE_Sales_Stage__c,&apos;Verbally Accepted&apos;)|| ISPICKVAL( HSFE_Sales_Stage__c,&apos;Closed Won&apos;))</errorConditionFormula>
+        <errorMessage>Product required on opportunity before moving it to next Stage</errorMessage>
+    </validationRules>
+    <webLinks>
+        <fullName>Apttus_Proposal__CreateProposalFromOpp</fullName>
+        <availability>online</availability>
+        <displayType>link</displayType>
+        <height>600</height>
+        <linkType>sControl</linkType>
+        <masterLabel>Create Proposal</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <scontrol>Apttus_Proposal__aptsProposalCreateFromOpp</scontrol>
+    </webLinks>
+    <webLinks>
+        <fullName>Apttus_Proposal__CreateQuoteProposalFromOpportunity</fullName>
+        <availability>online</availability>
+        <description>Create new quote/proposal from opportunity</description>
+        <displayType>button</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Create Quote/Proposal</masterLabel>
+        <openType>sidebar</openType>
+        <page>Apttus_Proposal__OpportunityProposalCreate</page>
+        <protected>false</protected>
+    </webLinks>
+    <webLinks>
+        <fullName>Apttus__CreateAgreementFromOpportunity</fullName>
+        <availability>online</availability>
+        <description>Create agreement from the opportunity</description>
+        <displayType>link</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Create Agreement</masterLabel>
+        <openType>sidebar</openType>
+        <page>Apttus__OpportunityAgreement</page>
+        <protected>false</protected>
+    </webLinks>
+    <webLinks>
+        <fullName>Apttus__CreateOfflineAgreementFromOpportunity</fullName>
+        <availability>online</availability>
+        <description>Create offline agreement from opportunity</description>
+        <displayType>link</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Create Offline Agreement</masterLabel>
+        <openType>sidebar</openType>
+        <page>Apttus__OfflineOpportunityAgreement</page>
+        <protected>false</protected>
+    </webLinks>
+    <webLinks>
+        <fullName>Apttus__NewAgreementFromOpportunity</fullName>
+        <availability>online</availability>
+        <description>Create agreement from the opportunity</description>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>New Agreement (Deprecated)</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>/apex/Apttus__OpportunityAgreement?id={!Opportunity.Id}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Apttus__NewOfflineAgreementFromOpportunity</fullName>
+        <availability>online</availability>
+        <description>Create offline agreement from opportunity</description>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>New Offline Agreement (Deprecated)</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>/apex/Apttus__OfflineOpportunityAgreement?id={!Opportunity.Id}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>New_Opportunity</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>New Opportunity</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>if(&apos;{!User.HSFE_Specialty__c}&apos; != &apos;&apos;){
+window.open(&apos;/006/e?retURL={!Account.Id}&amp;nooverride=1&amp;RecordType={!$Label.Customer_Record_Type}&amp;opp11=Pipeline&amp;{!$Label.HSFE_Specialty}={!User.HSFE_Specialty__c}&amp;{!$Label.HSFE_Sub_Specialty}={!User.HSFE_Sub_Specialty__c}&amp;{!$Label.HSFE_Sales_Stage}=Universe&amp;opp4_lkid={!Account.Id}&amp;opp4={!Account.Name}&apos;,&quot;_parent&quot;);
+}else{
+window.open(&apos;/006/e?nooverride=1&amp;retURL={!Account.Id}&amp;save_new_url={!Account.Id}&amp;opp11=Pipeline&amp;RecordType={!$Label.Customer_Record_Type}&amp;{!$Label.HSFE_Sales_Stage}=Universe&amp;opp4_lkid={!Account.Id}&amp;opp4={!Account.Name}&apos;,&quot;_parent&quot;);
+}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Update_Closed_Lost</fullName>
+        <availability>online</availability>
+        <description>/{!Opportunity.Id}/e?&amp;retURL=/{!Opportunity.Id}&amp;opp11=Closed Lost</description>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <linkType>url</linkType>
+        <masterLabel>Close Lost Opportunity</masterLabel>
+        <openType>replace</openType>
+        <protected>false</protected>
+        <url>/apex/HSFE_Opportunity_EditPage?id={!Opportunity.Id}&amp;object=Opportunity&amp;StageName=Closed Lost</url>
+    </webLinks>
+</CustomObject>

@@ -1,0 +1,412 @@
+<!-- 
+    Apttus Approvals Management
+    SObjectApprovals2
+     
+    @2012-2014 Apttus Inc. All rights reserved.
+
+ -->
+<apex:component access="global"
+                controller="Apttus_Approval.SObjectApprovalsController2"
+                layout="inline"
+                allowDML="true">
+            
+    <apex:attribute name="contextInfoParam"
+                    type="Apttus_Approval.SObjectApprovalContextParam2"
+                    access="global"
+                    assignTo="{!contextParam}"
+                    description="Context SObject Type, Context SObject Identifier
+                                    , SObject Type 2 Approval Status Field API Name Map
+                                    , Return Object ID" />
+
+    <apex:outputPanel >
+        <script type="text/javascript" src="/soap/ajax/30.0/connection.js"></script>
+        <script type="text/javascript" src="/soap/ajax/30.0/apex.js"></script>
+
+        <apex:include pageName="Apttus_Approval__ApprovalsJSLibInclude" />
+
+        <apex:includeScript value="{!URLFOR($Resource.Apttus_Approval__JQueryUILibrary, 'js/jquery-1.6.2.min.js')}" />
+        <apex:includeScript value="{!URLFOR($Resource.Apttus_Approval__JQueryUILibrary, 'js/jquery-ui-1.8.16.custom.min.js')}" />
+        
+        <apex:stylesheet value="{!URLFOR($Resource.Apttus_Approval__JQueryUILibrary, 'css/ui-lightness/jquery-ui-1.8.16.custom.css')}" />
+        <apex:stylesheet value="{!$Resource.Apttus_Approval__ApprovalsGlobalCSS}" />
+
+        <style>
+            .waitDialog .ui-dialog-titlebar {
+                color: black;
+            }
+            
+            /* hide the close x on the loading screen */
+            .waitDialog .ui-dialog-titlebar-close {
+                display: none;
+            }
+            
+            .aptMainBlockHeader {
+                background: -moz-linear-gradient(top, rgba(30, 87, 153, 1) 0%,
+                    rgba(125, 185, 232, 0) 100% );
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(30,
+                    87, 153, 1) ), color-stop(100%, rgba(125, 185, 232, 0) ) );
+                background: -webkit-linear-gradient(top, rgba(30, 87, 153, 1) 0%,
+                    rgba(125, 185, 232, 0) 100% );
+                background: -o-linear-gradient(top, rgba(30, 87, 153, 1) 0%,
+                    rgba(125, 185, 232, 0) 100% );
+                background: -ms-linear-gradient(top, rgba(30, 87, 153, 1) 0%,
+                    rgba(125, 185, 232, 0) 100% );
+                background: linear-gradient(to bottom, rgba(30, 87, 153, 1) 0%,
+                    rgba(125, 185, 232, 0) 100% );
+                filter: progid :     DXImageTransform.Microsoft.gradient (     
+                     startColorstr =  
+                              '#1e5799', endColorstr =     '#007db9e8', GradientType =    
+                    0 );
+                border-radius: 3px;
+                height: 60px;
+                color: white;
+                padding-top: 7px;
+                font-size: 15px;
+            }
+            
+            .aptListButton {
+                -moz-box-shadow: 0px 1px 0px 0px #ffffff;
+                -webkit-box-shadow: 0px 1px 0px 0px #ffffff;
+                box-shadow: 0px 1px 0px 0px #ffffff;
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #71b2f6
+                    ), color-stop(1, #236fbd) );
+                background: -moz-linear-gradient(center top, #71b2f6 5%, #236fbd 100%);
+                filter: progid :     DXImageTransform.Microsoft.gradient (    
+                    startColorstr =  
+                              '#71b2f6', endColorstr =     '#236fbd' );
+                background-color: #71b2f6;
+                -moz-border-radius: 2px;
+                -webkit-border-radius: 2px;
+                border-radius: 2px;
+                display: inline-block;
+                color: #ffffff !important;
+                font-family: arial;
+                font-size: 12px;
+                font-weight: normal;
+                padding: 5px 24px;
+                text-decoration: none;
+                margin-right: 5px;
+            }
+        </style>
+
+        <script type="text/javascript">
+            // This to make sure jQuery doesn't conflict with any other JS libraries
+            var j$ = jQuery.noConflict();
+
+            // setup namespace
+            j$.APTTUS = {};        
+            
+            // indicator to exist after submit / cancel
+            var doExitAfterAction = 'false';
+            var actionTaken = 'return';            
+            
+            /**
+             * Initializes the call
+             */
+            function initCall() {
+            
+                try {
+                    sforce.connection.sessionId = "{!$Api.Session_ID}"; //to avoid session timeout
+                } catch(e) {
+                    ap_erroralert(ap_cERROR_UNKNOWN,e);
+                }
+            
+            }
+            
+            /**
+             * Show wait dialog
+             */
+            function showWaitDialog(msgText) {
+                
+                j$("#waitPanel").html('<center><img src="{!URLFOR($Resource.Apttus_Approval__Image_LoadingPage)}" /></center>');
+                j$("#waitPanel").dialog("open");
+                j$("#waitPanel").dialog("option" , "title" , msgText);
+                j$("#waitPanel").dialog("option", "position", "center");
+                
+                return false;
+                
+            }
+       
+            /**
+             * Hide the wait dialog
+             */
+            function hideWaitDialog(){
+                // close the wait dialog
+                j$("#waitPanel").dialog("close");
+                
+                // exit after submit
+                if (doExitAfterAction == 'true') {
+                    invokeDoReturn(actionTaken);
+                }
+                return true;
+            }
+            
+            
+            // setup the wait panel and set autoOpen to false
+            function buildWaitDialog(){
+                j$("#waitPanel").dialog({
+                    autoOpen: false,    // set this to false so we can manually open it
+                    dialogClass: "waitDialog",
+                    closeOnEscape: false,
+                    draggable: false,
+                    width: 300,
+                    minHeight: 50,
+                    modal: true,
+                    buttons: {},
+                    resizable: false,
+                    position: 'center',
+                    open: function() {
+                        // scrollbar fix for IE
+                        j$('body').css('overflow','hidden');
+                    },
+                    close: function() {
+                        // reset overflow
+                        j$('body').css('overflow','auto');
+                    }
+                });
+            };
+
+            initCall();
+        </script>
+
+    </apex:outputPanel>
+
+    <apex:outputPanel id="idApprovalRequests">
+        <apex:pageBlock >
+
+            <div class="aptMainBlockHeader">
+                <h2 style="margin-left: 1em;">{!pageTitle}</h2>
+            </div>
+
+            <apex:outputPanel id="idErrorMsg">
+                <apex:pageMessages />
+            </apex:outputPanel>
+
+            <!--<apex:outputPanel id="idMessagePanel" rendered="{!doProcessAction}">
+                <apex:image url="{!$Resource.Image_LoadingPage}" />
+            </apex:outputPanel>-->
+            
+            <apex:outputPanel id="idApprovalsPanel">
+                <apex:outputPanel rendered="{!AND(NOT(hasErrors), NOT(doProcessAction))}">
+                    <apex:repeat value="{!approvalStepWrappers}" var="stepWrapper" >
+    
+                        <apex:pageBlock title="{!stepWrapper.stepSequence & ': ' & stepWrapper.stepLabel}">
+    
+                            <apex:repeat value="{!stepWrapper.stepRequests}" var="stepRequest">
+    
+                                <apex:outputPanel layout="block">
+                                    <apex:pageBlockSection columns="4">
+                                        <apex:repeat value="{!stepRequest.displayFields}" var="dspField">
+                                            <apex:outputField value="{!stepRequest.ctxObject[dspField]}" />
+                                        </apex:repeat>
+                                    </apex:pageBlockSection>
+                                </apex:outputPanel>
+    
+                                <apex:outputPanel layout="inline">
+                                    <table style="border:1px solid black; width:100%;">
+                                        <tr><td>
+                                        <apex:pageBlockTable value="{!stepRequest.ApprovalRequests}"
+                                                             var="ApprovalReq" width="100%">
+                                            <apex:column value="{!ApprovalReq.Apttus_Approval__StepLabel__c}" width="20%" />
+                                            <apex:column value="{!ApprovalReq.Apttus_Approval__Sequence__c}" width="5%" />
+                                            <apex:column value="{!ApprovalReq.Apttus_Approval__Approval_Status__c}" width="10%" />
+                                            <apex:column value="{!ApprovalReq.Apttus_Approval__Assigned_To_Name__c}" width="15%" />
+                                            <apex:column value="{!ApprovalReq.Apttus_Approval__Request_Comments__c}" width="20%" />
+                                            <apex:column value="{!ApprovalReq.Apttus_Approval__Approver_Comments__c}" width="30%" />
+                                        </apex:pageBlockTable>
+                                        </td></tr>
+                                    </table>
+                                </apex:outputPanel>
+                            </apex:repeat>
+                            
+                            <apex:outputPanel id="idCommentsSection"
+                                              rendered="{!isProcessingModeSubmit}" >
+                                <apex:pageBlockSection id="idComment1"
+                                                       columns="1"
+                                                       rendered="{!stepWrapper.comment1Enabled}">
+                                    <apex:outputLabel value="{!$Label[comment1Label]}" 
+                                                      style="font-weight:bold;"  />
+                                    <apex:inputTextArea value="{!stepWrapper.submitComment1Text}"
+                                                        style="width:500px;"
+                                                        rows="3"/>
+                                </apex:pageBlockSection>
+                                <apex:pageBlockSection id="idComment2"
+                                                       columns="1"
+                                                       rendered="{!stepWrapper.comment2Enabled}">
+                                    <apex:outputLabel value="{!$Label[comment2Label]}" 
+                                                      style="font-weight:bold;" />
+                                    <apex:inputTextArea value="{!stepWrapper.submitComment2Text}"
+                                                        style="width:500px;"
+                                                        rows="3"/>
+                                </apex:pageBlockSection>
+                                <apex:pageBlockSection id="idComment3"
+                                                       columns="1"
+                                                       rendered="{!stepWrapper.comment3Enabled}">
+                                    <apex:outputLabel value="{!$Label[comment3Label]}"
+                                                      style="font-weight:bold;" />
+                                    <apex:inputTextArea value="{!stepWrapper.submitComment3Text}"
+                                                        style="width:500px;"
+                                                        rows="3"/>
+                                </apex:pageBlockSection>
+                            </apex:outputPanel>
+                        </apex:pageBlock>
+                    </apex:repeat>
+    
+                    <apex:outputText value="{!$Label.apttus_approval__NoApprovalsNeeded}"
+                                     rendered="{!approvalStepWrappers.size == 0}"
+                                     style="font-weight: bold;" />
+                </apex:outputPanel>
+            </apex:outputPanel>
+
+            <apex:outputPanel id="idPageButtons" layout="block" style="text-align:center">
+                <apex:outputPanel rendered="{!NOT(doProcessAction)}">
+
+                    <apex:commandButton value="{!returnButtonLabel}"
+                                        action="{!doReturnInternal}"
+                                        reRender="idDoReturnInternal"
+                                        rendered="{!AND((returnButtonLabel != null), NOT(inDialogMode))}"
+                                        styleClass="aptListButton" />
+
+                    <apex:commandButton value="{!$Label.apttus_approval__SubmitWithAttachments}"
+                                        action="{!doSubmitWithAttachments}"
+                                        reRender="idDoReturnInternal"
+                                        rendered="{!AND(canSubmit, NOT(inDialogMode), NOT(noRowsFound),
+                                                        NOT(hideSubmitWithAttachments))}"
+                                        styleClass="aptListButton" />
+
+                    <apex:commandButton value="{!$Label.apttus_approval__Submit}"
+                                        action="{!doSubmit}"
+                                        reRender="idDoReturnInternal"
+                                        rendered="{!AND(canSubmit, NOT(inDialogMode), NOT(noRowsFound))}"
+                                        styleClass="aptListButton" />
+
+                    <apex:commandButton value="{!$Label.apttus_approval__CancelApprovals}"
+                                        action="{!doCancel}"
+                                        reRender="idProcessAction"
+                                        rendered="{!AND(canCancel, NOT(inDialogMode), NOT(noRowsFound))}"
+                                        styleClass="aptListButton" />
+                        
+                    <script type="text/javascript">
+                        j$('.aptListButton').removeClass('btn');
+                    </script>
+                
+                    <apex:outputPanel id="idDoReturnInternal">
+                        <script type="text/javascript">
+                            j$(document).ready(function() {
+                                var pageURL = "{!submitPageURL}";
+                                //console.log('pageURL='+pageURL);
+                                if (pageURL.length > 0) {
+                                    // determine if we are in Salesforce1 and set navigation link appropriately
+                                    try {
+                                        if (sforce.one) {
+                                            sforce.one.navigateToURL(pageURL);
+                                        }
+                                        else {
+                                            top.location.replace(pageURL);
+                                            return true;
+                                        }
+                                    }
+                                    catch(err) {
+                                        //console.log(err);
+                                    }
+                                }
+                            });
+                        </script>
+                        <apex:outputPanel id="idDoReturnIndicator" rendered="{!doReturnIndicator}">
+                            <script type="text/javascript">
+                                j$(document).ready(function() {
+                                    //console.log('doReturnIndicator = true');
+                                    invokeDoReturn("return");
+                                    return true;
+                                });
+                            </script>
+                        </apex:outputPanel>
+                    </apex:outputPanel>
+                </apex:outputPanel>
+            </apex:outputPanel>
+
+            <apex:outputPanel id="idProcessAction">
+                <apex:outputPanel id="idDoProcessAction" rendered="{!doProcessAction}">
+
+                    <script type="text/javascript">
+                        buildWaitDialog();
+                        
+                        // item action - submit/cancel
+                        var itemAction = "{!processAction}";
+                        
+                        // get context SObject type
+                        var sObjectType = "{!ctxObjectType}";
+                                        
+                        // get context SObject id
+                        var sObjectId = "{!ctxObjectId}";     
+                
+                        var msgTxt = '';
+
+                        if (itemAction == 'preview') {
+                            msgTxt = "{!$Label.apttus_approval__PreviewingApprovals2}";
+                            // dont exit after preview
+                            doExitAfterAction = 'false';
+                            actionTaken = 'preview';
+
+                        } else if(itemAction == 'cancel') {
+                            msgTxt = "{!$Label.apttus_approval__CancellingApprovals2}";
+                            // exit after cancel
+                            doExitAfterAction = 'true';
+                            actionTaken = 'cancel';
+                            
+                        } else if(itemAction == 'submit') {
+                            msgTxt = "{!$Label.apttus_approval__SubmittingApprovals2}";
+                            // exit after submit
+                            doExitAfterAction = 'true';
+                            actionTaken = 'submit';
+                            
+                        } else if(itemAction == 'submitWithAttachments') {
+                            msgTxt = "{!$Label.apttus_approval__SubmittingApprovals2}";
+                            // exit after submitWithAttachment
+                            doExitAfterAction = 'true';
+                            actionTaken = 'submitWithAttachments';
+                        }
+                    
+                        // show the wait dialog
+                        showWaitDialog(msgTxt);
+                        
+                        // delay to allow the progress bar to be shown  
+                        setTimeout(function() {
+                            try {
+                                initCall();
+                                
+                                // invoke action
+                                if (itemAction == 'preview') {
+                                    ap_previewApprovals(sObjectType, sObjectId);
+                                } else if(itemAction == 'cancel') {
+                                    ap_cancelApprovals(sObjectType, sObjectId);
+                                }
+                                
+                                // render the approvals section
+                                invokeRerenderApprovalsSection();
+    
+                            } catch(e) {
+                                ap_erroralert(ap_cERROR_UNKNOWN,e);
+                                
+                            } 
+                            
+                        }, 500);   
+                    </script>
+
+                </apex:outputPanel>
+            </apex:outputPanel>
+
+        </apex:pageBlock>
+    </apex:outputPanel>
+
+    <!-- This panel represents the waiting dialog that will pop up -->
+    <apex:outputPanel >
+        <div id="waitPanel"></div>
+    </apex:outputPanel>
+
+    <apex:actionFunction name="invokeRerenderApprovalsSection"
+                         action="{!doneProcessAction}"
+                         rerender="idApprovalRequests" 
+                         onComplete="hideWaitDialog();">
+    </apex:actionFunction>
+</apex:component>

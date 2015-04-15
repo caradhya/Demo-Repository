@@ -1,0 +1,833 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>S1_Layout</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>S1_Layout</fullName>
+        <fields>Name__c</fields>
+        <fields>Loan_Start_Date__c</fields>
+        <fields>Actual_Return_Date__c</fields>
+        <label>S1 Layout</label>
+    </compactLayouts>
+    <customHelpPage>EquipmentLoan_Help</customHelpPage>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fieldSets>
+        <fullName>CalendarView</fullName>
+        <availableFields>
+            <field>Assign_on_Loan_Return_Name__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Assign_on_Loan_Return_Type__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Assign_on_Loan_Start_Name__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Assign_on_Loan_Start_Type__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Equipment__r.Assigned_Name__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Equipment__r.Equipment_Type__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Responsible__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <description>Calendar View (Gantt chart) of Equipments and Loans. Modify this fieldset to control which fields &amp; in what order are being displayed in the balloon shown when you hover over a bar.</description>
+        <displayedFields>
+            <field>Name</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Name__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Loan_Start_Date__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Estimated_Return_Date__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Actual_Return_Date__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>LastModifiedById</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>CalendarView</label>
+    </fieldSets>
+    <fieldSets>
+        <fullName>Fields_to_Update_on_Loan</fullName>
+        <availableFields>
+            <field>Loan_Extra_Date_1__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Loan_Extra_Date_2__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <description>Fields in this field set will be updated on the Loan VF page.</description>
+        <displayedFields>
+            <field>Tracking_Number__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Loan_Note__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>Fields to Update on Loan</label>
+    </fieldSets>
+    <fieldSets>
+        <fullName>Fields_to_Update_on_Return</fullName>
+        <availableFields>
+            <field>Loan_Extra_Date_1__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Loan_Extra_Date_2__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Loan_Note__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <description>Fields in this fieldset will be updated on the VF Return page.</description>
+        <displayedFields>
+            <field>Return_Note__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Return_Tracking_Number__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>Fields to Update on Return</label>
+    </fieldSets>
+    <fields>
+        <fullName>Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>If the loan was made to an account this is the relationship to that account.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>If the loan was made to an account this is the relationship to that account.</inlineHelpText>
+        <label>Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Historical Equipment Loans</relationshipLabel>
+        <relationshipName>Equipment_Loans</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Actual_Return_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Actual Return Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Address__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Address</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Assign_on_Loan_Return_Name__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Assign on Loan Return Name</label>
+        <length>80</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Assign_on_Loan_Return_Type__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Assign on Loan Return Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>User</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Contact</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Account</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Opportunity</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Assign_on_Loan_Start_Name__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Assign on Loan Start Name</label>
+        <length>80</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Assign_on_Loan_Start_Type__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Assign on Loan Start Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>User</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Contact</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Account</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Opportunity</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>City__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>City</label>
+        <length>80</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Collection_Master_Loan__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>For Component Equipment records (that is Equipment that have an ID in the &apos;Component Master&apos;) that are loaned this is the parent loan of the Master Equipment that caused the current loan record to be created.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>For Component Equipment records (that is Equipment that have an ID in the &apos;Component Master&apos;) that are loaned this is the parent loan of the Master Equipment that caused the current loan record to be created.</inlineHelpText>
+        <label>Collection Master Loan</label>
+        <referenceTo>Equipment_Loan__c</referenceTo>
+        <relationshipLabel>Equipment Loans</relationshipLabel>
+        <relationshipName>Equipment_Loans</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Contact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>If the loan was made to a contact this is the relationship to that contact.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>If the loan was made to a contact this is the relationship to that contact.</inlineHelpText>
+        <label>Contact</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Historical Equipment Loans</relationshipLabel>
+        <relationshipName>Equipment_Loans</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Country__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Country</label>
+        <length>32</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Email__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Email</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Equipment__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Equipment</label>
+        <referenceTo>Equipment__c</referenceTo>
+        <relationshipLabel>Equipment Loans</relationshipLabel>
+        <relationshipName>Equipment_Loans</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>true</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Estimated_Return_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Estimated Return Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>GPS_Lat__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The GPS Latitude for this Loan.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The GPS Latitude for this Loan.</inlineHelpText>
+        <label>GPS Lat</label>
+        <precision>14</precision>
+        <required>false</required>
+        <scale>10</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>GPS_Long__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The GPS Longitude for this Loan.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The GPS Longitude for this Loan.</inlineHelpText>
+        <label>GPS Long</label>
+        <precision>14</precision>
+        <required>false</required>
+        <scale>10</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Loan_Extra_Date_1__c</fullName>
+        <deprecated>false</deprecated>
+        <description>An Additional Date that optionally can be set/maintained related to a given loan. See &apos;Equipment Types&apos; for controlling whether the date is used during the loan process</description>
+        <externalId>false</externalId>
+        <inlineHelpText>An Additional Date that optionally can be set/maintained related to a given loan. See &apos;Equipment Types&apos; for controlling whether the date is used during the loan process</inlineHelpText>
+        <label>Loan Extra Date 1</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Loan_Extra_Date_2__c</fullName>
+        <deprecated>false</deprecated>
+        <description>An Additional Date that optionally can be set/maintained related to a given loan. See &apos;Equipment Types&apos; for controlling whether the date is used during the loan process</description>
+        <externalId>false</externalId>
+        <inlineHelpText>An Additional Date that optionally can be set/maintained related to a given loan. See &apos;Equipment Types&apos; for controlling whether the date is used during the loan process</inlineHelpText>
+        <label>Loan Extra Date 2</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Loan_Note__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The Notes for this Loan.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Notes for this Loan.</inlineHelpText>
+        <label>Loan Note</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Loan_Quantity__c</fullName>
+        <defaultValue>1</defaultValue>
+        <deprecated>false</deprecated>
+        <description>For Equipment that uses Quantity On Hand this is the quantity of the loan.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>For Equipment that uses Quantity On Hand this is the quantity of the loan.</inlineHelpText>
+        <label>Loan Quantity</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Loan_Start_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Loan Start Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Loan_Type__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Loan Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>User</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Contact</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Account</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Opportunity</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Entered</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Mobile__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Mobile</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Name__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Name</label>
+        <length>120</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Opportunity__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>If the loan was made to an opportunity this is the relationship to that opportunity.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>If the loan was made to an opportunity this is the relationship to that opportunity.</inlineHelpText>
+        <label>Opportunity</label>
+        <referenceTo>Opportunity</referenceTo>
+        <relationshipLabel>Historical Equipment Loans</relationshipLabel>
+        <relationshipName>Equipment_Loans</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Other2__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>If the equipment is currently loaned to an ELTON Other then this is the relationship to that Other record</description>
+        <externalId>false</externalId>
+        <label>Other</label>
+        <referenceTo>Other__c</referenceTo>
+        <relationshipLabel>Historical Equipment Loans</relationshipLabel>
+        <relationshipName>Equipment_Loans</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Other_Phone__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Other Phone</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Phone__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Phone</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Responsible__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The entity (User, Account, Contact, Opportunity) that the Equipment is currently assigned to.</description>
+        <externalId>false</externalId>
+        <formula>Equipment__r.Assigned_Name__c</formula>
+        <inlineHelpText>The entity (User, Account, Contact, Opportunity) that the Equipment is currently assigned to.</inlineHelpText>
+        <label>Currently Assigned To</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Return_GPS_Lat__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The GPS Latitude of the Loan&apos;s Return Transaction (where the equipment was returned from)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The GPS Latitude of the Loan&apos;s Return Transaction (where the equipment was returned from)</inlineHelpText>
+        <label>Return GPS Lat</label>
+        <precision>14</precision>
+        <required>false</required>
+        <scale>10</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Return_GPS_Long__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The GPS Longitude of the Loan&apos;s Return Transaction (where the equipment was returned from)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The GPS Longitude of the Loan&apos;s Return Transaction (where the equipment was returned from)</inlineHelpText>
+        <label>Return GPS Long</label>
+        <precision>14</precision>
+        <required>false</required>
+        <scale>10</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Return_Note__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The Notes related to the return of this Loan.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Notes related to the return of this Loan.</inlineHelpText>
+        <label>Return Note</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Return_Tracking_Number__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The Carrier Tracking Number for a Loan Return.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Carrier Tracking Number for a Loan Return.</inlineHelpText>
+        <label>Return Tracking Number</label>
+        <length>32</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Return_User_Device__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The User/Device setting from the Loan Return (the device on which the return was processed)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The User/Device setting from the Loan Return (the device on which the return was processed)</inlineHelpText>
+        <label>Return User/Device</label>
+        <length>24</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>State_Province__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>State/Province</label>
+        <length>40</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Tracking_Number__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The Carrier Tracking number associated with this loan (if applicable - can be left blank)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Carrier Tracking number associated with this loan (if applicable - can be left blank)</inlineHelpText>
+        <label>Tracking Number</label>
+        <length>32</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>User_Device__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The User/Device for this Loan.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The User/Device for this Loan.</inlineHelpText>
+        <label>User/Device</label>
+        <length>24</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>User__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>If the loan was made to a user this is the relationship to that user.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>If the loan was made to a user this is the relationship to that user.</inlineHelpText>
+        <label>User</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Equipment_Loans</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Zip_Postal_Code__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Zip/Postal Code</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Equipment Loan</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Equipment__c</columns>
+        <columns>Loan_Type__c</columns>
+        <columns>Name__c</columns>
+        <columns>Loan_Start_Date__c</columns>
+        <columns>Estimated_Return_Date__c</columns>
+        <columns>Actual_Return_Date__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>EQL-{000000}</displayFormat>
+        <label>Equipment Loan Name</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Equipment Loans</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <startsWith>Vowel</startsWith>
+    <webLinks>
+        <fullName>Return_Loaned_Equipment</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Return Loaned Equipment</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <url>/apex/ELTON__Return_Equipment_Individual_Loan?id={!Equipment_Loan__c.Id}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Scanned_Loan_Location</fullName>
+        <availability>online</availability>
+        <description>Google Map</description>
+        <displayType>link</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Scanned Loan Location</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>https://maps.google.com?
+q={!Equipment_Loan__c.Equipment__c}, 
+{!Equipment_Loan__c.CreatedBy}, 
+{!SUBSTITUTE(TEXT(Equipment_Loan__c.LastModifiedDate), &apos;Z&apos;, &apos;&apos;)}@
+{!Equipment_Loan__c.GPS_Lat__c},{!Equipment_Loan__c.GPS_Long__c}
+&amp;iwloc=A&amp;t=m</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Scanned_Return_Location</fullName>
+        <availability>online</availability>
+        <description>Google Map</description>
+        <displayType>link</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Scanned Return Location</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>https://maps.google.com?
+q={!Equipment_Loan__c.Equipment__c}, 
+{!Equipment_Loan__c.CreatedBy}, 
+{!SUBSTITUTE(TEXT(Equipment_Loan__c.LastModifiedDate), &apos;Z&apos;, &apos;&apos;)}@
+{!Equipment_Loan__c.Return_GPS_Lat__c},{!Equipment_Loan__c.Return_GPS_Long__c}
+&amp;iwloc=A&amp;t=m</url>
+    </webLinks>
+</CustomObject>

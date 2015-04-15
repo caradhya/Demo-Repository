@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>S1_Layout</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>S1_Layout</fullName>
+        <fields>Name</fields>
+        <fields>Equipment_Type__c</fields>
+        <fields>Request_Start_Date__c</fields>
+        <fields>Request_Return_Date__c</fields>
+        <label>S1 Layout</label>
+    </compactLayouts>
+    <customHelpPage>EquipmentRequest_Help</customHelpPage>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <description>A request for a given TYPE of Equipment... Requests can then be reviewed by an Equipment Coordinator and converted into Equipment Reservations.</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fieldSets>
+        <fullName>CopyToReservation</fullName>
+        <description>Use this fieldset to determine fields that exist on Request that you would like to see copied over to a Reservation when you fulfill the Request. It is assumed that API names of the fields must match exactly. There&apos;s no need to reference the standard ELTON fields or the lookup fields defined in &quot;Field Mapping&quot; custom setting.</description>
+        <label>CopyToReservation</label>
+    </fieldSets>
+    <fields>
+        <fullName>Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>If the request was made to an account this is the relationship to that account.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>If the request was made to an account this is the relationship to that account.</inlineHelpText>
+        <label>Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Equipment Requests</relationshipLabel>
+        <relationshipName>Equipment_Requests</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Active__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Allows you to mark a request as Inactive to have it be ignored/excluded from reports</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Allows you to mark a request as Inactive to have it be ignored/excluded from reports</inlineHelpText>
+        <label>Active</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Contact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>If the request was made to an contact this is the relationship to that contact.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>If the request was made to an contact this is the relationship to that contact.</inlineHelpText>
+        <label>Contact</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Equipment Requests</relationshipLabel>
+        <relationshipName>Equipment_Requests</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Converted_To_Reservation__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Once a Request is converted to a reservation this field will be reset to checked.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Once a Request is converted to a reservation this field will be reset to checked.</inlineHelpText>
+        <label>Converted To Reservation</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Equipment_Reservation__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>If a request is converted to a reservation this is the related Equipment Reservation cross reference.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>If a request is converted to a reservation this is the related Equipment Reservation cross reference.</inlineHelpText>
+        <label>Equipment Reservation</label>
+        <referenceTo>Equipment_Reservation__c</referenceTo>
+        <relationshipLabel>Equipment Requests</relationshipLabel>
+        <relationshipName>Equipment_Requests</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Equipment_Type__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>The equipment type that the request is associated with</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The equipment type that the request is associated with</inlineHelpText>
+        <label>Equipment Type</label>
+        <referenceTo>Equipment_Type__c</referenceTo>
+        <relationshipLabel>Equipment Requests</relationshipLabel>
+        <relationshipName>Equipment_Requests</relationshipName>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Loan_Extra_Date_1__c</fullName>
+        <deprecated>false</deprecated>
+        <description>An Additional Date that optionally can be set/maintained related to a given loan. See &apos;Equipment Types&apos; for controlling whether the date is used during the loan process</description>
+        <externalId>false</externalId>
+        <inlineHelpText>An Additional Date that optionally can be set/maintained related to a given loan. See &apos;Equipment Types&apos; for controlling whether the date is used during the loan process</inlineHelpText>
+        <label>Loan Extra Date 1</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Loan_Extra_Date_2__c</fullName>
+        <deprecated>false</deprecated>
+        <description>An Additional Date that optionally can be set/maintained related to a given loan. See &apos;Equipment Types&apos; for controlling whether the date is used during the loan process</description>
+        <externalId>false</externalId>
+        <inlineHelpText>An Additional Date that optionally can be set/maintained related to a given loan. See &apos;Equipment Types&apos; for controlling whether the date is used during the loan process</inlineHelpText>
+        <label>Loan Extra Date 2</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Opportunity__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>If the request was made to an opportunity this is the relationship to that opportunity.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>If the request was made to an opportunity this is the relationship to that opportunity.</inlineHelpText>
+        <label>Opportunity</label>
+        <referenceTo>Opportunity</referenceTo>
+        <relationshipLabel>Equipment Requests</relationshipLabel>
+        <relationshipName>Equipment_Requests</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Request_Note__c</fullName>
+        <deprecated>false</deprecated>
+        <description>A Note related to the reservation request. Will be copied to reservation  notes if the request converted to a reservation.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>A Note related to the reservation request. Will be copied to reservation  notes if the request converted to a reservation.</inlineHelpText>
+        <label>Request Note</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Request_Return_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The date that the request is estimated to end.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The date that the request is estimated to end.</inlineHelpText>
+        <label>Request Return Date</label>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Request_Start_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The date that the request begins.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The date that the request begins.</inlineHelpText>
+        <label>Request Start Date</label>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>User__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>If the request was made to a user this is the relationship to that user.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>If the request was made to a user this is the relationship to that user.</inlineHelpText>
+        <label>User</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Equipment_Requests</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <label>Equipment Request</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Active__c</columns>
+        <columns>Equipment_Reservation__c</columns>
+        <columns>Equipment_Type__c</columns>
+        <columns>Request_Note__c</columns>
+        <columns>Request_Start_Date__c</columns>
+        <columns>Request_Return_Date__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>EQRQ-{000000}</displayFormat>
+        <label>Equipment Request Name</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Equipment Requests</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Equipment_Type__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Request_Start_Date__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Request_Return_Date__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Request_Note__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Active__c</customTabListAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>Converted_Reservation_must_stay_converte</fullName>
+        <active>true</active>
+        <description>Once the checkbox and lookup fields have been set - we consider the request to be fulfilled. It&apos;s not possible to clear the checkbox or change the lookup field anymore. Users that clone them should remember to clear the values manually?</description>
+        <errorConditionFormula>PRIORVALUE(Converted_To_Reservation__c) &amp;&amp; 
+(ISCHANGED(Converted_To_Reservation__c) || ISCHANGED(Equipment_Reservation__c))</errorConditionFormula>
+        <errorMessage>This request has been fulfilled - you can&apos;t clear the checkbox or clear / change the reservation it points to now. If you&apos;ve made a mistake - consider cloning this record, clearing these fields and try again?</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Request_to_only_one_entity</fullName>
+        <active>true</active>
+        <description>A given request can be assigned to a Contact OR Account OR Opportunity OR User. Never to more than 1 at a time</description>
+        <errorConditionFormula>IF(OR(
+AND(NOT(ISBLANK(Account__c)),ISBLANK(Contact__c),ISBLANK(Opportunity__c),ISBLANK(User__c)),
+AND(ISBLANK(Account__c),NOT(ISBLANK(Contact__c)),ISBLANK(Opportunity__c),ISBLANK(User__c)),
+AND(ISBLANK(Account__c),ISBLANK(Contact__c),NOT(ISBLANK(Opportunity__c)),ISBLANK(User__c)),
+AND(ISBLANK(Account__c),ISBLANK(Contact__c),ISBLANK(Opportunity__c),NOT(ISBLANK(User__c)))
+),FALSE,TRUE)</errorConditionFormula>
+        <errorMessage>A Request must be related to EITHER an Account, Contact, Opportunity OR User.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Start_LT_End</fullName>
+        <active>true</active>
+        <errorConditionFormula>Request_Start_Date__c &gt;  Request_Return_Date__c</errorConditionFormula>
+        <errorDisplayField>Request_Start_Date__c</errorDisplayField>
+        <errorMessage>Request Return Date must be Greater than or Equal to Request Start Date</errorMessage>
+    </validationRules>
+    <webLinks>
+        <fullName>Fulfill</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Fulfill</masterLabel>
+        <openType>sidebar</openType>
+        <page>FulfillEquipmentRequest</page>
+        <protected>false</protected>
+    </webLinks>
+</CustomObject>

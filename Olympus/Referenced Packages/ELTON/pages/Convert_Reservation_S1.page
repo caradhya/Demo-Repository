@@ -1,0 +1,175 @@
+<apex:page standardController="ELTON__Equipment_Reservation__c" extensions="ELTON.EquipmentMobileService" 
+	applyHtmlTag="false" standardStylesheets="false" showHeader="false" sidebar="false"
+	doctype="html-5.0">
+	<apex:outputPanel style="display:none" id="vf_workaround">
+
+	{!ELTON__Equipment_Reservation__c.Name} {!ELTON__Equipment_Reservation__c.ELTON__Reservation_Type__c} {!ELTON__Equipment_Reservation__c.ELTON__Reservation_Name__c}
+	{!ELTON__Equipment_Reservation__c.ELTON__Reservation_Start_Date__c} {!ELTON__Equipment_Reservation__c.ELTON__Estimated_Return_Date__c} {!ELTON__Equipment_Reservation__c.ELTON__Reservation_Note__c}
+	
+	{!ELTON__Equipment_Reservation__c.ELTON__Active__c} {!ELTON__Equipment_Reservation__c.Equipment__r.ELTON__Active__c} {!ELTON__Equipment_Reservation__c.ELTON__Converted_To_Loan__c}
+	</apex:outputPanel>
+		<head>
+		<title>Convert {!$ObjectType.Equipment_Reservation__c.label} to Loan</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+		
+		<script type='text/javascript' src='/canvas/sdk/js/publisher.js'></script>
+		
+		<apex:includeScript value="{!URLFOR($Resource.ELTON__jquery)}"/><!-- 1.9.0 -->
+		<apex:includeScript value="{!URLFOR($Resource.ELTON__mobile, 'jquery-mobile/jquery.mobile-1.4.2.min.js')}"/>
+		<apex:stylesheet value="{!URLFOR($Resource.ELTON__mobile, 'jquery-mobile/jquery.mobile-1.4.2.min.css')}"/>
+		
+		<apex:includeScript value="{!URLFOR($Resource.ELTON__mobile, 'datepicker/external/jquery-ui/datepicker.js')}"/>
+		<apex:includeScript value="{!URLFOR($Resource.ELTON__mobile, 'datepicker/jquery.mobile.datepicker.js')}"/>
+		<apex:stylesheet value="{!URLFOR($Resource.ELTON__mobile, 'datepicker/jquery.mobile.datepicker.css')}"/>
+		<apex:stylesheet value="{!URLFOR($Resource.ELTON__mobile, 'datepicker/jquery.mobile.datepicker.theme.css')}"/>
+		
+		<apex:includeScript value="{!URLFOR($Resource.ELTON__mobile, 'main.js')}"/>
+		<apex:stylesheet value="{!URLFOR($Resource.ELTON__mobile, 'main.css')}"/>
+		<style type="text/css">
+		span.hidden, div#header{
+			display: none;
+		}
+		</style>
+	</head>
+	<apex:variable var="submitCanBeEnabled" value="{!(ELTON__Equipment_Reservation__c.ELTON__Active__c && ELTON__Equipment_Reservation__c.Equipment__r.ELTON__Active__c && !ELTON__Equipment_Reservation__c.ELTON__Converted_To_Loan__c)}" />
+	<body>
+		<div data-role="page" id="main">
+			<form class="ui-filterable" id="mainForm" action="">
+			<div data-role="header" id="header">
+				<a href="/{!Equipment_Reservation__c.Id}" id="cancel" rel="external" target="_parent" class="ui-btn ui-corner-all ui-icon-arrow-l ui-btn-icon-left ui-btn-left">Cancel</a>
+				<h1>Return {!Equipment_Reservation__c.Name}</h1>
+				<button id="submit" type="submit" class="ui-btn ui-corner-all ui-icon-check ui-btn-icon-left ui-btn-inline">Submit</button>
+			</div>
+	
+			<div role="main" class="ui-content">
+				<div class="error">
+					<apex:outputPanel layout="block" rendered="{!!ELTON__Equipment_Reservation__c.Equipment__r.ELTON__Active__c}">You cannot Convert a Reservation for Inactive Equipment . Please change the Equipment to Active.</apex:outputPanel>
+					<apex:outputPanel layout="block" rendered="{!!ELTON__Equipment_Reservation__c.ELTON__Active__c}">You cannot Convert an Inactive Reservation.</apex:outputPanel>
+					<apex:outputPanel layout="block" rendered="{!ELTON__Equipment_Reservation__c.ELTON__Converted_To_Loan__c}">This Reservation has already been converted into a loan.</apex:outputPanel>
+				</div>
+		
+				<div data-role="collapsible" data-collapsed="true" data-mini="true">
+					<h4 class="ui-bar ui-bar-a ui-corner-all">1. {!$ObjectType.Equipment_Reservation__c.label} summary</h4>
+					<div class="ui-body ui-grid-a ui-responsive">
+						<div class="ui-block-a">
+							<label for="type" >{!$ObjectType.Equipment_Reservation__c.fields.Reservation_Type__c.Label}</label>
+							<p id="type">{!Equipment_Reservation__c.Reservation_Type__c}</p>
+						</div>
+						<div class="ui-block-b">
+							<label for="name" >{!$ObjectType.Equipment_Reservation__c.fields.Reservation_Name__c.Label}</label>
+							<p id="name">{!Equipment_Reservation__c.Reservation_Name__c}</p>
+						</div>
+					</div>
+				</div>
+
+				<div data-role="collapsible" data-collapsed="false" data-mini="true">
+					<h4 class="ui-bar ui-bar-a ui-corner-all">2. Reservation Info</h4>
+					<div class="ui-body" data-mini="true" data-role="controlgroup">
+						
+						<div style="display:none" id="dummies">
+							<apex:outputText id="startDate" value="{0,date,yyyy/MM/dd}"><apex:param value="{!ELTON__Equipment_Reservation__c.ELTON__Reservation_Start_Date__c}" /></apex:outputText>
+							<apex:outputText id="returnDate" value="{0,date,yyyy/MM/dd}"><apex:param value="{!ELTON__Equipment_Reservation__c.ELTON__Estimated_Return_Date__c}" /></apex:outputText>
+							<apex:outputText id="loanExtraDate1" value="{0,date,yyyy/MM/dd}"><apex:param value="{!ELTON__Equipment_Reservation__c.ELTON__Loan_Extra_Date_1__c}" /></apex:outputText>
+							<apex:outputText id="loanExtraDate2" value="{0,date,yyyy/MM/dd}"><apex:param value="{!ELTON__Equipment_Reservation__c.ELTON__Loan_Extra_Date_2__c}" /></apex:outputText>
+							<!-- <apex:outputField id="startDate" value="{!ELTON__Equipment_Reservation__c.ELTON__Reservation_Start_Date__c}" />
+							<apex:outputField id="returnDate" value="{!ELTON__Equipment_Reservation__c.ELTON__Estimated_Return_Date__c}" />
+							<apex:outputField id="loanExtraDate1" value="{!ELTON__Equipment_Reservation__c.ELTON__Loan_Extra_Date_1__c}" />
+							<apex:outputField id="loanExtraDate2" value="{!ELTON__Equipment_Reservation__c.ELTON__Loan_Extra_Date_2__c}" />
+							 -->
+						</div>
+						<div class="ui-field-contain">
+							<label for="startDate">{!$ObjectType.Equipment_Reservation__c.fields.Reservation_Start_Date__c.Label}</label>
+							<input type="text" data-role="date" id="startDate"  required="required"/>
+						</div>
+						
+						<div class="ui-field-contain">
+							<label for="returnDate">{!$ObjectType.Equipment_Reservation__c.fields.Estimated_Return_Date__c.Label}</label>
+							<input type="text" data-role="date" id="returnDate"/>
+						</div>
+						
+						<!-- Loan Extra Dates - rendered only if needed -->
+						<apex:outputPanel layout="block" styleClass="ui-field-contain" rendered="{!ELTON__Equipment_Reservation__c.Equipment__r.ELTON__Equipment_Type__r.ELTON__Use_Loan_Date_1__c}">
+							<label for="loanExtraDate1">{!$ObjectType.Equipment_Reservation__c.fields.Loan_Extra_Date_1__c.Label}</label>
+							<input type="text" data-role="date" id="loanExtraDate1"/>
+						</apex:outputPanel>
+						<apex:outputPanel layout="block" styleClass="ui-field-contain" rendered="{!ELTON__Equipment_Reservation__c.Equipment__r.ELTON__Equipment_Type__r.ELTON__Use_Loan_Date_2__c}">
+							<label for="loanExtraDate2">{!$ObjectType.Equipment_Reservation__c.fields.Loan_Extra_Date_2__c.Label}</label>
+							<input type="text" data-role="date" id="loanExtraDate2"/>
+						</apex:outputPanel>
+						
+						<div class="ui-field-contain">
+							<label for="trackingNumber">{!$ObjectType.Equipment_Loan__c.fields.Tracking_Number__c.Label}</label>
+							<input type="text" id="trackingNumber" name="trackingNumber"/>
+						</div>
+						
+						<div class="ui-field-contain">
+							<label for="note">{!$ObjectType.Equipment_Reservation__c.fields.Reservation_Note__c.Label}</label>
+							<textarea name="note" id="note">{!HTMLENCODE(Equipment_Reservation__c.Reservation_Note__c)}</textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="errors" class="error"></div>
+			<div id="success"></div>
+			</form>
+		</div><!-- /page main -->
+	</body>
+	<script>
+	getGps();
+	
+	//$.datepicker.setDefaults({'dateFormat' : UserContext.dateFormat.replace('yyyy','yy').replace(/M/g, 'm')});
+	$.datepicker.setDefaults({'dateFormat' : 'yy/mm/dd'});
+	try{
+		$('#startDate').val($('#dummies span[id$="startDate"]').html());
+		$('#returnDate').val($('#dummies span[id$="returnDate"]').html());
+		$('#loanExtraDate1').val($('#dummies span[id$="loanExtraDate1"]').html());
+		$('#loanExtraDate2').val($('#dummies span[id$="loanExtraDate2"]').html());
+	} catch(e){
+		alert(e);
+	}
+	
+	var requiredFields = $(requiredFieldsSelector);
+	requiredFields.change(function(){
+		checkRequiredFields({!submitCanBeEnabled}, '#submit')
+	});
+	
+	function onSubmitClick(){
+		$('div.error').empty();
+		var parameters = {
+			'apexType':'c.EquipmentMobileService.ReservationConversion',
+			'reservationId': '{!Equipment_Reservation__c.Id}',
+			
+			'startDate': getDate('#startDate'),
+			'returnDate': getDate('#returnDate'),
+			'loanExtraDate1': getDate('#loanExtraDate1'),
+			'loanExtraDate1': getDate('#loanExtraDate1'),
+
+			'trackingNumber': $('#trackingNumber').val(),
+			'note': $('#note').val(),
+			
+			'latitude': lat,
+			'longitude': long
+		};
+		
+		Visualforce.remoting.Manager.invokeAction(
+			'{!$RemoteAction.EquipmentMobileService.convertReservation}',
+			parameters, 
+			submitResultHandler
+		);
+		return false;
+	}
+	
+	function eltonInit(){
+		if(s1){
+			Sfdc.canvas.publisher.subscribe({ name: "publisher.post", onData: onSubmitClick});
+			Sfdc.canvas.publisher.publish({name:"publisher.setValidForSubmit", payload: true});
+		} else {
+			$('div#header').show();
+			$('#mainForm').submit(onSubmitClick);
+		}
+		$("input[type='text'][data-role='date']").attr('readonly', 'readonly');
+	}
+	setTimeout(eltonInit, 500);
+	</script>
+</apex:page>

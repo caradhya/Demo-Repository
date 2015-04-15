@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>AllLinesShouldBeCancelled</fullName>
+        <categories>Error Message</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>All Lines should be Cancelled</shortDescription>
+        <value>All lines should be cancelled before cart header can be cancelled.</value>
+    </labels>
+    <labels>
+        <fullName>AllLinesShouldBeSubmiitted</fullName>
+        <categories>Error Message</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>All lines should be submitted</shortDescription>
+        <value>All lines should be submitted for approval before cart header can be submitted.</value>
+    </labels>
+    <labels>
+        <fullName>ApprovalRequestForCart</fullName>
+        <categories>Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Approval Request for Cart</shortDescription>
+        <value>Approval Request for Cart</value>
+    </labels>
+    <labels>
+        <fullName>ApprovalRequestForCartLineItem</fullName>
+        <categories>Label</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Approval Request for Cart LineItem</shortDescription>
+        <value>Approval Request for Cart Line Item</value>
+    </labels>
+    <labels>
+        <fullName>CancelApprovals</fullName>
+        <categories>Button Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Cancel Approvals</shortDescription>
+        <value>Cancel Approvals</value>
+    </labels>
+    <labels>
+        <fullName>CartHeaderApprovalTitle</fullName>
+        <categories>Title</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Cart Header Approva lTitle</shortDescription>
+        <value>Cart Approvals</value>
+    </labels>
+    <labels>
+        <fullName>CartInvalidApprovalStatus</fullName>
+        <categories>Error Message</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Cart in Invalid Approval Status</shortDescription>
+        <value>Cart is not in valid approval status for the requested action</value>
+    </labels>
+    <labels>
+        <fullName>ChargeType</fullName>
+        <categories>Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Charge Type</shortDescription>
+        <value>Charge Type</value>
+    </labels>
+    <labels>
+        <fullName>DeselectAll</fullName>
+        <categories>Button Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Deselect All</shortDescription>
+        <value>Deselect All</value>
+    </labels>
+    <labels>
+        <fullName>InsufficientPrivileges</fullName>
+        <categories>Error Message</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Insufficient Privileges</shortDescription>
+        <value>You do not have the level of access necessary to perform the operation you requested. Please contact your administrator if access is necessary. ({0})</value>
+    </labels>
+    <labels>
+        <fullName>NetPrice</fullName>
+        <categories>Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Net Price</shortDescription>
+        <value>Net Price</value>
+    </labels>
+    <labels>
+        <fullName>PleaseMakeSelectionForCancel</fullName>
+        <categories>Error Message</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Please make selection for Cancel</shortDescription>
+        <value>To cancel, please select item(s) in Pending Approval status.</value>
+    </labels>
+    <labels>
+        <fullName>PleaseMakeSelectionForSubmit</fullName>
+        <categories>Error Message</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Please make selection for Submit</shortDescription>
+        <value>To submit, please select item(s) in Approval Required or Not Submitted status.</value>
+    </labels>
+    <labels>
+        <fullName>ProductName</fullName>
+        <categories>Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Product Name</shortDescription>
+        <value>Product Name</value>
+    </labels>
+    <labels>
+        <fullName>Quantity</fullName>
+        <categories>Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Quantity</shortDescription>
+        <value>Quantity</value>
+    </labels>
+    <labels>
+        <fullName>RequiredApprovals</fullName>
+        <categories>Title</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Required Approvals</shortDescription>
+        <value>Required Approvals</value>
+    </labels>
+    <labels>
+        <fullName>ReturnToQuote</fullName>
+        <categories>Button Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Return to Quote</shortDescription>
+        <value>Return to Quote</value>
+    </labels>
+    <labels>
+        <fullName>ReviewApprovals</fullName>
+        <categories>Button Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Review Approvals</shortDescription>
+        <value>Review Approvals</value>
+    </labels>
+    <labels>
+        <fullName>SelectAll</fullName>
+        <categories>Button Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Select All</shortDescription>
+        <value>Select All</value>
+    </labels>
+    <labels>
+        <fullName>SellingTerm</fullName>
+        <categories>Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Selling Term</shortDescription>
+        <value>Selling Term</value>
+    </labels>
+    <labels>
+        <fullName>SubmitForApprovals</fullName>
+        <categories>Button Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Submit for Approvals</shortDescription>
+        <value>Submit for Approvals</value>
+    </labels>
+</CustomLabels>

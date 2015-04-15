@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>26.0</apiVersion>
+    <availableInTouch>true</availableInTouch>
+    <confirmationTokenRequired>false</confirmationTokenRequired>
+    <description>VF and javascript rendering of Mapquest Maps based on the current assignment GPS co-ordinates in the Equipment Screen</description>
+    <label>Current Assignment Map</label>
+</ApexPage>

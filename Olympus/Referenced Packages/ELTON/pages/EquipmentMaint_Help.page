@@ -1,0 +1,22 @@
+<apex:page sidebar="false" showHeader="false">
+    <apex:pageBlock title="Equipment Maintenance"> 
+    <apex:outputLink value="{! $Page.About_Us}"> <p> <b> Click here for the Links to Full Documentation Downloads</b> </p></apex:outputLink>
+          <apex:pageblockSection title="Overview" columns="1">
+                        <p> Maintenance records are used to record transactions that record the cost of maintaining or repairing equipment. </P>
+                </apex:pageblockSection>
+                <apex:pageblockSection title="Fields" columns="1">
+                 <p> <b> Equipment Maintenance Name </b>  This is a system generated unique record number.</P>
+                 <p> <b> Equipment </b> This is the Equipment that the maintenance record is associated with.</P>
+                 <p> <b> Description </b>  Enter a description for this maintenance record. </P>
+                 <p> <b> Maintenance Type </b> Select Inspection, Maintenance or Repair.  This pick list can be customized by a system administrator. </P>
+                 <p> <b> Completed Date </b> Enter the date the maintenance work was completed. </P>
+                 <p> <b> Meter Reading </b> Enter the current meter reading if applicable. </P>
+                 <p> <b> Invoice No </b> Enter the Invoice Number. </P>
+                 <p> <b> Parts Cost </b> Enter the parts cost of this transaction. </P>
+                 <p> <b> Labor Cost </b> Enter the labor cost of this transaction. </P>
+                 <p> <b> Total Cost </b> The system calculates the total cost of this transaction. </P>
+                 <p> <b> Start Time and Start Button </b> Use this button to start an internal time clock. </P>
+                 <p> <b> Stop Time and Stop Button </b> Use this button to stop the time clock.  The system will then calculate Duration and Duration in Hours. </P>
+                </apex:pageblockSection>
+    </apex:pageBlock>
+ </apex:page>

@@ -1,0 +1,10 @@
+<!-- 
+    Apttus Config & Pricing
+    RecommendedProductsComponent
+     
+    @2012-2013 Apttus Inc. All rights reserved.
+
+ -->
+<apex:component controller="Apttus_Config2.RecommendedProductsController"
+                allowDML="false">
+</apex:component>

@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <customHelpPage>EquipmentQuantiy_Help</customHelpPage>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <description>Records changes in Equipment Quantity for those pieces of equipment where &apos;Use On Hand Quantity&apos; is set to true.</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Adjustment_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The date on which the quantity adjustment took place.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The date on which the quantity adjustment took place.</inlineHelpText>
+        <label>Adjustment Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Adjustment_Note__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Notes for the adjustment.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Notes for the adjustment.</inlineHelpText>
+        <label>Adjustment Note</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Adjustment_Quantity__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The amount of the adjustment being made.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The amount of the adjustment being made.  Use a positive number to increase the Quantity on Hand and a negative number to decrease Quantity on Hand.</inlineHelpText>
+        <label>Adjustment Quantity</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Adjustment_Source__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The Source of the Quantity adjustment.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Source of the Quantity adjustment.</inlineHelpText>
+        <label>Adjustment Source</label>
+        <picklist>
+            <picklistValues>
+                <fullName>System</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Mobile</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Regular</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Loan</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Load</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Shipment</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Adjustment_Type__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The type of adjustment being made.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The type of adjustment being made.</inlineHelpText>
+        <label>Adjustment Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Regular</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Loan</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Loan Return</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Opening Balance</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>System Generated</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Shipment</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Equipment__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The Equipment of this Quantity Adjustment History record.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Equipment of this Quantity Adjustment History record.</inlineHelpText>
+        <label>Equipment</label>
+        <referenceTo>Equipment__c</referenceTo>
+        <relationshipName>Equipment_Quantity_Adjustment_Histories</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>GPS_Lat__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The GPS Latitude of the device that made the adjustment.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The GPS Latitude of the device that made the adjustment.</inlineHelpText>
+        <label>GPS Lat</label>
+        <precision>14</precision>
+        <required>false</required>
+        <scale>10</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>GPS_Long__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The GPS Longitude of the device that made the adjustment.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The GPS Longitude of the device that made the adjustment.</inlineHelpText>
+        <label>GPS Long</label>
+        <precision>14</precision>
+        <required>false</required>
+        <scale>10</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>New_Quantity_on_Hand__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>Previous_Quantity_On_Hand__c +  Adjustment_Quantity__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>New Quantity On Hand</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Previous_Quantity_On_Hand__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The Quantity on hand before this adjustment</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Quantity on hand before this adjustment</inlineHelpText>
+        <label>Previous Quantity On Hand</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>User_Device__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The identifier of the device that made the adjustment.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The identifier of the device that made the adjustment.</inlineHelpText>
+        <label>User/Device</label>
+        <length>24</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Equipment Quantity Adjustment</label>
+    <nameField>
+        <displayFormat>EQA-{000000}</displayFormat>
+        <label>Adjustment Number</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Equipment Quantity Adjustments</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <startsWith>Vowel</startsWith>
+</CustomObject>

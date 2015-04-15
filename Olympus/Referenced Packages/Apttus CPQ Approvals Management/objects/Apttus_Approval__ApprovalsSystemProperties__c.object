@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <enableEnhancedLookup>false</enableEnhancedLookup>
+    <fields>
+        <fullName>CartApprovalContextType__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Enter the default cart approval context type. 
+
+Valid values are : 
+============= 
+header 
+cart</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter the default cart approval context type. 
+
+Valid values are : 
+============= 
+header 
+cart</inlineHelpText>
+        <label>Cart Approval Context Type</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CartApprovalPreviewPage__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The name of a custom page used to show preview information. Leave it blank to use the default page.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The name of a custom page used to show preview information. Leave it blank to use the default page.</inlineHelpText>
+        <label>Cart Approval Preview Page</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>EnableApprovalCheckOnQuoteUpdate__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Indicates whether approval check should performed automatically when a quote updated</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Indicates whether approval check should performed automatically when a quote updated</inlineHelpText>
+        <label>Enable Approval Check On Quote Update</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+</CustomObject>

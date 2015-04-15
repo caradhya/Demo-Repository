@@ -1,0 +1,47 @@
+<apex:page standardController="Account" extensions="EmailGeneratedFileOnAccountController" tabStyle="Account">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        
+    <apex:form id="prospectSapForm" >
+        <apex:pageBlock id="pageBlock">
+            <apex:pageBlockSection columns="4" id="pageBlockSection">
+                <apex:pageBlockSectionItem labelTitle="Select Option" >
+                	<apex:selectRadio layout="pageDirection" label="Select" value="{!selectOption}" onchange="showEmailBox(this);">
+                        <apex:selectOption itemLabel="Email" itemValue="Email"></apex:selectOption>
+                        <apex:selectOption itemLabel="Attach" itemValue="Attach"></apex:selectOption>
+               		</apex:selectRadio>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem id="pageBlockSectionItem">
+                	<apex:inputText id="inputEmail" styleClass="inputEmail" value="{!inputEmail}" title="Input Email ID" />
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons >
+            	<apex:commandButton styleClass="sendEmailButton" action="{!sendEmailwithAttachment}" title="Send Email" value="Send Email">
+                    </apex:commandButton>
+                <apex:commandButton styleClass="attachButton" title="Attach" value="Attach" action="{!attachAtachmentToAccount}"/>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+	<script type="text/javascript">
+		window.onload = new function() {
+           showEmailFields();
+        };
+        function showEmailBox(obj)
+        {
+            console.log('Inside :' + obj.value);
+            if ( obj.value == 'Email' ){
+               showEmailFields();
+            }
+            else if (obj.value == 'Attach'){
+                $('.inputEmail').hide();
+                $('.sendEmailButton').hide();
+                $('.attachButton').show();
+            }
+        }
+    function showEmailFields(){
+		$('.inputEmail').show();
+        $('.sendEmailButton').show();
+        $('.attachButton').hide();
+    }
+        
+</script>
+</apex:page>

@@ -1,0 +1,9 @@
+<apex:page id="page" standardController="Apttus_Proposal__Proposal__c">    
+    <apex:pageMessage severity="ERROR"
+        strength="3"
+        title="Error: Quote have to be created from the Opportunity page."
+        escape="false"
+        summary="Please use the button <b>Create Quote/Proposal</b> on the <b>Oppportunity</b> page to create new <b>Quote/Proposal</b>."
+        rendered="{! IF(OR($CurrentPage.parameters.conrel = '0',$CurrentPage.parameters.conrel = ''), TRUE, FALSE) }">
+    </apex:pageMessage>
+</apex:page>

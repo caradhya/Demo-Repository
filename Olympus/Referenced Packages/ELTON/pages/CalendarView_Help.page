@@ -1,0 +1,15 @@
+<apex:page sidebar="false" showHeader="false">
+    <apex:pageBlock title="Equipment Loan and Resevrations on a Calendar View"> 
+    <apex:outputLink value="{! $Page.About_Us}"> <p> <b> Click here for the Links to Full Documentation Downloads</b> </p></apex:outputLink>
+          <apex:pageblockSection title="Overview" columns="1">
+                        <p> Equipment Calendar View is designed to assist the users in visualizing the current loans and/or reservations of various equipment.  Go to the full documentation link above to download the Equipment Calendar Guide which has detailed instructions on configuring and operating the Equipment Calendar.</P>
+                </apex:pageblockSection>
+                <apex:pageblockSection title="Controls" columns="1">
+                 <p> <b> View </b>  Select an Equipment View to use as the basis for displaying equipment in the Calendar.</P>
+                 <p> <b> Show </b> This allows the user to display reservations, loans of both.</P>
+                 <p> <b> Rows per Page </b>  This drop down allows the user to determine how many records are displayed on one calendar page. </P>
+                 <p> <b> Show Empty Rows </b> This allows the user to display or hide equipment records with no loans or reservations. </P>
+                 <p> <b> From and To dates </b> This allows the user to control the date range displayed. </P>
+                </apex:pageblockSection>
+    </apex:pageBlock>
+ </apex:page>

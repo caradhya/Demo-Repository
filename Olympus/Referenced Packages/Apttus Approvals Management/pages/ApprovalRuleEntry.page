@@ -1,0 +1,862 @@
+<!-- 
+    Apttus Approvals Management
+    ApprovalRuleEntry
+     
+    @2010-2014 Apttus Inc. All rights reserved.
+
+ -->
+<apex:page standardController="Apttus_Approval__ApprovalRuleEntry__c" 
+           extensions="Apttus_Approval.ApprovalRuleEntryController" 
+           showHeader="true" 
+           sidebar="true" 
+           tabStyle="Apttus_Approval__ApprovalRule__c">  
+    
+    <apex:stylesheet value="{!$Resource.Apttus_Approval__ApprovalsStyles}" />
+   
+    <style>
+        textarea {
+            width: 10%;
+        }
+        
+    </style>
+    
+    <apex:sectionHeader title="{!$ObjectType.Apttus_Approval__ApprovalRuleEntry__c.Label & ' ' & $Label.apttus_approval__Edit}" />
+
+    <apex:includeScript value="{!URLFOR($Resource.Apttus_Approval__YUILibrary, '/yui/build/yahoo-dom-event/yahoo-dom-event.js')}" />
+    <apex:includeScript value="{!URLFOR($Resource.Apttus_Approval__YUILibrary, '/yui/build/container/container-min.js')}" />
+    <apex:includescript value="{!URLFOR($Resource.Apttus_Approval__YUILibrary, '/yui/build/dragdrop/dragdrop-min.js')}" />
+    <apex:includescript value="{!URLFOR($Resource.Apttus_Approval__YUILibrary, '/yui/build/animation/animation-min.js')}" />
+    <apex:includeScript value="{!URLFOR($Resource.Apttus_Approval__YUILibrary, '/yui/build/treeview/treeview-min.js')}" /> 
+    <apex:includeScript value="{!URLFOR($Resource.Apttus_Approval__YUILibrary, '/yui/build/menu/menu-min.js')}" />
+    <apex:includeScript value="{!URLFOR($Resource.Apttus_Approval__YUILibrary, '/yui/build/yahoo/yahoo-min.js')}" />
+
+    <apex:stylesheet value="{!URLFOR($Resource.Apttus_Approval__YUILibrary, '/yui/build/assets/skins/sam/skin.css')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.Apttus_Approval__YUILibrary, '/yui/build/treeview/assets/skins/sam/treeview.css')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.Apttus_Approval__YUILibrary, '/yui/examples/treeview/assets/css/menu/tree.css')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.Apttus_Approval__YUILibrary, '/yui/build/menu/assets/skins/sam/menu.css')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.Apttus_Approval__YUILibrary, '/yui/build/container/assets/skins/sam/container.css')}" />
+
+    <script type="text/javascript">
+
+        // Create a namespace for our custom functions
+        YAHOO.namespace("force.com");
+        
+        /**
+         * Builds the wait panel.
+         */
+           YAHOO.force.com.buildWaitPanel = function() {
+               document.body.className = document.body.className + " yui-skin-sam";
+               YAHOO.force.com.waitPanel = new YAHOO.widget.Panel(
+                   "waitPanel",  // The id of our dialog container
+                   { 
+                           width           :   "300px", // You can play with this until it's right
+                           visible         :   false,   // Should be invisible when rendered
+                           draggable       :   false,   // Make the dialog draggable
+                           close           :   false,   // Don't include a close title button
+                           modal           :   true,    // Make it modal
+                           fixedCenter     :   true,    // Keep centered if window is scrolled
+                           zindex          :   40,      // Make sure it's on top of everything
+                           constraintoviewport: true,
+                           
+                           // This line adds the appear/disapper fade effect
+                           effect           :   {effect:YAHOO.widget.ContainerEffect.FADE,duration:0.25}
+                                        
+                   }
+               );
+               
+               // header
+               YAHOO.force.com.waitPanel.setHeader("Please Wait");
+            
+               // set image
+               YAHOO.force.com.waitPanel.setBody('<center><img src="{!URLFOR($Resource.Apttus_Approval__Image_LoadingPage)}" /></center>');
+               // Render the dialog to the document.body level of the DOM
+               YAHOO.force.com.waitPanel.render(document.body);
+           }
+            
+        /**
+         * Callback when the action button is clicked
+         */
+        function onActionClick() {
+        
+            // show the modal panel
+            YAHOO.force.com.waitPanel.show();
+            
+            // return false to allow the action to proceed
+            return false;
+        }
+        
+        /**
+         * Callback when the action is completed
+         */
+        function onActionComplete() {
+        
+            // hide the modal panel
+            YAHOO.force.com.waitPanel.hide();
+        }
+        
+        YAHOO.force.com.onDOMReady = function() {
+            
+            // add our custom skin css to the body tag
+            document.body.className = document.body.className + " yui-skin-sam";                    
+            
+            // build the wait panel
+            YAHOO.force.com.buildWaitPanel();
+        }   
+        
+        // build the tree as soon as the DOM is in a usable state
+        YAHOO.util.Event.onDOMReady(YAHOO.force.com.onDOMReady);
+    </script>
+                        
+    <apex:form id="idApprovalRuleSO">
+        
+        <!--  required fields -->
+        
+        <apex:pageBlock id="idApprovalRuleBlock" rendered="{!NOT(inSearchMode)}">
+            <apex:pageMessages />
+            
+            <apex:pageBlockButtons location="both" rendered="{!NOT(isFilterEditMode)}" >
+                <apex:commandButton value="{!$Label.apttus_approval__Save}" action="{!doSave}" />
+                <apex:commandButton value="{!$Label.apttus_approval__Cancel}" action="{!doCancel}" immediate="true" />
+            </apex:pageBlockButtons>
+                    
+            <apex:pageBlockSection id="idApprovalRuleDetailSection" 
+                                   title="{!$Label.apttus_approval__RuleInformation}"  
+                                   columns="2" 
+                                   collapsible="true" >
+                
+                <apex:outputField value="{!ruleSO.Name}" />
+                <apex:outputField value="{!ruleSO.Apttus_Approval__BusinessObject__c}"/>
+                
+                <apex:outputField value="{!ruleSO.Apttus_Approval__Sequence__c}" />
+                <apex:outputField value="{!ruleSO.Apttus_Approval__RuleType__c}" />
+                
+                <apex:outputField value="{!ruleSO.Apttus_Approval__Description__c}" />
+                <apex:pageBlockSectionItem />
+                
+                <apex:outputField value="{!ruleSO.Apttus_Approval__Dimension1Id__c}" 
+                                  rendered="{!isDimensionBasedRule}" />
+                <apex:outputField value="{!ruleSO.Apttus_Approval__Dimension1ValueType__c}" 
+                                  rendered="{!isDimensionBasedRule}" />
+                                  
+                <apex:outputField value="{!ruleSO.Apttus_Approval__Dimension2Id__c}" 
+                                  rendered="{!isDimensionBasedRule && NOT(ISBLANK(ruleSO.Apttus_Approval__Dimension2Id__c))}" />
+                <apex:outputField value="{!ruleSO.Apttus_Approval__Dimension2ValueType__c}" 
+                                  rendered="{!isDimensionBasedRule && NOT(ISBLANK(ruleSO.Apttus_Approval__Dimension2Id__c))}" /> 
+                                  
+                <apex:outputField value="{!ruleSO.Apttus_Approval__Dimension3Id__c}" 
+                                  rendered="{!isDimensionBasedRule && NOT(ISBLANK(ruleSO.Apttus_Approval__Dimension3Id__c))}" />
+                <apex:outputField value="{!ruleSO.Apttus_Approval__Dimension3ValueType__c}" 
+                                  rendered="{!isDimensionBasedRule && NOT(ISBLANK(ruleSO.Apttus_Approval__Dimension3Id__c))}" />
+                                  
+                <apex:outputField value="{!ruleSO.Apttus_Approval__Dimension4Id__c}" 
+                                  rendered="{!isDimensionBasedRule && NOT(ISBLANK(ruleSO.Apttus_Approval__Dimension4Id__c))}" />
+                <apex:outputField value="{!ruleSO.Apttus_Approval__Dimension4ValueType__c}" 
+                                  rendered="{!isDimensionBasedRule && NOT(ISBLANK(ruleSO.Apttus_Approval__Dimension4Id__c))}" />
+                                  
+                <apex:outputField value="{!ruleSO.Apttus_Approval__Dimension5Id__c}" 
+                                  rendered="{!isDimensionBasedRule && NOT(ISBLANK(ruleSO.Apttus_Approval__Dimension5Id__c))}" />
+                <apex:outputField value="{!ruleSO.Apttus_Approval__Dimension5ValueType__c}" 
+                                  rendered="{!isDimensionBasedRule && NOT(ISBLANK(ruleSO.Apttus_Approval__Dimension5Id__c))}" />
+                                  
+                <apex:outputField value="{!ruleSO.Apttus_Approval__Dimension6Id__c}" 
+                                  rendered="{!isDimensionBasedRule && NOT(ISBLANK(ruleSO.Apttus_Approval__Dimension6Id__c))}" />
+                <apex:outputField value="{!ruleSO.Apttus_Approval__Dimension6ValueType__c}" 
+                                  rendered="{!isDimensionBasedRule && NOT(ISBLANK(ruleSO.Apttus_Approval__Dimension6Id__c))}" />
+                                                  
+                <apex:outputField value="{!ruleSO.Apttus_Approval__Active__c}" />
+                
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockSection id="idApprovalRuleEntriesSection" 
+                                   title="{!$Label.apttus_approval__RuleEntries}"  
+                                   columns="2" 
+                                   collapsible="false" >
+                                   
+                <apex:pageBlockTable id="idApprovalRuleEntriesTable" 
+                                     value="{!ruleEntries}" 
+                                     var="entryInfo" 
+                                     columns="15"   
+                                     width="100%" 
+                                     rowClasses="oddRow,evenRow"  
+                                     rendered="{!isDimensionBasedRule && isDimension1Enabled}" >
+                    
+                    <apex:column headerValue="{!$ObjectType.Apttus_Approval__ApprovalRuleEntry__c.Fields.Apttus_Approval__Sequence__c.Label}" 
+                                 width="5%" >
+                        <apex:outputField value="{!entryInfo.entrySO.Apttus_Approval__Sequence__c}" />
+                    </apex:column>
+                    
+                    <apex:column headerValue="Label" 
+                                 width="5%" >
+                        <apex:inputField value="{!entryInfo.entrySO.Apttus_Approval__EntryLabel__c}" 
+                                         rendered="{!NOT(isFilterEditMode) || (entryInfo.entrySO.Apttus_Approval__Sequence__c <= filterRowNum)}" />
+                    </apex:column>
+                    
+                    <apex:column headerValue="{!dimension1Label}" 
+                                 width="10%" >
+                        <apex:outputPanel styleClass="{!IF(entryInfo.Dim1InError, 'errorRow', '')}" layout="block" >
+                            <apex:inputField value="{!entryInfo.entrySO.Apttus_Approval__Dimension1Value__c}" 
+                                             rendered="{!NOT(isDimension1Picklist)}" />
+                            <apex:selectList value="{!entryInfo.entrySO.Apttus_Approval__Dimension1Value__c}" 
+                                             multiselect="false" 
+                                             required="false" 
+                                             size="1" 
+                                             rendered="{!isDimension1Picklist && NOT(isDimension1MultiPicklist)}" >
+                                <apex:selectOptions value="{!dimension1PicklistItems}" />
+                            </apex:selectList>
+                            <apex:selectList value="{!entryInfo.Dimension1Values}" 
+                                             multiselect="true" 
+                                             required="false" 
+                                             size="5" 
+                                             rendered="{!isDimension1Picklist && isDimension1MultiPicklist}" >
+                                <apex:selectOptions value="{!dimension1PicklistItems}" />
+                            </apex:selectList>
+                        </apex:outputPanel>
+                    </apex:column>
+                    
+                    <apex:column headerValue="{!dimension2Label}" 
+                                 width="7%" 
+                                 rendered="{!isDimension2Enabled}" >
+                        <apex:outputPanel styleClass="{!IF(entryInfo.Dim2InError, 'errorRow', '')}" layout="block" >
+                            <apex:inputField value="{!entryInfo.entrySO.Apttus_Approval__Dimension2Value__c}" 
+                                             rendered="{!NOT(isDimension2Picklist)}" />
+                            <apex:selectList value="{!entryInfo.entrySO.Apttus_Approval__Dimension2Value__c}" 
+                                             multiselect="false"   
+                                             required="false" 
+                                             size="1" 
+                                             rendered="{!isDimension2Picklist && NOT(isDimension2MultiPicklist)}" >
+                                <apex:selectOptions value="{!dimension2PicklistItems}" />
+                            </apex:selectList>
+                            <apex:selectList value="{!entryInfo.Dimension2Values}" 
+                                             multiselect="true"  
+                                             required="false" 
+                                             size="5" 
+                                             rendered="{!isDimension2Picklist && isDimension2MultiPicklist}" >
+                                <apex:selectOptions value="{!dimension2PicklistItems}" />
+                            </apex:selectList>
+                        </apex:outputPanel>
+                    </apex:column>
+                    
+                    <apex:column headerValue="{!dimension3Label}" 
+                                 width="7%" 
+                                 rendered="{!isDimension3Enabled}" >
+                        <apex:outputPanel styleClass="{!IF(entryInfo.Dim3InError, 'errorRow', '')}" layout="block" >
+                            <apex:inputField value="{!entryInfo.entrySO.Apttus_Approval__Dimension3Value__c}" 
+                                             rendered="{!NOT(isDimension3Picklist)}" />
+                            <apex:selectList value="{!entryInfo.entrySO.Apttus_Approval__Dimension3Value__c}" 
+                                             multiselect="false"  
+                                             required="false" 
+                                             size="1" 
+                                             rendered="{!isDimension3Picklist && NOT(isDimension3MultiPicklist)}" >
+                                <apex:selectOptions value="{!dimension3PicklistItems}" />
+                            </apex:selectList>
+                            <apex:selectList value="{!entryInfo.Dimension3Values}" 
+                                             multiselect="true"  
+                                             required="false" 
+                                             size="5" 
+                                             rendered="{!isDimension3Picklist && isDimension3MultiPicklist}" >
+                                <apex:selectOptions value="{!dimension3PicklistItems}" />
+                            </apex:selectList>
+                        </apex:outputPanel>
+                    </apex:column>
+                    
+                    <apex:column headerValue="{!dimension4Label}" 
+                                 width="7%" 
+                                 rendered="{!isDimension4Enabled}" >
+                        <apex:outputPanel styleClass="{!IF(entryInfo.Dim4InError, 'errorRow', '')}" layout="block" >
+                            <apex:inputField value="{!entryInfo.entrySO.Apttus_Approval__Dimension4Value__c}" 
+                                             rendered="{!NOT(isDimension4Picklist)}" />
+                            <apex:selectList value="{!entryInfo.entrySO.Apttus_Approval__Dimension4Value__c}" 
+                                             multiselect="false"  
+                                             required="false" 
+                                             size="1" 
+                                             rendered="{!isDimension4Picklist && NOT(isDimension4MultiPicklist)}" >
+                                <apex:selectOptions value="{!dimension4PicklistItems}" />
+                            </apex:selectList>
+                            <apex:selectList value="{!entryInfo.Dimension4Values}" 
+                                             multiselect="true"  
+                                             required="false" 
+                                             size="5" 
+                                             rendered="{!isDimension4Picklist && isDimension4MultiPicklist}" >
+                                <apex:selectOptions value="{!dimension4PicklistItems}" />
+                            </apex:selectList>
+                        </apex:outputPanel>
+                    </apex:column>
+                    
+                    <apex:column headerValue="{!dimension5Label}" 
+                                 width="7%" 
+                                 rendered="{!isDimension5Enabled}" >
+                        <apex:outputPanel styleClass="{!IF(entryInfo.Dim5InError, 'errorRow', '')}" layout="block" >
+                            <apex:inputField value="{!entryInfo.entrySO.Apttus_Approval__Dimension5Value__c}" 
+                                             rendered="{!NOT(isDimension5Picklist)}" />
+                            <apex:selectList value="{!entryInfo.entrySO.Apttus_Approval__Dimension5Value__c}" 
+                                             multiselect="false"  
+                                             required="false" 
+                                             size="1" 
+                                             rendered="{!isDimension5Picklist && NOT(isDimension5MultiPicklist)}" >
+                                <apex:selectOptions value="{!dimension5PicklistItems}" />
+                            </apex:selectList>
+                            <apex:selectList value="{!entryInfo.Dimension5Values}" 
+                                             multiselect="true"  
+                                             required="false" 
+                                             size="5" 
+                                             rendered="{!isDimension5Picklist && isDimension5MultiPicklist}" >
+                                <apex:selectOptions value="{!dimension5PicklistItems}" />
+                            </apex:selectList>
+                        </apex:outputPanel>
+                    </apex:column>
+                    
+                    <apex:column headerValue="{!dimension6Label}" 
+                                 width="7%" 
+                                 rendered="{!isDimension6Enabled}" >
+                        <apex:outputPanel styleClass="{!IF(entryInfo.Dim6InError, 'errorRow', '')}" layout="block" >
+                            <apex:inputField value="{!entryInfo.entrySO.Apttus_Approval__Dimension6Value__c}" 
+                                             rendered="{!NOT(isDimension6Picklist)}" />
+                            <apex:selectList value="{!entryInfo.entrySO.Apttus_Approval__Dimension6Value__c}" 
+                                             multiselect="false"  
+                                             required="false" 
+                                             size="1" 
+                                             rendered="{!isDimension6Picklist && NOT(isDimension6MultiPicklist)}" >
+                                <apex:selectOptions value="{!dimension6PicklistItems}" />
+                            </apex:selectList>
+                            <apex:selectList value="{!entryInfo.Dimension6Values}" 
+                                             multiselect="true"  
+                                             required="false" 
+                                             size="5" 
+                                             rendered="{!isDimension6Picklist && isDimension6MultiPicklist}" >
+                                <apex:selectOptions value="{!dimension6PicklistItems}" />
+                            </apex:selectList>
+                        </apex:outputPanel>
+                    </apex:column>
+                    
+                    <!-- <apex:column headerValue="{!$ObjectType.ApprovalRuleEntry__c.Fields.IncludePrevious__c.Label}" --> 
+                    <apex:column width="5%" >
+                        <apex:facet name="header">
+                                    <apex:outputText >{!$Label.Include}<br></br>{!$Label.Previous}</apex:outputText>
+                        </apex:facet>
+                        <apex:inputField value="{!entryInfo.entrySO.Apttus_Approval__IncludePrevious__c}" 
+                                         rendered="{!entryInfo.entrySO.Apttus_Approval__Sequence__c > 1}" />
+                        <apex:outputText value="{!$Label.apttus_approval__NotApplicable}"  
+                                         rendered="{!entryInfo.entrySO.Apttus_Approval__Sequence__c <= 1}" />
+                    </apex:column>
+                    
+                    <apex:column headerValue="{!$ObjectType.Apttus_Approval__ApprovalRuleEntry__c.Fields.Apttus_Approval__DependsOn__c.Label}" 
+                                 width="5%" >
+                        <apex:inputText value="{!entryInfo.entrySO.Apttus_Approval__DependsOn__c}" 
+                                        style="width:60px" 
+                                        rendered="{!entryInfo.entrySO.Apttus_Approval__Sequence__c > 1}" />
+                        <apex:outputText value="{!$Label.apttus_approval__NotApplicable}" 
+                                         style="width:60px" 
+                                         rendered="{!entryInfo.entrySO.Apttus_Approval__Sequence__c <= 1}" />
+                    </apex:column>
+                    
+                    <apex:column headerValue="{!$Label.apttus_approval__Assignees}" width="15%" >
+                        
+                        <apex:pageBlockTable id="idApprovalRuleAssigneesTable" 
+                                             value="{!entryInfo.Assignees}" 
+                                             var="assigneeInfo" 
+                                             columns="9" >
+                            
+                            <!-- 1 -->
+                            <apex:column width="5%" >
+                                <apex:commandLink action="{!doAddAssigneeRow}" 
+                                                  reRender="idApprovalRuleAssigneesTable" >
+                                    <apex:param name="entryrowNum" value="{!entryInfo.entrySO.Apttus_Approval__Sequence__c}" />
+                                    <apex:param name="rowNum" value="{!assigneeInfo.assigneeSO.Apttus_Approval__Sequence__c}" />
+                                    <apex:image url="{!$Resource.Apttus_Approval__Image_Plus}" 
+                                                title="{!$Label.apttus_approval__Add}" 
+                                                alt="{!$Label.apttus_approval__Add}" />
+                                </apex:commandLink>
+                                <apex:commandLink action="{!doDeleteAssigneeRow}" 
+                                                  reRender="idApprovalRuleAssigneesTable" 
+                                                  rendered="{!assigneeInfo.assigneeSO.Apttus_Approval__Sequence__c > 1}" >
+                                    <apex:param name="entryrowNum" value="{!entryInfo.entrySO.Apttus_Approval__Sequence__c}" />
+                                    <apex:param name="rowNum" value="{!assigneeInfo.assigneeSO.Apttus_Approval__Sequence__c}" />
+                                    <apex:image url="{!$Resource.Apttus_Approval__Image_Minus}" 
+                                                title="{!$Label.apttus_approval__Remove}" 
+                                                alt="{!$Label.apttus_approval__Remove}" />
+                                </apex:commandLink>
+                            </apex:column>
+                            <!-- 2 -->
+                            <apex:column headerValue="{!$Label.apttus_approval__Sequence}" >
+                                <apex:outputField value="{!assigneeInfo.assigneeSO.Apttus_Approval__Sequence__c}" />
+                            </apex:column>
+                            <!-- 3 -->
+                            <apex:column headerValue="{!$Label.apttus_approval__Type}" >
+                                <apex:inputField value="{!assigneeInfo.assigneeSO.Apttus_Approval__AssigneeType__c}" >
+                                    <apex:actionSupport event="onchange" 
+                                                        action="{!doAssigneeTypeChanged}"
+                                                        reRender="idApprovalRuleAssigneesTable"
+                                                        status="idPleaseWaitStatusType"> 
+                                        <apex:param name="pRuleEntrySeq"
+                                                    assignTo="{!selectedRuleEntrySeq}"
+                                                    value="{!entryInfo.entrySO.Apttus_Approval__Sequence__c}"/>
+                                        <apex:param name="pRuleEntryAssigneeSeq"
+                                                    assignTo="{!selectedRuleEntryAssigneeSeq}"
+                                                    value="{!assigneeInfo.assigneeSO.Apttus_Approval__Sequence__c}"/>
+                                    </apex:actionSupport>
+                                    <apex:actionStatus id="idPleaseWaitStatusType">
+                                        <apex:facet name="start">
+                                            {!$Label.StatusPleaseWait}...
+                                            <img src="/apexpages/devmode/img/saveStatus.gif" />
+                                        </apex:facet>
+                                        <apex:facet name="stop" />
+                                    </apex:actionStatus>
+                                </apex:inputField>
+                            </apex:column>
+                            <!-- 4 -->
+                            <apex:column headerValue="{!$Label.apttus_approval__Value}">
+                                <apex:actionRegion >
+                                <apex:panelGrid columns="3">
+                                    <apex:inputField value="{!assigneeInfo.assigneeSO.Apttus_Approval__AssigneeValue__c}"
+                                                     rendered="{!NOT(assigneeInfo.IsApprovalMatrix) &&
+                                                                 NOT(assigneeInfo.IsRelatedUser)}" />  
+                                    <apex:panelGroup rendered="{!assigneeInfo.IsQueue ||
+                                                                 assigneeInfo.IsRole ||
+                                                                 assigneeInfo.IsUser}">
+                                        <apex:commandLink action="{!doSelectRuleEntryAssignee}"
+                                                          reRender="idApprovalRuleSO"
+                                                          status="idPleaseWaitStatusValue">
+                                            <apex:image value="/img/s.gif" styleClass="lookupIcon"/>
+                                            <apex:param name="pRuleEntrySeq"
+                                                        assignTo="{!selectedRuleEntrySeq}"
+                                                        value="{!entryInfo.entrySO.Apttus_Approval__Sequence__c}"/>
+                                            <apex:param name="pRuleEntryAssigneeSeq"
+                                                        assignTo="{!selectedRuleEntryAssigneeSeq}"
+                                                        value="{!assigneeInfo.assigneeSO.Apttus_Approval__Sequence__c}"/>
+                                        </apex:commandLink>
+                                        <apex:actionStatus id="idPleaseWaitStatusValue">
+                                            <apex:facet name="start">
+                                                {!$Label.StatusPleaseWait}...
+                                                <img src="/apexpages/devmode/img/saveStatus.gif" />
+                                            </apex:facet>
+                                            <apex:facet name="stop" />
+                                        </apex:actionStatus>
+                                    </apex:panelGroup>
+                                    <apex:inputField value="{!assigneeInfo.assigneeSO.Apttus_Approval__AssigneeId__c}"
+                                                     rendered="false"
+                                                     style="visibility:hidden;" />
+                                </apex:panelGrid>
+                                </apex:actionRegion>
+                                <apex:selectList size="1" 
+                                                 multiselect="false"
+                                                 value="{!assigneeInfo.assigneeSO.Apttus_Approval__AssigneeValue__c}" 
+                                                 rendered="{!NOT(assigneeInfo.IsApprovalMatrix) &&
+                                                                 assigneeInfo.IsRelatedUser}"> 
+                                    <apex:selectOptions value="{!relatedUserPicklistItems}"></apex:selectOptions>
+                                </apex:selectList>
+                                <apex:selectList size="1" 
+                                                 multiselect="false"
+                                                 value="{!assigneeInfo.assigneeSO.Apttus_Approval__AssigneeValue__c}" 
+                                                 rendered="{!assigneeInfo.isApprovalMatrix}" >
+                                    <apex:selectOptions value="{!matrixAssigneePicklistItems}"></apex:selectOptions>
+                                </apex:selectList>
+                            </apex:column>
+                            <!-- 5 -->
+                            <apex:column headerValue="{!$Label.apttus_approval__Label}" >
+                                <apex:inputField value="{!assigneeInfo.assigneeSO.Apttus_Approval__AssigneeLabel__c}" 
+                                                 style="width:75px" />
+                            </apex:column>
+                            <!-- 6 -->
+                            <apex:column headerValue="{!$Label.apttus_approval__DependsOn}" >
+                                <apex:inputText value="{!assigneeInfo.assigneeSO.Apttus_Approval__DependsOn__c}" 
+                                                style="width:60px" 
+                                                rendered="{!assigneeInfo.assigneeSO.Apttus_Approval__Sequence__c > 1}" />
+                                <apex:outputText value="{!$Label.apttus_approval__NotApplicable}"  
+                                                 style="width:60px" 
+                                                 rendered="{!assigneeInfo.assigneeSO.Apttus_Approval__Sequence__c <= 1}" />
+                            </apex:column>
+                            <!-- 7 -->
+                            <apex:column headerValue="{!$ObjectType.Apttus_Approval__ApprovalRuleAssignee__c.Fields.Apttus_Approval__NotifyOnly__c.Label}" >
+                                <apex:inputField value="{!assigneeInfo.assigneeSO.Apttus_Approval__NotifyOnly__c}" />
+                            </apex:column>
+                            <!-- 8 -->
+                            <apex:column headerValue="{!$ObjectType.Apttus_Approval__ApprovalRuleAssignee__c.Fields.Apttus_Approval__SendEmail__c.Label}" >
+                                <apex:inputField value="{!assigneeInfo.assigneeSO.Apttus_Approval__SendEmail__c}" />
+                            </apex:column>
+                            <!-- 9 -->
+                            <apex:column headerValue="{!$Label.apttus_approval__Description}" >
+                                <apex:inputField value="{!assigneeInfo.assigneeSO.Apttus_Approval__AssigneeDescription__c}" 
+                                                 style="width:100px" />
+                            </apex:column>
+                            
+                        </apex:pageBlockTable>
+                    </apex:column>
+                    
+                    <apex:column width="5%" >
+                        <apex:commandLink action="{!doAddRow}" 
+                                          reRender="idApprovalRuleEntriesTable" >
+                            <apex:param name="rowNum" value="{!entryInfo.entrySO.Apttus_Approval__Sequence__c}" />
+                            <apex:image url="{!$Resource.Apttus_Approval__Image_Plus2}" 
+                                        title="{!$Label.apttus_approval__Add}" 
+                                        alt="{!$Label.apttus_approval__Add}" />                
+                        </apex:commandLink>
+                    </apex:column>
+                    
+                    <apex:column width="5%" >
+                        <apex:commandLink action="{!doDeleteRow}" 
+                                          reRender="idApprovalRuleEntriesTable" 
+                                          rendered="{!entryInfo.entrySO.Apttus_Approval__Sequence__c > 1}" >
+                            <apex:param name="rowNum" value="{!entryInfo.entrySO.Apttus_Approval__Sequence__c}" />
+                            <apex:image url="{!$Resource.Apttus_Approval__Image_Minus2}" 
+                                        title="{!$Label.apttus_approval__Remove}" 
+                                        alt="{!$Label.apttus_approval__Remove}" />         
+                        </apex:commandLink>
+                    </apex:column>
+                    
+                    <apex:column width="5%" >
+                        <apex:commandLink action="{!doMoveUpRow}" 
+                                          reRender="idApprovalRuleEntriesTable" 
+                                          rendered="{!entryInfo.entrySO.Apttus_Approval__Sequence__c > 1}" >
+                            <apex:param name="rowNum" value="{!entryInfo.entrySO.Apttus_Approval__Sequence__c}" />
+                            <apex:image url="{!$Resource.Apttus_Approval__Image_MoveUp}" 
+                                        title="{!$Label.apttus_approval__MoveUp}" 
+                                        alt="{!$Label.apttus_approval__MoveUp}" />
+                        </apex:commandLink>
+                        <apex:commandLink action="{!doMoveDownRow}" 
+                                          reRender="idApprovalRuleEntriesTable" 
+                                          rendered="{!entryInfo.entrySO.Apttus_Approval__Sequence__c < lastRowSequence}" >
+                            <apex:param name="rowNum" value="{!entryInfo.entrySO.Apttus_Approval__Sequence__c}" />
+                            <apex:image url="{!$Resource.Apttus_Approval__Image_MoveDown}" 
+                                        title="{!$Label.apttus_approval__MoveDown}" 
+                                        alt="{!$Label.apttus_approval__MoveDown}" />
+                        </apex:commandLink>
+                    </apex:column>
+                    
+                    <apex:column width="5%" >
+                        <apex:outputText value="{!entryInfo.ErrorMsg}" style="color:red;" />
+                    </apex:column>
+                   
+                </apex:pageBlockTable>
+                
+                <apex:pageBlockTable id="idApprovalRuleEntriesTable2" 
+                                     value="{!ruleEntries}" 
+                                     var="entryInfo" 
+                                     columns="14"   
+                                     width="100%" 
+                                     rowClasses="oddRow,evenRow"  
+                                     rendered="{!isConditionBasedRule}" >
+                    
+                    <apex:column headerValue="{!$ObjectType.Apttus_Approval__ApprovalRuleEntry__c.Fields.Apttus_Approval__Sequence__c.Label}" 
+                                 width="5%" >
+                        <apex:outputField value="{!entryInfo.entrySO.Apttus_Approval__Sequence__c}" 
+                                          rendered="{!NOT(isFilterEditMode) || (entryInfo.entrySO.Apttus_Approval__Sequence__c <= filterRowNum)}" />
+                    </apex:column>
+                    
+                    <apex:column headerValue="Label" 
+                                 width="5%" >
+                        <apex:inputField value="{!entryInfo.entrySO.Apttus_Approval__EntryLabel__c}" 
+                                         rendered="{!NOT(isFilterEditMode) || (entryInfo.entrySO.Apttus_Approval__Sequence__c <= filterRowNum)}" />
+                    </apex:column>
+                    
+                    <apex:column headerValue="{!$ObjectType.Apttus_Approval__ApprovalRuleEntry__c.Fields.Apttus_Approval__Condition__c.Label}" 
+                                 width="10%" >
+                        <apex:outputPanel styleClass="{!IF((entryInfo.ConditionInError || entryInfo.entrySO.Apttus_Approval__Sequence__c == filterRowNum), 'errorRow', '')}" 
+                                          layout="block" 
+                                          rendered="{!NOT(isFilterEditMode) || (entryInfo.entrySO.Apttus_Approval__Sequence__c <= filterRowNum)}" >
+                            <apex:outputText value="{!entryInfo.conditionExpr}"  
+                                             style="width: 250px;font-weight: bold;"
+                                             title="{!entryInfo.conditionExpr}" />
+                            <!--                
+                            <apex:inputTextarea value="{!entryInfo.conditionExpr}"  
+                                            style="width: 150px;height: 60px;word-wrap:normal;font-weight: bold;"
+                                            disabled="true" 
+                                            title="{!entryInfo.conditionExpr}" /> -->
+                        </apex:outputPanel>
+                    </apex:column>
+                    
+                    <apex:column width="5%" >
+                        <apex:commandLink action="{!doEditFilter}" 
+                                          value="{!$Label.apttus_approval__New}" 
+                                          rendered="{!NOT(isFilterEditMode) && LEN(entryInfo.conditionExpr) == 0}" >
+                            <apex:param name="rowNum" value="{!entryInfo.entrySO.Apttus_Approval__Sequence__c}" />             
+                        </apex:commandLink>
+                        <apex:commandLink action="{!doEditFilter}" 
+                                          value="{!$Label.apttus_approval__Edit}" 
+                                          rendered="{!NOT(isFilterEditMode) && LEN(entryInfo.conditionExpr) > 0}" >
+                            <apex:param name="rowNum" value="{!entryInfo.entrySO.Apttus_Approval__Sequence__c}" />             
+                        </apex:commandLink>
+                    </apex:column>
+                    
+                    <apex:column headerValue="{!$ObjectType.Apttus_Approval__ApprovalRuleEntry__c.Fields.Apttus_Approval__AutoReapprovalCriteria__c.Label}" 
+                                 width="10%" >
+                        <apex:outputText value="{!entryInfo.ReapprovalCriteriaExpr}"  
+                                         style="font-weight: bold;"
+                                         title="{!entryInfo.ReapprovalCriteriaExpr}" />
+                    </apex:column>
+                    
+                    <apex:column width="5%" >
+                        <apex:commandLink action="{!doEditReapprovalFilter}" 
+                                          value="{!$Label.apttus_approval__New}" 
+                                          rendered="{!NOT(isFilterEditMode) && LEN(entryInfo.ReapprovalCriteriaExpr) == 0}" >
+                            <apex:param name="rowNum" value="{!entryInfo.entrySO.Apttus_Approval__Sequence__c}" />             
+                        </apex:commandLink>
+                        <apex:commandLink action="{!doEditReapprovalFilter}" 
+                                          value="{!$Label.apttus_approval__Edit}" 
+                                          rendered="{!NOT(isFilterEditMode) && LEN(entryInfo.ReapprovalCriteriaExpr) > 0}" >
+                            <apex:param name="rowNum" value="{!entryInfo.entrySO.Apttus_Approval__Sequence__c}" />             
+                        </apex:commandLink>
+                    </apex:column>
+                    
+                    <apex:column width="10%" 
+                                 headerValue="{!$Label.apttus_approval__Description}" >
+                        <apex:inputField value="{!entryInfo.entrySO.Apttus_Approval__Description__c}" 
+                                         style="width:100px" 
+                                         rendered="{!NOT(isFilterEditMode)}" />
+                    </apex:column>
+                            
+                    <!-- <apex:column headerValue="{!$ObjectType.ApprovalRuleEntry__c.Fields.IncludePrevious__c.Label}" --> 
+                    <apex:column width="5%" rendered="{!isDimensionBasedRule}" >
+                        <apex:facet name="header">
+                                    <apex:outputText >{!$Label.Include}<br></br>{!$Label.Previous}</apex:outputText>
+                        </apex:facet>
+                        <apex:inputField value="{!entryInfo.entrySO.Apttus_Approval__IncludePrevious__c}" 
+                                         rendered="{!NOT(isFilterEditMode) && entryInfo.entrySO.Apttus_Approval__Sequence__c > 1}" />
+                        <apex:outputText value="{!$Label.apttus_approval__NotApplicable}"  
+                                         rendered="{!NOT(isFilterEditMode) &&
+                                                     entryInfo.entrySO.Sequence__c <= 1}" />
+                    </apex:column>
+                    
+                    <apex:column headerValue="{!$ObjectType.Apttus_Approval__ApprovalRuleEntry__c.Fields.Apttus_Approval__DependsOn__c.Label}" 
+                                 width="5%" >
+                        <apex:inputText value="{!entryInfo.entrySO.Apttus_Approval__DependsOn__c}" 
+                                        style="width:60px" 
+                                        rendered="{!NOT(isFilterEditMode) && entryInfo.entrySO.Apttus_Approval__Sequence__c > 1}" />
+                        <apex:outputText value="{!$Label.apttus_approval__NotApplicable}" 
+                                         style="width:60px" 
+                                         rendered="{!NOT(isFilterEditMode) &&
+                                                     entryInfo.entrySO.Sequence__c <= 1}" />
+                    </apex:column>
+                    
+                    <apex:column headerValue="{!$Label.apttus_approval__Assignees}" width="20%" >
+                        
+                        <apex:pageBlockTable id="idApprovalRuleAssigneesTable2" 
+                                             value="{!entryInfo.Assignees}" 
+                                             var="assigneeInfo" 
+                                             columns="8" 
+                                             rendered="{!NOT(isFilterEditMode)}" >
+                            
+                            <!-- 1 -->
+                            <apex:column width="5%" >
+                                <apex:commandLink action="{!doAddAssigneeRow}" 
+                                                  reRender="idApprovalRuleAssigneesTable2" >
+                                    <apex:param name="entryrowNum" value="{!entryInfo.entrySO.Apttus_Approval__Sequence__c}" />
+                                    <apex:param name="rowNum" value="{!assigneeInfo.assigneeSO.Apttus_Approval__Sequence__c}" />
+                                    <apex:image url="{!$Resource.Apttus_Approval__Image_Plus}" 
+                                                title="{!$Label.apttus_approval__Add}" 
+                                                alt="{!$Label.apttus_approval__Add}" />
+                                </apex:commandLink>
+                                <apex:commandLink action="{!doDeleteAssigneeRow}" 
+                                                  reRender="idApprovalRuleAssigneesTable2" 
+                                                  rendered="{!assigneeInfo.assigneeSO.Apttus_Approval__Sequence__c > 1}" >
+                                    <apex:param name="entryrowNum" value="{!entryInfo.entrySO.Apttus_Approval__Sequence__c}" />
+                                    <apex:param name="rowNum" value="{!assigneeInfo.assigneeSO.Apttus_Approval__Sequence__c}" />
+                                    <apex:image url="{!$Resource.Apttus_Approval__Image_Minus}" 
+                                                title="{!$Label.apttus_approval__Remove}" 
+                                                alt="{!$Label.apttus_approval__Remove}" />
+                                </apex:commandLink>
+                            </apex:column>
+                            <!-- 2 -->
+                            <apex:column headerValue="{!$Label.apttus_approval__Sequence}" >
+                                <apex:outputField value="{!assigneeInfo.assigneeSO.Apttus_Approval__Sequence__c}" />
+                            </apex:column>
+                            <!-- 3 -->
+                            <apex:column headerValue="{!$Label.apttus_approval__Type}" >
+                                <apex:inputField value="{!assigneeInfo.assigneeSO.Apttus_Approval__AssigneeType__c}" >
+                                    <apex:actionSupport event="onchange" 
+                                                        action="{!doAssigneeTypeChanged}"
+                                                        reRender="idApprovalRuleAssigneesTable2"
+                                                        status="idPleaseWaitStatusType2"> 
+                                        <apex:param name="pRuleEntrySeq"
+                                                    assignTo="{!selectedRuleEntrySeq}"
+                                                    value="{!entryInfo.entrySO.Apttus_Approval__Sequence__c}"/>
+                                        <apex:param name="pRuleEntryAssigneeSeq"
+                                                    assignTo="{!selectedRuleEntryAssigneeSeq}"
+                                                    value="{!assigneeInfo.assigneeSO.Apttus_Approval__Sequence__c}"/>
+                                    </apex:actionSupport>
+                                    <apex:actionStatus id="idPleaseWaitStatusType2">
+                                        <apex:facet name="start">
+                                            {!$Label.StatusPleaseWait}...
+                                            <img src="/apexpages/devmode/img/saveStatus.gif" />
+                                        </apex:facet>
+                                        <apex:facet name="stop" />
+                                    </apex:actionStatus>
+                                </apex:inputField>
+                            </apex:column>
+                            <!-- 4 -->
+                            <apex:column headerValue="{!$Label.apttus_approval__Value}">
+								<apex:actionRegion >
+								<apex:panelGrid columns="3">
+								    <apex:inputField value="{!assigneeInfo.assigneeSO.Apttus_Approval__AssigneeValue__c}"
+								                     rendered="{!NOT(assigneeInfo.IsApprovalMatrix) &&
+                                                                 NOT(assigneeInfo.IsRelatedUser)}" />  
+									<apex:panelGroup rendered="{!assigneeInfo.IsQueue ||
+                                                                 assigneeInfo.IsRole ||
+                                                                 assigneeInfo.IsUser}">
+	                                    <apex:commandLink action="{!doSelectRuleEntryAssignee}"
+	                                                      reRender="idApprovalRuleSO"
+	                                                      status="idPleaseWaitStatusValue2">
+	                                        <apex:image value="/img/s.gif" styleClass="lookupIcon"/>
+	                                        <apex:param name="pRuleEntrySeq"
+	                                                    assignTo="{!selectedRuleEntrySeq}"
+	                                                    value="{!entryInfo.entrySO.Apttus_Approval__Sequence__c}"/>
+	                                        <apex:param name="pRuleEntryAssigneeSeq"
+	                                                    assignTo="{!selectedRuleEntryAssigneeSeq}"
+	                                                    value="{!assigneeInfo.assigneeSO.Apttus_Approval__Sequence__c}"/>
+	                                    </apex:commandLink>
+	                                    <apex:actionStatus id="idPleaseWaitStatusValue2">
+	                                        <apex:facet name="start">
+	                                            {!$Label.StatusPleaseWait}...
+	                                            <img src="/apexpages/devmode/img/saveStatus.gif" />
+	                                        </apex:facet>
+	                                        <apex:facet name="stop" />
+	                                    </apex:actionStatus>
+									</apex:panelGroup>
+                                    <apex:inputField value="{!assigneeInfo.assigneeSO.Apttus_Approval__AssigneeId__c}"
+                                                     rendered="false"
+                                                     style="visibility:hidden;" />
+								</apex:panelGrid>
+								</apex:actionRegion>
+                                <apex:selectList size="1" 
+                                                 multiselect="false"
+                                                 value="{!assigneeInfo.assigneeSO.Apttus_Approval__AssigneeValue__c}" 
+                                                 rendered="{!NOT(assigneeInfo.IsApprovalMatrix) &&
+                                                                 assigneeInfo.IsRelatedUser}"> 
+                                    <apex:selectOptions value="{!relatedUserPicklistItems}"></apex:selectOptions>
+                                </apex:selectList>
+                                <apex:selectList size="1" 
+                                                 multiselect="false"
+                                                 value="{!assigneeInfo.assigneeSO.Apttus_Approval__AssigneeValue__c}" 
+                                                 rendered="{!assigneeInfo.isApprovalMatrix}" >
+                                    <apex:selectOptions value="{!matrixAssigneePicklistItems}"></apex:selectOptions>
+                                </apex:selectList>
+                            </apex:column>
+                            <!-- 5 -->
+                            <apex:column headerValue="{!$Label.apttus_approval__Label}" rendered="false" >
+                                <apex:inputField value="{!assigneeInfo.assigneeSO.Apttus_Approval__AssigneeLabel__c}" 
+                                                 style="width:75px" />
+                            </apex:column>
+                            <!-- 5 -->
+                            <apex:column headerValue="{!$Label.apttus_approval__DependsOn}" >
+                                <apex:inputText value="{!assigneeInfo.assigneeSO.Apttus_Approval__DependsOn__c}" 
+                                                style="width:60px" 
+                                                rendered="{!assigneeInfo.assigneeSO.Apttus_Approval__Sequence__c > 1}" />
+                                <apex:outputText value="{!$Label.apttus_approval__NotApplicable}"  
+                                                 style="width:60px" 
+                                                 rendered="{!assigneeInfo.assigneeSO.Apttus_Approval__Sequence__c <= 1}" />
+                            </apex:column>
+                            <!-- 6 -->
+                            <apex:column headerValue="{!$ObjectType.Apttus_Approval__ApprovalRuleAssignee__c.Fields.Apttus_Approval__NotifyOnly__c.Label}" >
+                                <apex:inputField value="{!assigneeInfo.assigneeSO.Apttus_Approval__NotifyOnly__c}" />
+                            </apex:column>
+                            <!-- 7 -->
+                            <apex:column headerValue="{!$ObjectType.Apttus_Approval__ApprovalRuleAssignee__c.Fields.Apttus_Approval__SendEmail__c.Label}" >
+                                <apex:inputField value="{!assigneeInfo.assigneeSO.Apttus_Approval__SendEmail__c}" />
+                            </apex:column>
+                            <!-- 8 -->
+                            <apex:column headerValue="{!$Label.apttus_approval__Description}" >
+                                <apex:inputField value="{!assigneeInfo.assigneeSO.Apttus_Approval__AssigneeDescription__c}" 
+                                                 style="width:100px" />
+                            </apex:column>
+                            
+                        </apex:pageBlockTable>
+                    </apex:column>
+                    
+                    <apex:column width="5%" >
+                        <apex:commandLink action="{!doAddRow}" 
+                                          reRender="idApprovalRuleEntriesTable2" 
+                                          rendered="{!NOT(isFilterEditMode)}" >
+                            <apex:param name="rowNum" value="{!entryInfo.entrySO.Apttus_Approval__Sequence__c}" />
+                            <apex:image url="{!$Resource.Apttus_Approval__Image_Plus2}" 
+                                        title="{!$Label.apttus_approval__Add}" 
+                                        alt="{!$Label.apttus_approval__Add}" />                
+                        </apex:commandLink>
+                    </apex:column>
+                    
+                    <apex:column width="5%" >
+                        <apex:commandLink action="{!doDeleteRow}" 
+                                          reRender="idApprovalRuleEntriesTable2" 
+                                          rendered="{!NOT(isFilterEditMode) && entryInfo.entrySO.Apttus_Approval__Sequence__c > 1}" >
+                            <apex:param name="rowNum" value="{!entryInfo.entrySO.Apttus_Approval__Sequence__c}" />
+                            <apex:image url="{!$Resource.Apttus_Approval__Image_Minus2}" 
+                                        title="{!$Label.apttus_approval__Remove}" 
+                                        alt="{!$Label.apttus_approval__Remove}" />         
+                        </apex:commandLink>
+                    </apex:column>
+                    
+                    <apex:column width="5%" >
+                        <apex:commandLink action="{!doMoveUpRow}" 
+                                          reRender="idApprovalRuleEntriesTable2" 
+                                          rendered="{!NOT(isFilterEditMode) && entryInfo.entrySO.Apttus_Approval__Sequence__c > 1}" >
+                            <apex:param name="rowNum" value="{!entryInfo.entrySO.Apttus_Approval__Sequence__c}" />
+                            <apex:image url="{!$Resource.Apttus_Approval__Image_MoveUp}" 
+                                        title="{!$Label.apttus_approval__MoveUp}" 
+                                        alt="{!$Label.apttus_approval__MoveUp}" />
+                        </apex:commandLink>
+                        <apex:commandLink action="{!doMoveDownRow}" 
+                                          reRender="idApprovalRuleEntriesTable2" 
+                                          rendered="{!NOT(isFilterEditMode) && entryInfo.entrySO.Apttus_Approval__Sequence__c < lastRowSequence}" >
+                            <apex:param name="rowNum" value="{!entryInfo.entrySO.Apttus_Approval__Sequence__c}" />
+                            <apex:image url="{!$Resource.Apttus_Approval__Image_MoveDown}" 
+                                        title="{!$Label.apttus_approval__MoveDown}" 
+                                        alt="{!$Label.apttus_approval__MoveDown}" />
+                        </apex:commandLink>
+                    </apex:column>
+                    
+                    <apex:column width="5%" >
+                        <apex:outputText value="{!entryInfo.ErrorMsg}" style="color:red;" />
+                    </apex:column>
+                   
+                </apex:pageBlockTable>
+                
+                <apex:outputText value="{!$Label.apttus_approval__NoDimensionsToDisplay}" rendered="{!isDimensionBasedRule && NOT(isDimension1Enabled)}" />
+            </apex:pageBlockSection>
+            
+        </apex:pageBlock>
+        
+        <!--  Search Filter -->
+        <c:UISearchFilter id="idSearchFilter" 
+                          sObjectName="{!ruleSO.Apttus_Approval__BusinessObject__c}"  
+                          pageController="{!this}" />   
+        
+        <!--  Reapproval Filter -->
+        <c:UIReapprovalFilter id="idReapprovalFilter" 
+                              sObjectName="{!ruleSO.Apttus_Approval__BusinessObject__c}"  
+                              pageController="{!this}" />   
+                                        
+        <!-- Rule Assignee Search Components -->
+        <apex:pageBlock id="idPageBlockSearch"
+                        rendered="{!inSearchMode}">
+
+            <c:UISearchQueue id="idQueueSearch"
+                             rendered="{!selectedRuleEntryAssigneeSO.Apttus_Approval__AssigneeType__c == 'Queue'}" 
+                             pageControllerAttr="{!this}"
+                             contextSOAttr="{!selectedRuleEntryAssigneeSO}"
+                             contextSOFieldAttr="AssigneeValue__c"
+                             contextSOFieldIdAttr="AssigneeId__c"
+                             parentReRenderIdAttr="idApprovalRuleSO" />
+    
+            <c:UISearchRole id="idRoleSearch" 
+                            rendered="{!selectedRuleEntryAssigneeSO.Apttus_Approval__AssigneeType__c == 'Role'}"
+                            pageControllerAttr="{!this}"
+                            contextSOAttr="{!selectedRuleEntryAssigneeSO}"
+                            contextSOFieldAttr="AssigneeValue__c" 
+                            contextSOFieldIdAttr="AssigneeId__c"
+                            parentReRenderIdAttr="idApprovalRuleSO" />
+    
+            <c:UISearchUser id="idUserSearch"
+                            rendered="{!selectedRuleEntryAssigneeSO.Apttus_Approval__AssigneeType__c == 'User'}"
+                            pageControllerAttr="{!this}"
+                            contextSOAttr="{!selectedRuleEntryAssigneeSO}"
+                            contextSOFieldAttr="AssigneeValue__c"
+                            contextSOFieldIdAttr="AssigneeId__c"
+                            parentReRenderIdAttr="idApprovalRuleSO" />
+        </apex:pageBlock>
+
+        <!-- action status -->
+        <apex:actionStatus id="idPleaseWaitStatus"
+                           onstart="onActionClick();"
+                           onstop="onActionComplete();" />
+
+    </apex:form>
+
+</apex:page>

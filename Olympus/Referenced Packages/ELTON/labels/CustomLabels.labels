@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>Assign_on_Loan_Return_Name</fullName>
+        <categories>Equipment Reassignment, Field label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Assign on Loan Return Name</shortDescription>
+        <value>Assign on Loan Return Name</value>
+    </labels>
+    <labels>
+        <fullName>Assign_on_Loan_Return_Type</fullName>
+        <categories>Equipment Reassignment, Field label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Assign on Loan Return Type</shortDescription>
+        <value>Assign on Loan Return Type</value>
+    </labels>
+    <labels>
+        <fullName>Assign_on_Loan_Start_Name</fullName>
+        <categories>Equipment Reassignment, Field label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Assign on Loan Start Name</shortDescription>
+        <value>Assign on Loan Start Name</value>
+    </labels>
+    <labels>
+        <fullName>Assign_on_Loan_Start_Type</fullName>
+        <categories>Equipment Reassignment, Field label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Assign on Loan Start Type</shortDescription>
+        <value>Assign on Loan Start Type</value>
+    </labels>
+    <labels>
+        <fullName>Cancel</fullName>
+        <categories>Equipment Request</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Cancel</shortDescription>
+        <value>Cancel</value>
+    </labels>
+    <labels>
+        <fullName>ConvertToReservation</fullName>
+        <categories>Equipment Request</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ConvertToReservation</shortDescription>
+        <value>Convert to Reservation</value>
+    </labels>
+    <labels>
+        <fullName>ELTON_Other</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>ELTON Other</shortDescription>
+        <value>Custom Other</value>
+    </labels>
+    <labels>
+        <fullName>ExtraMarginAfter</fullName>
+        <categories>Equipment Request</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ExtraMarginAfter</shortDescription>
+        <value>Margin pad after</value>
+    </labels>
+    <labels>
+        <fullName>ExtraMarginBefore</fullName>
+        <categories>Equipment Request</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ExtraMarginBefore</shortDescription>
+        <value>Margin pad before</value>
+    </labels>
+    <labels>
+        <fullName>ExtraMarginBeforeHelpText</fullName>
+        <categories>Equipment Request</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ExtraMarginBeforeHelpText</shortDescription>
+        <value>Use if you need few extra days before previous Loan / Reservation ends and this Request starts.</value>
+    </labels>
+    <labels>
+        <fullName>Fulfill</fullName>
+        <categories>Equipment Request</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Fulfill</shortDescription>
+        <value>Fulfill</value>
+    </labels>
+    <labels>
+        <fullName>LeftMargin</fullName>
+        <categories>Equipment Request</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LeftMargin</shortDescription>
+        <value>Margin Before (days)</value>
+    </labels>
+    <labels>
+        <fullName>LeftMarginIsEstimatedWarning</fullName>
+        <categories>Equipment Request</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>LeftMarginIsEstimatedWarning</shortDescription>
+        <value>Margin before is based on an estimated return date. Proceed with caution.</value>
+    </labels>
+    <labels>
+        <fullName>Loan_Extra_Date_2</fullName>
+        <categories>ReturnLoanShipment</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Loan Extra Date 2</shortDescription>
+        <value>Return Loan Shipment Date</value>
+    </labels>
+    <labels>
+        <fullName>MultipleLinesSelected</fullName>
+        <categories>Equipment Request</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>MultipleLinesSelected</shortDescription>
+        <value>Warning: You have selected multiple lines. Only the first line will be processed.</value>
+    </labels>
+    <labels>
+        <fullName>NoEquipmentSelected</fullName>
+        <categories>Equipment Request</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>NoEquipmentSelected</shortDescription>
+        <value>Please select an Equipment to proceed.</value>
+    </labels>
+    <labels>
+        <fullName>NoResultsForEqRequest</fullName>
+        <categories>Equipment Request</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>NoResultsForEqRequest</shortDescription>
+        <value>No Equipment available to meet this request.</value>
+    </labels>
+    <labels>
+        <fullName>RequestAlreadyFulfilled</fullName>
+        <categories>Equipment Request</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RequestAlreadyFulfilled</shortDescription>
+        <value>This Equipment Request is already converted to Reservation.</value>
+    </labels>
+    <labels>
+        <fullName>RightMargin</fullName>
+        <categories>Equipment Request</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RightMargin</shortDescription>
+        <value>Margin After (days)</value>
+    </labels>
+    <labels>
+        <fullName>Search</fullName>
+        <categories>Equipment Request</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Search</shortDescription>
+        <value>Search</value>
+    </labels>
+    <labels>
+        <fullName>Select</fullName>
+        <categories>Equipment Request</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Select</shortDescription>
+        <value>Select</value>
+    </labels>
+    <labels>
+        <fullName>Ship_Loan_Return</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Ship_Loan_Return</shortDescription>
+        <value>Ship Loan Return</value>
+    </labels>
+</CustomLabels>

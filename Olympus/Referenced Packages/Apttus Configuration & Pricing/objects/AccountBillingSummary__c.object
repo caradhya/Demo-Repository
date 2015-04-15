@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <description>Represents the billing summary for an account</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>AccountId__c</fullName>
+        <deprecated>false</deprecated>
+        <description>ID of the account associated with the billing summary</description>
+        <externalId>false</externalId>
+        <inlineHelpText>ID of the account associated with the billing summary</inlineHelpText>
+        <label>Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipName>BillingSummary</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>AnnualRecurringBillingsRamped__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The total of  all recurring billings from the end of the contract and back for 12 months</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The total of  all recurring billings from the end of the contract and back for 12 months</inlineHelpText>
+        <label>Annual Recurring Billings (Ramped)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>AnnualRecurringBillingsToday__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The toal of all recurring billings from today and back for 12 months</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The toal of all recurring billings from today and back for 12 months</inlineHelpText>
+        <label>Annual Recurring Billings (Today)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>BilledAmount__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The amount billed for the account</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The amount billed for the account</inlineHelpText>
+        <label>Billed Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>InvoiceBalance__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The invoice balance for the account</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The invoice balance for the account</inlineHelpText>
+        <label>Invoice Balance</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>LastInvoiceDate__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The last invoice date for the account</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The last invoice date for the account</inlineHelpText>
+        <label>Last Invoice Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>MiscInvoiceAmount__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The total of all miscellaneous charges that are invoiced</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The total of all miscellaneous charges that are invoiced</inlineHelpText>
+        <label>Misc Invoice Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>NextInvoiceDate__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The next invoice date for the account</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The next invoice date for the account</inlineHelpText>
+        <label>Next Invoice Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>OneTimeInvoiceAmount__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The total of all one time charges that are invoiced</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The total of all one time charges that are invoiced</inlineHelpText>
+        <label>One-Time Invoice Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>RecurringInvoiceAmount__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The total of all recurring charges that are invoiced</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The total of all recurring charges that are invoiced</inlineHelpText>
+        <label>Recurring Invoice Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>TotalContractValue__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The total contract value for the account</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The total contract value for the account</inlineHelpText>
+        <label>Total Contract Value</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>TotalInvoiceAmount__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The total of all charges that are invoiced</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The total of all charges that are invoiced</inlineHelpText>
+        <label>Total Invoice Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>UnbilledAmount__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The amount unbilled for the account</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The amount unbilled for the account</inlineHelpText>
+        <label>Unbilled Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>UsageInvoiceAmount__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The total of all usage charges that are invoiced</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The total of all usage charges that are invoiced</inlineHelpText>
+        <label>Usage Invoice Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <label>Account Billing Summary</label>
+    <nameField>
+        <displayFormat>BS-{000000}</displayFormat>
+        <label>Billing Id</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Account Billing Summary</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+</CustomObject>

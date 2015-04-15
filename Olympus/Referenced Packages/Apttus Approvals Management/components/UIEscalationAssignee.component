@@ -1,0 +1,311 @@
+<!-- 
+    Apttus Approvals Management
+    UIEscalationAssigneeComponent
+     
+    @2010-2014 Apttus Inc. All rights reserved.
+
+ -->
+<apex:component controller="Apttus_Approval.UIEscalationAssigneeController" 
+                allowDML="true" >  
+
+    <!-- pageController - the controller associated with the component that select and cancel actions are delegated to --> 
+    <apex:attribute name="pageControllerAttr" 
+                    description="Page Controller" 
+                    type="Apttus_Approval.UIPageControllerBase"
+                    required="true" 
+                    assignTo="{!pageController}" />
+
+    <!-- contextSO - the context sobject associated with this component -->
+    <apex:attribute name="contextSOAttr" 
+                    description="Context SObject" 
+                    type="sObject" 
+                    required="true" 
+                    assignTo="{!contextSO}" />
+    
+    <!-- contextSOLabel - the context sobject label associated with this component -->
+    <apex:attribute name="contextSOLabelAttr" 
+                    description="Context SObject Label" 
+                    type="String" 
+                    required="true" 
+                    assignTo="{!contextSOLabel}" />
+
+    <!-- isReadOnly - indicates if the component is in read only mode -->
+    <apex:attribute name="isReadOnlyAttr" 
+                    description="Is Read Only" 
+                    type="Boolean" 
+                    required="false" 
+                    assignTo="{!isReadOnly}" />
+
+    <!-- businessObjType - the business object type associated with this component -->
+    <apex:attribute name="businessObjTypeAttr" 
+                    description="Business Object Type" 
+                    type="String" 
+                    required="true" 
+                    assignTo="{!businessObjType}" />
+
+    <!-- isAutoEscalateEnabled - indicates if auto escalation is enabled -->
+    <apex:attribute name="isAutoEscalateEnabledAttr" 
+                    description="Is Auto-Escalate Enabled" 
+                    type="Boolean" 
+                    required="false" 
+                    assignTo="{!isAutoEscalateEnabled}" />
+
+    <!-- assigneeTypeField -->
+    <apex:attribute name="assigneeTypeFieldAttr" 
+                    description="Assignee Type Field Name" 
+                    type="String" 
+                    required="true" 
+                    assignTo="{!assigneeTypeField}" />
+
+    <!-- assigneeValueField -->
+    <apex:attribute name="assigneeValueFieldAttr" 
+                    description="Assignee Value Field Name" 
+                    type="String" 
+                    required="true" 
+                    assignTo="{!assigneeValueField}" />
+
+    <!-- assigneeIdField -->
+    <apex:attribute name="assigneeIdFieldAttr" 
+                    description="Assignee Id Field Name" 
+                    type="String" 
+                    required="true" 
+                    assignTo="{!assigneeIdField}" />
+
+    <!-- supportedAssigneeTypes - available assignee types to use -->
+    <apex:attribute name="supportedAssigneeTypesAttr" 
+                    description="Supported Assignee Types" 
+                    type="String[]" 
+                    required="true"
+                    assignTo="{!supportedAssigneeTypes}" />
+
+    <!-- parentReRenderId - the id of the parent object that gets rerendered -->
+    <apex:attribute name="parentReRenderIdAttr" 
+                    description="Parent ReRender Id" 
+                    type="String" 
+                    required="true" 
+                    assignTo="{!parentReRenderId}" />
+
+    <apex:pageBlockSection columns="1"
+                           collapsible="false"
+                           title="{!$Label.apttus_approval__Escalated & ' ' & $Label.apttus_approval__Approver}"
+                           rendered="{!isEnabled && NOT(isReadOnly)}">
+    </apex:pageBlockSection> 
+
+    <apex:pageBlockSection id="idAssigneeTitle" 
+                           columns="1" 
+                           collapsible="false"
+                           title="{!$Label.apttus_approval__Escalated & ' ' & $Label.apttus_approval__AssigneeInfo}" 
+                           showHeader="false"
+                           rendered="{!isEnabled && NOT(isReadOnly)}" />
+
+    <apex:pageBlockSection id="idAssignee" 
+                           columns="1" 
+                           collapsible="false"
+                           showHeader="false"
+                           rendered="{!isEnabled}">
+        
+        <!-- assignee type -->
+        <apex:pageBlockSectionItem id="idAssigneeTypeRequired"
+                                   helpText="{!$Label.apttus_approval__AssigneeTypeHelp}"
+                                   rendered="{!isAutoEscalateEnabled}" >
+            <apex:outputLabel for="idAssigneeTypeRequired" value="{!$Label.apttus_approval__AssigneeType}" />
+            <apex:outputPanel styleClass="requiredInput" layout="block" >
+                <apex:outputPanel styleClass="requiredBlock" layout="block" />
+                <apex:selectList id="idAssigneeTypeRequired" 
+                                 value="{!assigneeType}" 
+                                 multiselect="false" 
+                                 required="false" 
+                                 size="1" 
+                                 disabled="{!isReadOnly}">
+                    <apex:selectOptions value="{!assigneeTypes}"></apex:selectOptions>
+                    <apex:actionSupport event="onchange"
+                                        action="{!doAssigneeTypeChanged}"
+                                        reRender="idAssignee"
+                                        status="idStatusWaitAssigneeTypeRequired" />
+                </apex:selectList>
+                <apex:actionStatus id="idStatusWaitAssigneeTypeRequired" startText="{!$Label.apttus_approval__StatusPleaseWait}..." />
+            </apex:outputPanel>
+        </apex:pageBlockSectionItem>
+
+        <apex:pageBlockSectionItem id="idAssigneeType"
+                                   helpText="{!$Label.apttus_approval__AssigneeTypeHelp}"
+                                   rendered="{!NOT(isAutoEscalateEnabled)}" >
+            <apex:outputLabel for="idAssigneeType" value="{!$Label.apttus_approval__AssigneeType}" />
+            <apex:outputPanel layout="block" >
+                <apex:outputPanel layout="block" />
+                <apex:selectList id="idAssigneeType" 
+                                 value="{!assigneeType}" 
+                                 multiselect="false" 
+                                 required="false" 
+                                 size="1" 
+                                 disabled="{!isReadOnly}">
+                    <apex:selectOptions value="{!assigneeTypes}"></apex:selectOptions>
+                    <apex:actionSupport event="onchange"
+                                        action="{!doAssigneeTypeChanged}"
+                                        reRender="idAssignee"
+                                        status="idStatusWaitAssigneeType" />
+                </apex:selectList>
+                <apex:actionStatus id="idStatusWaitAssigneeType" startText="{!$Label.apttus_approval__StatusPleaseWait}..." />
+            </apex:outputPanel>
+        </apex:pageBlockSectionItem>
+
+        <!-- assignee type = queue -->        
+        <apex:pageBlockSection id="idAssigneeTypeQueueTitle" 
+                               columns="1" 
+                               collapsible="false"
+                               title="{!$Label.apttus_approval__QueueAssigneeInfo}" 
+                               showHeader="true"
+                               rendered="{!isAssigneeTypeQueue && NOT(isReadOnly)}" />
+                               
+        <apex:pageBlockSection id="idAssigneeTypeQueue" 
+                               columns="1" 
+                               collapsible="false"
+                               showHeader="true"
+                               rendered="{!isAssigneeTypeQueue}" >
+
+            <apex:pageBlockSectionItem id="idAssigneeTypeQueueItem"
+                                       helpText="{!$Label.apttus_approval__AssigneeTypeQueueHelp}">
+                <apex:outputLabel value="{!$ObjectType.Apttus_Approval__Term_Exception_Approval__c.Fields.Apttus_Approval__EscalateToName__c.Label}" />
+                <apex:outputPanel styleClass="requiredInput" layout="block">                 
+                    <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                    <apex:inputText value="{!assigneeValue}" size="30"
+                                    disabled="{!isReadOnly}"/>  
+                    <apex:commandLink action="{!doSelectQueue}" rendered="{!NOT(isReadOnly)}">
+                        <apex:outputPanel >
+                            <img src="/img/s.gif" class="lookupIcon"/>
+                        </apex:outputPanel>
+                    </apex:commandLink>
+                    <apex:inputText value="{!assigneeId}" style="visibility:hidden;" />  
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+
+        <!-- assignee type = role -->        
+        <apex:pageBlockSection id="idAssigneeTypeRoleTitle" 
+                               columns="1" 
+                               collapsible="false"
+                               title="{!$Label.apttus_approval__RoleAssigneeInfo}" 
+                               showHeader="true"
+                               rendered="{!isAssigneeTypeRole && NOT(isReadOnly)}" />
+
+        <apex:pageBlockSection id="idAssigneeTypeRole" 
+                               columns="1" 
+                               collapsible="false"
+                               showHeader="true"
+                               rendered="{!isAssigneeTypeRole}" >
+
+            <apex:pageBlockSectionItem id="idAssigneeTypeRoleItem"
+                                       helpText="{!$Label.apttus_approval__AssigneeTypeRoleHelp}">
+                <apex:outputLabel value="{!$ObjectType.Apttus_Approval__Term_Exception_Approval__c.Fields.Apttus_Approval__EscalateToName__c.Label}" />
+                <apex:outputPanel styleClass="requiredInput" layout="block">                 
+                    <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                    <apex:inputText value="{!assigneeValue}" size="30"
+                                    disabled="{!isReadOnly}"/>  
+                    <apex:commandLink action="{!doSelectRole}" rendered="{!NOT(isReadOnly)}">
+                        <apex:outputPanel >
+                            <img src="/img/s.gif" class="lookupIcon"/>
+                        </apex:outputPanel>
+                    </apex:commandLink>
+                    <apex:inputText value="{!assigneeId}" style="visibility:hidden;" />  
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+
+        <!-- assignee type = rule -->        
+        <apex:pageBlockSection id="idAssigneeTypeRuleTitle" 
+                               columns="1" 
+                               collapsible="false"
+                               title="{!$Label.apttus_approval__RuleAssigneeInfo}" 
+                               showHeader="true"
+                               rendered="{!isAssigneeTypeRule && NOT(isReadOnly)}" />
+
+        <apex:pageBlockSection id="idAssigneeTypeRule" 
+                               columns="1" 
+                               collapsible="false"
+                               showHeader="true"
+                               rendered="{!isAssigneeTypeRule}" >
+
+            <apex:pageBlockSectionItem id="idAssigneeTypeRuleItem"
+                                       helpText="{!$Label.apttus_approval__AssigneeTypeRuleHelp}">
+                <apex:outputLabel value="{!$ObjectType.Apttus_Approval__Term_Exception_Approval__c.Fields.Apttus_Approval__EscalateToName__c.Label}" />
+                <apex:outputPanel styleClass="requiredInput" layout="block">                 
+                    <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                    <apex:inputText value="{!assigneeValue}" size="30"
+                                    disabled="{!isReadOnly}"/>  
+                    <apex:commandLink action="{!doSelectRule}" rendered="{!NOT(isReadOnly)}">
+                        <apex:outputPanel >
+                            <img src="/img/s.gif" class="lookupIcon"/>
+                        </apex:outputPanel>
+                    </apex:commandLink>
+                    <apex:inputText value="{!assigneeId}" style="visibility:hidden;" />  
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+
+        <!-- assignee type = user -->        
+        <apex:pageBlockSection id="idAssigneeTypeUserTitle" 
+                               columns="1" 
+                               collapsible="false"
+                               title="{!$Label.apttus_approval__UserAssigneeInfo}" 
+                               showHeader="true"
+                               rendered="{!isAssigneeTypeUser && NOT(isReadOnly)}" />
+                               
+        <apex:pageBlockSection id="idAssigneeTypeUser" 
+                               columns="1" 
+                               collapsible="false"
+                               showHeader="true"
+                               rendered="{!isAssigneeTypeUser}" >
+
+            <apex:pageBlockSectionItem id="idAssigneeTypeUserItem"
+                                       helpText="{!$Label.apttus_approval__AssigneeTypeUserHelp}">
+                <apex:outputLabel value="{!$ObjectType.Apttus_Approval__Term_Exception_Approval__c.Fields.Apttus_Approval__EscalateToName__c.Label}" />
+                <apex:outputPanel styleClass="requiredInput" layout="block">                 
+                    <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                    <apex:inputText value="{!assigneeValue}" size="30"
+                                    disabled="{!isReadOnly}" />  
+                    <apex:commandLink action="{!doSelectUser}" rendered="{!NOT(isReadOnly)}">
+                        <apex:outputPanel >
+                            <img src="/img/s.gif" class="lookupIcon"/>
+                        </apex:outputPanel>
+                    </apex:commandLink>
+                    <apex:inputText value="{!assigneeId}" style="visibility:hidden;" />  
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+            
+        </apex:pageBlockSection>
+
+        <!-- assignee type = related user -->
+        <apex:pageBlockSection id="idAssigneeTypeRelatedUserTitle" 
+                               columns="1" 
+                               collapsible="false"
+                               title="{!$Label.apttus_approval__RelatedUserAssigneeInfo}" 
+                               showHeader="true"
+                               rendered="{!isAssigneeTypeRelatedUser && NOT(isReadOnly)}" />
+
+        <apex:pageBlockSection id="idAssigneeTypeRelatedUser" 
+                               columns="1" 
+                               collapsible="false"
+                               showHeader="true"
+                               rendered="{!isAssigneeTypeRelatedUser}" >
+
+            <apex:pageBlockSectionItem id="idAssigneeTypeRelatedUserItem"
+                                       helpText="{!$Label.apttus_approval__AssigneeTypeRelatedUserHelp}">
+                <apex:outputLabel for="idAssigneeAssigneeRelatedUser"
+                                  value="{!$ObjectType.Apttus_Approval__Term_Exception_Approval__c.Fields.Apttus_Approval__EscalateToName__c.Label}" />
+                <apex:outputPanel styleClass="requiredInput" layout="block" >
+                    <apex:outputPanel styleClass="requiredBlock" layout="block" />
+                    <apex:selectList id="idAssigneeAssigneeRelatedUser" 
+                                     value="{!assigneeValue}" 
+                                     multiselect="false" 
+                                     required="false" 
+                                     size="1"
+                                     disabled="{!isReadOnly}">
+                        <apex:selectOptions value="{!relatedUsers}"></apex:selectOptions>
+                    </apex:selectList>
+                </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+
+    </apex:pageBlockSection>
+
+</apex:component>

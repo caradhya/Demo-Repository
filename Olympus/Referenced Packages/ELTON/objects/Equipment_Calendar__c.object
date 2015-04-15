@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <customSettingsVisibility>Public</customSettingsVisibility>
+    <description>Configuration options that let you override default behavior of the &quot;Equipment Calendar&quot; functionality. To modify the content of the hover boxes (tooltips) please go to Equipment, Loan and Reservation fieldsets.</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Blank_background_color__c</fullName>
+        <defaultValue>&quot;black&quot;</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Background for all other cases (null values, unexpected entries in the picklist etc).</inlineHelpText>
+        <label>Blank background color</label>
+        <length>20</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Chart_width__c</fullName>
+        <defaultValue>&quot;auto&quot;</defaultValue>
+        <deprecated>false</deprecated>
+        <description>See https://developer.mozilla.org/en-US/docs/Web/CSS/width for in-depth explanation.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Specify the width of the &lt;div&gt; tag that&apos;ll contain the chart. Can be &quot;1000px&quot;, &quot;80%&quot;, &quot;auto&quot; etc. standard HTML values.</inlineHelpText>
+        <label>Chart width</label>
+        <length>10</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Loan_Account_background_color__c</fullName>
+        <defaultValue>&quot;#0099C6&quot;</defaultValue>
+        <deprecated>false</deprecated>
+        <description>https://developer.mozilla.org/en-US/docs/Web/CSS/color_value
+Default color palette is based on Google Chart colors: https://developers.google.com/chart/interactive/docs/gallery/piechart</description>
+        <externalId>false</externalId>
+        <inlineHelpText>What color should the bar that represents Loan Type = Account be? Use valid HTML color names (&quot;red&quot;) or RGB codes: &quot;#10ABCD&quot;, &quot;rgb(255, 20, 147)&quot; etc.</inlineHelpText>
+        <label>Loan-Account background color</label>
+        <length>20</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Loan_Contact_background_color__c</fullName>
+        <defaultValue>&quot;#DC3912&quot;</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Loan-Contact background color</label>
+        <length>20</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Loan_Entered_background_color__c</fullName>
+        <defaultValue>&quot;black&quot;</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Loan-Entered background color</label>
+        <length>20</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Loan_Opportunity_background_color__c</fullName>
+        <defaultValue>&quot;#D47&quot;</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Loan-Opportunity background color</label>
+        <length>20</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Loan_User_background_color__c</fullName>
+        <defaultValue>&quot;#6A0&quot;</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Loan-User background color</label>
+        <length>20</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Page_size__c</fullName>
+        <defaultValue>20</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Equipment / page. If you&apos;re viewing Equipment Loans &amp; Reservations the actual amount of rows in the chart will double to accommodate both types.</inlineHelpText>
+        <label>Page size</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Reservation_Account_background_color__c</fullName>
+        <defaultValue>&quot;#36C&quot;</defaultValue>
+        <deprecated>false</deprecated>
+        <description>https://developer.mozilla.org/en-US/docs/Web/CSS/color_value
+Default color palette is based on Google Chart colors: https://developers.google.com/chart/interactive/docs/gallery/piechart</description>
+        <externalId>false</externalId>
+        <inlineHelpText>What color should the bar that represents Reservation Type = Account be? Use valid HTML color names (&quot;red&quot;) or RGB codes: &quot;#10ABCD&quot;, &quot;rgb(255, 20, 147)&quot; etc.</inlineHelpText>
+        <label>Reservation-Account background color</label>
+        <length>20</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Reservation_Contact_background_color__c</fullName>
+        <defaultValue>&quot;#B82E2E&quot;</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Reservation-Contact background color</label>
+        <length>20</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Reservation_Opportunity_background_color__c</fullName>
+        <defaultValue>&quot;#F90&quot;</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Reservation-Opportunity background color</label>
+        <length>20</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Reservation_User_background_color__c</fullName>
+        <defaultValue>&quot;#109618&quot;</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Reservation-User background color</label>
+        <length>20</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Show_collection_components__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Check to show all Equipment. Uncheck to show only Collection Masters and standalone Equipment.</inlineHelpText>
+        <label>Show collection components</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Show_empty_rows__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>When true, all Equipment from current page of list view results will be shown in the chart, even if they have no Loans or Reservations in the selected time window.</inlineHelpText>
+        <label>Show empty rows</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Show_header__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <description>See the description of &quot;showHeader&quot; attribute in Visualforce Developer Guide:  http://www.salesforce.com/us/developer/docs/pages/Content/pages_compref_page.htm</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Leave checked for &quot;standard&quot; behavior, uncheck to hide the tabs and everything above them - effectively enabling fullscreen mode. 
+Tip: press F11 in your browser to gain even more real estate.</inlineHelpText>
+        <label>Show header</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Show_sidebar__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <description>See the description of &quot;sidebar&quot; attribute in Visualforce Developer Guide: http://www.salesforce.com/us/developer/docs/pages/Content/pages_compref_page.htm</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Leave checked for &quot;standard&quot; behavior, uncheck to hide the sidebar menu - allowing you to see wider charts. This setting has effect only when &quot;Show header&quot; is selected!</inlineHelpText>
+        <label>Show sidebar</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>View_mode__c</fullName>
+        <defaultValue>&quot;All&quot;</defaultValue>
+        <deprecated>false</deprecated>
+        <description>It&apos;s a shame we can&apos;t use &quot;Picklist&quot; as field type in custom settings...</description>
+        <externalId>false</externalId>
+        <inlineHelpText>What type of bars should be shown on the chart. Please use &quot;Loans&quot;, &quot;Reservations&quot; or &quot;All&quot;. Please type it exactly like that, do not translate etc.</inlineHelpText>
+        <label>View mode</label>
+        <length>12</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Equipment Calendar</label>
+</CustomObject>

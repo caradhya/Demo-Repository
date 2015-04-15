@@ -1,0 +1,335 @@
+<!-- 
+    Apttus Config & Pricing
+    Expression Builder Component
+     
+    @2012-2014 Apttus Inc. All rights reserved.
+
+ -->
+<apex:component controller="Apttus_Config2.ExpressionBuilderController" access="public" allowDML="true" layout="block">
+    <apex:attribute name="formulaId" 
+                  description="Id of Formula Field Record" 
+                  type="Id" 
+                  required="false" 
+                  assignTo="{!expressionId}" 
+                  access="public" /> 
+    <apex:attribute name="rootFields" 
+                  description="JSON representation of root fields" 
+                  type="String" 
+                  required="false" 
+                  assignTo="{!rootFieldsJSON}" 
+                  access="public" /> 
+  <style>
+    .formee input[type="submit"], .formee input[type="button"] {
+      font-size: 0.9em !important;
+    }
+
+    .formee select {
+      height:auto !important;
+    }
+
+    .ui-dialog .ui-dialog-buttonpane {
+      text-align:center !important;
+    }
+
+    .ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset {
+      float:none !important;
+    }
+
+    #ObjectReference {
+        width: auto;
+        min-width: 350px;
+    }
+
+  </style>
+  <apex:stylesheet value="{!URLFOR($Resource.Apttus_Config2__FormeeLibrary, '/css/formee-style.css')}" />
+  <apex:stylesheet value="{!URLFOR($Resource.Apttus_Config2__FormeeLibrary, '/css/formee-structure.css')}" />
+  <script type="text/javascript">
+    var j$ = jQuery.noConflict();
+    var functionNameToPrototypeMap = jQuery.parseJSON('{!FunctionNameToPrototype}');
+    var fieldMap  = {};
+
+    j$(document).ready(function() {      
+      
+      // Setup function list bindings
+      bindFunctionList();
+
+      // Setup operator menu bindings
+      setupOperatorMenu();
+    });    
+
+
+    function getFieldDescribe(input) {        
+        Visualforce.remoting.Manager.invokeAction(
+          '{!$RemoteAction.ExpressionBuilderController.getFieldDescribe}', 
+          input, 
+          function(result, event){
+              if (event.status) {
+                //alert(result);
+                addColumnToFieldTreeDialog(result);
+              }               
+          }, 
+          {buffer:false,escape: true}
+      );
+    }
+
+    function setupOperatorMenu() {
+      j$('#insertOperatorMenu').hide();
+      j$(document).click(function(event) {                  
+          if (j$(event.target).hasClass('menuButtonButton')) {
+               j$('#insertOperatorMenu').show();
+
+          } else {            
+            j$('#insertOperatorMenu').hide();
+          }
+      });    
+    }
+
+    function bindFunctionList() {
+      j$(document).on('change', '.functionList', function() {        
+        showFunctionDescription(this);       
+      });
+
+      j$('.functionList').trigger('change');
+    }
+
+    function showFieldTreeDialog() {    
+      var selectRow       = j$('.selectTableRow');  
+      selectRow.html('');
+
+      var top = jQuery.parseJSON('{!buildsObjectFieldTree}');
+      addColumnToFieldTreeDialog(top);
+      
+      
+      j$( "#ObjectReference" ).dialog({
+        resizable: false,
+        height:349,
+        width:'auto',
+        modal: true,
+        title: 'Insert Field',
+        buttons: {
+          "Close": function() {
+           j$( this ).dialog( "close" );
+          }
+        }
+      });
+
+    //  j$( "#ObjectReference" ).dialog("open");
+    }
+
+    function clearSelectTD(object) {
+      var tableRow = j$('.selectTableRow');
+      tableRow.find('td:gt(' + tableRow.find('td').index(j$(object).closest('td')) + ')').remove();
+    }
+
+    function insertField(fieldName) {
+        // grab expression field
+        var insertObject = j$('.CalculatedFormula');        
+        // insert field
+        insertCode(insertObject, fieldName, false);
+    }
+
+    function showSelectedFieldDetails(apiName, displayAPIName, fieldType) {
+      var insert = '<td id="insertBox" class="insertBox"><span class="insertWrapperInfo">You have selected:</span><span class="insertWrapperString">' + displayAPIName + '</span><span class="insertWrapperAttributes"><table class="fieldPickerAttributeTable"><tbody><tr><td class="fieldPickerAttributeCategory">Type:' + fieldType + '</td></tr><tr><td class="fieldPickerAttributeCategory">API Name: ' + displayAPIName + '</td></tr></tbody></table></span><span class="insertWrapperButton"><input type="button" id="fieldInsertButton" name="insertButton" class="btn" value="Insert" onclick="insertField(' + '\'' + apiName + '\'); j$( \'#ObjectReference\' ).dialog(\'close\');"></span></td>';
+      j$('.selectTableRow').append(insert);
+    }
+
+    function showLoadingRefSpinner() {
+        var optionsList = '<TD class="loadingColumn"><img src="/img/loading.gif"></TD';
+        j$('.selectTableRow').append(optionsList);
+
+
+    }
+
+    var entityMap = {
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': '&quot;',
+        "'": '&#39;',
+        "/": '&#x2F;'
+    };
+
+     var entityMap2 = {
+        "\&amp\;" : "&",
+        "\&lt\;" : "<",
+        "\&gt\;" : ">",
+        '\&quot\;':'"',
+        '\&#39\;':"'",
+        '\&#x2F\;': "/"
+    };
+
+    function escapeHtml(string) {
+        return String(string).replace(/[&<>"'\/]/g, function (s) {
+            return entityMap[s];
+        });
+    }
+    function unescapeHtml(string) {
+      return String(string).replace(/\&[a-z]+\;/g, function (s) {
+        console.log(s);
+        return entityMap2[s];
+      });
+    }
+
+    function addColumnToFieldTreeDialog(object) {
+//      alert(object);
+      var tree        = object;
+      var optionsList = "<TD><div style='overflow: auto;'><select size='12' class='fieldTreeSelect' style='display: inline;padding:0;'>";
+     
+      j$.each(tree.fields, function() {
+        optionsList += "<option value=\"" + this.apiName + "\" onclick=\"clearSelectTD(this);";
+
+        if(this.isRef) {
+            optionsList+= "showLoadingRefSpinner(); getFieldDescribe(fieldMap['" + this.isRef + escapeHtml(this.apiName) + "']);\">";                       
+            optionsList += this.label + " >";
+        } else {
+          optionsList += " showSelectedFieldDetails('" + unescapeHtml(this.apiName) + "', '" + this.apiDisplayName + "', '" + this.fieldType + "');";
+          optionsList += "\">" + this.label;
+        }
+
+         optionsList += "</option>"; 
+         fieldMap[this.isRef + this.apiName] = this;     
+      });
+
+      optionsList += "</select></div></TD>";
+      j$('.loadingColumn').remove();
+      j$('.selectTableRow').append(optionsList);
+
+    }
+  
+    function showFunctionDescription(list) {      
+      if(list) {
+        var p = functionNameToPrototypeMap[j$(list).val()];
+        if(p) {
+          j$('.functionProtoTypeString').html(p.protoTypeString);
+          j$('.functionDescription').html(p.description);
+        } else {
+          j$('.functionProtoTypeString').html(null);
+          j$('.functionDescription').html(null);
+        }
+      }
+    }
+   
+    function insertCode(a, b, c) {         
+      b = c && !findDelimiters(a, "{!", "}") ? "{!" + b + "}" : " " + b + " ";      
+      
+      j$(a).selectionStart == '0' ? b.substring(1, b.length) : b;
+      j$(a).insertAtCaret(b);      
+    };
+
+    j$.fn.insertAtCaret = function (tagName) {
+      return this.each(function(){
+        if (document.selection) {
+          //IE support
+          this.focus();
+          sel = document.selection.createRange();
+          sel.text = tagName;
+          this.focus();
+        }else if (this.selectionStart || this.selectionStart == '0') {
+          //MOZILLA/NETSCAPE support
+          startPos = this.selectionStart;
+          endPos = this.selectionEnd;
+          scrollTop = this.scrollTop;
+          this.value = this.value.substring(0, startPos) + tagName + this.value.substring(endPos,this.value.length);
+          this.focus();
+          this.selectionStart = startPos + tagName.length;
+          this.selectionEnd = startPos + tagName.length;
+          this.scrollTop = scrollTop;
+        } else {
+          this.value += tagName;
+          this.focus();
+        }
+      });
+    };
+  </script>
+  
+ <!--  <apex:sectionHeader 
+                      subtitle="Expression Builder" />  --> 
+  <apex:form styleClass="formee">
+    <apex:inputField value="{!expression.Apttus_Config2__BusinessObject__c}" rendered="false"/>
+    <apex:pageMessages />
+    
+    <div > 
+       <!-- <div class="pbWizardTitle">          
+          <h2>
+              Enter formula
+          </h2>
+      </div> -->
+      <div >
+      
+        <!-- <div class="pbWizardHeader">
+          <div class="pbTopButtons" style="white-space: nowrap">
+            <apex:commandButton value="{!$Label.Save}" action="{!save}" />
+            <apex:commandButton value="{!$Label.Submit}" action="{!submitExpression}" />
+            <apex:commandButton value="{!$Label.Cancel}" action="{!cancel}" />
+          </div>
+        </div> -->
+
+        <div class="grid-12-12">
+          <!-- <div class="miniTab tertiaryPalette">
+            <ul class="miniTabList">
+              <li class="currentTab">
+                <a href="" title="Formula tab">Formula Editor</a>
+              </li>             
+            </ul>
+          </div> -->
+        </div> 
+
+        <div class="grid-12-12">
+          <div style="width:100%; clear:both; float:none;">
+            <div class="grid-12-12">
+
+              <div class="grid-4-12">
+                <input type="button" class="btn" value="Insert Field" onclick="showFieldTreeDialog();"/>
+              </div>
+
+              <div class="insertOperator menuButton grid-6-12" id="insertOperator" style="position: relative;margin-top: -7px;">
+                <div class="menuButtonButton operatorMenuButton" id="insertOperatorButton" style="height: 16px;margin-top:1em;padding-left: 10px;width:60px;">
+                  <span class="menuButtonLabel" id="insertOperatorLabel" >
+                    Insert Operator
+                  </span>
+                </div>
+
+                <div class="menuButtonMenu" id="insertOperatorMenu" style="display: block;">
+                  <apex:repeat var="operator" value="{!availableOperators}">
+                    <a style="width:128px; padding-top:0px; white-space:pre-line;;text-decoration:none;" onclick="insertCode(j$('.CalculatedFormula'), '{!operator.params}', false);">
+                      {!operator.params}&nbsp;{!operator.name}
+                    </a>
+                  </apex:repeat>
+                </div>
+              </div>
+              <div id="ObjectReference" style="display:none;">
+                <div class="fieldSelectorScrollableArea" id="FieldTreeDialogIdInner">
+                  <table class="selectWrapper" style="font-size:0.8em;">
+                    <tr class="selectTableRow" id="selectTableRow" />
+                  </table>
+                </div>
+              </div>
+
+            </div>
+            <div class="grid-12-12">
+              <apex:inputTextarea cols="80" rows="20" id="CalculatedFormula" value="{!expression.Apttus_Config2__Formula__c}" style="width: 400px; height: 65px;font-size: 12px;font-weight: bold;margin:0;line-height:16px;resize: none;" title="Formula Editor" styleClass="CalculatedFormula"/>  
+            </div>      
+          </div>
+          <div class="grid-4-12">
+            <apex:selectList size="1" value="{!selectedFunctionCategory}" style="width:14em;">
+              <apex:selectOptions value="{!FuntionCategories}"/>
+              <apex:actionSupport event="onchange" rerender="functionList"/>
+            </apex:selectList>
+            <br/><br/>     
+            <apex:selectList id="functionList" size="6" styleClass="functionList" value="{!selectedFunctionName}" style="width:14em;">
+              <apex:selectOptions value="{!FuntionNames}"/>
+            </apex:selectList>
+            <br/><br/>
+            <input value="Insert Selected Function" class="btn" name="addToFormula" onclick="insertCode(j$('.CalculatedFormula'), functionNameToPrototypeMap[j$('.functionList').val()].protoTypeString, false);"
+            title="Insert Selected Function" type="button" style="font-size:1.0em;"/>             
+          </div>
+          <div class="grid-4-12" style="float:right;font-size: 11px; font-family: verdana; margin-right: 25px; margin-top: 10px;">
+            <div class="functionProtoTypeString"/>             
+            <br/>
+            <div class="functionDescription"/> 
+          </div>
+        </div>
+      </div>
+    </div>
+  </apex:form>
+</apex:component>

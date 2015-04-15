@@ -1,0 +1,1000 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <customHelpPage>DataInterfaceHelp</customHelpPage>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <description>This record is used to process most ELTON transactions from the Mobile Scanner and third party applicaions</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Adjusted_Quantity_On_Hand__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The NEW (Adjusted) Quantity on hand for the equipment. NOTE: If the &apos;Adjustment Quantity&apos; field is specified then this field is ignored.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The NEW (Adjusted) Quantity on hand for the equipment. NOTE: If the &apos;Adjustment Quantity&apos; field is specified then this field is ignored.</inlineHelpText>
+        <label>Adjusted Quantity On Hand</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Adjustment_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The Date of the On Hand Quantity Adjustment.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Date of the On Hand Quantity Adjustment.</inlineHelpText>
+        <label>Adjustment Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Adjustment_Quantity__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The amount of change to be applied to the Quantity on Hand for the equipment. NOTE: If this field is specified then the &apos;Adjusted Quantity on Hand&apos; field is ignored.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The amount of change to be applied to the Quantity on Hand for the equipment. NOTE: If this field is specified then the &apos;Adjusted Quantity on Hand&apos; field is ignored.</inlineHelpText>
+        <label>Adjustment Quantity</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Assign_On_Loan_Return_Name__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Assign On Loan Return Name</label>
+        <length>120</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Assign_On_Loan_Return_Type__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Assign On Loan Return Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>User</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Account</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Contact</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Opportunity</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Assign_On_Loan_Start_Name__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Assign On Loan Start Name</label>
+        <length>120</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Assign_On_Loan_Start_Type__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Assign On Loan Start Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>User</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Account</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Contact</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Opportunity</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Assigned_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <description>For &apos;Assign&apos; type Data Interface records this is the date of the assignment.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>For &apos;Assign&apos; type Data Interface records this is the date of the assignment.</inlineHelpText>
+        <label>Assigned Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Assigned_ID__c</fullName>
+        <deprecated>false</deprecated>
+        <description>For Data Interface records of type &apos;Assign&apos; this is the Object ID that the equipment/asset is being assigned to. This field must have the correct Assigned Type (User, Account, Contact or Opportunity) to identify it fully.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>For Data Interface records of type &apos;Assign&apos; this is the Object ID that the equipment/asset is being assigned to. This field must have the correct Assigned Type (User, Account, Contact or Opportunity) to identify it fully.</inlineHelpText>
+        <label>Assigned ID</label>
+        <length>32</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Assigned_Name__c</fullName>
+        <deprecated>false</deprecated>
+        <description>For Data Interface records of type &apos;Assign&apos; this is the Name of the object the equipment/asset is being assigned to. This field must have the correct Assigned Type (User, Account, Contact or Opportunity) to identify it fully.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>For Data Interface records of type &apos;Assign&apos; this is the Name of the object the equipment/asset is being assigned to. This field must have the correct Assigned Type (User, Account, Contact or Opportunity) to identify it fully.</inlineHelpText>
+        <label>Assigned Name</label>
+        <length>120</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Assigned_Tracking_Number__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The Carrier Tracking number for an assignment</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Carrier Tracking number for an assignment</inlineHelpText>
+        <label>Assigned Tracking Number</label>
+        <length>32</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Assigned_Type__c</fullName>
+        <deprecated>false</deprecated>
+        <description>For Data Interface records with a record type of &apos;Assign&apos; this is the type of assignment.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>For Data Interface records with a record type of &apos;Assign&apos; this is the type of assignment.</inlineHelpText>
+        <label>Assigned Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>User</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Account</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Contact</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Opportunity</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Committed_Quantity__c</fullName>
+        <defaultValue>0</defaultValue>
+        <deprecated>false</deprecated>
+        <description>The Quantity committed for a shipment record.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Quantity committed for a shipment record.</inlineHelpText>
+        <label>Committed Quantity</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Count_Date_Time__c</fullName>
+        <deprecated>false</deprecated>
+        <description>For Data Interface records of type &apos;Count&apos; this is the date and time that the count was executed.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>For Data Interface records of type &apos;Count&apos; this is the date and time that the count was executed.</inlineHelpText>
+        <label>Count Date Time</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Equipment_ID__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The ELTON__Equipment__c.ID or AcctSol__Fixed_Asset__c.ID for the related Equipment/Asset. Can be left blank if one of the other unique fields is used for identifying the Equipment/Asset</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The ELTON__Equipment__c.ID or AcctSol__Fixed_Asset__c.ID for the related Equipment/Asset. Can be left blank if one of the other unique fields is used for identifying the Equipment/Asset</inlineHelpText>
+        <label>Equipment ID</label>
+        <length>32</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Equipment_Name__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The ELTON__Equipment__c.Name__c (EQ-{000000}) or AcctSol__Fixed_Asset__c.Name__c (Text[80]) key field for the interface record. Can be left blank if one of the other unique fields is used for identifying the Equipment/Asset</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The ELTON__Equipment__c.Name__c (EQ-{000000}) or AcctSol__Fixed_Asset__c.Name__c (Text[80]) key field for the interface record. Can be left blank if one of the other unique fields is used for identifying the Equipment/Asset</inlineHelpText>
+        <label>Equipment Name</label>
+        <length>80</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Equipment_Tag__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The ELTON_Equipment_Tag__c or ACCTSOL__Asset_Tag__c that uniquely identifies the equipment/asset of this data interchange record.  Can be left blank if one of the other unique fields is used for identifying the Equipment/Asset</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The ELTON_Equipment_Tag__c or ACCTSOL__Asset_Tag__c that uniquely identifies the equipment/asset of this data interchange record.  Can be left blank if one of the other unique fields is used for identifying the Equipment/Asset</inlineHelpText>
+        <label>Equipment Tag</label>
+        <length>32</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Equipment_Type__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>For Requests this is the type of Equipment being requested</description>
+        <externalId>false</externalId>
+        <inlineHelpText>For Requests this is the type of Equipment being requested</inlineHelpText>
+        <label>Equipment Type</label>
+        <referenceTo>Equipment_Type__c</referenceTo>
+        <relationshipLabel>Data Interfaces</relationshipLabel>
+        <relationshipName>Data_Interfaces</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>GPS_Lat__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The GPS Latitude of the Data Interface record (all record types)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The GPS Latitude of the Data Interface record (all record types)</inlineHelpText>
+        <label>GPS Lat</label>
+        <precision>14</precision>
+        <required>false</required>
+        <scale>10</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>GPS_Long__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The GPS Longitude of the Data Interface record (all record types).</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The GPS Longitude of the Data Interface record (all record types).</inlineHelpText>
+        <label>GPS Long</label>
+        <precision>14</precision>
+        <required>false</required>
+        <scale>10</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Last_Processing_Message__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The message returned the last time the Data Interface record processing was attempted.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The message returned the last time the Data Interface record processing was attempted.</inlineHelpText>
+        <label>Last Processing Message</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Loan_Actual_Return_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <description>For Data Interface records of type &apos;Return&apos; this is the date that the equipment/asset was returned from loan.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>For Data Interface records of type &apos;Return&apos; this is the date that the equipment/asset was returned from loan.</inlineHelpText>
+        <label>Loan Actual Return Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Loan_Estimated_Return_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <description>For &apos;Loan&apos; type Data Interface records this is the date that the loan is ESTIMATED to end.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>For &apos;Loan&apos; type Data Interface records this is the date that the loan is ESTIMATED to end.</inlineHelpText>
+        <label>Loan/Res/Req Estimated Return Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Loan_Extra_Date_1__c</fullName>
+        <deprecated>false</deprecated>
+        <description>An Additional Date that optionally can be set/maintained related to a given loan. See &apos;Equipment Types&apos; for controlling whether the date is used during the loan process</description>
+        <externalId>false</externalId>
+        <inlineHelpText>An Additional Date that optionally can be set/maintained related to a given loan. See &apos;Equipment Types&apos; for controlling whether the date is used during the loan process</inlineHelpText>
+        <label>Loan Extra Date 1</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Loan_Extra_Date_2__c</fullName>
+        <deprecated>false</deprecated>
+        <description>An Additional Date that optionally can be set/maintained related to a given loan. See &apos;Equipment Types&apos; for controlling whether the date is used during the loan process</description>
+        <externalId>false</externalId>
+        <inlineHelpText>An Additional Date that optionally can be set/maintained related to a given loan. See &apos;Equipment Types&apos; for controlling whether the date is used during the loan process</inlineHelpText>
+        <label>Loan Extra Date 2</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Loan_ID__c</fullName>
+        <deprecated>false</deprecated>
+        <description>For Data Interface records of type &apos;Loan&apos; this is the Object ID that the equipment/asset is being loaned to. This field must have the correct Loan Type (User, Account, Contact or Opportunity) to identify it fully.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>For Data Interface records of type &apos;Loan&apos; this is the Object ID that the equipment/asset is being loaned to. This field must have the correct Loan Type (User, Account, Contact or Opportunity) to identify it fully.</inlineHelpText>
+        <label>Loan/Res/Req ID</label>
+        <length>32</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Loan_Name__c</fullName>
+        <deprecated>false</deprecated>
+        <description>For Data Interface records of type &apos;Loan&apos; this is the Name of the object the equipment/asset is being loaned to. This field must have the correct Loan Type (User, Account, Contact or Opportunity) to identify it fully.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>For Data Interface records of type &apos;Loan&apos; this is the Name of the object the equipment/asset is being loaned to. This field must have the correct Loan Type (User, Account, Contact or Opportunity) to identify it fully.</inlineHelpText>
+        <label>Loan/Res/Req Name</label>
+        <length>120</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Loan_Quantity__c</fullName>
+        <deprecated>false</deprecated>
+        <description>For Equipment that uses Quantity On Hand this is the quantity of the loan.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>For Equipment that uses Quantity On Hand this is the quantity of the loan.</inlineHelpText>
+        <label>Loan Quantity</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Loan_Return_Tracking_Number__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The Carrier Tracking Number of the Loan Return</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Carrier Tracking Number of the Loan Return</inlineHelpText>
+        <label>Loan Return Tracking Number</label>
+        <length>32</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Loan_Start_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <description>For &apos;Loan&apos; type Data Interface records this is the date that the loan will start.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>For &apos;Loan&apos; type Data Interface records this is the date that the loan will start.</inlineHelpText>
+        <label>Loan/Res/Req Start Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Loan_To_Be_Returned__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>For Loan Returns if The Equipment &apos;Use Quantity On Hand&apos; is TRUE and there are multiple outstanding loans for the equipment then this is a Lookup (ID) for the loan to be returned. This field will be IGNORED if &apos;Use Quantity On Hand&apos; is FALSE.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>For Loan Returns if The Equipment &apos;Use Quantity On Hand&apos; is TRUE and there are multiple outstanding loans for the equipment then this is a Lookup (ID) for the loan to be returned. This field will be IGNORED if &apos;Use Quantity On Hand&apos; is FALSE.</inlineHelpText>
+        <label>Loan To Be Returned</label>
+        <referenceTo>Equipment_Loan__c</referenceTo>
+        <relationshipLabel>Data Interfaces (Loan To Be Returned)</relationshipLabel>
+        <relationshipName>Loan_To_Be_Returned</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Loan_Tracking_Number__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The Carrier Tracking Number for the Loan.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Carrier Tracking Number for the Loan.</inlineHelpText>
+        <label>Loan Tracking Number</label>
+        <length>32</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Loan_Type__c</fullName>
+        <deprecated>false</deprecated>
+        <description>For Data Interface records with a record type of &apos;Loan&apos; this is the type of Loan.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>For Data Interface records with a record type of &apos;Loan&apos; this is the type of Loan.</inlineHelpText>
+        <label>Loan/Res/Req Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>User</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Account</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Contact</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Opportunity</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>New_Equipment_Assignment__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>The Equipment Assignment created for this Data Interface record (for assign records only)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Equipment Assignment created for this Data Interface record (for assign records only)</inlineHelpText>
+        <label>New Equipment Assignment</label>
+        <referenceTo>Equipment_Assignment__c</referenceTo>
+        <relationshipLabel>Data Interfaces</relationshipLabel>
+        <relationshipName>Data_Interfaces</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>New_Equipment_Count__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>The Equipment Count created for this Data Interface record (for count records only)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Equipment Count created for this Data Interface record (for count records only)</inlineHelpText>
+        <label>New Equipment Count</label>
+        <referenceTo>Equipment_Count__c</referenceTo>
+        <relationshipLabel>Data Interfaces</relationshipLabel>
+        <relationshipName>Data_Interfaces</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>New_Equipment_Loan__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>The Equipment Loan created for this Data Interface record (for loan records only)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Equipment Loan created for this Data Interface record (for loan records only)</inlineHelpText>
+        <label>New or Returned Equipment Loan</label>
+        <referenceTo>Equipment_Loan__c</referenceTo>
+        <relationshipLabel>Data Interfaces</relationshipLabel>
+        <relationshipName>Data_Interfaces</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>New_Equipment_Qty_Adjustment_History__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>The new Equipment Quantity Adjustment History record created from processing this Data Interface record.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The new Equipment Quantity Adjustment History record created from processing this Data Interface record.</inlineHelpText>
+        <label>New Equipment Qty Adjustment History</label>
+        <referenceTo>Equipment_Quantity_Adjustment_History__c</referenceTo>
+        <relationshipLabel>Data Interfaces</relationshipLabel>
+        <relationshipName>Data_Interfaces</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>New_Equipment_Request__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>For Request data interface records this is the ID of the record created.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>For Request data interface records this is the ID of the record created.</inlineHelpText>
+        <label>New Equipment Request</label>
+        <referenceTo>Equipment_Request__c</referenceTo>
+        <relationshipLabel>Data Interfaces</relationshipLabel>
+        <relationshipName>Data_Interfaces</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>New_Equipment_Reservation__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>For Data Interface records where the type is &apos;Reserve&apos; this is the reservation number that was created.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>For Data Interface records where the type is &apos;Reserve&apos; this is the reservation number that was created.</inlineHelpText>
+        <label>New Equipment Reservation</label>
+        <referenceTo>Equipment_Reservation__c</referenceTo>
+        <relationshipLabel>Data Interfaces</relationshipLabel>
+        <relationshipName>Data_Interfaces</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>New_Equipment_Shipment__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>For Shipment Type Data Interfaces this is the new Equipment Shipment record created.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>For Shipment Type Data Interfaces this is the new Equipment Shipment record created.</inlineHelpText>
+        <label>New Equipment Shipment</label>
+        <referenceTo>Equipment_Shipment__c</referenceTo>
+        <relationshipLabel>Data Interfaces</relationshipLabel>
+        <relationshipName>Data_Interfaces</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Note__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The note entered for a Data Interface record (all record types).</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The note entered for a Data Interface (all record types).</inlineHelpText>
+        <label>Note</label>
+        <length>60</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Number_of_Process_Attempts__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The number of attempts to process the record that have been made</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The number of attempts to process the record that have been made</inlineHelpText>
+        <label>Number of Process Attempts</label>
+        <summaryForeignKey>Data_Interface_Processing_History__c.Data_Interface__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Processed__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>If set to TRUE (checked) then this Data Interface record has been fully processed without errors.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>If set to TRUE (checked) then this Data Interface record has been fully processed without errors.</inlineHelpText>
+        <label>Processed</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Record_Source__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Identifies where the Data Interface record originated from. Default value is &apos;Load&apos; but can also be set to &apos;Mobile&apos;.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Identifies where the Data Interface record originated from. Default value is &apos;Load&apos; but can also be set to &apos;Mobile&apos;.</inlineHelpText>
+        <label>Record Source</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Load</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Mobile</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Record_Type__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Identifies the nature of the Data Interface record</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Identifies the nature of the Data Interface record. Valid values are Assign, Loan, Return and Count</inlineHelpText>
+        <label>Record Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Assign</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Loan</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Return</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Count</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Onhand</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Request</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Shipment</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Reserve</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Convert Reservation</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Commit</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Ship Commitment</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Reservation_To_Convert__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>For Convert Reservation type records this is the reservation to be converted into a loan. Note that the Loan Tracking Number can be set on the Data Interface record during this process to add a Tracking number to the reservation you are converting (reservations do not have tracking numbers)</description>
+        <externalId>false</externalId>
+        <inlineHelpText>For Convert Reservation type records this is the reservation to be converted into a loan. Note that the Loan Tracking Number can be set on the Data Interface record during this process to add a Tracking number to the reservation you are converting (reserv</inlineHelpText>
+        <label>Reservation To Convert</label>
+        <referenceTo>Equipment_Reservation__c</referenceTo>
+        <relationshipLabel>Data Interfaces (Reservation To Convert)</relationshipLabel>
+        <relationshipName>Data_Interfaces1</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Retry_Processing__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Set this field to TRUE (Checked) on Data Interface records that have a current validation error to re-try processing.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Set this field to TRUE (Checked) on Data Interface records that have a current validation error to re-try processing.</inlineHelpText>
+        <label>Retry Processing</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Shipment_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The Date that the shipment occurred.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Date that the shipment occurred.</inlineHelpText>
+        <label>Shipment Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Shipment_ID__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The ID of the User, Account, Contact or Opportunity being shipped to</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The ID of the User, Account, Contact or Opportunity being shipped to</inlineHelpText>
+        <label>Shipment ID</label>
+        <length>32</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Shipment_Name__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The name of the User, Account, Contact or Opportunity being shipped to</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The name of the User, Account, Contact or Opportunity being shipped to</inlineHelpText>
+        <label>Shipment Name</label>
+        <length>120</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Shipment_Quantity__c</fullName>
+        <defaultValue>0</defaultValue>
+        <deprecated>false</deprecated>
+        <description>The quantity shipped</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The quantity shipped</inlineHelpText>
+        <label>Shipment Quantity</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Shipment_Tracking_Number__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The tracking number for a shipment</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The tracking number for a shipment</inlineHelpText>
+        <label>Shipment Tracking Number</label>
+        <length>32</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Shipment_Type__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The type of shipment</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The type of shipment</inlineHelpText>
+        <label>Shipment Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>User</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Contact</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Account</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Opportunity</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Entered</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Shipment_to_Commit__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>For record types of &apos;Ship Commitment&apos; this is the shipment to commit.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>For record types of &apos;Ship Commitment&apos; this is the shipment to commit.</inlineHelpText>
+        <label>Shipment to Commit</label>
+        <referenceTo>Equipment_Shipment__c</referenceTo>
+        <relationshipLabel>Data Interfaces (Shipment to Commit)</relationshipLabel>
+        <relationshipName>Data_Interfaces1</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>User_Device__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The unique identifier of the device used for a mobile transaction (all record types).</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The unique identifier of the device used for a mobile transaction (all record types).</inlineHelpText>
+        <label>User/Device</label>
+        <length>24</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Data Interface</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Equipment_ID__c</columns>
+        <columns>Equipment_Name__c</columns>
+        <columns>Equipment_Tag__c</columns>
+        <columns>Record_Source__c</columns>
+        <columns>Record_Type__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>DI-{0000000}</displayFormat>
+        <label>Data Interface Name</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Data Interfaces</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Equipment_ID__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Equipment_Name__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Equipment_Tag__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Record_Type__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Record_Source__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CREATED_DATE</customTabListAdditionalFields>
+        <searchResultsAdditionalFields>Equipment_ID__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Equipment_Name__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Record_Type__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Record_Source__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Assigned_ID__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Assigned_Date__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Loan_ID__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Loan_Start_Date__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+</CustomObject>

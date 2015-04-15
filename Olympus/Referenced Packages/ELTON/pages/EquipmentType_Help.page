@@ -1,0 +1,11 @@
+<apex:page sidebar="false" showHeader="false">
+    <apex:pageBlock title="Equipment Type"> 
+    <apex:outputLink value="{! $Page.About_Us}"> <p> <b> Click here for the Links to Full Documentation Downloads</b> </p></apex:outputLink>
+          <apex:pageblockSection title="Overview" columns="1">
+                        <p> Equipment Types are used optionally to group equipment into different types, this is primarily for reports.</P>
+                </apex:pageblockSection>
+                <apex:pageblockSection title="Fields" columns="1">
+                 <p> <b> Equipment Type Name </b>  Enter a name for this type of Equipment.</P>
+                </apex:pageblockSection>
+    </apex:pageBlock>
+  </apex:page>

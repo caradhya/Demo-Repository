@@ -1,0 +1,22 @@
+<apex:page sidebar="false" showHeader="false">
+    <apex:pageBlock title="Equipment Quantity Adjustment"> 
+    <apex:outputLink value="{! $Page.About_Us}"> <p> <b> Click here for the Links to Full Documentation Downloads</b> </p></apex:outputLink>
+          <apex:pageblockSection title="Overview" columns="1">
+                        <p> Equipment Quantity Adjustment records are used to record transactions that adjust the Quantity on Hand of an equipment record. They can be processed either by Web screens or the AccountAbility Mobile Scanner application.</P>
+                </apex:pageblockSection>
+                <apex:pageblockSection title="Fields" columns="1">
+                 <p> <b> Adjustment Number </b>  This is a system generated unique record number.</P>
+                 <p> <b> Equipment </b> This is the Equipment that the quantity adjustment record is associated with.</P>
+                 <p> <b> Adjustment Date </b>  This is the date this adjustment was entered. </P>
+                 <p> <b> Adjustment Source </b> The standard options include; system, mobile, regular, loan and load. </P>
+                 <p> <b> Adjustment Type </b> The value will be one of the following; regular, loan, loan return, opening balance, system generated. </P>
+                 <p> <b> Previous Quantity on Hand </b> This field records the value of the Quantity on Hand prior to this transaction. </P>
+                 <p> <b> Adjustment Quantity </b> This is the Quantity that is being adjusted now. </P>
+                 <p> <b> New Quantity on Hand </b> This calculates the Quantity on Hand after this transaction. </P>
+                 <p> <b> Adjustment Note </b> Enter a note for this adjustment. </P>
+                 <p> <b> GPS Lat </b> If using a mobile device this stores the GPS co-ordinates of the device. </P>
+                 <p> <b> GPS Long </b> If using a mobile device this stores the GPS co-ordinates of the device. </P>
+                 <p> <b> User/Device </b> This records the user or device unique ID if available. </P>
+                </apex:pageblockSection>
+    </apex:pageBlock>
+ </apex:page>

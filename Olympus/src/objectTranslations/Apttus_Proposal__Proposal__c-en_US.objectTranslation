@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Quote/Proposal</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Proposals</value>
+    </caseValues>
+    <layouts>
+        <layout>Admin Layout</layout>
+        <sections>
+            <label><!-- Actions --></label>
+            <section>Actions</section>
+        </sections>
+        <sections>
+            <label><!-- Details --></label>
+            <section>Details</section>
+        </sections>
+        <sections>
+            <label><!-- Proposal Process --></label>
+            <section>Proposal Process</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>CSR Layout</layout>
+        <sections>
+            <label><!-- Details --></label>
+            <section>Details</section>
+        </sections>
+        <sections>
+            <label><!-- Operation Details --></label>
+            <section>Operation Details</section>
+        </sections>
+        <sections>
+            <label><!-- Proposal Process --></label>
+            <section>Proposal Process</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>CSR Layout Non Draft Layout</layout>
+        <sections>
+            <label><!-- Details --></label>
+            <section>Details</section>
+        </sections>
+        <sections>
+            <label><!-- Operation Details --></label>
+            <section>Operation Details</section>
+        </sections>
+        <sections>
+            <label><!-- Proposal Process --></label>
+            <section>Proposal Process</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Finance Layout</layout>
+        <sections>
+            <label><!-- Details --></label>
+            <section>Details</section>
+        </sections>
+        <sections>
+            <label><!-- FIS --></label>
+            <section>FIS</section>
+        </sections>
+        <sections>
+            <label><!-- Proposal Process --></label>
+            <section>Proposal Process</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Finance Layout Non Draft Layout</layout>
+        <sections>
+            <label><!-- Details --></label>
+            <section>Details</section>
+        </sections>
+        <sections>
+            <label><!-- FIS --></label>
+            <section>FIS</section>
+        </sections>
+        <sections>
+            <label><!-- Proposal Process --></label>
+            <section>Proposal Process</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Sales Layout</layout>
+        <sections>
+            <label><!-- Actions --></label>
+            <section>Actions</section>
+        </sections>
+        <sections>
+            <label><!-- Details --></label>
+            <section>Details</section>
+        </sections>
+        <sections>
+            <label><!-- Proposal Process --></label>
+            <section>Proposal Process</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>System Admin Layout</layout>
+        <sections>
+            <label><!-- Actions --></label>
+            <section>Actions</section>
+        </sections>
+        <sections>
+            <label><!-- Details --></label>
+            <section>Details</section>
+        </sections>
+        <sections>
+            <label><!-- FIS --></label>
+            <section>FIS</section>
+        </sections>
+        <sections>
+            <label><!-- Operation Details --></label>
+            <section>Operation Details</section>
+        </sections>
+        <sections>
+            <label><!-- Proposal Process --></label>
+            <section>Proposal Process</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

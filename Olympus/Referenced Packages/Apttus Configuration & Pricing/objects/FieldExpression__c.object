@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <content>FieldExpression</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <content>FieldExpression</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <description>Represents a field expression</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Active__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Represents whether the field expression is active. If unchecked, field expression is not evaluated at runtime.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Represents whether the field expression is active. If unchecked, field expression is not evaluated at runtime.</inlineHelpText>
+        <label>Active</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>EvaluationContext__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Gives expression evaluation context</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Gives expression evaluation context</inlineHelpText>
+        <label>Evaluation Context</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Constraint Rule Action</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Record Update</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>ExpressionType__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Expression type</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Expression type</inlineHelpText>
+        <label>Expression Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Field Update</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Rollup</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Expression__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Represents the field expression for field updates and rollups</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Represents the field expression for field updates and rollups</inlineHelpText>
+        <label>Expression</label>
+        <length>2048</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>GroupByField__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Represents rollup field expression aggregation field name</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Represents rollup field expression aggregation field name</inlineHelpText>
+        <label>Group By Field</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SourceObject__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Represents the source object for expression.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Represents the source object for expression.</inlineHelpText>
+        <label>Source Object</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Line Item</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>UpdateField__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Represents the target field name which gets value at runtime from field update or rollup expressions.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Represents the target field name which gets value at runtime from field update or rollup expressions.</inlineHelpText>
+        <label>Update Field</label>
+        <length>128</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>UpdateObject__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Represents update field name containing object which gets value at runtime from field update or rollup expressions</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Represents update field name containing object which gets value at runtime from field update or rollup expressions</inlineHelpText>
+        <label>Update Object</label>
+        <length>80</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Field Expression</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>OBJECT_ID</columns>
+        <columns>NAME</columns>
+        <columns>ExpressionType__c</columns>
+        <columns>EvaluationContext__c</columns>
+        <columns>UpdateField__c</columns>
+        <columns>UpdateObject__c</columns>
+        <columns>GroupByField__c</columns>
+        <columns>Expression__c</columns>
+        <columns>Active__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>All1</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <label>Field Expression Name</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Field Expressions</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+</CustomObject>

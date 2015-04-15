@@ -1,0 +1,23 @@
+<apex:page standardController="ELTON__Equipment__c" readonly="true" 
+	showHeader="false" applyHtmlTag="false" standardStylesheets="false">
+	<apex:variable var="equipmentId" value="{!JSENCODE(ELTON__Equipment__c.ELTON__QR_Code_Equipment_ID__c)}" />
+	<head>
+		<apex:includeScript value="{!$Resource.ELTON__jquery}"/>
+		<apex:includeScript value="{!$Resource.ELTON__jsqr}"/>
+		<script>
+		jQuery(function(){
+		    jQuery('#output').qrcode({
+		    width: 100,
+		    height: 100,
+		    text: "{!equipmentId}"
+		    });
+		})
+		</script>
+	</head>
+	<html>
+		<body>
+		<p></p>
+		<div id="output"></div>
+		</body>
+	</html>
+</apex:page>

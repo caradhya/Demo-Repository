@@ -1,0 +1,76 @@
+<apex:page standardController="ELTON__Equipment__c">
+<apex:variable var="lat" value="{!JSENCODE(TEXT(ELTON__Equipment__c.ELTON__Loan_GPS_Lat__c))}" />
+<apex:variable var="long" value="{!JSENCODE(TEXT(ELTON__Equipment__c.ELTON__Loan_GPS_Long__c))}" />
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+    <meta charset="utf-8"/>
+    <style>
+      html, body{
+        margin: 0;
+        padding: 0;
+      }
+      #container,#map,#label,#map_canvas{
+        margin: 0;
+        padding: 0;
+        height: 200px;
+        width: 100%;
+      }
+      #container{
+        position: relative;
+      }
+      #map{
+        z-index: 100;
+        position: absolute;
+        left: 0px;
+      }
+      #label{
+        z-index: 10;
+        position: absolute;
+        left: 0px;
+      }
+    </style>
+    <p/>
+    <h1 style="color:black">Last Scanned Loan Location</h1>
+    <p/>
+	<script src="https://open.mapquestapi.com/sdk/js/v7.2.s/mqa.toolkit.js?key=Fmjtd%7Cluur2g07nq%2C75%3Do5-9azg0a"></script>
+    <script type="text/javascript">
+	MQA.EventUtil.observe(window, 'load', function() {
+		var options = {
+			elt: document.getElementById('map_canvas'),
+			zoom: 12,
+			latLng: { lat: {!lat}, lng: {!long} },
+			mtype: 'map',
+			bestFitMargin: 0,
+			zoomOnDoubleClick: true
+		};
+
+		MQA.withModule('smallzoom','viewoptions', function() {
+			var placement_small_zoom = new MQA.MapCornerPlacement(MQA.MapCorner.TOP_LEFT, MQA.Size(5,5));
+			map.addControl(new MQA.SmallZoom(), placement_small_zoom );
+		
+			var placement_view_options = new MQA.MapCornerPlacement(MQA.MapCorner.TOP_RIGHT);
+			map.addControl(new MQA.ViewOptions(),placement_view_options);
+		
+			var exact_location= new MQA.Poi({ lat: {!lat}, lng: {!long} });
+			map.addShape(exact_location);
+		});
+		 
+		window.map = new MQA.TileMap(options);
+	});
+	</script>
+  </head>
+  <body>
+    <div id="container">
+      <div id="map">
+        <div id="map_canvas"/>
+      </div>
+      <div id="label">
+        <p/>
+        <h1 style="color:grey">No GPS Co-ordinates Supplied</h1>
+        <p/>
+      </div>
+    </div>
+  </body>
+</html>
+</apex:page>

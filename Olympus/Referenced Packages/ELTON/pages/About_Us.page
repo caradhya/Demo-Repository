@@ -1,0 +1,124 @@
+<apex:page controller="ELTON.About_Us" sidebar="false">
+<html>
+<div style="font-size:24px;"><b>About Us</b></div>
+  <apex:image url="https://c.na7.content.force.com/servlet/servlet.ImageServer?id=015A00000034okF&oid=00DA0000000CPL9&lastMod=1384197773000"/>
+  <div style="font-size:14px;">
+  <b>ELTON is a complete Equipment tracking application.</b>
+  <b>It tracks equipment assigned to or on loan to Salesforce users, contacts, accounts or oppourtunities.  ELTON makes use of QR Codes or Bar Codes that are attached to your equipment.</b>
+  <br> </br> 
+  <b>   Watch the Training Video Now! </b>
+  <div style="margin-top:20px;">
+   <b>Link for ELTON Training Video :</b>
+  </div>
+  <div style="margin-top:-15px;margin-left:290px;">
+   <b><a href="https://accountabilitycorp.wistia.com/medias/77675ovi9z" target="_blank">ELTON Training Video </a>
+   </b>
+  </div>  
+  </div>
+  <div style="font-size:15px;"> 
+  <br> </br>
+  <b>Quick Start Steps and Links</b>
+  <br> </br> 
+  </div>
+  <div style="font-size:13px;">
+  <ol>
+      <li>Watch the above training video first, this will give you an overview of how ELTON works. </li>
+      <li> Download the <b><i>ELTON Configuration Guide</i></b> below and follow the steps to get ELTON setup the way you want. </li>
+      <li> To get ELTON up and running you need data.  You can enter data directly into ELTON or you can load data using our <b><i>Data Load Template</i></b> (link below). </li>
+      <li> Read the <b><i>Use of Bar Codes in ELTON</i></b> and <b><i>Exporting QR Codes</i></b> to understand how ELTON uses these technologies.</li>
+  </ol>
+  <br> </br>
+  Check out our mobile apps for iOS and Android, just search <b><i>AccountAbility Mobile Scanner</i></b> in the Appstore or GooglePlay to download our mobile app.  
+  The Mobile apps use either QR Codes or Bar Codes to allow users to Assign, Loan, Return Loans, Count or View Equipment records.
+  <br> </br>
+  <a href="http://itunes.apple.com/us/app/accountability-mobile-scanner/id587652299?mt=8&amp;uo=4" target="_blank"><img class="size-full wp-image-868 alignright" alt="Download_on_the_App_Store_Badge_US-UK_135x40" src="http://accountabilitycorp.com/wp-content/uploads/2014/04/Download_on_the_App_Store_Badge_US-UK_135x40.png" width="135" height="40" /></a> 
+  <a href="http://play.google.com/store/apps/details?id=com.accountabilitycorp.mobilescanner" target="_blank"><img class="size-full wp-image-923 alignright" alt="en_app_rgb_wo_45" src="http://accountabilitycorp.com/wp-content/uploads/2014/04/en_app_rgb_wo_45.png" width="129" height="45" /></a>
+  <br> </br> 
+  </div>  
+  <div style="margin-top:20px;">
+   <b>Download link for ELTON Configuration Guide :</b>
+  </div>
+  <div style="margin-top:-15px;margin-left:290px;">
+   <b><a href="http://www.accountabilitycorp.com/wp-content/uploads/ELTONConfigurationGuide1-23.pdf" target="_blank">ELTON Configuration Guide </a>
+   </b>
+  </div>  
+  <div style="margin-top:20px;">
+   <b>Download link for Data Load Template :</b>
+  </div>
+  <div style="margin-top:-15px;margin-left:290px;">
+   <b><a href="http://www.accountabilitycorp.com/wp-content/uploads/ELTONImportTemplate1-2.xlsx" target="_blank">Data Load Template </a>
+   </b>
+  </div>  
+  <div style="margin-top:20px;">
+   <b>Download link for Loading Equipment, Assignment and Loan Data into ELTON :</b>
+  </div>
+  <div style="margin-top:-15px;margin-left:470px;">
+   <b><a href="http://www.accountabilitycorp.com/wp-content/uploads/LoadingAssignmentandLoandataintoELTON.pdf" target="_blank">Guide to Loading Equipment, Assignment or Loan Data into ELTON </a>
+   </b>
+  </div>  
+  <div style="margin-top:20px;">
+   <b>Download link for Security Settings in ELTON :</b>
+  </div>
+  <div style="margin-top:-15px;margin-left:290px;">
+   <b><a href="http://www.accountabilitycorp.com/wp-content/uploads/SecuritySettingsforELTON.pdf" target="_blank">Security Settings Documentation Link </a>
+   </b>
+  </div>  
+  <div style="margin-top:20px;">
+   <b>Download link for Equipment Calendar Guide :</b>
+  </div>
+  <div style="margin-top:-15px;margin-left:290px;">
+   <b><a href="http://www.accountabilitycorp.com/wp-content/uploads/CalendarViewforLoansandReservations.pdf" target="_blank">Equipment Calendar Guide Link </a>
+   </b>
+  </div>  
+  <div style="margin-top:20px;">
+   <b>Download link for Use of Bar Codes in ELTON :</b>
+  </div>
+  <div style="margin-top:-15px;margin-left:290px;">
+   <b><a href="http://www.accountabilitycorp.com/wp-content/uploads/BarCodesinAccountAbilityProducts.pdf" target="_blank">Use of Bar Codes Documentation Link </a>
+   </b>
+  </div>  
+  <div style="margin-top:20px;">
+   <b>Download link for Exporting QR Codes into Label Software :</b>
+  </div>
+  <div style="margin-top:-15px;margin-left:345px;">
+   <b><a href="http://www.accountabilitycorp.com/wp-content/uploads/ELTONQRExport.pdf" target="_blank">Export QR Codes Documentation Link </a>
+   </b>
+  </div>  
+  <div style="margin-top:20px;">
+   <b>Download link for Integrating ELTON with Salesforce Cases :</b>
+  </div>
+  <div style="margin-top:-15px;margin-left:345px;">
+   <b><a href="http://www.accountabilitycorp.com/wp-content/uploads/IntegratingELTONwithSalesforceCases.pdf" target="_blank">Integrating ELTON with Salesforce Cases Documentation Link </a>
+   </b>
+  </div>  
+  <div style="margin-top:20px;">
+   <b>Download link for Salesforce1 and ELTON Guide :</b>
+  </div>
+  <div style="margin-top:-15px;margin-left:345px;">
+   <b><a href="http://www.accountabilitycorp.com/wp-content/uploads/Salesforce1andELTON.pdf" target="_blank">Salesforce1 and ELTON Documentation Link </a>
+   </b>
+  </div>  
+  </html>
+<apex:form id="form" style="Width:100%;margin-top:15px">
+ <apex:pageBlock id="PageBl">
+ <apex:pageBlockSection columns="1" id="pageBlock"> 
+ <apex:pageBlockSectionItem id="PaBlItem1">
+<!-- <apex:commandButton value="Export Equipment Portable Data" action="{!ExportData}" id="Export"/> -->
+ </apex:pageBlockSectionItem>
+  <div style="margin-top:0px;">
+   <b>Contact info for support :</b>
+  </div>
+  <div style="margin-top:-15px;margin-left:150px;">
+   <b><a href="mailto:support@accountabilitycorp.com">support@accountabilitycorp.com</a></b>
+  </div>
+  <div style="margin-top:20px;">
+   <b>Web page link :</b>
+  </div>
+  <div style="margin-top:-15px;margin-left:150px;">
+   <b><a href="http://www.accountabilitycorp.com" target="_blank">http://www.accountabilitycorp.com</a>
+   </b>     <p> ELTON is authored and supported solely by AccountAbility Solutions Inc. </P>
+  </div>
+ </apex:pageBlockSection>  
+ </apex:pageBlock>
+</apex:form> 
+</apex:page>

@@ -1,0 +1,18 @@
+<apex:page standardController="Opportunity" extensions="HSFE_OppEditPage_Controller">
+ <apex:form >
+     <apex:pageBlock mode="edit">
+     <apex:pageMessages ></apex:pageMessages>
+     
+     <apex:pageBlockButtons >
+         <apex:commandButton action="{!save}" value="Save"/>
+         <apex:commandButton action="{!Cancel}" value="Cancel"/>
+     </apex:pageBlockButtons>
+     <apex:pageBlockSection title="Opportunity Stage Information"
+    columns="1">
+    
+     <apex:inputField value="{!Opportunity.HSFE_Lost_Reason__c}"/>
+     <apex:inputField value="{!Opportunity.HSFE_Lost_Reason_Description__c}"/>
+     </apex:pageBlockSection>
+     </apex:pageBlock>
+ </apex:form>
+</apex:page>

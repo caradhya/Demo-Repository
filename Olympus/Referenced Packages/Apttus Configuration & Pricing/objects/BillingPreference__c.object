@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <description>Represents a functional preference for billing purposes</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>AccountId__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>ID of the associated account</description>
+        <externalId>false</externalId>
+        <inlineHelpText>ID of the associated account</inlineHelpText>
+        <label>Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Billing Preferences</relationshipLabel>
+        <relationshipName>BillingPreferences</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>AdditionalInvoiceCCAddress__c</fullName>
+        <deprecated>false</deprecated>
+        <description>A comma separated list of additional email addresses to copy the invoice to.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>A comma separated list of additional email addresses to copy the invoice to.</inlineHelpText>
+        <label>Additional Invoice CC Address</label>
+        <length>2000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>AllowPaymentTermOverride__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Indicates whether payment term may be overridden at lower levels</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Indicates whether payment term may be overridden at lower levels</inlineHelpText>
+        <label>Allow Payment Term Override ?</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>AllowPrefOverride__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Indicates whether preference may be overridden at lower levels</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Indicates whether preference may be overridden at lower levels</inlineHelpText>
+        <label>Allow Preference Override ?</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>AssetLineItemId__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>ID of the associated asset line item</description>
+        <externalId>false</externalId>
+        <inlineHelpText>ID of the associated asset line item</inlineHelpText>
+        <label>Asset Line Item</label>
+        <referenceTo>AssetLineItem__c</referenceTo>
+        <relationshipLabel>Billing Preferences</relationshipLabel>
+        <relationshipName>BillingPreferences</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>BillingDayOfMonth__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The billing day of month. Specific Day of Month, Account Creation Day, First Order Day, End of Month, etc</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The billing day of month. Specific Day of Month, Account Creation Day, First Order Day, End of Month, etc</inlineHelpText>
+        <label>Billing Day Of Month</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BillingInterval__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The billing interval</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The billing interval</inlineHelpText>
+        <label>Billing Interval</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Anytime</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Monthly</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Quarterly</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Half Yearly</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Yearly</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>CartLineItemId__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>ID of the associated cart line item</description>
+        <externalId>false</externalId>
+        <inlineHelpText>ID of the associated cart line item</inlineHelpText>
+        <label>Cart Line Item</label>
+        <referenceTo>LineItem__c</referenceTo>
+        <relationshipLabel>Billing Preferences</relationshipLabel>
+        <relationshipName>BillingPreferences</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>InvoiceDeliveryMethod__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The invoice delivery preference</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The invoice delivery preference</inlineHelpText>
+        <label>Invoice Delivery Method</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Email</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Print</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3rd party</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>N/A</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>InvoiceOutputFormat__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The invoice output format.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The invoice output format.</inlineHelpText>
+        <label>Invoice Output Format</label>
+        <picklist>
+            <picklistValues>
+                <fullName>PDF</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>DOC</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>DOCX</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>RTF</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>LocationId__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>ID of the associated location</description>
+        <externalId>false</externalId>
+        <inlineHelpText>ID of the associated location</inlineHelpText>
+        <label>Location</label>
+        <referenceTo>AccountLocation__c</referenceTo>
+        <relationshipLabel>Billing Preferences</relationshipLabel>
+        <relationshipName>BillingPreferences</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>OrderId__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>ID of the associated order</description>
+        <externalId>false</externalId>
+        <inlineHelpText>ID of the associated order</inlineHelpText>
+        <label>Order</label>
+        <referenceTo>Order__c</referenceTo>
+        <relationshipLabel>Billing Preferences</relationshipLabel>
+        <relationshipName>BillingPreferences</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>OrderLineItemId__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>ID of the associated order line item</description>
+        <externalId>false</externalId>
+        <inlineHelpText>ID of the associated order line item</inlineHelpText>
+        <label>Order Line Item</label>
+        <referenceTo>OrderLineItem__c</referenceTo>
+        <relationshipLabel>Billing Preferences</relationshipLabel>
+        <relationshipName>BillingPreferences</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>PrefLevel__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The level associated with the billing preference</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The level associated with the billing preference</inlineHelpText>
+        <label>Preference Level</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Organization</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Account</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Location</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Cart Line Item</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Quote</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Quote Line Item</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Agreement</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Agreement Line Item</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Order</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Order Line Item</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Asset Line Item</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>TaxLevel__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The default tax level</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The default tax level</inlineHelpText>
+        <label>Tax Level</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Account</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Product</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <label>Billing Preference</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <label>Preference Name</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Billing Preferences</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>PrefLevel__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>BillingInterval__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>BillingDayOfMonth__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>InvoiceDeliveryMethod__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>InvoiceOutputFormat__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>AdditionalInvoiceCCAddress__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>TaxLevel__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>AllowPrefOverride__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>LAST_UPDATE</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>PrefLevel__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>BillingInterval__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>BillingDayOfMonth__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>InvoiceDeliveryMethod__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>InvoiceOutputFormat__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>AdditionalInvoiceCCAddress__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>TaxLevel__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>AllowPrefOverride__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>LAST_UPDATE</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>PrefLevel__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>BillingInterval__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>BillingDayOfMonth__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>InvoiceDeliveryMethod__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>InvoiceOutputFormat__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>AdditionalInvoiceCCAddress__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>TaxLevel__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>AllowPrefOverride__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>LAST_UPDATE</lookupPhoneDialogsAdditionalFields>
+        <searchFilterFields>NAME</searchFilterFields>
+        <searchFilterFields>PrefLevel__c</searchFilterFields>
+        <searchFilterFields>BillingInterval__c</searchFilterFields>
+        <searchFilterFields>BillingDayOfMonth__c</searchFilterFields>
+        <searchFilterFields>InvoiceDeliveryMethod__c</searchFilterFields>
+        <searchFilterFields>InvoiceOutputFormat__c</searchFilterFields>
+        <searchFilterFields>TaxLevel__c</searchFilterFields>
+        <searchFilterFields>AllowPrefOverride__c</searchFilterFields>
+        <searchFilterFields>LAST_UPDATE</searchFilterFields>
+        <searchResultsAdditionalFields>PrefLevel__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>BillingInterval__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>BillingDayOfMonth__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>InvoiceDeliveryMethod__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>InvoiceOutputFormat__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>AdditionalInvoiceCCAddress__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>TaxLevel__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>AllowPrefOverride__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>LAST_UPDATE</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+</CustomObject>

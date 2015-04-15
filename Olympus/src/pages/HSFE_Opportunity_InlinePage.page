@@ -1,0 +1,26 @@
+<apex:page standardController="Opportunity">
+    <apex:form >
+        <apex:pageBlock mode="maindetail" id="pageBlockId">
+            <apex:pageBlockSection >
+                <apex:inputField value="{!Opportunity.HSFE_Sales_Stage__c}" />
+                <apex:inputField value="{!Opportunity.StageName}" />
+                <apex:inputField value="{!Opportunity.HSFE_Probability__c}" />
+                <apex:inputField value="{!Opportunity.HSFE_Competitive_Probability__c}" /> 
+           <apex:actionRegion >
+                    <apex:outputLabel style="Padding-left:120px;font-Weight:bold;text-align: right;font-size: 91%;color: #4a4a56;" value="Product Category"/>
+                    &nbsp; &nbsp; &nbsp;  <apex:inputField value="{!Opportunity.HSFE_Product_Category__c}">
+                    <apex:actionSupport event="onchange" reRender="ajaxrequest" />
+                    </apex:inputField>
+                </apex:actionRegion>
+
+              <apex:outputPanel id="ajaxrequest">
+                    <apex:outputLabel style="Padding-left:110px;font-Weight:bold;text-align: right;font-size: 91%;color: #4a4a56;"  value="Funding Probability" rendered="{!Opportunity.HSFE_Product_Category__c='Capital'}"/>    
+                        &nbsp; &nbsp; &nbsp;<apex:inputField value="{!Opportunity.HSFE_Funding_Probability__c}"  rendered="{!Opportunity.HSFE_Product_Category__c='Capital'}"/>
+                   <apex:outputLabel style="Padding-left:150px;font-Weight:bold;text-align: right;font-size: 91%;color: #4a4a56;" value="Contract" rendered="{!Opportunity.HSFE_Product_Category__c='Disposable'}"/>    
+                    &nbsp; &nbsp; &nbsp;  <apex:inputField value="{!Opportunity.HSFE_Contract_Type__c}" rendered="{!Opportunity.HSFE_Product_Category__c='Disposable'}"  />
+              </apex:outputPanel> 
+              
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form> 
+</apex:page>

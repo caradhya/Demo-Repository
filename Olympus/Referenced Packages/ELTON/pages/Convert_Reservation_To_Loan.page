@@ -1,0 +1,44 @@
+<apex:page standardController="ELTON__Equipment_Reservation__c" extensions="ELTON.Convert_Reservation_To_Loan">
+	<apex:pageMessages id="messages" />
+	<apex:pageMessage summary="You cannot Convert a Reservation for Inactive Equipment . Please change the Equipment to Active."
+		severity="warning" strength="2" rendered="{!!ELTON__Equipment_Reservation__c.Equipment__r.ELTON__Active__c}"/>
+	<apex:pageMessage summary="You cannot Convert an Inactive Reservation."
+		severity="warning" strength="2" rendered="{!!ELTON__Equipment_Reservation__c.ELTON__Active__c}"/>
+	<apex:pageMessage summary="This Reservation has already been converted into a loan."
+		severity="warning" strength="2" rendered="{!ELTON__Equipment_Reservation__c.ELTON__Converted_To_Loan__c}"/>
+
+	<apex:form >
+		<apex:pageBlock title="Convert Equipment Reservation to a Loan">
+			<apex:pageBlockButtons >
+				<apex:commandButton value="Convert" action="{!Convert}" disabled="{!!convertEnabled}"/>
+				<apex:commandButton value="Cancel" action="{!Cancel}" immediate="true" />
+			</apex:pageBlockButtons>
+			<apex:pageBlockSection title="Equipment" columns="1">
+				<apex:outputField value="{!ELTON__Equipment_Reservation__c.Equipment__r.Name}"/>
+				<apex:outputField value="{!ELTON__Equipment_Reservation__c.Equipment__r.ELTON__Equipment_Tag__c}"/>
+			</apex:pageBlockSection>
+			<apex:pageBlockSection title="Current Loan Information" columns="1">    
+				<apex:outputField value="{!ELTON__Equipment_Reservation__c.Equipment__r.ELTON__Loan_Type__c}"/>    
+				<apex:outputField value="{!ELTON__Equipment_Reservation__c.Equipment__r.ELTON__Loan_Name__c}"/>    
+				<apex:outputField value="{!ELTON__Equipment_Reservation__c.Equipment__r.ELTON__Loan_Start_Date__c}"/>        
+				<apex:outputField value="{!ELTON__Equipment_Reservation__c.Equipment__r.ELTON__Loan_Estimated_Return_Date__c}"/>    
+			</apex:pageBlockSection>
+			<apex:pageBlockSection title="Reservation to Convert" columns="1">    
+				<apex:outputField value="{!ELTON__Equipment_Reservation__c.Name}"/>    
+				<apex:outputField value="{!ELTON__Equipment_Reservation__c.ELTON__Reservation_Type__c}"/>    
+				<apex:outputField value="{!ELTON__Equipment_Reservation__c.ELTON__Reservation_Name__c}"/>    
+				<apex:inputField value="{!reservation.ELTON__Reservation_Start_Date__c}" required="true"/>        
+				<apex:inputField value="{!reservation.ELTON__Estimated_Return_Date__c}" required="true"/> 
+				<apex:inputField value="{!reservation.ELTON__Loan_Extra_Date_1__c}" rendered="{!ELTON__Equipment_Reservation__c.Equipment__r.Equipment_Type__r.ELTON__Use_Loan_Date_1__c}"/>        
+				<apex:inputField value="{!reservation.ELTON__Loan_Extra_Date_2__c}" rendered="{!ELTON__Equipment_Reservation__c.Equipment__r.Equipment_Type__r.ELTON__Use_Loan_Date_2__c}"/> 
+				<!-- 
+				<apex:inputText value="{!trackingNumber}" label="{!$ObjectType.Equipment_Loan__c.fields.Tracking_Number__c.label}"/>               
+				<apex:inputField value="{!reservation.Reservation_Note__c}" />
+				 -->
+				 <apex:repeat value="{!$ObjectType.ELTON__Equipment_Loan__c.FieldSets.ELTON__Fields_to_Update_on_Loan}" var="f">
+                	<apex:inputField value="{!loan[f]}" required="{!f.required || f.dbRequired}"/>
+                </apex:repeat>
+			</apex:pageBlockSection>        
+		</apex:pageBlock>
+	</apex:form>
+</apex:page>

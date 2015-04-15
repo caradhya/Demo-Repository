@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <outboundMessages>
+        <fullName>Lotus_Note_Synch</fullName>
+        <apiVersion>33.0</apiVersion>
+        <endpointUrl>http://12.189.73.186/apps/dale/calendarservice.nsf/CalAppointmentv2</endpointUrl>
+        <fields>AccountId</fields>
+        <fields>ActivityDate</fields>
+        <fields>ActivityDateTime</fields>
+        <fields>CreatedById</fields>
+        <fields>CreatedDate</fields>
+        <fields>Description</fields>
+        <fields>DurationInMinutes</fields>
+        <fields>EndDateTime</fields>
+        <fields>GroupEventType</fields>
+        <fields>Id</fields>
+        <fields>IsAllDayEvent</fields>
+        <fields>IsDeleted</fields>
+        <fields>IsGroupEvent</fields>
+        <fields>IsRecurrence</fields>
+        <fields>IsReminderSet</fields>
+        <fields>LastModifiedById</fields>
+        <fields>LastModifiedDate</fields>
+        <fields>Location</fields>
+        <fields>OwnerId</fields>
+        <fields>ShowAs</fields>
+        <fields>StartDateTime</fields>
+        <fields>Subject</fields>
+        <fields>SystemModstamp</fields>
+        <fields>Type</fields>
+        <fields>WhatCount</fields>
+        <fields>WhatId</fields>
+        <fields>WhoCount</fields>
+        <fields>WhoId</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>kumgaurav@deloitte.com.hsfe</integrationUser>
+        <name>Lotus Note Synch</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+</Workflow>

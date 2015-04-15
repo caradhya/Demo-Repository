@@ -1,0 +1,1135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Account</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>Account</value>
+        </caseValues>
+        <name>account_name</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Primary Address</value>
+        </caseValues>
+        <name>address_account</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Address</value>
+        </caseValues>
+        <name>billing_address_account</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>City</value>
+        </caseValues>
+        <name>billing_city_account</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Country</value>
+        </caseValues>
+        <name>billing_country_account</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Country Code</value>
+        </caseValues>
+        <name>billing_country_code_account</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Latitude</value>
+        </caseValues>
+        <name>billing_latitude_account</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Longitude</value>
+        </caseValues>
+        <name>billing_longitude_account</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>State/Province</value>
+        </caseValues>
+        <name>billing_state_account</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>State/Province Code</value>
+        </caseValues>
+        <name>billing_state_code_account</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Street</value>
+        </caseValues>
+        <name>billing_street_account</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Zip/Postal Code</value>
+        </caseValues>
+        <name>billing_zip_account</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Office Phone</value>
+        </caseValues>
+        <name>phone_account</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Other Address</value>
+        </caseValues>
+        <name>shipping_address_account</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Other City</value>
+        </caseValues>
+        <name>shipping_city_account</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Other Country</value>
+        </caseValues>
+        <name>shipping_country_account</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Other Country Code</value>
+        </caseValues>
+        <name>shipping_country_code_account</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Other Latitude</value>
+        </caseValues>
+        <name>shipping_latitude_account</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Other Longitude</value>
+        </caseValues>
+        <name>shipping_longitude_account</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Other State/Province</value>
+        </caseValues>
+        <name>shipping_state_account</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Other State/Province Code</value>
+        </caseValues>
+        <name>shipping_state_code_account</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Other Street</value>
+        </caseValues>
+        <name>shipping_street_account</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Other Zip/Postal Code</value>
+        </caseValues>
+        <name>shipping_zip_account</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <name>AccountSource</name>
+        <picklistValues>
+            <masterLabel>FIS Contracts</masterLabel>
+            <translation><!-- FIS Contracts --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Field Service</masterLabel>
+            <translation><!-- Field Service --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Inside Sales</masterLabel>
+            <translation><!-- Inside Sales --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MSG Portal(Website)</masterLabel>
+            <translation><!-- MSG Portal(Website) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marketing Campaign</masterLabel>
+            <translation><!-- Marketing Campaign --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Self-Generated</masterLabel>
+            <translation><!-- Self-Generated --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Contracts</masterLabel>
+            <translation><!-- Service Contracts --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Trade Show</masterLabel>
+            <translation><!-- Trade Show --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Apttus_Config2__Active__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- ID of the associated tax certificate. Applicable only when tax exempt. --></help>
+        <label><!-- Tax Certificate --></label>
+        <name>Apttus_Config2__CertificateId__c</name>
+        <relationshipLabel><!-- Accounts --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Customer Priority --></label>
+        <name>Apttus_Config2__CustomerPriority__c</name>
+        <picklistValues>
+            <masterLabel>High</masterLabel>
+            <translation><!-- High --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Low</masterLabel>
+            <translation><!-- Low --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Medium</masterLabel>
+            <translation><!-- Medium --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- The name of the default invoice template for generating invoices --></help>
+        <label><!-- Default Invoice Template --></label>
+        <name>Apttus_Config2__DefaultInvoiceTemplate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of Locations --></label>
+        <name>Apttus_Config2__NumberofLocations__c</name>
+    </fields>
+    <fields>
+        <help><!-- ID of the default payment term associated with the account --></help>
+        <label><!-- Payment Term --></label>
+        <name>Apttus_Config2__PaymentTermId__c</name>
+        <relationshipLabel><!-- Accounts --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- SLA Expiration Date --></label>
+        <name>Apttus_Config2__SLAExpirationDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- SLA Serial Number --></label>
+        <name>Apttus_Config2__SLASerialNumber__c</name>
+    </fields>
+    <fields>
+        <label><!-- SLA --></label>
+        <name>Apttus_Config2__SLA__c</name>
+        <picklistValues>
+            <masterLabel>Bronze</masterLabel>
+            <translation><!-- Bronze --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gold</masterLabel>
+            <translation><!-- Gold --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Platinum</masterLabel>
+            <translation><!-- Platinum --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Silver</masterLabel>
+            <translation><!-- Silver --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- The tax exempt status. Applicable only when tax exempt. --></help>
+        <label><!-- Tax Exempt Status --></label>
+        <name>Apttus_Config2__TaxExemptStatus__c</name>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation><!-- Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Processing</masterLabel>
+            <translation><!-- Processing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation><!-- Rejected --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- The tax exempt indicator for the account --></help>
+        <label><!-- Tax Exempt ? --></label>
+        <name>Apttus_Config2__TaxExempt__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Upsell Opportunity --></label>
+        <name>Apttus_Config2__UpsellOpportunity__c</name>
+        <picklistValues>
+            <masterLabel>Maybe</masterLabel>
+            <translation><!-- Maybe --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Captures existing account --></help>
+        <label><!-- Account Name --></label>
+        <name>HSFE_Account_Name__c</name>
+        <relationshipLabel><!-- Accounts --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Address ID --></label>
+        <name>HSFE_Address_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Affiliated Hospital Cancer Program --></label>
+        <name>HSFE_Affiliated_Hospital_Cancer_Program__c</name>
+    </fields>
+    <fields>
+        <label><!-- Bariatric Bypass (IMS/SDI) --></label>
+        <name>HSFE_Bariatric_Bypass__c</name>
+    </fields>
+    <fields>
+        <label><!-- Bill To --></label>
+        <name>HSFE_Bill_To__c</name>
+    </fields>
+    <fields>
+        <label><!-- Business Name --></label>
+        <name>HSFE_Business_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Care of Location --></label>
+        <name>HSFE_Care_of_Location__c</name>
+    </fields>
+    <fields>
+        <label><!-- Class of Trade (COT) Classification --></label>
+        <name>HSFE_Class_of_Trade_COT_Classification__c</name>
+    </fields>
+    <fields>
+        <label><!-- Class of Trade (COT) Facility Type --></label>
+        <name>HSFE_Class_of_Trade_COT_Facility_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Class of Trade (COT) Specialty --></label>
+        <name>HSFE_Class_of_Trade_COT_Specialty__c</name>
+    </fields>
+    <fields>
+        <label><!-- Colectomy (IMS/SDI) --></label>
+        <name>HSFE_Colectomy_Energy_Procedures__c</name>
+    </fields>
+    <fields>
+        <label><!-- Colectomy(Open/Lab) (SI) (IMS/SDI) --></label>
+        <name>HSFE_Colectomy_Open_Lab_SI__c</name>
+    </fields>
+    <fields>
+        <label><!-- Community Hospital --></label>
+        <name>HSFE_Community_Hospital__c</name>
+    </fields>
+    <fields>
+        <help><!-- Corporate Parent Name IMS Organizational ID --></help>
+        <label><!-- Corporate Parent Name IMS Org ID --></label>
+        <name>HSFE_Corporate_Parent_Name_IMS_Organizat__c</name>
+    </fields>
+    <fields>
+        <label><!-- Corporate Parent Name --></label>
+        <name>HSFE_Corporate_Parent_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Credit Availability Percentage --></label>
+        <name>HSFE_Credit_Availability_Percentage__c</name>
+    </fields>
+    <fields>
+        <label><!-- Credit Availability --></label>
+        <name>HSFE_Credit_Availability__c</name>
+    </fields>
+    <fields>
+        <label><!-- Credit Risk --></label>
+        <name>HSFE_Credit_Risk__c</name>
+    </fields>
+    <fields>
+        <label><!-- Critical Access Hospital --></label>
+        <name>HSFE_Critical_Access_Hospital__c</name>
+    </fields>
+    <fields>
+        <label><!-- Cystoscopy (IMS/SDI) --></label>
+        <name>HSFE_Cystoscopy__c</name>
+    </fields>
+    <fields>
+        <label><!-- DBA --></label>
+        <name>HSFE_DBA__c</name>
+    </fields>
+    <fields>
+        <label><!-- Dedicated Cysto Suite --></label>
+        <name>HSFE_Dedicated_Cysto_Suite__c</name>
+    </fields>
+    <fields>
+        <label><!-- Doing Business As (DBA) Name --></label>
+        <name>HSFE_Doing_Business_As_DBA_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Dx Bronchoscopy (IMS/SDI) --></label>
+        <name>HSFE_Dx_Bronchoscopy__c</name>
+    </fields>
+    <fields>
+        <label><!-- EBUS (IMS/SDI) --></label>
+        <name>HSFE_EBUS_Surgical_Endocopy_Procedures__c</name>
+    </fields>
+    <fields>
+        <label><!-- EBUS (IMS/SDI) --></label>
+        <name>HSFE_EBUS__c</name>
+    </fields>
+    <fields>
+        <label><!-- ERCP (MP/ET) (IMS/SDI) --></label>
+        <name>HSFE_ERCP_MP_ET__c</name>
+    </fields>
+    <fields>
+        <label><!-- EUS (IMS/SDI) --></label>
+        <name>HSFE_EUS__c</name>
+    </fields>
+    <fields>
+        <label><!-- Endometrial Ablation (IMS/SDI) --></label>
+        <name>HSFE_Endometrial_Ablation__c</name>
+    </fields>
+    <fields>
+        <label><!-- Enteroscopy Procedures (IMS/SDI) --></label>
+        <name>HSFE_Enteroscopy_Procedures__c</name>
+    </fields>
+    <fields>
+        <label><!-- Enteroscopy (IMS/SDI) --></label>
+        <name>HSFE_Enteroscopy__c</name>
+    </fields>
+    <fields>
+        <label><!-- Esophageal Capsule (IMS/SDI) --></label>
+        <name>HSFE_Esophageal_Capsule__c</name>
+    </fields>
+    <fields>
+        <label><!-- FESS (IMS/SDI) --></label>
+        <name>HSFE_FESS__c</name>
+    </fields>
+    <fields>
+        <label><!-- Fax --></label>
+        <name>HSFE_Fax__c</name>
+    </fields>
+    <fields>
+        <label><!-- Federal ID --></label>
+        <name>HSFE_Federal_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- GPO MedSurg IMS Organizational ID --></label>
+        <name>HSFE_GPO_MedSurg_IMS_Organization_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- GPO MedSurg --></label>
+        <name>HSFE_GPO_MedSurg__c</name>
+    </fields>
+    <fields>
+        <label><!-- Hysteroscopy (IMS/SDI) --></label>
+        <name>HSFE_Hysteroscopy__c</name>
+    </fields>
+    <fields>
+        <label><!-- IMS ID --></label>
+        <name>HSFE_IMS_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is FIS --></label>
+        <name>HSFE_Is_FIS__c</name>
+    </fields>
+    <fields>
+        <label><!-- JDE Number --></label>
+        <name>HSFE_JDE_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lap Band (IMS/SDI) --></label>
+        <name>HSFE_Lap_Band__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lap Bariatric (SI) (IMS/SDI) --></label>
+        <name>HSFE_Lap_Bariatric_SI__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lap Chole (SI) (IMS/SDI) --></label>
+        <name>HSFE_Lap_Chole_SI__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lap Hyster/Oophorect (IMS/SDI) --></label>
+        <name>HSFE_Lap_Hyster_Oophorect__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lap Hysterectomy/Oophorectomy (IMS/SDI) --></label>
+        <name>HSFE_Lap_Hysterectomy_Oophorectomy__c</name>
+    </fields>
+    <fields>
+        <label><!-- Laryngoscopy (IMS/SDI) --></label>
+        <name>HSFE_Laryngoscopy__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lithoplaxy (IMS/SDI) --></label>
+        <name>HSFE_Lithoplaxy100__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lower GI (MP/ET) (IMS/SDI) --></label>
+        <name>HSFE_Lower_GI_MP_ET__c</name>
+    </fields>
+    <fields>
+        <label><!-- Mediastinoscopy (IMS/SDI) --></label>
+        <name>HSFE_Mediastinoscopy__c</name>
+    </fields>
+    <fields>
+        <label><!-- Medicare ID --></label>
+        <name>HSFE_Medicare_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Medicare Provider Number --></label>
+        <name>HSFE_Medicare_Provider_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Myringotomy (IMS/SDI) --></label>
+        <name>HSFE_Myringotomy__c</name>
+    </fields>
+    <fields>
+        <label><!-- NPI ID --></label>
+        <name>HSFE_NPI_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Nephrectomy (IMS/SDI) --></label>
+        <name>HSFE_Nephrectomy__c</name>
+    </fields>
+    <fields>
+        <label><!-- Nissen Fundoplication (IMS/SDI) --></label>
+        <name>HSFE_Nissen_Fundoplication__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of GI Rooms --></label>
+        <name>HSFE_Number_of_GI_Rooms__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of Gynecologists --></label>
+        <name>HSFE_Number_of_Gynecologists__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of Urologists --></label>
+        <name>HSFE_Number_of_Urologists__c</name>
+    </fields>
+    <fields>
+        <label><!-- Open Hysterectomy (IMS/SDI) --></label>
+        <name>HSFE_Open_Hysterectomy__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ossicular Chain Reconstruction (IMS/SDI) --></label>
+        <name>HSFE_Ossicular_Chain_Reconstruction__c</name>
+    </fields>
+    <fields>
+        <label><!-- Owner Status --></label>
+        <name>HSFE_Owner_Status__c</name>
+    </fields>
+    <fields>
+        <help><!-- Owner Subsidiary Name IMS Organization ID --></help>
+        <label><!-- Owner Subsidiary Name IMS Org ID --></label>
+        <name>HSFE_Owner_Subsidiary_Name_IMS_Organizat__c</name>
+    </fields>
+    <fields>
+        <label><!-- Owner Subsidiary Name --></label>
+        <name>HSFE_Owner_Subsidiary_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- PCNL (IMS/SDI) --></label>
+        <name>HSFE_PCNL__c</name>
+    </fields>
+    <fields>
+        <label><!-- Payer --></label>
+        <name>HSFE_Payer__c</name>
+    </fields>
+    <fields>
+        <label><!-- Payment Terms --></label>
+        <name>HSFE_Payment_Terms__c</name>
+    </fields>
+    <fields>
+        <label><!-- Peripheral Bronch (IMS/SDI) --></label>
+        <name>HSFE_Peripheral_Bronch__c</name>
+    </fields>
+    <fields>
+        <label><!-- Peripheral Bronchoscopy (IMS/SDI) --></label>
+        <name>HSFE_Peripheral_Bronchoscopy__c</name>
+    </fields>
+    <fields>
+        <label><!-- Phone --></label>
+        <name>HSFE_Phone__c</name>
+    </fields>
+    <fields>
+        <label><!-- Physical Address 1 --></label>
+        <name>HSFE_Physical_Address_1__c</name>
+    </fields>
+    <fields>
+        <label><!-- Physical Address 2 --></label>
+        <name>HSFE_Physical_Address_2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Physical City --></label>
+        <name>HSFE_Physical_City__c</name>
+    </fields>
+    <fields>
+        <label><!-- Physical State --></label>
+        <name>HSFE_Physical_State__c</name>
+    </fields>
+    <fields>
+        <label><!-- Physical Zip --></label>
+        <name>HSFE_Physical_Zip__c</name>
+    </fields>
+    <fields>
+        <label><!-- Postal Code five digit --></label>
+        <name>HSFE_Postal_Code_five_digit__c</name>
+    </fields>
+    <fields>
+        <label><!-- Profit Status --></label>
+        <name>HSFE_Profit_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Prostate/Nephrectomy (IMS/SDI) --></label>
+        <name>HSFE_Prostate_Nephrectomy__c</name>
+    </fields>
+    <fields>
+        <label><!-- Pulmonary Navigation (IMS/SDI) --></label>
+        <name>HSFE_Pulmonary_Navigation__c</name>
+    </fields>
+    <fields>
+        <label><!-- Rev Mid Ear (IMS/SDI) --></label>
+        <name>HSFE_Rev_Mid_Ear__c</name>
+    </fields>
+    <fields>
+        <label><!-- Rural Hospital --></label>
+        <name>HSFE_Rural_Hospital__c</name>
+    </fields>
+    <fields>
+        <label><!-- SAP ID --></label>
+        <name>HSFE_SAP_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ship To --></label>
+        <name>HSFE_Ship_To__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sinus Endo DX (IMS/SDI) --></label>
+        <name>HSFE_Sinus_Endo_DX__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sleeve Gastrectomy (IMS/SDI) --></label>
+        <name>HSFE_Sleeve_Gastrectomy__c</name>
+    </fields>
+    <fields>
+        <label><!-- Small Bowl Capsule (IMS/SDI) --></label>
+        <name>HSFE_Small_Bowl_Capsule__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sold To --></label>
+        <name>HSFE_Sold_To__c</name>
+    </fields>
+    <fields>
+        <label><!-- Solon Capsule (IMS/SDI) --></label>
+        <name>HSFE_Solon_Capsule__c</name>
+    </fields>
+    <fields>
+        <label><!-- Splenectomy (IMS/SDI) --></label>
+        <name>HSFE_Splenectomy__c</name>
+    </fields>
+    <fields>
+        <label><!-- Stapedectomy (IMS/SDI) --></label>
+        <name>HSFE_Stapedectomy__c</name>
+    </fields>
+    <fields>
+        <label><!-- Street Front Addresses --></label>
+        <name>HSFE_Street_Front_Addresses__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sugar ID --></label>
+        <name>HSFE_Sugar_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- TBNA (IMS/SDI) --></label>
+        <name>HSFE_TBNA__c</name>
+    </fields>
+    <fields>
+        <label><!-- TURBT (IMS/SDI) --></label>
+        <name>HSFE_TURBT__c</name>
+    </fields>
+    <fields>
+        <label><!-- TURP (IMS/SDI) --></label>
+        <name>HSFE_TURP__c</name>
+    </fields>
+    <fields>
+        <label><!-- Teaching Hospital --></label>
+        <name>HSFE_Teaching_Hospital__c</name>
+    </fields>
+    <fields>
+        <label><!-- Thoracoscopy (IMS/SDI) --></label>
+        <name>HSFE_Thoracoscopy__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tonsillectomy Adenoids (IMS/SDI) --></label>
+        <name>HSFE_Tonsillectomy_Adenoids__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Credit Line --></label>
+        <name>HSFE_Total_Credit_Line__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Open AR --></label>
+        <name>HSFE_Total_Open_AR__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Operating Rooms --></label>
+        <name>HSFE_Total_Operating_Rooms__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Staffed Beds --></label>
+        <name>HSFE_Total_Staffed_Beds__c</name>
+    </fields>
+    <fields>
+        <label><!-- Turb Submucosa Resect (IMS/SDI) --></label>
+        <name>HSFE_Turb_Submucosa_Resect__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tx Bronchoscopy (IMS/SDI) --></label>
+        <name>HSFE_Tx_Bronchoscopy__c</name>
+    </fields>
+    <fields>
+        <label><!-- UID --></label>
+        <name>HSFE_UID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Upper GI (MP/ET) (IMS/SDI) --></label>
+        <name>HSFE_Upper_GI_MP_ET__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ureteroscopy (IMS/SDI) --></label>
+        <name>HSFE_Ureteroscopy__c</name>
+    </fields>
+    <fields>
+        <label><!-- VATS (IMS/SDI) --></label>
+        <name>HSFE_VATS_Surgical_Endocopy_Procedures__c</name>
+    </fields>
+    <fields>
+        <label><!-- VATS (IMS/SDI) --></label>
+        <name>HSFE_VATS__c</name>
+    </fields>
+    <fields>
+        <label><!-- Website --></label>
+        <name>HSFE_Website__c</name>
+    </fields>
+    <fields>
+        <label><!-- Wedge Resection (IMS/SDI) --></label>
+        <name>HSFE_Wedge_Resection__c</name>
+    </fields>
+    <fields>
+        <label><!-- pH Testing (IMS/SDI) --></label>
+        <name>HSFE_pH_Testing__c</name>
+    </fields>
+    <fields>
+        <name>Industry</name>
+        <picklistValues>
+            <masterLabel>Agriculture</masterLabel>
+            <translation><!-- Agriculture --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Apparel</masterLabel>
+            <translation><!-- Apparel --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Banking</masterLabel>
+            <translation><!-- Banking --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Biotechnology</masterLabel>
+            <translation><!-- Biotechnology --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chemicals</masterLabel>
+            <translation><!-- Chemicals --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Communications</masterLabel>
+            <translation><!-- Communications --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Construction</masterLabel>
+            <translation><!-- Construction --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consulting</masterLabel>
+            <translation><!-- Consulting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Education</masterLabel>
+            <translation><!-- Education --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Electronics</masterLabel>
+            <translation><!-- Electronics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Energy</masterLabel>
+            <translation><!-- Energy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Engineering</masterLabel>
+            <translation><!-- Engineering --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Entertainment</masterLabel>
+            <translation><!-- Entertainment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Environmental</masterLabel>
+            <translation><!-- Environmental --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Finance</masterLabel>
+            <translation><!-- Finance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Food &amp; Beverage</masterLabel>
+            <translation><!-- Food &amp; Beverage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Government</masterLabel>
+            <translation><!-- Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Healthcare</masterLabel>
+            <translation><!-- Healthcare --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hospitality</masterLabel>
+            <translation><!-- Hospitality --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Insurance</masterLabel>
+            <translation><!-- Insurance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Machinery</masterLabel>
+            <translation><!-- Machinery --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manufacturing</masterLabel>
+            <translation><!-- Manufacturing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Media</masterLabel>
+            <translation><!-- Media --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not For Profit</masterLabel>
+            <translation><!-- Not For Profit --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Recreation</masterLabel>
+            <translation><!-- Recreation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail</masterLabel>
+            <translation><!-- Retail --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Shipping</masterLabel>
+            <translation><!-- Shipping --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technology</masterLabel>
+            <translation><!-- Technology --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Telecommunications</masterLabel>
+            <translation><!-- Telecommunications --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transportation</masterLabel>
+            <translation><!-- Transportation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Utilities</masterLabel>
+            <translation><!-- Utilities --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- NPI Numbers --></label>
+        <name>NPI_Numbers__c</name>
+    </fields>
+    <fields>
+        <name>Ownership</name>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Private</masterLabel>
+            <translation><!-- Private --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Public</masterLabel>
+            <translation><!-- Public --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Subsidiary</masterLabel>
+            <translation><!-- Subsidiary --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <name>Rating</name>
+        <picklistValues>
+            <masterLabel>A</masterLabel>
+            <translation><!-- A --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B</masterLabel>
+            <translation><!-- B --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <name>Type</name>
+        <picklistValues>
+            <masterLabel>Analyst</masterLabel>
+            <translation><!-- Analyst --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Competitor</masterLabel>
+            <translation><!-- Competitor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer</masterLabel>
+            <translation><!-- Customer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Integrator</masterLabel>
+            <translation><!-- Integrator --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Investor</masterLabel>
+            <translation><!-- Investor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner</masterLabel>
+            <translation><!-- Partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Press</masterLabel>
+            <translation><!-- Press --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Prospect</masterLabel>
+            <translation><!-- Prospect --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Reseller</masterLabel>
+            <translation><!-- Reseller --></translation>
+        </picklistValues>
+    </fields>
+    <layouts>
+        <layout>Account Layout</layout>
+        <sections>
+            <label><!-- Account Summary --></label>
+            <section>Account Summary</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Customer Layout</layout>
+        <sections>
+            <label><!-- Capsule Procedures --></label>
+            <section>Capsule Procedures</section>
+        </sections>
+        <sections>
+            <label><!-- Credit --></label>
+            <section>Credit</section>
+        </sections>
+        <sections>
+            <label><!-- ENT Procedures --></label>
+            <section>ENT Procedures</section>
+        </sections>
+        <sections>
+            <label><!-- Energy Procedures --></label>
+            <section>Energy Procedures</section>
+        </sections>
+        <sections>
+            <label><!-- IMS Data --></label>
+            <section>IMS Data</section>
+        </sections>
+        <sections>
+            <label><!-- MP-ET Procedures --></label>
+            <section>MP-ET Procedures</section>
+        </sections>
+        <sections>
+            <label><!-- Respiratory Procedures --></label>
+            <section>Respiratory Procedures</section>
+        </sections>
+        <sections>
+            <label><!-- Surgical Endoscopy Procedures --></label>
+            <section>Surgical Endoscopy Procedures</section>
+        </sections>
+        <sections>
+            <label><!-- UROGYN Procedures --></label>
+            <section>UROGYN Procedures</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Case --></label>
+        <name>Case</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Child Account --></label>
+        <name>Child_Account</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Contact --></label>
+        <name>Contact</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Log a Call --></label>
+        <name>Log_a_Call</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Log A Note --></label>
+        <name>Note</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Opportunity --></label>
+        <name>Opportunity</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Task --></label>
+        <name>Task</name>
+    </quickActions>
+    <recordTypes>
+        <label><!-- Address --></label>
+        <name>Address</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Customer --></label>
+        <name>Customer</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- GPO --></label>
+        <name>GPO</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Government --></label>
+        <name>Government</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- IDN --></label>
+        <name>IDN</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Prospect --></label>
+        <name>Prospect</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Sales Rep --></label>
+        <name>Sales_Rep</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage><!-- You can not change the field value. --></errorMessage>
+        <name>Name_field_Read_Only</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Generate_Form --></label>
+        <name>Generate_Form</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- GoogleMaps --></label>
+        <name>GoogleMaps</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- GoogleNews --></label>
+        <name>GoogleNews</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- GoogleSearch --></label>
+        <name>GoogleSearch</name>
+    </webLinks>
+</CustomObjectTranslation>

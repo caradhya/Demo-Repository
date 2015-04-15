@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <customSettingsVisibility>Public</customSettingsVisibility>
+    <description>Various Custom settings related to assignment and loan of ELTON Equipment</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Account_Address_Type__c</fullName>
+        <defaultValue>&apos;B&apos;</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Enter &apos;B&apos; to use the Account Billing Address for Assignment and Loan or enter &apos;S&apos; to use the shipping address</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter &apos;B&apos; to use the Account Billing Address for Assignment and Loan or enter &apos;S&apos; to use the shipping address</inlineHelpText>
+        <label>Account Address Type</label>
+        <length>1</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Auto_Assign_Name__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter the Name of the record to use for Auto Assign</inlineHelpText>
+        <label>Auto Assign Name</label>
+        <length>40</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Auto_Assign_Type__c</fullName>
+        <defaultValue>&quot;None&quot;</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter; User, Contact, Account, Opportunity or None</inlineHelpText>
+        <label>Auto Assign Type</label>
+        <length>20</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Change_Equipment_Record_Owner__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Changes the record owner of the equipment record to match the record owner of the loanee.  When the loan is returned the ownership of the equipment record is changed to the record owner of the assignee.</description>
+        <externalId>false</externalId>
+        <label>Change Equipment Record Owner</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Re_assign_on_Loan_Return__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Automatically re-assign Equipment on Loan return</description>
+        <externalId>false</externalId>
+        <label>Re-assign on Loan Return</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Re_assign_on_Loan_Start__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Automatically re-assign the Equipment when the Loan starts</description>
+        <externalId>false</externalId>
+        <label>Re-assign on Loan Start</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>Equipment Assignment and Loan Settings</label>
+</CustomObject>

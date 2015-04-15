@@ -1,0 +1,20 @@
+<!-- 
+    Apttus Approvals Management
+    RecordLink
+     
+    @2010-2011 Apttus Inc. All rights reserved.
+
+ -->
+<apex:component controller="Apttus_Approval.InstanceUrlController" access="global">
+    <apex:attribute name="SObjectId" 
+                    description="This is the Record Id." 
+                    type="ID" 
+                    access="global" />
+    <apex:attribute name="SObjectName" 
+                    description="This is the Record Name." 
+                    type="String" 
+                    access="global" />
+                    
+    <apex:outputLink value="{!InstanceUrl & '/' & SObjectId}">{!SObjectName}</apex:outputLink>
+                      
+</apex:component>

@@ -1,0 +1,44 @@
+<messaging:emailTemplate subject="Olympus Meeting" recipientType="Contact" relatedToType="Event">
+    <messaging:plainTextEmailBody > . 
+        Please respond to the attached invitation.
+</messaging:plainTextEmailBody>
+<messaging:attachment filename="meeting.ics" 
+        renderAs="text/calendar; charset=UTF-8; method=REQUEST">
+BEGIN:VCALENDAR
+METHOD:REQUEST
+BEGIN:VTIMEZONE
+TZID:(GMT-08.00) Pacific Time (US and Canada)
+BEGIN:STANDARD
+DTSTART:16010101T020000
+TZOFFSETFROM:-0700
+TZOFFSETTO:-0800
+RRULE:FREQ=YEARLY;WKST=MO;INTERVAL=1;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+BEGIN:DAYLIGHT
+DTSTART:16010101T020000
+TZOFFSETFROM:-0800
+TZOFFSETTO:-0700
+RRULE:FREQ=YEARLY;WKST=MO;INTERVAL=1;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+END:VTIMEZONE
+BEGIN:VEVENT
+DTSTAMP:20090921T202219Z
+DTSTART;TZID="(GMT-08.00) Pacific Time 
+        (US and Canada)":20090923T140000
+SUMMARY:Invitation: Olympus 
+ATTENDEE;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;RSVP=TRUE;
+        CN="{!recipient.name}":MAILTO:{!recipient.email}
+ORGANIZER;CN="John.Smith":MAILTO:sunilkumar6@deloitte.com
+LOCATION:Hawaii 
+DTEND;TZID="(GMT-08.00) Pacific Time 
+        (US and Canada)":20090923T160000
+DESCRIPTION: Olympus Meeting
+\N
+SEQUENCE:0
+PRIORITY:5
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR
+
+</messaging:attachment>
+</messaging:emailTemplate>

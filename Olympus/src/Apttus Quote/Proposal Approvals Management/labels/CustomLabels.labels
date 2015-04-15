@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>ApprovalRequestForQuote</fullName>
+        <categories>Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Approval Request for Quote/Proposal</shortDescription>
+        <value>Approval Request for Quote/Proposal</value>
+    </labels>
+    <labels>
+        <fullName>ApprovalRequestForQuoteLineItem</fullName>
+        <categories>Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Approval Request for Quote LineItem</shortDescription>
+        <value>Approval Request for Quote LineItem</value>
+    </labels>
+    <labels>
+        <fullName>NetPrice</fullName>
+        <categories>Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Net Price</shortDescription>
+        <value>Net Price</value>
+    </labels>
+    <labels>
+        <fullName>ProductName</fullName>
+        <categories>Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Product Name</shortDescription>
+        <value>Product Name</value>
+    </labels>
+    <labels>
+        <fullName>ProposalName</fullName>
+        <categories>Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Quote/Proposal Name</shortDescription>
+        <value>Quote/Proposal Name</value>
+    </labels>
+    <labels>
+        <fullName>ProposalType</fullName>
+        <categories>Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Quote/Proposal Type</shortDescription>
+        <value>Quote/Proposal Type</value>
+    </labels>
+    <labels>
+        <fullName>Quantity</fullName>
+        <categories>Label</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Quantity</shortDescription>
+        <value>Quantity</value>
+    </labels>
+</CustomLabels>

@@ -1,0 +1,41 @@
+<apex:page standardController="ELTON__Equipment__c" extensions="ELTON.Adjust_Equipment">
+    <apex:sectionHeader title="Adjust Equipment" subtitle="{!ELTON__Equipment__c.Name}"/>
+    <apex:pageMessage summary="You cannot Adjust Inactive Equipment. Please change the Equipment to Active."
+        severity="warning" strength="2" rendered="{!NOT(isActive)}"/>
+    <apex:pageMessage summary="You cannot Quantity Adjust for Equipment where 'Use Quantity On Hand' and 'Consumable' are set to FALSE."
+        severity="warning" strength="2" rendered="{!NOT(isQty)}"/>
+    
+    <apex:form >
+        <apex:pageMessages />
+        <apex:pageBlock title="{!$ObjectType.ELTON__Equipment__c.Label}">
+            <apex:pageBlockSection columns="2">
+                <apex:outputField value="{!ELTON__Equipment__c.Name}"/>
+                <apex:outputField value="{!ELTON__Equipment__c.ELTON__Active__c}"/>
+                <apex:outputField value="{!ELTON__Equipment__c.ELTON__Equipment_Tag__c}"/>
+                <apex:outputField value="{!ELTON__Equipment__c.ELTON__Assigned_Name__c}"/>
+                <apex:outputField value="{!ELTON__Equipment__c.ELTON__Use_Quantity_on_Hand__c}"/>                
+                <apex:outputField value="{!ELTON__Equipment__c.ELTON__Consumable__c}"/>                
+                <apex:outputField value="{!ELTON__Equipment__c.ELTON__Quantity_on_Hand__c}"/>   
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons location="top">
+                <apex:commandButton value="Adjust" action="{!makeAdjustment}" rendered="{!canBeAdjusted}"/>
+                <apex:commandButton value="Cancel" action="/{!ELTON__Equipment__c.Id}" immediate="true" />
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+
+        <apex:pageBlock title="{!$ObjectType.ELTON__Equipment_Quantity_Adjustment_History__c.Label}" rendered="{!canBeAdjusted}" id="adjustBlock">
+            <apex:pageBlockSection title="Adjustment" columns="1">
+                <apex:inputField value="{!EQAH.ELTON__Adjustment_Date__c}" required="true"/>
+                <apex:inputField value="{!EQAH.ELTON__Adjustment_Quantity__c}" />
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockSection >            
+                <apex:inputField value="{!EQAH.ELTON__Adjustment_Note__c}" />
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton value="Adjust" action="{!makeAdjustment}" rendered="{!canBeAdjusted}"/>
+                <apex:commandButton value="Cancel" action="/{!ELTON__Equipment__c.Id}" immediate="true" />
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

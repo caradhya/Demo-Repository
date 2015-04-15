@@ -1,0 +1,148 @@
+<!-- 
+    Apttus Approvals Management
+    UIDisplayFieldNames
+     
+    @2014 Apttus Inc. All rights reserved.
+ -->
+<apex:component controller="Apttus_Approval.UIDisplayFieldNamesController"
+                allowDML="true">  
+
+    <!-- pageController - the controller associated with the component that select and cancel actions are delegated to --> 
+    <apex:attribute name="pageControllerAttr" 
+                    description="Page Controller" 
+                    type="Apttus_Approval.UIPageControllerBase"
+                    required="true" 
+                    assignTo="{!pageController}" />
+
+    <!-- contextSO - the context sobject associated with this component -->
+    <apex:attribute name="contextSOAttr" 
+                    description="Context SObject" 
+                    type="sObject" 
+                    required="true" 
+                    assignTo="{!contextSO}" />
+    
+    <!-- contextSOField - the context sobject fieldname that gets the selected value -->
+    <apex:attribute name="contextSOFieldAttr" 
+                    description="Context SObject Field" 
+                    type="String" 
+                    required="true" 
+                    assignTo="{!contextSOField}" />
+
+    <!-- contextSOLabel - the label to use for this sobject -->
+    <apex:attribute name="contextSOLabelAttr" 
+                    description="Context SObject Label" 
+                    type="String" 
+                    required="true" 
+                    assignTo="{!contextSOLabel}" />
+
+    <!-- isReadOnly - indicates if the component is in read only mode -->
+    <apex:attribute name="isReadOnlyAttr" 
+                    description="Is Read Only" 
+                    type="Boolean" 
+                    required="false" 
+                    assignTo="{!isReadOnly}" />
+
+    <!-- itemValues - set of possible item values to use -->
+    <apex:attribute name="itemValuesAttr" 
+                    description="Item Values" 
+                    type="String[]" 
+                    required="true" 
+                    assignTo="{!itemValues}" />
+
+    <apex:stylesheet value="{!$Resource.Apttus_Approval__ApprovalsStyles}" />
+
+    <apex:pageBlockSection id="idDisplayFieldsSectionTitle"
+                           columns="1"
+                           collapsible="false"
+                           title="{!$Label.apttus_approval__Select & ' ' & $Label.apttus_approval__DisplayFields}"
+                           rendered="{!isEnabled && NOT(isReadOnly)}">
+    </apex:pageBlockSection>
+
+    <apex:pageBlockSection id="idDisplayFieldsSection" 
+                           columns="1" 
+                           collapsible="false" 
+                           showHeader="false"
+                           rendered="{!isEnabled}">
+        
+        <!-- show max number of items displayed -->
+        <apex:pageMessages />
+
+        <apex:pageBlockSectionItem id="idDisplayFields" helpText="{!$Label.apttus_approval__DependsOnHelp}">
+            <apex:outputPanel >
+                <apex:panelGrid columns="3">
+
+                    <!-- unselected items -->
+                    <apex:panelGroup >
+                        <apex:panelGrid columns="1">
+                            <apex:outputLabel for="idUnselectedItems"
+                                              value="{!$Label.apttus_approval__DependsOnUnselectedItems}" 
+                                              style="font-weight: bold;"/>
+                            <apex:selectList id="idUnselectedItems"
+                                             value="{!unselectedSelection}"
+                                             required="false"
+                                             multiselect="true"
+                                             size="6"
+                                             style="width:250px"
+                                             disabled="{!isReadOnly}">
+                                <apex:selectOptions id="idUnselectedOptions" value="{!unselectedOptions}" />
+                            </apex:selectList>
+                        </apex:panelGrid>
+                    </apex:panelGroup>
+                     
+                    <!-- navigation controls -->
+                    <apex:panelGroup >
+                        <apex:panelGrid columns="1">
+                            <br/>
+                            <apex:commandButton image="{!$Resource.Apttus_Approval__Image_MoveRight}"
+                                                alt="{!$Label.apttus_approval__Add}"
+                                                action="{!doSelect}"
+                                                reRender="idDisplayFieldsSection"
+                                                status="idStatusWaitDisplayFields"
+                                                styleClass="rightArrowIcon"
+                                                title="{!$Label.apttus_approval__DependsOnSelectHover}"
+                                                disabled="{!isReadOnly}" />
+                                                
+                            <apex:commandButton image="{!$Resource.Apttus_Approval__Image_MoveLeft}"
+                                                alt="{!$Label.apttus_approval__Remove}"  
+                                                action="{!doUnselect}"
+                                                reRender="idDisplayFieldsSection"
+                                                status="idStatusWaitDisplayFields"
+                                                styleClass="leftArrowIcon"
+                                                title="{!$Label.apttus_approval__DependsOnUnSelectHover}"
+                                                disabled="{!isReadOnly}" />
+                        </apex:panelGrid>
+                    </apex:panelGroup>
+                
+                    <!-- selected items -->
+                    <apex:panelGroup >
+                        <apex:panelGrid columns="1">
+                            <apex:outputLabel for="idSelectedItems"
+                                              value="{!$Label.apttus_approval__DependsOnSelectedItems}" 
+                                              style="font-weight: bold;"/>
+                            <apex:selectList id="idSelectedList"
+                                             value="{!selectedSelection}"
+                                             required="false"
+                                             multiselect="true"
+                                             size="6"
+                                             style="width:250px"
+                                             disabled="{!isReadOnly}">                
+                                <apex:selectOptions id="idSelectedOptions" value="{!selectedOptions}" />
+                            </apex:selectList>
+                        </apex:panelGrid>
+                    </apex:panelGroup>
+                </apex:panelGrid>
+                
+                <apex:actionStatus id="idStatusWaitDisplayFields" startText="{!$Label.apttus_approval__StatusPleaseWait}..." />
+                <!--<apex:actionStatus id="idStatusWaitDisplayFields">
+                    <apex:facet name="start">
+                        {!$Label.apttus_approval__StatusPleaseWait}...
+                        <img src="/apexpages/devmode/img/saveStatus.gif" />
+                    </apex:facet>
+                    <apex:facet name="stop" />
+                </apex:actionStatus>-->
+            </apex:outputPanel>
+        </apex:pageBlockSectionItem>
+    
+    </apex:pageBlockSection>
+
+</apex:component>

@@ -1,0 +1,13 @@
+<apex:page sidebar="false" showHeader="false">
+    <apex:pageBlock title="Data Interface"> 
+    <apex:outputLink value="{! $Page.About_Us}"> <p> <b> Click here for the Links to Full Documentation Downloads</b> </p></apex:outputLink>
+          <apex:pageblockSection title="Overview" columns="1">
+                        <p>This table is used by both Fixed Asset Tracker and ELTON as an interim table for passing data about Equipment/Asset Assignment, Loan or Count information from some external source into either Fixed Asset Tracker or ELTON.
+
+We will use triggers to monitor this data and upon record creation standard processes in either Fixed Asset Tracker or ELTON will be used to process the data.
+
+NOTE: There are no mandatory relationships/validations on ANY keys in this table. If a record has a key *e.g. Equipment_ID" that is invalid the processes after the record is created will mark that record as an exception to be dealt with manually. </P>
+                        <p> Contact AccountAbility Solutions to undertand how this object is used and if you have any questions pertaining to Data Interfaces. </p>
+                </apex:pageblockSection>
+    </apex:pageBlock>
+  </apex:page>

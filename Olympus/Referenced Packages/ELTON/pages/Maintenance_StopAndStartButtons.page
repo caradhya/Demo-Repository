@@ -1,0 +1,21 @@
+<apex:page standardController="ELTON__Equipment_Maintenance__c" extensions="ELTON.Maintenance_StopAndStartButtons">
+	<apex:outputPanel id="refresh" rendered="{!refreshPage}">
+		<script>
+			window.top.location='/{!Equipment_Maintenance__c.id}';
+		</script>
+	</apex:outputPanel>
+	<apex:form >
+		<apex:pageBlock title="Maintenance Timing">
+			<apex:pageBlockSection >
+				<apex:outputfield value="{!ELTON__Equipment_Maintenance__c.ELTON__Start_Time__c}"/>
+				<apex:commandButton action="{!SetStartTime}" value="Start" title="Click this to set the Start Time" />
+				
+				<apex:outputfield value="{!ELTON__Equipment_Maintenance__c.ELTON__Stop_Time__c}"/>
+				<apex:commandButton action="{!SetStopTime}" value="Stop" title="Click this to set the Stop Time" />
+				
+				<apex:outputfield value="{!ELTON__Equipment_Maintenance__c.ELTON__Duration_String__c}"/>
+				<apex:outputfield value="{!ELTON__Equipment_Maintenance__c.ELTON__Duration_Decimal_Hrs__c}"/>
+			</apex:pageBlockSection>
+		</apex:pageBlock>
+	</apex:form>
+</apex:page>

@@ -1,0 +1,84 @@
+<!-- 
+    Apttus Approvals Management
+    ApprovalHistory
+
+    @2012-2013 Apttus Inc. All rights reserved.
+
+ -->
+<apex:component controller="Apttus_Approval.ApprovalHistoryController" 
+				allowDML="false" 
+				access="global" >
+
+	<apex:attribute name="ctxObjectId"
+				    description="Context Object Identifier" 
+				    type="ID" 
+				    required="true"
+				    access="global"
+					assignTo="{!ctxObjectId}" />
+
+	<apex:pageBlock >
+
+		<apex:repeat value="{!history}" var="process">
+				<apex:pageBlockSection columns="1" collapsible="true"
+					title="{!process.procCount} - {!process.status}">
+					<apex:pageBlockSectionItem labelStyle="text-align:left;">
+						<apex:outputLabel for="idName" value="{!$Label.apttus_approval__Name}:" />
+						<apex:outputText id="idName" value="{!process.procName}"/>
+					</apex:pageBlockSectionItem>	
+					<apex:pageBlockSectionItem labelStyle="text-align:left;">
+						<apex:outputLabel for="idDate" value="{!$Label.apttus_approval__StartDate} / {!$Label.apttus_approval__EndDate}:" />
+						<apex:outputText id="idDate" value="{!process.startDate} / {!process.endDate}" />
+					</apex:pageBlockSectionItem>
+					
+					<apex:pageBlockTable value="{!process.approvals}" var="ar">
+						<apex:column headerValue="{!$Label.apttus_approval__Name}">
+							<apex:outputLink target="_top" value="/{!ar.Id}">
+								{!ar.Name}
+						</apex:outputLink>
+						</apex:column>
+
+						<apex:column headerValue="{!$Label.apttus_approval__StepName}">
+							<apex:outputField value="{!ar.Apttus_Approval__Step_Name__c}" />
+						</apex:column>
+
+						<apex:column headerValue="{!$Label.apttus_approval__Sequence}">
+							<apex:outputField value="{!ar.Apttus_Approval__StepSequenceString__c}" />
+						</apex:column>
+
+						<apex:column headerValue="{!$Label.apttus_approval__SubSequence}">
+							<apex:outputField value="{!ar.Apttus_Approval__Sequence__c}" />
+						</apex:column>
+
+						<apex:column headerValue="{!$Label.apttus_approval__Status}">
+							<apex:outputField value="{!ar.Apttus_Approval__Approval_Status__c}" />
+						</apex:column>
+
+						<apex:column headerValue="{!$Label.apttus_approval__Date}">
+							<apex:outputField value="{!ar.Apttus_Approval__Date__c}" />
+						</apex:column>
+
+						<apex:column headerValue="{!$Label.apttus_approval__AssignedTo}">
+							<apex:outputField value="{!ar.Apttus_Approval__Assigned_To_Name__c}" />
+						</apex:column>
+
+						<apex:column headerValue="{!$Label.apttus_approval__ApprovalDetails}">
+							<apex:outputField value="{!ar.Apttus_Approval__Request_Comments__c}" />
+						</apex:column>
+
+						<apex:column headerValue="{!$Label.apttus_approval__ActualApprover}">
+							<apex:outputText value="{!ar.Apttus_Approval__ActualApproverName__c}" />
+						</apex:column>
+
+						<apex:column headerValue="{!$Label.apttus_approval__Approver & ' ' & $Label.apttus_approval__Comments}" >
+							<apex:outputField value="{!ar.Apttus_Approval__Approver_Comments__c}" />
+						</apex:column>
+					</apex:pageBlockTable>
+				</apex:pageBlockSection>
+		</apex:repeat>
+
+		<apex:outputText value="{!$Label.apttus_approval__NoRecordsToDisplay}"
+			rendered="{!history.size == 0}" />
+
+	</apex:pageBlock>
+
+</apex:component>

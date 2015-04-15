@@ -1,0 +1,17 @@
+<apex:page sidebar="false" showHeader="false">
+    <apex:pageBlock title="Equipment Reservations"> 
+    <apex:outputLink value="{! $Page.About_Us}"> <p> <b> Click here for the Links to Full Documentation Downloads</b> </p></apex:outputLink>
+          <apex:pageblockSection title="Overview" columns="1">
+                        <p> Each time a piece of equipment is reserved a detailed record is created.  Reservations can be made to Users, Contacts, Accounts or Opportunities. Opportunties contain very little data so loans to opportunties do not record much information.  Click Edit to make changes to this reservation.  On the edit screen you can use the "Convert to Loan" button to convert this reservation into an active loan.  You will be allowed to edit the dates during the conversion process. The reservation date cannot be in the past. The reservation start date must be before the reservation estimated return date. The reservation start date cannot be before the equipment's current loan estimated return date
+(Note: editing the current equipment loan record let's the user easily change the estimated return date and updates the equipment loan info) The reservation estimated return date cannot be before the current loan estimated return date. Then the system looks at all other existing reservations and makes sure there is no 'conflict' with any of those. That is really several validations that are looking for overlap of any reservation start and estimated return dates with the current record. Of course when you are editing a record then that record gets excluded from all that date checking.</P>
+                </apex:pageblockSection>
+                <apex:pageblockSection title="Fields" columns="1">
+                 <p> <b> Equipment Reservation Name </b>  This is a unique sequntial number created by the system.</P>
+                 <p> <b> Equipment</b>  This is a clickable link to the Equipment record. </P>
+                 <p> <b> Reservation Start Date and Estimated Return Date</b> These show the date information for this reservation.</P>
+                 <p> <b> Reservation Type</b>  This indicates if the reservation is to a; User, Contact, Account or Opportunity. Note: Others are not supported for reservations. </P>
+                 <p> <b> Name </b> This shows the name of the User, Contact, Account or Opportunity for this reservation.</P>
+                 <p> <b> Active and Converted to Loan </b> These show the status of this reservation.</P>
+                </apex:pageblockSection>
+    </apex:pageBlock>
+  </apex:page>

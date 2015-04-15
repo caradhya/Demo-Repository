@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>S1_Layout</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>S1_Layout</fullName>
+        <fields>Name</fields>
+        <fields>Reservation_Name__c</fields>
+        <fields>Reservation_Start_Date__c</fields>
+        <fields>Estimated_Return_Date__c</fields>
+        <label>S1 Layout</label>
+    </compactLayouts>
+    <customHelpPage>EquipmentReservation_Help</customHelpPage>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <description>Future loan requests for Equipment</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>true</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fieldSets>
+        <fullName>CalendarView</fullName>
+        <availableFields>
+            <field>Assign_on_Loan_Return_Name__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Assign_on_Loan_Return_Type__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Assign_on_Loan_Start_Name__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Assign_on_Loan_Start_Type__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Equipment__r.Equipment_Type__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Opportunity__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <availableFields>
+            <field>Responsible__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </availableFields>
+        <description>Calendar View (Gantt chart) of Equipments and Reservations. Modify this fieldset to control which fields &amp; in what order are being displayed in the balloon shown when you hover over a bar.</description>
+        <displayedFields>
+            <field>Name</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Equipment_Loan__r.Name</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Reservation_Start_Date__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Reservation_Type__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Estimated_Return_Date__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>LastModifiedBy.Username</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>CalendarView</label>
+    </fieldSets>
+    <fieldSets>
+        <fullName>Fields_to_Update_on_Reserve</fullName>
+        <description>Fields in this fieldset get updated on the VF Reserve page</description>
+        <displayedFields>
+            <field>Reservation_Note__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>Fields to Update on Reserve</label>
+    </fieldSets>
+    <fields>
+        <fullName>Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>If the reservation was made to an account this is the relationship to that account.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>If the reservation was made to an account this is the relationship to that account.</inlineHelpText>
+        <label>Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Equipment Reservations</relationshipLabel>
+        <relationshipName>Equipment_Reservations</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Active__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Allows you to mark a reservation as Inactive to have it be ignored in terms of all date validations.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Allows you to mark a reservation as Inactive to have it be ignored in terms of all date validations.</inlineHelpText>
+        <label>Active</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Assign_on_Loan_Return_Name__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Assign on Loan Return Name</label>
+        <length>80</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Assign_on_Loan_Return_Type__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Assign on Loan Return Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>User</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Contact</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Account</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Opportunity</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Assign_on_Loan_Start_Name__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Assign on Loan Start Name</label>
+        <length>80</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Assign_on_Loan_Start_Type__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Assign on Loan Start Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>User</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Contact</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Account</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Opportunity</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Collection_Master_Reservation__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>For Component Equipment records (that is Equipment that have an ID in the &apos;Component Master&apos;) that is reserved this is the parent reservation of the Master Equipment that caused the current reservation record to be created.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>For Component Equipment records (that is Equipment that have an ID in the &apos;Component Master&apos;) that is reserved this is the parent reservation of the Master Equipment that caused the current reservation record to be created.</inlineHelpText>
+        <label>Collection Master Reservation</label>
+        <referenceTo>Equipment_Reservation__c</referenceTo>
+        <relationshipLabel>Equipment Reservations</relationshipLabel>
+        <relationshipName>Equipment_Reservations</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Contact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>If the reservation was made to an contact this is the relationship to that contact.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>If the reservation was made to an contact this is the relationship to that contact.</inlineHelpText>
+        <label>Contact</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Equipment Reservations</relationshipLabel>
+        <relationshipName>Equipment_Reservations</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Converted_To_Loan__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Once a reservation is converted to loan this field will be reset to checked.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Once a reservation is converted to loan this field will be reset to checked.</inlineHelpText>
+        <label>Converted To Loan</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Equipment_Loan__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>If a reservation is converted to a loan this is the related Equipment Loan cross reference.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>If a reservation is converted to a loan this is the related Equipment Loan cross reference.</inlineHelpText>
+        <label>Equipment Loan</label>
+        <referenceTo>Equipment_Loan__c</referenceTo>
+        <relationshipLabel>Equipment Reservations</relationshipLabel>
+        <relationshipName>Equipment_Reservations</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Equipment__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The equipment that the reservation is associated with</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The equipment that the reservation is associated with</inlineHelpText>
+        <label>Equipment</label>
+        <referenceTo>Equipment__c</referenceTo>
+        <relationshipLabel>Equipment Reservations</relationshipLabel>
+        <relationshipName>Equipment_Reservations</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Estimated_Return_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The date that the reservation is estimated to end.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The date that the reservation is estimated to end.</inlineHelpText>
+        <label>Estimated Return Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Loan_Extra_Date_1__c</fullName>
+        <deprecated>false</deprecated>
+        <description>An Additional Date that optionally can be set/maintained related to a given loan. See &apos;Equipment Types&apos; for controlling whether the date is used during the loan process</description>
+        <externalId>false</externalId>
+        <inlineHelpText>An Additional Date that optionally can be set/maintained related to a given loan. See &apos;Equipment Types&apos; for controlling whether the date is used during the loan process</inlineHelpText>
+        <label>Loan Extra Date 1</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Loan_Extra_Date_2__c</fullName>
+        <deprecated>false</deprecated>
+        <description>An Additional Date that optionally can be set/maintained related to a given loan. See &apos;Equipment Types&apos; for controlling whether the date is used during the loan process</description>
+        <externalId>false</externalId>
+        <inlineHelpText>An Additional Date that optionally can be set/maintained related to a given loan. See &apos;Equipment Types&apos; for controlling whether the date is used during the loan process</inlineHelpText>
+        <label>Loan Extra Date 2</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Opportunity__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>If the reservation was made to an opportunity this is the relationship to that opportunity.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>If the reservation was made to an opportunity this is the relationship to that opportunity.</inlineHelpText>
+        <label>Opportunity</label>
+        <referenceTo>Opportunity</referenceTo>
+        <relationshipLabel>Equipment Reservations</relationshipLabel>
+        <relationshipName>Equipment_Reservations</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Reservation_Name__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The name of the user, contact, account or opportunity that the reservation relates to.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The name of the user, contact, account or opportunity that the reservation relates to.</inlineHelpText>
+        <label>Name</label>
+        <length>120</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Reservation_Note__c</fullName>
+        <deprecated>false</deprecated>
+        <description>A Note related to the reservation. Will be copied to l;oan notes if the reservation is converted to a loan</description>
+        <externalId>false</externalId>
+        <inlineHelpText>A Note related to the reservation. Will be copied to l;oan notes if the reservation is converted to a loan</inlineHelpText>
+        <label>Reservation Note</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Reservation_Start_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The date that the reservation begins</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The date that the reservation begins</inlineHelpText>
+        <label>Reservation Start Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Reservation_Type__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The type of reservation (Account, Contact, Opportunity, User).</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The type of reservation (Account, Contact, Opportunity, User)</inlineHelpText>
+        <label>Reservation Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>User</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Contact</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Account</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Opportunity</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Responsible__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The entity (User, Account, Contact, Opportunity) that the Equipment is currently assigned to.</description>
+        <externalId>false</externalId>
+        <formula>Equipment__r.Assigned_Name__c</formula>
+        <inlineHelpText>The entity (User, Account, Contact, Opportunity) that the Equipment is currently assigned to.</inlineHelpText>
+        <label>Currently Assigned To</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>User__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>If the reservation was made to a user this is the relationship to that user.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>If the reservation was made to a user this is the relationship to that user.</inlineHelpText>
+        <label>User</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Equipment_Reservations</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <label>Equipment Reservation</label>
+    <nameField>
+        <displayFormat>EQR-{000000}</displayFormat>
+        <label>Equipment Reservation Name</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Equipment Reservations</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <webLinks>
+        <fullName>Convert_To_Loan</fullName>
+        <availability>online</availability>
+        <description>Convert an Equipment Reservation to a Loan</description>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <linkType>url</linkType>
+        <masterLabel>Convert To Loan</masterLabel>
+        <openType>replace</openType>
+        <protected>false</protected>
+        <url>/apex/ELTON__Convert_Reservation_To_Loan?
+id={!Equipment_Reservation__c.Id}
+&amp;retURL={!URLFOR($Action.Equipment__c.View,  Equipment_Reservation__c.EquipmentId__c, [&apos;retURL&apos;=&apos;&apos;])}
+&amp;cancelURL={!URLFOR($Action.Equipment__c.View,  Equipment_Reservation__c.EquipmentId__c, [&apos;retURL&apos;=&apos;&apos;])}</url>
+    </webLinks>
+</CustomObject>

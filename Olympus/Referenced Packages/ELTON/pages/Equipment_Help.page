@@ -1,0 +1,77 @@
+<apex:page sidebar="false" showHeader="false">
+    <apex:pageBlock title="ELTON Equipment"> 
+    <apex:outputLink value="{! $Page.About_Us}"> <p> <b> Click here for the Links to Full Documentation Downloads</b> </p></apex:outputLink>
+          <apex:pageblockSection title="Overview" columns="1">
+                        <p> Equipment is the main object in ELTON.  Records in equipment are assigned to establish responsibility and are loaned with expected return dates.  Use the buttons "Assign, Loan, Return and Reserve" to create the associated records.</P>
+                </apex:pageblockSection>
+                <apex:pageblockSection title="Equipment Detail" columns="1">
+                 <p> <b> Equipment Name </b>  This is a unique number assigned by the system.  They all begin with the sequence EQ and are then followed by a sequential number.</P>
+                 <p> <b> Equipment Tag </b>  This should be a unique tag often a bar code assigned to the equipment. If the AccountAbilty Mobile Scanner app scans a bar code that matches the value in the Equipment Tag field the mobile app will use the associated record.</P>
+                 <p> <b> Description </b>  Enter a description of the equipment. </P>
+                 <p> <b> Manufacturer </b>  Enter the manufacturer of the equipment.</P>
+                 <p> <b> Model </b>  Enter the model of the equipment.</P>
+                 <p> <b> Serial Number </b>  Enter the serial number of the equipment.</P>
+                 <p> <b> Equipment Type </b>  Enter or use the lookup button to select the type of the equipment.</P>
+                 <p> <b> Status </b>  Use this picklist to indicate the equipment current status. Values in this picklist can be customized or added to by a system administrator. It may be useful to turn on History Tracking on this field to track the status over time.</P>
+                 <p> <b> Use Quantity on Hand </b>  This checkbox allows users to have one equipment record that has multiple quantities available.  By selecting this checkbox the system will start to allow the users to update the Quantity field on various transactions.</P>
+                 <p> <b> Quantity on Hand </b>  This is the current Quantity on Hand for this equipment record. System Admins should set this to be a read only field since it is updated using various other records. </P>
+                 <p> <b> Owner </b>  This is the owner of the record in Salesforce.  Not to be confused with the Assigned role.  This is the owner of the record, not the equipment.</P>
+                 <p> <b> Active </b>  This is the active status of the equipment.  Inactive equipement cannot be loaned.</P>
+                 <p> <b> Pull from Service </b>  This is the last expected date that this piece of equipment should be used.  It is used for reporting purposes only.</P>
+                 <p> <b> Warranty Expiry Date</b>  This is the date the warranty expires for this piece of equipment.</P>
+                 <p> <b> Equipment Cost </b>  Enter the cost of the equipment.</P>
+                 <p> <b> Insurance </b>  Enter or use the lookup button to select the insurance policy for this piece of equipment.</P>
+                 <p> <b> QR Code</b>  The system creates a QR Code for this piece of equipment. </P>
+                 <p> <b> QR Code Equipment ID</b>  The system creates a QR Code for this piece of equipment. The QR Code must store this value.  Use this field when exporting data into a label generation program and associate this field with the QR Code image.</P>
+                 <p> <b> Collection Master Equipment</b>  Use this field to assign this piece of equipment to a collection. Consult the Configuration Guide on the AccountAbility About Us tab for more detailed info about collections.  </P>
+                 <p> <b> Collection Status</b>  The system maintains this field; blank if not part of a collection, Master if a collection master, Component if a component of a collection.</P>
+                </apex:pageblockSection>
+                <apex:pageblockSection title="Current Equipment Assignment / Loan" columns="1">
+                 <p> <b> Assigned Fields </b>  These fields contain the name, address, phone and email information for the assigned party.  Assignment is the User, Contact, Account or Oppourtunity that is responsible for this piece of equipment.</P>
+                 <p> <b> Loan Fields </b> These fields contain the name, address, phone and email information for the User, Contact, Account, Oppourtunity or Other that currently has this piece of equipment on loan.  If these fields are blank the equipment is not currently on loan.</P>
+                </apex:pageblockSection>
+                <apex:pageblockSection title="Buttons" columns="1">
+                 <p> <b> Assign Equipment </b> Use this button to enter the Equipment Assignment Information. </P>
+                 <p> <b> Loan Equipment </b> Use this button to enter the Equipment Loan Information.</P>
+                 <p> <b> Return Loaned Equipment </b> Use this button to Return the Loan.</P>
+                 <p> <b> Reserve Equipment </b> Use this button to enter an Equipment Reservation.</P>
+                </apex:pageblockSection>
+                <apex:pageblockSection title="Tech Support Fields" columns="1">
+                 <p> This section contains various fields that extend the functionality of ELTON or assist AccountAbility in diagnosing issues.  For information on any of the fields in the Tech Support area please contact support@accountabilitycorp.com </P>
+                </apex:pageblockSection>
+                <apex:pageblockSection title="Equipment Loans" columns="1">
+                <p> Each time a piece of equipment is loaned a record is created in this related list. </p>
+                 <p> <b> Equipment Loan Name </b> This is a sequential number assigned to each new loan.</P>
+                 <p> <b> Loan Type </b> This indicates if the loan was to a User, Contact, Account, Oppourtunity or Other.</P>
+                 <p> <b> Name </b> This was the name of the User, Contact, Account, Oppourtunity or Other of the loan.</P>
+                 <p> <b> Loan Start Date </b> This was the start date of the loan.</P>
+                 <p> <b> Estimated Return Date </b> This was the estimated return date of the loan.</P>
+                 <p> <b> Actual Return Date </b> This was the actual return date of the loan.</P>
+                </apex:pageblockSection>
+                <apex:pageblockSection title="Equipment Assignments" columns="1">
+                <p> Each time a piece of equipment is assigned a new responsible party a record is created in this related list. </p>
+                 <p> <b> Equipment Assignment Name </b> This is a sequential number assigned to each new assignment.</P>
+                 <p> <b> Assigned Type </b> This indicates if the assignment was to a User, Contact, Account, Oppourtunity or Other.</P>
+                 <p> <b> Name </b> This was the name of the User, Contact, Account, Oppourtunity or Other of the assignment.</P>
+                 <p> <b> Assigned Date </b> This was the start date of the assignment.</P>
+                 <p> <b> Return Date </b> This was the return date of the assignment.</P>
+                </apex:pageblockSection>
+                <apex:pageblockSection title="Equipment Reservations" columns="1">
+                <p> Use the Reserve Equipment button to create a reservation record. </p>
+                 <p> <b> Equipment Reservation Name </b> This is a sequential number assigned to each new reservation.</P>
+                 <p> <b> Loan Type </b> This indicates if the loan was to a User, Contact, Account, Oppourtunity or Other.</P>
+                 <p> <b> Name </b> This was the name of the User, Contact, Account, Oppourtunity or Other of the loan.</P>
+                 <p> <b> Reservation Start Date </b> This was the start date of the reservation.</P>
+                 <p> <b> Estimated Return Date </b> This was the estimated return date of the reservation.</P>
+                 <p> <b> Active </b> This indicates if the reservation record is active.</P>
+                 <p> <b> Converted to Loan </b> This indicates if the reservation record was converted into a loan.</P>
+                </apex:pageblockSection>
+                <apex:pageblockSection title="Equipment Counts" columns="1">
+                <p> Each time a piece of equipment is counted (audited) a record is created in this related list. Counts are conducted using a PocketPC running windows mobile.  Contact AccountAbility Solutions for more information about conducting equipment counts.</p>
+                 <p> <b> Equipment Count Name </b> This is a sequential number assigned to each new count.</P>
+                 <p> <b> Record Date </b> This was the date that the count was generated. This means the count generation took place on this date.</P>
+                 <p> <b> Count DateTime </b> This was the actual date and time of the count.  If this field is empty that indicates that the equipment was not scanned during the count process.</P>
+                 <p> <b> Note </b> The user of the count device can enter a note regarding the condition of this piece of equipment.</P>
+                </apex:pageblockSection>
+    </apex:pageBlock>
+  </apex:page>

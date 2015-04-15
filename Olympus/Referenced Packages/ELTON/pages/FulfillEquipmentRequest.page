@@ -1,0 +1,81 @@
+<apex:page standardController="ELTON__Equipment_Request__c" extensions="ELTON.FulfillEquipmentRequest" readonly="true" doctype="html-5.0" title="{!$Label.elton__Fulfill}" id="page">
+	<apex:sectionHeader title="{!$Label.elton__Fulfill}" subtitle="{!ELTON__Equipment_Request__c.Name}" />
+	<style>
+	img.lmw {	/* "Left margin warning" image. */
+		content:url("/img/msg_icons/warning16.png");
+		margin-left:10px;
+	}
+	span.hidden {
+		display:none;
+	}
+	</style>
+	<apex:pageMessages id="messages" />
+	<apex:form id="form">
+		<apex:pageBlock >
+			<apex:pageBlockButtons id="buttons" location="bottom">
+				<apex:commandButton value="{!$Label.elton__Search}" action="{!search}" rerender="buttons, message,results" oncomplete="counter=0;"/>
+				<apex:commandButton value="{!$Label.elton__ConvertToReservation}" action="{!reserve}" disabled="{!ELTON__Equipment_Request__c.ELTON__Converted_To_Reservation__c || records.size=0}" rerender="messages"/>
+				<apex:commandButton value="{!$Label.elton__Cancel}" action="{!cancel}" immediate="true"/>
+			</apex:pageBlockButtons>
+			<apex:pageBlockSection columns="2">
+				<apex:outputField value="{!ELTON__Equipment_Request__c.ELTON__Equipment_Type__c}" />
+				<apex:outputField value="{!ELTON__Equipment_Request__c.ELTON__Request_Note__c}" />
+
+				<apex:outputField value="{!ELTON__Equipment_Request__c.ELTON__Request_Start_Date__c}" />
+				<apex:pageBlockSectionItem helpText="{!$Label.elton__ExtraMarginBeforeHelpText}">
+					<apex:outputLabel value="{!$Label.elton__ExtraMarginBefore}" />
+					<apex:input value="{!leftGap}" type="auto" html-min="0" html-max="30" html-step="1" />
+				</apex:pageBlockSectionItem>
+				
+				<apex:outputField value="{!ELTON__Equipment_Request__c.ELTON__Request_Return_Date__c}" />
+				<apex:input label="{!$Label.elton__ExtraMarginAfter}" value="{!rightGap}" type="auto" html-min="0" html-max="30" html-step="1" />
+			</apex:pageBlockSection>
+		</apex:pageBlock>
+		
+		<apex:pageMessage id="message" summary="{!$Label.elton__NoResultsForEqRequest}" severity="info" strength="2" rendered="{!NOT(ELTON__Equipment_Request__c.ELTON__Converted_To_Reservation__c) && records.size=0}" />
+		<apex:pageMessage id="fulfilled" summary="{!$Label.elton__RequestAlreadyFulfilled}" severity="error" strength="2" rendered="{!ELTON__Equipment_Request__c.ELTON__Converted_To_Reservation__c}" />
+		
+		<apex:outputPanel id="multipleSelected" layout="inline" styleClass="hidden">
+			<apex:pageMessage summary="{!$Label.elton__MultipleLinesSelected}" severity="warning" strength="2" />
+		</apex:outputPanel>
+		
+		<apex:pageBlock rendered="{!NOT(ELTON__Equipment_Request__c.ELTON__Converted_To_Reservation__c)}" id="results">
+			<apex:pageBlockTable value="{!records}" var="i" rendered="{!records.size>0}">
+				<apex:column headerValue="{!$Label.elton__Select}">
+					<apex:inputCheckbox value="{!i.selected}" onchange="handleClick(this)"/>
+				</apex:column>
+				
+				<apex:repeat value="{!$ObjectType.ELTON__Equipment__c.FieldSets.ELTON__FulfillEquipmentRequest}" var="field">
+					<apex:column value="{!i.equipment[field.fieldPath]}" rendered="{!field.fieldPath != 'Name'}"/>
+					<!-- render all fields normally, but Name column (wherever it might be, doesn't have to be 1st) as a link. -->
+					<apex:column headervalue="{!$ObjectType.ELTON__Equipment__c.fields.Name.Label}" rendered="{!field.fieldPath = 'Name'}">
+						<apex:outputLink value="/{!i.equipment.Id}">{!i.equipment.Name}</apex:outputLink>
+					</apex:column>
+				</apex:repeat>
+
+				<apex:column headerValue="{!$Label.elton__LeftMargin}">
+					<apex:outputText value="-" rendered="{!ISBLANK(i.leftMargin)}" />
+					<apex:outputLink value="/{!i.leftMarginId}" rendered="{!NOT(ISBLANK(i.leftMargin))}">{!i.leftMargin}</apex:outputLink>
+					<apex:image styleClass="lmw" title="{!$Label.elton__LeftMarginIsEstimatedWarning}" alt="!" rendered="{!i.leftMarginBasedOnEstimatedDate}"/>
+				</apex:column>
+				<apex:column headerValue="{!$Label.elton__RightMargin}">
+					<apex:outputText value="-" rendered="{!ISBLANK(i.rightMargin)}" />
+					<apex:outputLink value="/{!i.rightMarginId}" rendered="{!NOT(ISBLANK(i.rightMargin))}">{!i.rightMargin}</apex:outputLink>
+				</apex:column>
+			</apex:pageBlockTable>
+		</apex:pageBlock>
+	</apex:form>
+	<script>
+		var warningMessage = document.getElementById('{!$Component.page.form.multipleSelected}');
+		var counter = 0;
+		
+		function handleClick(elm){
+			if(elm.checked){
+				++counter;
+			} else {
+				--counter;
+			}
+			warningMessage.className = counter > 1 ? '' : 'hidden';
+		}
+	</script>
+</apex:page>

@@ -1,0 +1,9 @@
+<apex:page id="page" standardController="Apttus_Proposal__Proposal_Line_Item__c">    
+    <apex:pageMessage severity="ERROR"
+        strength="3"
+        title="Error: You cannot Edit/Delete Proposal Line Items"
+        escape="false"
+        summary="Please clone and re-create quote."
+        rendered="{! IF(OR($CurrentPage.parameters.conrel = '0',$CurrentPage.parameters.conrel = ''), TRUE, FALSE) }">
+    </apex:pageMessage>
+</apex:page>

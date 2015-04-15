@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>ProposalId__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>ID of the associated quote/proposal</description>
+        <externalId>false</externalId>
+        <label>Related Quote/Proposal</label>
+        <referenceTo>Apttus_Proposal__Proposal__c</referenceTo>
+        <relationshipLabel>Approval Requests</relationshipLabel>
+        <relationshipName>ApprovalRequests</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>ProposalLineItemId__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>ID of the associated quote/proposal line item</description>
+        <externalId>false</externalId>
+        <label>Related Quote/Proposal Line Item</label>
+        <referenceTo>Apttus_Proposal__Proposal_Line_Item__c</referenceTo>
+        <relationshipLabel>Approval Requests</relationshipLabel>
+        <relationshipName>ApprovalRequests</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>ProposalOwnerId__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>ID of the associated quote/proposal owner</description>
+        <externalId>false</externalId>
+        <label>Related Quote/Proposal Owner</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Approval_Requests4</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <webLinks>
+        <fullName>CancelQuoteApprovals</fullName>
+        <availability>online</availability>
+        <description>Cancel Quote/Proposal Approvals</description>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Cancel Quote/Proposal Approvals</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>/apex/Apttus_Approval__ApprovalContextCancel?sObjectType=Apttus_Proposal__Proposal__c&amp;sObjectId={!Apttus_Proposal__Proposal__c.Id}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>CancelQuoteLineItemApprovals</fullName>
+        <availability>online</availability>
+        <description>Cancel Quote/Proposal Line Item Approvals</description>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Cancel Quote LineItem Approvals</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>/apex/Apttus_Approval__ApprovalContextCancel?sObjectType=Apttus_Proposal__Proposal_Line_Item__c&amp;sObjectId={!Apttus_Proposal__Proposal_Line_Item__c.Id}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>PreviewQuoteApprovals</fullName>
+        <availability>online</availability>
+        <description>Preview Quote/Proposal Approvals</description>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Preview Quote/Proposal Approvals</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>/apex/Apttus_Approval__ApprovalContextPreview?sObjectType=Apttus_Proposal__Proposal__c&amp;sObjectId={!Apttus_Proposal__Proposal__c.Id}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>PreviewQuoteLineItemApprovals</fullName>
+        <availability>online</availability>
+        <description>Preview Quote/Proposal Line Item Approvals</description>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Preview Quote LineItem Approvals</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>/apex/Apttus_Approval__ApprovalContextPreview?sObjectType=Apttus_Proposal__Proposal_Line_Item__c&amp;sObjectId={!Apttus_Proposal__Proposal_Line_Item__c.Id}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>SubmitQuoteApprovals</fullName>
+        <availability>online</availability>
+        <description>Submit Quote/Proposal Approvals</description>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Submit Quote/Proposal Approvals</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>/apex/Apttus_Approval__ApprovalContextSubmit?sObjectType=Apttus_Proposal__Proposal__c&amp;sObjectId={!Apttus_Proposal__Proposal__c.Id}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>SubmitQuoteApprovalsWithAttachments</fullName>
+        <availability>online</availability>
+        <description>Submit Quote/Proposal Approvals With Attachments</description>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Submit Quote/Proposal Approvals (With Attachments)</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>/apex/Apttus_Approval__ApprovalContextSubmit?sObjectType=Apttus_Proposal__Proposal__c&amp;sObjectId={!Apttus_Proposal__Proposal__c.Id}&amp;enableAttachments=true</url>
+    </webLinks>
+    <webLinks>
+        <fullName>SubmitQuoteLineItemApprovals</fullName>
+        <availability>online</availability>
+        <description>Submit Quote/Proposal Line Item Approvals</description>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Submit Quote LineItem Approvals</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>/apex/Apttus_Approval__ApprovalContextSubmit?sObjectType=Apttus_Proposal__Proposal_Line_Item__c&amp;sObjectId={!Apttus_Proposal__Proposal_Line_Item__c.Id}</url>
+    </webLinks>
+</CustomObject>

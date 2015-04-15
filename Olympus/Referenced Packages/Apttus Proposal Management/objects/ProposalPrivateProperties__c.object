@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <customSettingsVisibility>Protected</customSettingsVisibility>
+    <description>Proposal Private properties</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>AESKey__c</fullName>
+        <deprecated>false</deprecated>
+        <description>The AES key</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The AES key</inlineHelpText>
+        <label>AES Key</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Proposal Private Properties</label>
+</CustomObject>

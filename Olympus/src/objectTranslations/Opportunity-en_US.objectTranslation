@@ -1,0 +1,760 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Expected Close Date</value>
+        </caseValues>
+        <name>close_date_opportunity</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Stage</value>
+        </caseValues>
+        <name>stage_name_opportunity</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Forecast Category</value>
+        </caseValues>
+        <name>stage_opportunity</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <label><!-- Approval Status --></label>
+        <name>Apttus_Approval__Approval_Status__c</name>
+        <picklistValues>
+            <masterLabel>Approval Required</masterLabel>
+            <translation><!-- Approval Required --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation><!-- Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cancelled</masterLabel>
+            <translation><!-- Cancelled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>None</masterLabel>
+            <translation><!-- None --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Submitted</masterLabel>
+            <translation><!-- Not Submitted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending Approval</masterLabel>
+            <translation><!-- Pending Approval --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation><!-- Rejected --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Current Generator(s) --></label>
+        <name>Apttus_Config2__CurrentGenerators__c</name>
+    </fields>
+    <fields>
+        <label><!-- Delivery/Installation Status --></label>
+        <name>Apttus_Config2__DeliveryInstallationStatus__c</name>
+        <picklistValues>
+            <masterLabel>Completed</masterLabel>
+            <translation><!-- Completed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In progress</masterLabel>
+            <translation><!-- In progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yet to begin</masterLabel>
+            <translation><!-- Yet to begin --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Main Competitor(s) --></label>
+        <name>Apttus_Config2__MainCompetitors__c</name>
+    </fields>
+    <fields>
+        <label><!-- Order Number --></label>
+        <name>Apttus_Config2__OrderNumber__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tracking Number --></label>
+        <name>Apttus_Config2__TrackingNumber__c</name>
+    </fields>
+    <fields>
+        <label><!-- Discount Percent --></label>
+        <name>Apttus_Proposal__Discount_Percent__c</name>
+    </fields>
+    <fields>
+        <label><!-- Forecast Amount --></label>
+        <name>Forecast_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Competitor --></label>
+        <name>HAFE_Competitor__c</name>
+        <picklistValues>
+            <masterLabel>Boston Scientific</masterLabel>
+            <translation><!-- Boston Scientific --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cook</masterLabel>
+            <translation><!-- Cook --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Covidien</masterLabel>
+            <translation><!-- Covidien --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ERBE</masterLabel>
+            <translation><!-- ERBE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EndochoiceFusion</masterLabel>
+            <translation><!-- EndochoiceFusion --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fuji</masterLabel>
+            <translation><!-- Fuji --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Given</masterLabel>
+            <translation><!-- Given --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IMS (3rd party scopes)</masterLabel>
+            <translation><!-- IMS (3rd party scopes) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intuitive</masterLabel>
+            <translation><!-- Intuitive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>J&amp;J</masterLabel>
+            <translation><!-- J&amp;J --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Medivators</masterLabel>
+            <translation><!-- Medivators --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pentax</masterLabel>
+            <translation><!-- Pentax --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Storz</masterLabel>
+            <translation><!-- Storz --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Stryker</masterLabel>
+            <translation><!-- Stryker --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Super Dimension</masterLabel>
+            <translation><!-- Super Dimension --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>US Endoscopy</masterLabel>
+            <translation><!-- US Endoscopy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wolf</masterLabel>
+            <translation><!-- Wolf --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Capital Amount --></label>
+        <name>HSFE_Capital_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Combination Key --></label>
+        <name>HSFE_Combination_Key__c</name>
+    </fields>
+    <fields>
+        <label><!-- Competitive Probability --></label>
+        <name>HSFE_Competitive_Probability__c</name>
+        <picklistValues>
+            <masterLabel>Fully Prefers Olympus, no competition</masterLabel>
+            <translation><!-- Fully Prefers Olympus, no competition --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No Preference</masterLabel>
+            <translation><!-- No Preference --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Prefer Competition, No discussion</masterLabel>
+            <translation><!-- Prefer Competition, No discussion --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Prefer Competition, Will discuss</masterLabel>
+            <translation><!-- Prefer Competition, Will discuss --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Prefers Olympus, competitive situation</masterLabel>
+            <translation><!-- Prefers Olympus, competitive situation --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Contract --></label>
+        <name>HSFE_Contract_Type__c</name>
+        <picklistValues>
+            <masterLabel>Exclusive Contract with Olympus</masterLabel>
+            <translation><!-- Exclusive Contract with Olympus --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not on Contract</masterLabel>
+            <translation><!-- Not on Contract --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>On Contract with Competitor</masterLabel>
+            <translation><!-- On Contract with Competitor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>On Contract with Olympus and Competitor</masterLabel>
+            <translation><!-- On Contract with Olympus and Competitor --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Disposable Amount --></label>
+        <name>HSFE_Disposable_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Funding Probability --></label>
+        <name>HSFE_Funding_Probability__c</name>
+        <picklistValues>
+            <masterLabel>Applied for funds External</masterLabel>
+            <translation><!-- Applied for funds External --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Applied for funds External-Olympus</masterLabel>
+            <translation><!-- Applied for funds External-Olympus --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Applied for funds Internal</masterLabel>
+            <translation><!-- Applied for funds Internal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fully Funded</masterLabel>
+            <translation><!-- Fully Funded --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Funds Approved/Awaiting release</masterLabel>
+            <translation><!-- Funds Approved/Awaiting release --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No Budget</masterLabel>
+            <translation><!-- No Budget --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Lead Origin --></label>
+        <name>HSFE_Lead_Origin__c</name>
+        <picklistValues>
+            <masterLabel>FIS Contracts</masterLabel>
+            <translation><!-- FIS Contracts --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Field Service</masterLabel>
+            <translation><!-- Field Service --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Inside Sales</masterLabel>
+            <translation><!-- Inside Sales --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MSG Portal(Website)</masterLabel>
+            <translation><!-- MSG Portal(Website) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marketing Campaign</masterLabel>
+            <translation><!-- Marketing Campaign --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Self-Generated</masterLabel>
+            <translation><!-- Self-Generated --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Contracts</masterLabel>
+            <translation><!-- Service Contracts --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Target</masterLabel>
+            <translation><!-- Target --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Trade Show</masterLabel>
+            <translation><!-- Trade Show --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Lead Sub-Origin --></label>
+        <name>HSFE_Lead_Sub_Origin__c</name>
+        <picklistValues>
+            <masterLabel>AAGL</masterLabel>
+            <translation><!-- AAGL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AAO</masterLabel>
+            <translation><!-- AAO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ACG</masterLabel>
+            <translation><!-- ACG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ACS</masterLabel>
+            <translation><!-- ACS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AORN</masterLabel>
+            <translation><!-- AORN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ARS</masterLabel>
+            <translation><!-- ARS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASA</masterLabel>
+            <translation><!-- ASA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASCRS</masterLabel>
+            <translation><!-- ASCRS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASHA</masterLabel>
+            <translation><!-- ASHA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ATS</masterLabel>
+            <translation><!-- ATS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AUA</masterLabel>
+            <translation><!-- AUA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bulk Filter Promo</masterLabel>
+            <translation><!-- Bulk Filter Promo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>COSM</masterLabel>
+            <translation><!-- COSM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DDW</masterLabel>
+            <translation><!-- DDW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ESS</masterLabel>
+            <translation><!-- ESS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FSE</masterLabel>
+            <translation><!-- FSE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OR Manager</masterLabel>
+            <translation><!-- OR Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PGA</masterLabel>
+            <translation><!-- PGA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SAGES</masterLabel>
+            <translation><!-- SAGES --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SGNA</masterLabel>
+            <translation><!-- SGNA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SGO</masterLabel>
+            <translation><!-- SGO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SLS</masterLabel>
+            <translation><!-- SLS --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Locked --></label>
+        <name>HSFE_Locked__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lost Reason Description --></label>
+        <name>HSFE_Lost_Reason_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lost Reason --></label>
+        <name>HSFE_Lost_Reason__c</name>
+        <picklistValues>
+            <masterLabel>No business need</masterLabel>
+            <translation><!-- No business need --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Price not competitive</masterLabel>
+            <translation><!-- Price not competitive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product specifications unacceptable</masterLabel>
+            <translation><!-- Product specifications unacceptable --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>HSFE_Opportunity_Type__c</name>
+        <picklistValues>
+            <masterLabel>Add On</masterLabel>
+            <translation><!-- Add On --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Conversion</masterLabel>
+            <translation><!-- Conversion --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FIT</masterLabel>
+            <translation><!-- FIT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New Business</masterLabel>
+            <translation><!-- New Business --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Renewal</masterLabel>
+            <translation><!-- Renewal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Upgrade</masterLabel>
+            <translation><!-- Upgrade --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Probability (%) --></label>
+        <name>HSFE_Probability__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Category --></label>
+        <name>HSFE_Product_Category__c</name>
+        <picklistValues>
+            <masterLabel>Capital</masterLabel>
+            <translation><!-- Capital --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Disposable</masterLabel>
+            <translation><!-- Disposable --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service</masterLabel>
+            <translation><!-- Service --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Purchase Type --></label>
+        <name>HSFE_Purchase_Type__c</name>
+        <picklistValues>
+            <masterLabel>Bulk</masterLabel>
+            <translation><!-- Bulk --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Run Rate</masterLabel>
+            <translation><!-- Run Rate --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Quote Accepted --></label>
+        <name>HSFE_Quote_Accepted__c</name>
+    </fields>
+    <fields>
+        <label><!-- Run Rate Term (Months) --></label>
+        <name>HSFE_Run_Rate_Term_Months__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Stage --></label>
+        <name>HSFE_Sales_Stage__c</name>
+        <picklistValues>
+            <masterLabel>Above Funnel</masterLabel>
+            <translation><!-- Above Funnel --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Best Few</masterLabel>
+            <translation><!-- Best Few --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Closed Lost</masterLabel>
+            <translation><!-- Closed Lost --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Closed Won</masterLabel>
+            <translation><!-- Closed Won --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Funnel</masterLabel>
+            <translation><!-- In Funnel --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Universe</masterLabel>
+            <translation><!-- Universe --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Verbally Accepted</masterLabel>
+            <translation><!-- Verbally Accepted --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Service Amount --></label>
+        <name>HSFE_Service_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Solution Category --></label>
+        <name>HSFE_Solution_Category__c</name>
+        <picklistValues>
+            <masterLabel>Integration</masterLabel>
+            <translation><!-- Integration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Standard</masterLabel>
+            <translation><!-- Standard --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Specialty --></label>
+        <name>HSFE_Specialty__c</name>
+        <picklistValues>
+            <masterLabel>Medical</masterLabel>
+            <translation><!-- Medical --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Surgical</masterLabel>
+            <translation><!-- Surgical --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Strategy --></label>
+        <name>HSFE_Strategy__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sub Specialty --></label>
+        <name>HSFE_Sub_Specialty__c</name>
+        <picklistValues>
+            <masterLabel>ENT</masterLabel>
+            <translation><!-- ENT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EndoCapsule</masterLabel>
+            <translation><!-- EndoCapsule --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Endoscopy</masterLabel>
+            <translation><!-- Endoscopy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Energy</masterLabel>
+            <translation><!-- Energy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Medical IT</masterLabel>
+            <translation><!-- Medical IT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Surgical AVI</masterLabel>
+            <translation><!-- Surgical AVI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Surgical Endoscopy</masterLabel>
+            <translation><!-- Surgical Endoscopy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Urology/Gynecology</masterLabel>
+            <translation><!-- Urology/Gynecology --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Territory --></label>
+        <name>HSFE_Territory__c</name>
+        <relationshipLabel><!-- Opportunities --></relationshipLabel>
+    </fields>
+    <fields>
+        <name>LeadSource</name>
+        <picklistValues>
+            <masterLabel>FIS Contracts</masterLabel>
+            <translation><!-- FIS Contracts --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Field Service</masterLabel>
+            <translation><!-- Field Service --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Inside Sales</masterLabel>
+            <translation><!-- Inside Sales --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MSG Portal(Website)</masterLabel>
+            <translation><!-- MSG Portal(Website) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marketing Campaign</masterLabel>
+            <translation><!-- Marketing Campaign --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Self-Generated</masterLabel>
+            <translation><!-- Self-Generated --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Contracts</masterLabel>
+            <translation><!-- Service Contracts --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Trade Show</masterLabel>
+            <translation><!-- Trade Show --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Primary Product --></label>
+        <name>Primary_Product_c__c</name>
+        <relationshipLabel><!-- Opportunities --></relationshipLabel>
+    </fields>
+    <fields>
+        <name>StageName</name>
+        <picklistValues>
+            <masterLabel>Omitted</masterLabel>
+            <translation><!-- Omitted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pipeline</masterLabel>
+            <translation><!-- Pipeline --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <name>Type</name>
+        <picklistValues>
+            <masterLabel>Existing Business</masterLabel>
+            <translation><!-- Existing Business --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New Business</masterLabel>
+            <translation><!-- New Business --></translation>
+        </picklistValues>
+    </fields>
+    <layouts>
+        <layout>Customer Layout</layout>
+        <sections>
+            <label><!-- Status --></label>
+            <section>Status</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Customer Read Only Layout</layout>
+        <sections>
+            <label><!-- Status --></label>
+            <section>Status</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Event --></label>
+        <name>Event</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Log a Call --></label>
+        <name>Log_a_Call</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Task --></label>
+        <name>Task</name>
+    </quickActions>
+    <recordTypes>
+        <label><!-- Customer --></label>
+        <name>Customer</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Customer Read Only --></label>
+        <name>Customer_Read_Only</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- FIT --></label>
+        <name>FIT</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage><!-- Lost Reason is required if Opportunity is Closed Lost. --></errorMessage>
+        <name>Enter_lost_reason</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please enter the Close Reason Description since you have selected “Other” as the Close Reason --></errorMessage>
+        <name>Enter_lost_reason_description</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Opportunity cannot be edited once it is Closed, please click Cancel --></errorMessage>
+        <name>Lock_Opportunity_if_Closed</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Run Rate Term(Months) is required when Purchase Type is Run Rate. --></errorMessage>
+        <name>Make_Run_Rate_Term_required</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Opportunity cannot be moved to Closed Won Stage manually. --></errorMessage>
+        <name>Opportunity_Cannot_moved_to_won_manually</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Product required on opportunity before moving it to next Stage --></errorMessage>
+        <name>Product_required_on_opportunity_Product</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- CreateProposalFromOpp --></label>
+        <name>Apttus_Proposal__CreateProposalFromOpp</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- CreateQuoteProposalFromOpportunity --></label>
+        <name>Apttus_Proposal__CreateQuoteProposalFromOpportunity</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- CreateAgreementFromOpportunity --></label>
+        <name>Apttus__CreateAgreementFromOpportunity</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- CreateOfflineAgreementFromOpportunity --></label>
+        <name>Apttus__CreateOfflineAgreementFromOpportunity</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- NewAgreementFromOpportunity --></label>
+        <name>Apttus__NewAgreementFromOpportunity</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- NewOfflineAgreementFromOpportunity --></label>
+        <name>Apttus__NewOfflineAgreementFromOpportunity</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- New_Opportunity --></label>
+        <name>New_Opportunity</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Update_Closed_Lost --></label>
+        <name>Update_Closed_Lost</name>
+    </webLinks>
+</CustomObjectTranslation>

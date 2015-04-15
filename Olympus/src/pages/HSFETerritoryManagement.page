@@ -1,0 +1,12 @@
+<apex:page controller="HSFE_TerritoryManagement_Class">
+    <apex:form > 
+        <apex:pageBlock id="terrBlock" title="Territory Management">
+          <h1>Lead Territory Assignment</h1> &nbsp;&nbsp;        
+             <apex:commandLink value="Please Click" title="Click" action="{!runLeadBatchJob}" reRender="reqId,terrBlock"/> <br/><br/>       
+          
+          <apex:outputPanel id="reqId" rendered="{!showMsg}">
+              You request has been procced. You will be notified by a mail, When the job is completed.
+          </apex:outputPanel> 
+        </apex:pageBlock>     
+    </apex:form>
+</apex:page>

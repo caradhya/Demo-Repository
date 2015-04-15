@@ -1,0 +1,238 @@
+<apex:page standardController="ELTON__Equipment__c" extensions="ELTON.EquipmentMobileService" 
+	applyHtmlTag="false" standardStylesheets="false" showHeader="false" sidebar="false"
+	doctype="html-5.0">
+	<apex:outputPanel style="display:none" id="vf_workaround">
+	{!ELTON__Equipment__c.Name} {!ELTON__Equipment__c.ELTON__Active__c} {!ELTON__Equipment__c.Id} {!ELTON__Equipment__c.ELTON__Collection_Status__c} {!ELTON__Equipment__c.ELTON__Equipment_Tag__c}
+	{!ELTON__Equipment__c.ELTON__Assigned_Type__c} {!ELTON__Equipment__c.ELTON__Assigned_Name__c}
+	{!ELTON__Equipment__c.ELTON__Loan_Name__c} {!ELTON__Equipment__c.ELTON__Loan_Start_Date__c} {!ELTON__Equipment__c.ELTON__Loan_Estimated_Return_Date__c}
+	{!ELTON__Equipment__c.ELTON__Use_Quantity_on_Hand__c}	{!ELTON__Equipment__c.ELTON__Quantity_on_Hand__c}
+	</apex:outputPanel>
+		<head>
+		<title>Return {!$ObjectType.Equipment__c.label}</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+		
+		<script type='text/javascript' src='/canvas/sdk/js/publisher.js'></script>
+		
+		<apex:includeScript value="{!URLFOR($Resource.ELTON__jquery)}"/><!-- 1.9.0 -->
+		<apex:includeScript value="{!URLFOR($Resource.ELTON__mobile, 'jquery-mobile/jquery.mobile-1.4.2.min.js')}"/>
+		<apex:stylesheet value="{!URLFOR($Resource.ELTON__mobile, 'jquery-mobile/jquery.mobile-1.4.2.min.css')}"/>
+		
+		<apex:includeScript value="{!URLFOR($Resource.ELTON__mobile, 'datepicker/external/jquery-ui/datepicker.js')}"/>
+		<apex:includeScript value="{!URLFOR($Resource.ELTON__mobile, 'datepicker/jquery.mobile.datepicker.js')}"/>
+		<apex:stylesheet value="{!URLFOR($Resource.ELTON__mobile, 'datepicker/jquery.mobile.datepicker.css')}"/>
+		<apex:stylesheet value="{!URLFOR($Resource.ELTON__mobile, 'datepicker/jquery.mobile.datepicker.theme.css')}"/>
+		
+		<apex:includeScript value="{!URLFOR($Resource.ELTON__mobile, 'main.js')}"/>
+		<apex:stylesheet value="{!URLFOR($Resource.ELTON__mobile, 'main.css')}"/>
+		<style type="text/css">
+		span.hidden{
+			display: none;
+		}
+		</style>
+	</head>
+	<apex:variable var="submitCanBeEnabled" value="{!!ISBLANK(ELTON__Equipment__c.ELTON__Loan_Name__c)}" />
+	<body>
+	
+	<div data-role="page" id="main">
+		<form class="ui-filterable" id="mainForm" action="">
+		<div data-role="header" id="header">
+			<a href="/{!Equipment__c.Id}" id="cancel" rel="external" target="_parent" class="ui-btn ui-corner-all ui-icon-arrow-l ui-btn-icon-left ui-btn-left">Cancel</a>
+			<h1>Return {!Equipment__c.Name}</h1>
+			<button id="submit" type="submit" class="ui-btn ui-corner-all ui-icon-check ui-btn-icon-left ui-btn-inline ui-state-disabled">Submit</button>
+		</div>
+
+		<div role="main" class="ui-content">
+			<div class="error">
+				<apex:outputPanel layout="block" rendered="{!ISBLANK(ELTON__Equipment__c.ELTON__Loan_Name__c)}">You cannot Return Equipment until it is Loaned.</apex:outputPanel>
+			</div>
+			<div id="info">
+				<apex:outputText value="This is a collection 'master' - all related Equipments will be returned.
+					{!$ObjectType.Equipment__c.fields.Collection_Status__c.Label}: {!Equipment__c.Collection_Status__c}" 
+					rendered="{!ELTON__Equipment__c.ELTON__Collection_Status__c = 'Master'}"/>
+			</div>
+	
+			<div data-role="collapsible" data-collapsed="{!deviceType = 'Desktop'}" data-mini="true">
+				<h4 class="ui-bar ui-bar-a ui-corner-all">1. Equipment summary</h4>
+				<div class="ui-body ui-grid-a ui-responsive">
+					<div class="ui-block-a">
+						<label for="name" >{!$ObjectType.Equipment__c.fields.Name.Label}</label>
+						<p id="name">{!Equipment__c.Name}</p>
+					</div>
+					<div class="ui-block-b">
+						<label for="tag" >{!$ObjectType.Equipment__c.fields.Equipment_Tag__c.Label}</label>
+						<p id="tag">{!Equipment__c.Equipment_Tag__c}</p>
+					</div>
+					<div class="ui-block-a">
+						<label for="assignedName" >{!$ObjectType.Equipment__c.fields.Assigned_Name__c.Label}</label>
+						<p id="assignedName">{!Equipment__c.Assigned_Name__c}</p>
+					</div>
+					<div class="ui-block-b">
+						<label for="loanedName" >{!$ObjectType.Equipment__c.fields.Loan_Name__c.Label}</label>
+						<p id="loanedName">{!Equipment__c.Loan_Name__c}</p>
+					</div>
+					<div class="ui-block-a">
+						<label for="startDate" >{!$ObjectType.Equipment__c.fields.Loan_Start_Date__c.Label}</label>
+						<p id="startDate">
+							<apex:outputText value="{0,date,yyyy/MM/dd}"><apex:param value="{!ELTON__Equipment__c.ELTON__Loan_Start_Date__c}" /></apex:outputText>
+							<!-- <apex:outputField value="{!ELTON__Equipment__c.ELTON__Loan_Start_Date__c}" /> -->
+						</p>
+					</div>
+					<div class="ui-block-b">
+						<label for="estimatedReturnDate" >{!$ObjectType.Equipment__c.fields.Loan_Estimated_Return_Date__c.Label}</label>
+						<p id="startDate">
+							<apex:outputText value="{0,date,yyyy/MM/dd}"><apex:param value="{!ELTON__Equipment__c.ELTON__Loan_Estimated_Return_Date__c}" /></apex:outputText>
+							<!-- <apex:outputField value="{!ELTON__Equipment__c.ELTON__Loan_Estimated_Return_Date__c}" />-->
+						</p>
+					</div>
+					<apex:outputPanel layout="block" styleClass="ui-block-a" rendered="{!ELTON__Equipment__c.ELTON__Use_Quantity_on_Hand__c}">
+						<label for="useQuantity" >{!$ObjectType.Equipment__c.fields.Use_Quantity_on_Hand__c.Label}</label>
+						<p id="useQuantity"><img src="/img/checkbox_checked.gif" alt="Checked" title="Checked"/></p>
+					</apex:outputPanel>
+					<apex:outputPanel layout="block" styleClass="ui-block-b" rendered="{!ELTON__Equipment__c.ELTON__Use_Quantity_on_Hand__c}">
+						<label for="quantityOnHand" >{!$ObjectType.Equipment__c.fields.Quantity_on_Hand__c.Label}</label>
+						<p id="quantityOnHand"><apex:outputText value="{0,number,0}"><apex:param value="{!ELTON__Equipment__c.ELTON__Quantity_on_Hand__c}" /></apex:outputText></p>
+					</apex:outputPanel>
+				</div>
+			</div>
+
+			<apex:outputPanel layout="block" html-data-role="collapsible" html-data-collapsed="false" html-data-mini="true" rendered="{!ELTON__Equipment__c.ELTON__Use_Quantity_on_Hand__c}">
+				<h4 class="ui-bar ui-bar-a ui-corner-all">2. Select Loan to return</h4>
+				
+				<div class="ui-body" data-mini="true" data-role="controlgroup">
+					<!-- We don't have <div class="ui-field-contain"> here on purpose. 
+					The list can get quite wide and there's little value in
+					field labels so we need all the space we can get 
+					-->
+					<input type="search" id="loanFilter" placeholder="Pick from open loans..."/>
+					<input type="hidden" id="loanId" required="required"/>
+					
+					<ul id="openLoans" data-role="listview" data-filter="true" data-input="#loanFilter" data-inset="true">
+					<apex:repeat value="{!openLoans}" var="l">
+						<li><a id="{!l.Id}" class="click2select">
+							<apex:variable var="imgType" value="{!CASE(l.Loan_Type__c,
+								'Account', 'account',
+								'Contact', 'contact',
+								'Opportunity', 'opportunity',
+								'User','avatar',
+								'custom')}"
+							/>
+							<img src="/img/icon/t4/standard/{!imgType}_60.png" class="icon {!l.Loan_Type__c}" title="{!l.Loan_Type__c}" alt="{!l.Loan_Type__c}"/>
+							<strong>
+								<apex:outputText value="{!l.ELTON__Name__c}: {0,date,MMM dd} - {1,date,MMM dd}">
+									<apex:param value="{!l.ELTON__Loan_Start_Date__c}" />
+									<apex:param value="{!l.ELTON__Estimated_Return_Date__c}" />
+								</apex:outputText>
+							</strong>
+							<span class="note hidden">{!l.ELTON__Loan_Note__c}</span>
+							<apex:outputPanel layout="block" styleClass="trackingNumber" rendered="{!!ISBLANK(l.ELTON__Tracking_Number__c)}">{!l.ELTON__Tracking_Number__c}</apex:outputPanel>
+							<span class="ui-li-count">{!l.ELTON__Loan_Quantity__c}</span>
+						</a></li>
+					</apex:repeat>
+					</ul>
+				</div>
+			</apex:outputPanel>
+			
+			<div data-role="collapsible" data-collapsed="false" data-mini="true">
+				<h4 class="ui-bar ui-bar-a ui-corner-all">{!IF(Equipment__c.Use_Quantity_on_Hand__c,3,2)}. Return info</h4>
+				<div class="ui-body" data-mini="true" data-role="controlgroup">
+
+					<div class="ui-field-contain">
+						<label for="returnDate">{!$ObjectType.Equipment_Loan__c.fields.Actual_Return_Date__c.Label}</label>
+						<input type="text" data-role="date" id="returnDate" required="required"/>
+					</div>
+					
+					<div class="ui-field-contain">
+						<label for="trackingNumber">{!$ObjectType.Equipment_Loan__c.fields.Return_Tracking_Number__c.Label}</label>
+						<input type="text" id="trackingNumber" name="trackingNumber"/>
+					</div>
+					
+					<div class="ui-field-contain">
+						<label for="note">{!$ObjectType.Equipment_Loan__c.fields.Return_Note__c.Label}</label>
+						<textarea name="note" id="note"></textarea>
+					</div>
+					<apex:outputPanel layout="block" styleClass="ui-field-contain" rendered="{!ELTON__Equipment__c.ELTON__Use_Quantity_on_Hand__c}">
+						<label for="quantity" >{!$ObjectType.Equipment_Loan__c.fields.Loan_Quantity__c.Label}</label>
+						<input type="number" id="quantity" readonly="readonly" required="required" />
+					</apex:outputPanel>
+				</div>
+			</div>
+		</div>
+		<div id="errors" class="error"></div>
+		<div id="success"></div>
+		</form>
+	</div><!-- /page main -->
+
+	</body>
+	<script>
+	getGps();
+	$.datepicker.setDefaults({'dateFormat' : 'yy/mm/dd'});
+
+	$('a.click2select').click(function(){
+		var element = $(this);
+		$('#loanFilter').val(element.find('strong').html()).trigger('change');
+		
+		$('#loanId').val(this.id);
+		var quantity = element.find('span.ui-li-count').html();
+		if(quantity == ''){
+			quantity = 0;
+		}
+		$('#quantity').val(quantity);
+		
+		$('#note').html(element.find('span.note').html());
+		$('#trackingNumber').val(element.find('div.trackingNumber').html());
+	});
+	
+	// Enable / disable submit buttons when all fields are filled in
+	
+	var requiredFields = $(requiredFieldsSelector);
+	requiredFields.change(function(){
+		checkRequiredFields({!submitCanBeEnabled}, '#submit')
+	});
+	
+	function onSubmitClick(){
+		$('div.error').empty();
+		var loanId = $('#loanId').val();
+		if(loanId == ''){
+			id = null;
+		}
+		var quantity = $('#quantity').val();
+		if(quantity == ''){
+			quantity = null;
+		}
+		
+		var parameters = {
+			'apexType':'c.EquipmentMobileService.ReturnLoan',
+			'equipmentId': '{!Equipment__c.Id}',
+			'loanId': loanId,
+			
+			'returnDate': getDate('#returnDate'),
+			
+			'quantity': quantity,
+
+			'trackingNumber': $('#trackingNumber').val(),
+			'note': $('#note').val(),
+			
+			'latitude': lat,
+			'longitude': long
+		};
+		
+		Visualforce.remoting.Manager.invokeAction(
+			'{!$RemoteAction.EquipmentMobileService.returnLoan}',
+			parameters, 
+			submitResultHandler
+		);
+		return false;
+	}
+	
+	$(function(){
+		if(s1){
+			$('div#header').hide();
+			Sfdc.canvas.publisher.subscribe({ name: "publisher.post", onData: onSubmitClick});
+		} else {
+			$('#mainForm').submit(onSubmitClick);
+		}
+
+		$("input[type='text'][data-role='date']").attr('readonly', 'readonly');
+	});
+	</script>
+</apex:page>

@@ -1,0 +1,2 @@
+<apex:page controller="ELTON.GenPortableEQData" action="{!CreateData}" readOnly="true" contentType="text/tab-separated-values#S01_Data.txt">
+<apex:repeat value="{!lstwrapper}" var="x">{!x.TheData}</apex:repeat> </apex:page>

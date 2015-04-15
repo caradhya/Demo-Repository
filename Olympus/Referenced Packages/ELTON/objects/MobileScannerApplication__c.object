@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <customSettingsVisibility>Public</customSettingsVisibility>
+    <description>Use this setting to determine which application is used for the AccountAbility Mobile Scanner if both ELTON and FAT are installed in your organization. If only one application is installed this setting is ignored.</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Account_Custom_Fields__c</fullName>
+        <deprecated>false</deprecated>
+        <description>This field is used to configure custom fields for inclusion on Accounts in the mobile application it has the following format 
+&lt;label name&gt;:&lt;api name&gt;|&lt;label name&gt;:&lt;api name&gt;|...</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This field is used to configure custom fields for inclusion on Accounts in the mobile application it has the following format 
+&lt;label name&gt;:&lt;api name&gt;|&lt;label name&gt;:&lt;api name&gt;|...</inlineHelpText>
+        <label>Account Custom Fields</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Assign_Disabled_Types__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>List the types that are disabled. Use the pipe character to seperate.
+EG: User|Contact</inlineHelpText>
+        <label>Assign Disabled Types</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Contact_Custom_Fields__c</fullName>
+        <deprecated>false</deprecated>
+        <description>This field is used to configure custom fields for inclusion on Contacts in the mobile application it has the following format 
+&lt;label name&gt;:&lt;api name&gt;|&lt;label name&gt;:&lt;api name&gt;|...</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This field is used to configure custom fields for inclusion on Contacts in the mobile application it has the following format 
+&lt;label name&gt;:&lt;api name&gt;|&lt;label name&gt;:&lt;api name&gt;|...</inlineHelpText>
+        <label>Contact Custom Fields</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Disabled_Tabs__c</fullName>
+        <deprecated>false</deprecated>
+        <description>This field allows you to disable certain tabs in the mobile application and has the format:
+
+&lt;tab&gt;|&lt;tab&gt;|...
+
+The tab identifiers are:
+
+assign, loan, return, view
+
+At least one tab must be left enabled.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This field allows you to disable certain tabs in the mobile application and has the format:
+
+&lt;tab&gt;|&lt;tab&gt;|...</inlineHelpText>
+        <label>Disabled Tabs</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Loan_Disabled_Types__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>List the types that are disabled.  Use the pipe character to seperate.
+EG: User|Account</inlineHelpText>
+        <label>Loan Disabled Types</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Opportunity_Custom_Fields__c</fullName>
+        <deprecated>false</deprecated>
+        <description>This field is used to configure custom fields for inclusion on Opportunities in the mobile application it has the following format
+&lt;label name&gt;:&lt;api name&gt;|&lt;label name&gt;:&lt;api name&gt;|...</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This field is used to configure custom fields for inclusion on Opportunities in the mobile application it has the following format
+&lt;label name&gt;:&lt;api name&gt;|&lt;label name&gt;:&lt;api name&gt;|...</inlineHelpText>
+        <label>Opportunity Custom Fields</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Use_ELTON__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <description>If this setting is checked and both ELTON and FAT are installed in your organization then the AccountAbility Mobile Scanner will use ELTON; if it is not checked then FAT is used.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>If this setting is checked and both ELTON and FAT are installed in your organization then the AccountAbility Mobile Scanner will use ELTON; if it is not checked then FAT is used.</inlineHelpText>
+        <label>Use ELTON</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>User_Custom_Fields__c</fullName>
+        <deprecated>false</deprecated>
+        <description>This field is used to configure custom fields for inclusion on Users in the mobile application it has the following format 
+&lt;label name&gt;:&lt;api name&gt;|&lt;label name&gt;:&lt;api name&gt;|...</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This field is used to configure custom fields for inclusion on Users in the mobile application it has the following format 
+&lt;label name&gt;:&lt;api name&gt;|&lt;label name&gt;:&lt;api name&gt;|...</inlineHelpText>
+        <label>User Custom Fields</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Mobile Scanner Application</label>
+</CustomObject>

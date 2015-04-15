@@ -1,0 +1,51 @@
+<apex:page standardController="ELTON__Equipment_Loan__c" extensions="ELTON.Return_Equipment_Individual_Loan">
+    <apex:sectionHeader title="Return Loaned Equipment" subtitle="{!ELTON__Equipment_Loan__c.Name}"/>
+    <apex:pageMessage summary="You cannot Return a previously returned loan."
+        severity="warning" strength="2" rendered="{!NOT(isLoaned)}"/>
+    <apex:form >
+        <apex:pageMessages />
+        <apex:pageBlock title="{!$ObjectType.ELTON__Equipment_Loan__c.Label}">
+            <apex:pageBlockSection columns="2">
+                <apex:outputField value="{!ELTON__Equipment_Loan__c.Equipment__r.Name}"/>
+                <apex:outputField value="{!ELTON__Equipment_Loan__c.Equipment__r.ELTON__Active__c}"/>
+                <apex:outputField value="{!ELTON__Equipment_Loan__c.Name}"/>
+                <apex:outputField value="{!ELTON__Equipment_Loan__c.Equipment__r.ELTON__Equipment_Tag__c}"/>
+                <apex:outputField value="{!ELTON__Equipment_Loan__c.Equipment__r.ELTON__Assigned_Name__c}"/>
+                <apex:outputField value="{!ELTON__Equipment_Loan__c.Equipment__r.ELTON__Use_Quantity_on_Hand__c}"/>
+                <apex:outputField value="{!ELTON__Equipment_Loan__c.ELTON__Loan_Start_Date__c}"/>
+                <apex:outputField value="{!ELTON__Equipment_Loan__c.ELTON__Loan_Quantity__c}"/>                
+                <apex:outputField value="{!ELTON__Equipment_Loan__c.ELTON__Estimated_Return_Date__c}"/>
+                <apex:outputField value="{!ELTON__Equipment_Loan__c.ELTON__Actual_Return_Date__c}"/>                
+                <apex:outputField value="{!ELTON__Equipment_Loan__c.Id}" rendered="FALSE" />                 
+                <apex:outputField value="{!ELTON__Equipment_Loan__c.Equipment__r.Id}" rendered="FALSE" />                 
+                <apex:pageBlockSectionItem />
+
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons location="top">
+                <apex:commandButton value="Return" action="{!makeLoanReturn}" rendered="{!canBeReturned}"/>
+                <apex:commandButton value="Cancel" action="/{!ELTON__Equipment_Loan__c.Id}" immediate="true" />
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+
+        <apex:pageBlock title="Loan Return" rendered="{!canBeReturned}" id="loanReturnBlock">
+            <apex:pageBlockSection title="Loan Return Date" columns="1">
+                <apex:inputField value="{!loanreturn.ELTON__Actual_Return_Date__c}" required="true"/>
+            </apex:pageBlockSection>
+
+            <apex:pageBlockSection columns="1">
+                <!-- 
+                <apex:inputField value="{!loanreturn.Return_Tracking_Number__c}" />
+                <apex:inputField value="{!loanreturn.Return_Note__c}" />
+                -->
+                <apex:repeat value="{!$ObjectType.ELTON__Equipment_Loan__c.FieldSets.ELTON__Fields_to_Update_on_Return}" var="f">
+                	<apex:inputField value="{!loanreturn[f]}" required="{!f.required || f.dbRequired}"/>
+                </apex:repeat>
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton value="Return" action="{!makeLoanReturn}" rendered="{!canBeReturned}"/>
+                <apex:commandButton value="Cancel" action="/{!ELTON__Equipment_Loan__c.Id}" immediate="true" />
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

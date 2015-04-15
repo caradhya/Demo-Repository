@@ -1,0 +1,425 @@
+<!-- 
+    Apttus Approvals Management
+    MyApprovals
+     
+    @2012-2014 Apttus Inc. All rights reserved.
+
+ -->
+<apex:page controller="Apttus_Approval.MyApprovalsController"
+		   action="{!doLoadApprovals}">
+
+    <!-- include CSS resources first -->
+    <apex:stylesheet value="{!URLFOR($Resource.Apttus_Approval__JQueryUILibrary, 'css/ui-lightness/jquery-ui-1.8.16.custom.css')}" />
+    <apex:stylesheet value="{!$Resource.Apttus_Approval__ApprovalsStyles}"/>
+    
+    <!-- include JS resources last -->
+    <apex:include pageName="Apttus_Approval__ApprovalsJSLibInclude" />
+    <apex:includeScript value="{!URLFOR($Resource.Apttus_Approval__JQueryUILibrary, 'js/jquery-1.6.2.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.Apttus_Approval__JQueryUILibrary, 'js/jquery-ui-1.8.16.custom.min.js')}"/>
+    
+    <script type="text/javascript" src="/soap/ajax/30.0/connection.js"></script>
+    <script type="text/javascript" src="/soap/ajax/30.0/apex.js"></script>
+
+    <script type="text/javascript">
+    
+        // This to make sure jQuery doesn't conflict with any other JS libraries
+        var j$ = jQuery.noConflict();
+        
+        j$(document).ready(function(){
+            
+            // setup the wait panel and set autoOpen to false
+            j$("#waitPanel").dialog({
+                autoOpen: false,    // set this to false so we can manually open it
+                dialogClass: "repriceWaitDialog",
+                closeOnEscape: false,
+                draggable: false,
+                width: 300,
+                minHeight: 50,
+                modal: true,
+                buttons: {},
+                resizable: false,
+                position: 'center',
+                open: function() {
+                    // scrollbar fix for IE
+                    j$('body').css('overflow','hidden');
+                },
+                close: function() {
+                    // reset overflow
+                    j$('body').css('overflow','auto');
+                }
+            });
+    
+            
+        });
+
+    </script>        
+
+    <apex:includeScript value="{!URLFOR($Resource.Apttus_Approval__YUILibrary, '/yui/build/yahoo-dom-event/yahoo-dom-event.js')}" />
+    <apex:includeScript value="{!URLFOR($Resource.Apttus_Approval__YUILibrary, '/yui/build/container/container-min.js')}" />
+    <apex:includescript value="{!URLFOR($Resource.Apttus_Approval__YUILibrary, '/yui/build/dragdrop/dragdrop-min.js')}" />
+    <apex:includescript value="{!URLFOR($Resource.Apttus_Approval__YUILibrary, '/yui/build/animation/animation-min.js')}" />
+    <apex:includeScript value="{!URLFOR($Resource.Apttus_Approval__YUILibrary, '/yui/build/treeview/treeview-min.js')}" /> 
+    <apex:includeScript value="{!URLFOR($Resource.Apttus_Approval__YUILibrary, '/yui/build/menu/menu-min.js')}" />
+    <apex:includeScript value="{!URLFOR($Resource.Apttus_Approval__YUILibrary, '/yui/build/yahoo/yahoo-min.js')}" />
+
+    <apex:stylesheet value="{!URLFOR($Resource.Apttus_Approval__YUILibrary, '/yui/build/assets/skins/sam/skin.css')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.Apttus_Approval__YUILibrary, '/yui/build/treeview/assets/skins/sam/treeview.css')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.Apttus_Approval__YUILibrary, '/yui/examples/treeview/assets/css/menu/tree.css')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.Apttus_Approval__YUILibrary, '/yui/build/menu/assets/skins/sam/menu.css')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.Apttus_Approval__YUILibrary, '/yui/build/container/assets/skins/sam/container.css')}" />
+
+    <script type="text/javascript">
+    
+		// setup namespace
+		j$.APTTUS = {};
+
+        // Create a namespace for our custom functions
+        YAHOO.namespace("force.com");
+        
+	   	/**
+		 * Initializes the call
+		 */
+		function initCall() {
+		
+			try {
+				sforce.connection.sessionId = "{!$Api.Session_ID}"; //to avoid session timeout
+			} catch(e) {
+				ap_erroralert(ap_cERROR_UNKNOWN,e);
+			}
+		
+		}
+
+        /**
+         * Builds the wait panel.
+         */
+        YAHOO.force.com.buildWaitPanel = function() {
+            document.body.className = document.body.className + " yui-skin-sam";
+            YAHOO.force.com.waitPanel = new YAHOO.widget.Panel(
+                "waitPanel",  // The id of our dialog container
+                { 
+                        width           :   "300px", // You can play with this until it's right
+                        visible         :   false,   // Should be invisible when rendered
+                        draggable       :   false,   // Make the dialog draggable
+                        close           :   false,   // Don't include a close title button
+                        modal           :   true,    // Make it modal
+                        fixedCenter     :   true,    // Keep centered if window is scrolled
+                        zindex          :   40,      // Make sure it's on top of everything
+                        constraintoviewport: true,
+                        
+                        // This line adds the appear/disapper fade effect
+                        effect           :   {effect:YAHOO.widget.ContainerEffect.FADE,duration:0.25}
+                                     
+                }
+            );
+            
+            // header
+            YAHOO.force.com.waitPanel.setHeader("Please Wait");
+         
+            // set image
+            YAHOO.force.com.waitPanel.setBody('<center><img src="{!URLFOR($Resource.Image_LoadingPage)}" /></center>');
+            // Render the dialog to the document.body level of the DOM
+            YAHOO.force.com.waitPanel.render(document.body);
+        }
+            
+        /**
+         * Callback when the action button is clicked
+         */
+        function onActionClick() {
+        
+            // show the modal panel
+            YAHOO.force.com.waitPanel.show();
+            
+            // return false to allow the action to proceed
+            return false;
+        }
+        
+        /**
+         * Callback when the action is completed
+         */
+        function onActionComplete() {
+        
+            // hide the modal panel
+            YAHOO.force.com.waitPanel.hide();
+        }
+        
+        YAHOO.force.com.onDOMReady = function() {
+            
+            // add our custom skin css to the body tag
+            document.body.className = document.body.className + " yui-skin-sam";                    
+            
+            // build the wait panel
+            YAHOO.force.com.buildWaitPanel();
+        }   
+        
+        // build the tree as soon as the DOM is in a usable state
+        YAHOO.util.Event.onDOMReady(YAHOO.force.com.onDOMReady);
+        
+    </script>
+
+    <apex:form id="idMyApprovalsForm" >
+        <apex:outputPanel id="idPagePanel" >
+
+	        <apex:pageBlock rendered="{!hasErrors}">
+	            <apex:pageMessages />
+                <apex:pageBlockButtons location="bottom" >
+                    <apex:commandButton value="{!$Label.apttus_approval__Return}"
+                    					action="{!doDone}"
+                    					rendered="{!queueRoleApprovals.size == 0 &&
+                    								userApprovals.size == 0}" />
+                </apex:pageBlockButtons>
+	        </apex:pageBlock>
+	        
+            <apex:pageBlock title="{!$Label.apttus_approval__MyQueueRoleApprovals}" rendered="{!queueRoleApprovals.size > 0 &&
+            																   NOT(isCommunitiesUser) &&
+            																   NOT(doTakeActionOnEach)}">
+                <apex:pageBlockButtons location="bottom">
+                    <apex:commandButton value="{!$Label.apttus_approval__Return}"
+                    					action="{!doDone}"
+                    					rendered="{!userApprovals.size == 0 ||
+                    								NOT(hasSelectableQueueRoleApprovals)}"/>
+                    					
+                    <apex:commandButton value="{!$Label.apttus_approval__TakeOwnership}"
+                    					onclick="invokeDoTakeOwnership();"
+                    					rendered="{!hasSelectableQueueRoleApprovals}"
+                    					rerender="idPagePanel" />
+                </apex:pageBlockButtons>
+                <apex:repeat value="{!queueRoleApprovals}" var="qrApproval">
+
+                    <apex:pageBlock title="{!qrApproval.stepLabel}">
+
+                        <apex:repeat value="{!qrApproval.stepRequests}"
+                            var="qrStepRequest">
+ 
+                            <apex:pageBlockSection >
+                                <apex:repeat value="{!qrStepRequest.displayFields}" var="qrDspField">
+                                    <apex:outputField value="{!qrStepRequest.ctxObject[qrDspField]}" />
+                                </apex:repeat>
+                            </apex:pageBlockSection>
+
+                            <apex:pageBlockTable value="{!qrStepRequest.SelectApprovalRequests}"
+                                var="qrSelApprovalReq" width="100%">
+                                <apex:column width="5%" >
+                                    <apex:inputCheckbox value="{!qrSelApprovalReq.selected}" 
+                                            rendered="{!qrSelApprovalReq.enableSelect}"/>
+                                </apex:column>
+                                <apex:column value="{!qrSelApprovalReq.request.Apttus_Approval__StepLabel__c}" width="30%" />
+                                <apex:column value="{!qrSelApprovalReq.request.Apttus_Approval__Approval_Status__c}" width="10%" />
+                                <apex:column value="{!qrSelApprovalReq.request.Apttus_Approval__Assigned_To_Name__c}" width="30%" />
+                                <apex:column value="{!qrSelApprovalReq.request.Apttus_Approval__Request_Comments__c}" width="30%" />
+                            </apex:pageBlockTable>
+                        </apex:repeat>
+                        <apex:pageBlockSection id="idQRComments1" columns="1"
+                            rendered="{!qrApproval.submitComment1Text != null}">
+                            <apex:outputLabel value="{!$Label[comment1Label]}"  style="font-weight:bold;"  />
+                            <apex:outputText value="{!qrApproval.submitComment1Text}" />
+                        </apex:pageBlockSection>
+                        <apex:pageBlockSection id="idQRComments2" columns="1"
+                            rendered="{!qrApproval.submitComment2Text != null}">
+                            <apex:outputLabel value="{!$Label[comment2Label]}"  style="font-weight:bold;" />
+                            <apex:outputText value="{!qrApproval.submitComment2Text}"  />
+                        </apex:pageBlockSection>
+                        <apex:pageBlockSection id="idQRComments3" columns="1"
+                            rendered="{!qrApproval.submitComment3Text != null}">
+                            <apex:outputLabel value="{!$Label[comment3Label]}" style="font-weight:bold;" />
+                            <apex:outputText value="{!qrApproval.submitComment3Text}"  />
+                        </apex:pageBlockSection>
+                    </apex:pageBlock>
+                </apex:repeat>
+            </apex:pageBlock>
+            
+            <apex:pageBlock title="{!$Label.apttus_approval__MyApprovals}" rendered="{!userApprovals.size > 0 &&
+            														  NOT(doTakeActionOnEach)}">
+                <apex:pageBlockButtons location="bottom">
+                    <apex:commandButton value="{!$Label.apttus_approval__Return}"
+                    					action="{!doDone}" />
+                    <apex:commandButton value="{!$Label.apttus_approval__Approve}"
+                    					onclick="invokeDoApprove();"
+                    					rendered="{!enableActions}"
+                    					rerender="idPagePanel" />
+                    <apex:commandButton value="{!$Label.apttus_approval__Reject}"
+                    					onclick="invokeDoReject();"
+                    					rendered="{!enableActions}"
+                    					rerender="idPagePanel" />
+                    <apex:commandButton value="{!$Label.apttus_approval__AddComment}"
+                    					onclick="invokeDoAddComments();"
+                    					rendered="{!enableActions}"
+                    					rerender="idPagePanel" />
+                </apex:pageBlockButtons>
+
+                <apex:repeat value="{!userApprovals}" var="userApproval">
+
+                    <apex:pageBlock title="{!userApproval.stepLabel}">
+
+                        <apex:repeat value="{!userApproval.stepRequests}"
+                            var="stepRequest">
+ 
+                            <apex:pageBlockSection >
+                                <apex:repeat value="{!stepRequest.displayFields}" var="dspField">
+                                    <apex:outputField value="{!stepRequest.ctxObject[dspField]}" />
+                                </apex:repeat>
+                            </apex:pageBlockSection>
+
+                            <apex:pageBlockTable value="{!stepRequest.SelectApprovalRequests}"
+                                var="approvalReq" width="100%">
+                                <apex:column width="5%" >
+                                    <apex:inputCheckbox value="{!approvalReq.selected}"
+                                            rendered="{!approvalReq.enableSelect}" />
+                                </apex:column>
+                                <apex:column value="{!approvalReq.request.Apttus_Approval__StepLabel__c}" width="30%" />
+                                <apex:column value="{!approvalReq.request.Apttus_Approval__Sequence__c}" width="5%" />
+                                <apex:column value="{!approvalReq.request.Apttus_Approval__Approval_Status__c}" width="10%" />
+                                <apex:column value="{!approvalReq.request.Apttus_Approval__Assigned_To_Name__c}" width="20%" />
+                                <apex:column value="{!approvalReq.request.Apttus_Approval__Request_Comments__c}" width="35%" />
+                            </apex:pageBlockTable>
+                        </apex:repeat>
+                        <apex:pageBlockSection id="idComments1" columns="1"
+                            rendered="{!userApproval.submitComment1Text != null}">
+                            <apex:outputLabel value="{!$Label[comment1Label]}"  style="font-weight:bold;"  />
+                            <apex:outputText value="{!userApproval.submitComment1Text}" />
+                        </apex:pageBlockSection>
+                        <apex:pageBlockSection id="idComments2" columns="1"
+                            rendered="{!userApproval.submitComment2Text != null}">
+                            <apex:outputLabel value="{!$Label[comment2Label]}"  style="font-weight:bold;" />
+                            <apex:outputText value="{!userApproval.submitComment2Text}"  />
+                        </apex:pageBlockSection>
+                        <apex:pageBlockSection id="idComments3" columns="1"
+                            rendered="{!userApproval.submitComment3Text != null}">
+                            <apex:outputLabel value="{!$Label[comment3Label]}" style="font-weight:bold;" />
+                            <apex:outputText value="{!userApproval.submitComment3Text}"  />
+                        </apex:pageBlockSection>
+                    </apex:pageBlock>
+                </apex:repeat>
+
+	            <apex:pageBlock title="{!$Label.apttus_approval__OtherApproverComments}" rendered="{!completionComments.size > 0}">
+	                <apex:pageBlockTable value="{!completionComments}"
+	                    var="approverComments">
+	                    <apex:column value="{!approverComments.Apttus_Approval__Actual_Approver__c}" />
+	                    <apex:column value="{!approverComments.Apttus_Approval__StepLabel__c}" />
+	                    <apex:column value="{!approverComments.Apttus_Approval__Approver_Comments__c}" />
+	                </apex:pageBlockTable>
+	            </apex:pageBlock>
+	
+	            <apex:pageBlock id="idApprovalComments" title="{!$Label.apttus_approval__ApproverComments}" rendered="{!enableActions}" >
+	                <apex:inputTextarea value="{!approvalComments}" style="width:500px;" rows="3" />
+	            </apex:pageBlock>
+	            
+            </apex:pageBlock>
+
+			<apex:outputPanel rendered="{!doTakeActionOnEach}">
+				<script type="text/javascript">
+					// init
+					initCall();
+					
+					// get approval requests
+					var approvalRequestList = new Array();
+				</script>	
+				
+				<apex:repeat value="{!selectedReqIds}" var="requestId">
+					<script type="text/javascript">
+					  	var approvalRequest = new Object();
+					  	approvalRequest.id = "{!requestId}";
+			  			
+					  	approvalRequestList.push(approvalRequest);
+					</script>	
+				</apex:repeat>
+				
+				<script type="text/javascript">
+					if (approvalRequestList.length > 0) {
+					
+						// display progress window
+						onActionClick();
+					 		
+						// delay to allow the progress bar to be shown
+						setTimeout(function() {
+							var currentId = "";
+							
+							try {
+								var count = approvalRequestList.length;
+								
+								// invoke action for each
+								for (var i = 0; i < count; i++) {
+									currentId = approvalRequestList[i].id;
+									
+									var isActionTypeApprove = "{!isActionTypeApprove}";
+									var isActionTypeReject = "{!isActionTypeReject}";
+									var isActionTypeAddComments = "{!isActionTypeAddComments}";
+						
+									// take action on the request
+									if (isActionTypeApprove == 'true') {
+										var result = approveRequest(currentId,'{!approvalComments}');
+									
+									} else if (isActionTypeReject == 'true') {
+										var result = rejectRequest(currentId,'{!approvalComments}');
+									
+									} else if (isActionTypeAddComments == 'true') {
+										var result = addCommentsToRequest(currentId,'{!approvalComments}');
+									
+									}
+
+								}
+								
+								// done taking action on all approval requests
+								invokeDoTakeActionOnEachDone('');
+								
+							} catch(ex) {
+								var hasErrors = (ex.errors != null);
+								var hasFault = (ex.faultcode != null);
+								//console.log("hasErrors="+hasErrors+"\nhasFault="+hasFault);
+								
+								if (hasErrors) {
+									invokeDoTakeActionOnEachDone(ex.errors.message);
+								
+								} else if (hasFault) {
+									invokeDoTakeActionOnEachDone(ex.faultstring);
+								    
+								} else {
+									invokeDoTakeActionOnEachDone(ex.message);
+								}
+								
+							} finally {
+								// hide the progress window
+								onActionComplete();
+						
+							}
+							
+						}, 500);
+					}
+				</script>	
+				
+			</apex:outputPanel>
+		</apex:outputPanel>
+		
+        <!-- action functions -->
+        <apex:actionFunction name="invokeDoTakeOwnership" 
+                             action="{!doTakeOwnership}" 
+                             reRender="idPagePanel"
+                             status="idPleaseWaitStatus">
+        </apex:actionFunction>
+        <apex:actionFunction name="invokeDoApprove" 
+                             action="{!doApprove}" 
+                             reRender="idPagePanel">
+        </apex:actionFunction>
+        <apex:actionFunction name="invokeDoReject" 
+                             action="{!doReject}" 
+                             reRender="idPagePanel">
+        </apex:actionFunction>
+        <apex:actionFunction name="invokeDoAddComments" 
+                             action="{!doAddComments}" 
+                             reRender="idPagePanel">
+        </apex:actionFunction>
+		<apex:actionFunction name="invokeDoTakeActionOnEachDone" 
+							 action="{!doTakeActionOnEachDone}"
+							 reRender="idPagePanel">
+			<apex:param name="errMsg" value="" />
+		</apex:actionFunction>
+        
+        <apex:actionStatus id="idPleaseWaitStatus"
+                           onstart="onActionClick();"
+                           onstop="onActionComplete();" />
+    </apex:form>
+
+    <!-- This panel represents the waiting dialog that will pop up -->
+    <apex:outputPanel >
+        <div id="waitPanel"></div>
+    </apex:outputPanel>
+</apex:page>

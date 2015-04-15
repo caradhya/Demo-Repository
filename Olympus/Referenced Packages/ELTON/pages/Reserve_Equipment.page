@@ -1,0 +1,73 @@
+<apex:page standardController="ELTON__Equipment__c" extensions="ELTON.Reserve_Equipment">
+    <apex:sectionHeader title="Reserve Equipment" subtitle="{!ELTON__Equipment__c.Name}"/>
+    <apex:pageMessage summary="You cannot Reserve Inactive Equipment. Please change the Equipment to Active."
+        severity="warning" strength="2" rendered="{!NOT(isActive)}"/>
+    <apex:pageMessage summary="You cannot Reserve Equipment until it is assigned. Please use the 'Assign Equipment' button first."
+        severity="warning" strength="2" rendered="{!NOT(isAssigned)}"/>
+    <apex:relatedList subject="{!ELTON__Equipment__c}" list="Equipment_Reservations__r" title="Existing Equipment Reservations" />       
+    <apex:relatedList subject="{!ELTON__Equipment__c}" list="Collection_Components__r" title="Components for this Collection" rendered="{!IsMaster}" />     
+    <apex:form >
+        <apex:pageMessages />
+        <apex:pageBlock title="{!$ObjectType.ELTON__Equipment__c.Label}">
+            <apex:pageBlockSection columns="2">
+                <apex:outputField value="{!ELTON__Equipment__c.Name}"/>
+                <apex:outputField value="{!ELTON__Equipment__c.ELTON__Active__c}"/>
+                <apex:outputField value="{!ELTON__Equipment__c.ELTON__Equipment_Tag__c}"/>
+                <apex:outputField value="{!ELTON__Equipment__c.ELTON__Assigned_Name__c}"/>
+                <apex:outputField value="{!ELTON__Equipment__c.ELTON__Collection_Status__c}" rendered="{!IsMaster}" />                
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Current Loan Information" columns="1">    
+                <apex:outputField value="{!ELTON__Equipment__c.ELTON__Loan_Type__c}"/>    
+                <apex:outputField value="{!ELTON__Equipment__c.ELTON__Loan_Name__c}"/>    
+                <apex:outputField value="{!ELTON__Equipment__c.ELTON__Loan_Start_Date__c}"/>        
+                <apex:outputField value="{!ELTON__Equipment__c.ELTON__Loan_Estimated_Return_Date__c}"/> 
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons location="top">
+                <apex:commandButton value="Reserve" action="{!makeReservation}" rendered="{!canBeReserved}"/>
+                <apex:commandButton value="Cancel" action="{!cancel}" immediate="true" />
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+
+        <apex:pageBlock title="{!$ObjectType.ELTON__Equipment_Reservation__c.Label}" rendered="{!canBeReserved}" id="ReserveBlock">
+            <apex:pageBlockSection title="Loan Dates" columns="1">
+                <apex:inputField value="{!Reservation.ELTON__Reservation_Start_Date__c}" required="true"/>
+                <apex:inputField value="{!Reservation.ELTON__Estimated_Return_Date__c}" required="true"/>
+            </apex:pageBlockSection>
+
+            <apex:actionRegion >
+                <apex:pageBlockSection title="Select Reserve Type" columns="2" id="typeSection">
+                    <apex:inputField value="{!Reservation.ELTON__Reservation_Type__c}" required="true">
+                        <apex:actionSupport event="onchange" rerender="typeSection"/>
+                    </apex:inputField>
+                    <apex:inputField value="{!reservation[lookupFieldName]}" rendered="{!NOT(ISBLANK(Reservation.ELTON__Reservation_Type__c))}"/>
+                </apex:pageBlockSection>
+            </apex:actionRegion>
+
+            <apex:pageBlockSection columns="1">
+                <!-- <apex:inputField value="{!Reservation.Reservation_Note__c}" />  -->
+                <apex:repeat value="{!$ObjectType.ELTON__Equipment_Reservation__c.FieldSets.ELTON__Fields_to_Update_on_Reserve}" var="f">
+                	<apex:inputField value="{!reservation[f]}" required="{!f.required || f.dbRequired}"/>
+                </apex:repeat>
+            </apex:pageBlockSection>
+            
+            <apex:actionRegion >
+	            <apex:pageBlockSection columns="2" id="reassignEquipmentOnLoanStart" rendered="{!$Setup.Equipment_AssignLoan_Settings__c.Re_assign_on_Loan_Start__c}">
+	            	<apex:inputField label="{!$Label.elton__Assign_on_Loan_Start_Type}" value="{!Reservation.ELTON__Assign_on_Loan_Start_Type__c}">
+	            		<apex:actionSupport event="onchange" rerender="reassignEquipmentOnLoanStart" />
+	            	</apex:inputField>
+	                <apex:inputField label="{!$Label.elton__Assign_on_Loan_Start_Name}" value="{!dummyOnLoanStart['ELTON__' + Reservation.ELTON__Assign_on_Loan_Start_Type__c + '__c']}" rendered="{!!ISBLANK(Reservation.ELTON__Assign_on_Loan_Start_Type__c)}" />
+	            </apex:pageBlockSection>
+	            <apex:pageBlockSection columns="2" id="reassignEquipmentOnLoanReturn" rendered="{!$Setup.Equipment_AssignLoan_Settings__c.Re_assign_on_Loan_Return__c}">
+	            	<apex:inputField label="{!$Label.elton__Assign_on_Loan_Return_Type}" value="{!Reservation.ELTON__Assign_on_Loan_Return_Type__c}">
+	            		<apex:actionSupport event="onchange" rerender="reassignEquipmentOnLoanReturn" />
+	            	</apex:inputField>
+	                <apex:inputField label="{!$Label.elton__Assign_on_Loan_Return_Name}" value="{!dummyOnLoanReturn['ELTON__' + Reservation.ELTON__Assign_on_Loan_Return_Type__c + '__c']}" rendered="{!!ISBLANK(Reservation.ELTON__Assign_on_Loan_Return_Type__c)}" />
+	            </apex:pageBlockSection>
+            </apex:actionRegion>
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton value="Reserve" action="{!makeReservation}" rendered="{!canBeReserved}"/>
+                <apex:commandButton value="Cancel" action="{!cancel}" immediate="true" />
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
