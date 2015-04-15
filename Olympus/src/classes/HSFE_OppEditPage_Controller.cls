@@ -1,3 +1,6 @@
+/******************
+Description : Opportunity Edit Class
+*****************/
 public with sharing class HSFE_OppEditPage_Controller{
 
     public HSFE_OppEditPage_Controller(ApexPages.StandardController controller) {
